@@ -88,7 +88,7 @@ d'arrêté. L'outil apprécie donc le statut à la date de la copie installée e
 3. Télécharge les fichiers XML (environ 925 Mo + 32 Mo compressés), construit les Parquet avec les
    outils de ce dépôt.
 4. Refuse de publier une copie suspecte (moins de 3 millions de LEI ou 300 000 relations).
-5. Publie la release `gleif-AAAAMMJJ-HHMM`, puis ne garde que les 3 dernières.
+5. Publie la release `gleif-AAAAMMJJ-HHMM`, puis ne garde que les 2 dernières (2 jours).
 
 **À la main**, à partir des fichiers XML du GLEIF (LEI-CDF et RR-CDF, Golden Copy ou Concatenated
 Files, en ZIP ou décompressés) :

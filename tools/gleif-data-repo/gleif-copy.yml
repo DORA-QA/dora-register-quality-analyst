@@ -35,7 +35,7 @@ concurrency:
 env:
   CODE_REPO: stephanealpha/dora-register-quality-analyst
   CODE_REF: main
-  KEEP: "3"
+  KEEP: "2"
   MIN_LEI_ROWS: "3000000"
   MIN_RR_ROWS: "300000"
 
