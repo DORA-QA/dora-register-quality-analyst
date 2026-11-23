@@ -40,3 +40,23 @@ def test_api_routes_keep_priority_over_files(tmp_path: Path) -> None:
 def test_missing_build_is_refused(tmp_path: Path) -> None:
     with pytest.raises(RuntimeError, match="index.html"):
         setup_portable_frontend(FastAPI(), str(tmp_path))
+
+
+def test_the_sources_variant_ships_every_backend_package_of_the_zip() -> None:
+    """build_sources.py and build.py must list the same backend packages (gleif was missing)."""
+    import ast
+    from pathlib import Path
+
+    portable = Path(__file__).resolve().parents[2] / "portable"
+    sources = ast.parse((portable / "build_sources.py").read_text(encoding="utf-8"))
+    parts = next(
+        node.value
+        for node in ast.walk(sources)
+        if isinstance(node, ast.Assign) and getattr(node.targets[0], "id", "") == "BACKEND_PARTS"
+    )
+    shipped = {element.value for element in parts.elts}  # type: ignore[attr-defined]
+    frozen = (portable / "build.py").read_text(encoding="utf-8")
+    backend = Path(__file__).resolve().parents[1]
+    packages = {p.name for p in backend.iterdir() if (p / "__init__.py").is_file()}
+    needed = {name for name in packages - {"tests", "tools"} if f'"{name}"' in frozen}
+    assert needed <= shipped, needed - shipped
