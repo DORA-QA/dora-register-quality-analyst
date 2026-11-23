@@ -1,0 +1,53 @@
+{
+ "source": "EBA data model for the DORA RoI (names of the columns) and list L07 of the taxonomy (types of code)",
+ "status": "The choice of columns is derived from the names in the data model; to confirm against the EBA technical checks on the first real register. Note: the published rule v8821 tests B_05.01.0030 when B_05.01.0020 declares a LEI, whereas the data model puts the identification code in B_05.01.0010.",
+ "type_members": {
+  "LEI": "eba_qCO:qx2000",
+  "EUID": "eba_qCO:qx2002"
+ },
+ "lei_columns": [
+  "B_01.01.0010",
+  "B_01.02.0010",
+  "B_01.02.0060",
+  "B_01.03.0020",
+  "B_02.02.0020",
+  "B_03.01.0020",
+  "B_03.03.0020",
+  "B_04.01.0020",
+  "B_06.01.0040"
+ ],
+ "typed_identifiers": [
+  {
+   "code": "B_02.02.0030",
+   "type": "B_02.02.0040"
+  },
+  {
+   "code": "B_03.02.0020",
+   "type": "B_03.02.0030"
+  },
+  {
+   "code": "B_05.01.0010",
+   "type": "B_05.01.0020"
+  },
+  {
+   "code": "B_05.01.0030",
+   "type": "B_05.01.0040"
+  },
+  {
+   "code": "B_05.01.0110",
+   "type": "B_05.01.0120"
+  },
+  {
+   "code": "B_05.02.0030",
+   "type": "B_05.02.0040"
+  },
+  {
+   "code": "B_05.02.0060",
+   "type": "B_05.02.0070"
+  },
+  {
+   "code": "B_07.01.0020",
+   "type": "B_07.01.0030"
+  }
+ ]
+}

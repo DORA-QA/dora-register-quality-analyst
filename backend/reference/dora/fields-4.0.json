@@ -1,0 +1,1446 @@
+{
+ "source": "EBA reporting framework 4.0, DORA module",
+ "reference_convention": "B_xx.xx.xxxx",
+ "fields": [
+  {
+   "table": "B_01.01",
+   "code": "B_01.01.0010",
+   "csv_column": "c0010",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_01.01",
+   "code": "B_01.01.0020",
+   "csv_column": "c0020",
+   "name": "Name of the entity",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_01.01",
+   "code": "B_01.01.0030",
+   "csv_column": "c0030",
+   "name": "Country of the entity",
+   "type": "e",
+   "enumeration": "L01",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_01.01",
+   "code": "B_01.01.0040",
+   "csv_column": "c0040",
+   "name": "Type of entity",
+   "type": "e",
+   "enumeration": "L02",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_01.01",
+   "code": "B_01.01.0050",
+   "csv_column": "c0050",
+   "name": "Competent Authority",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_01.01",
+   "code": "B_01.01.0060",
+   "csv_column": "c0060",
+   "name": "Date of the reporting",
+   "type": "d",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_01.02",
+   "code": "B_01.02.0010",
+   "csv_column": "c0010",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_01.02",
+   "code": "B_01.02.0020",
+   "csv_column": "c0020",
+   "name": "Name of the entity",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_01.02",
+   "code": "B_01.02.0030",
+   "csv_column": "c0030",
+   "name": "Country of the entity",
+   "type": "e",
+   "enumeration": "L01",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_01.02",
+   "code": "B_01.02.0040",
+   "csv_column": "c0040",
+   "name": "Type of entity",
+   "type": "e",
+   "enumeration": "L03",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_01.02",
+   "code": "B_01.02.0050",
+   "csv_column": "c0050",
+   "name": "Hierarchy of the entity within the group (where applicable)",
+   "type": "e",
+   "enumeration": "L04",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_01.02",
+   "code": "B_01.02.0060",
+   "csv_column": "c0060",
+   "name": "LEI of the direct parent undertaking of the entity",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": [
+    {
+     "name": "R6 -  LEI of the parent should be also a record_B_01.02",
+     "target_table": "B_01.02"
+    }
+   ]
+  },
+  {
+   "table": "B_01.02",
+   "code": "B_01.02.0070",
+   "csv_column": "c0070",
+   "name": "Date of last update",
+   "type": "d",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_01.02",
+   "code": "B_01.02.0080",
+   "csv_column": "c0080",
+   "name": "Date of integration in the Register of information",
+   "type": "d",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_01.02",
+   "code": "B_01.02.0090",
+   "csv_column": "c0090",
+   "name": "Date of deletion in the Register of information",
+   "type": "d",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_01.02",
+   "code": "B_01.02.0100",
+   "csv_column": "c0100",
+   "name": "Currency",
+   "type": "e",
+   "enumeration": "L05",
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_01.02",
+   "code": "B_01.02.0110",
+   "csv_column": "c0110",
+   "name": "Value of total assets - of the financial entity",
+   "type": "m",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_01.03",
+   "code": "B_01.03.0010",
+   "csv_column": "c0010",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_01.03",
+   "code": "B_01.03.0020",
+   "csv_column": "c0020",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R3_B_01.02",
+     "target_table": "B_01.02"
+    }
+   ]
+  },
+  {
+   "table": "B_01.03",
+   "code": "B_01.03.0030",
+   "csv_column": "c0030",
+   "name": "Name of the branch",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_01.03",
+   "code": "B_01.03.0040",
+   "csv_column": "c0040",
+   "name": "Country of the branch",
+   "type": "e",
+   "enumeration": "L01",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_02.01",
+   "code": "B_02.01.0010",
+   "csv_column": "c0010",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_02.01",
+   "code": "B_02.01.0020",
+   "csv_column": "c0020",
+   "name": "Type of contractual arrangement",
+   "type": "e",
+   "enumeration": "L06",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_02.01",
+   "code": "B_02.01.0030",
+   "csv_column": "c0030",
+   "name": "Overarching contractual arrangement reference number",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R13 Contractual arr. reference number must match_B_02.01",
+     "target_table": "B_02.01"
+    }
+   ]
+  },
+  {
+   "table": "B_02.01",
+   "code": "B_02.01.0040",
+   "csv_column": "c0040",
+   "name": "Currency of the amount reported in RT.02.01.0050",
+   "type": "e",
+   "enumeration": "L05",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_02.01",
+   "code": "B_02.01.0050",
+   "csv_column": "c0050",
+   "name": "Annual expense or estimated cost of the contractual arrangement for the past year",
+   "type": "m",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_02.02",
+   "code": "B_02.02.0010",
+   "csv_column": "c0010",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R17 Contractual arr and Id. code must match_B_03.02",
+     "target_table": "B_03.02"
+    }
+   ]
+  },
+  {
+   "table": "B_02.02",
+   "code": "B_02.02.0020",
+   "csv_column": "c0020",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R7 - LEI of the entity and function id. must match_B_06.01",
+     "target_table": "B_06.01"
+    }
+   ]
+  },
+  {
+   "table": "B_02.02",
+   "code": "B_02.02.0030",
+   "csv_column": "c0030",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R17 Contractual arr and Id. code must match_B_03.02",
+     "target_table": "B_03.02"
+    }
+   ]
+  },
+  {
+   "table": "B_02.02",
+   "code": "B_02.02.0040",
+   "csv_column": "c0040",
+   "name": "Type of code to identify the ICT third-party service provider",
+   "type": "e",
+   "enumeration": "L07",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_02.02",
+   "code": "B_02.02.0050",
+   "csv_column": "c0050",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R7 - LEI of the entity and function id. must match_B_06.01",
+     "target_table": "B_06.01"
+    }
+   ]
+  },
+  {
+   "table": "B_02.02",
+   "code": "B_02.02.0060",
+   "csv_column": "c0060",
+   "name": null,
+   "type": "e",
+   "enumeration": "L08",
+   "primary_key": true,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_02.02",
+   "code": "B_02.02.0070",
+   "csv_column": "c0070",
+   "name": "Start date of the contractual arrangement",
+   "type": "d",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_02.02",
+   "code": "B_02.02.0080",
+   "csv_column": "c0080",
+   "name": "End date of the contractual arrangement",
+   "type": "d",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_02.02",
+   "code": "B_02.02.0090",
+   "csv_column": "c0090",
+   "name": "Reason of the termination or ending of the contractual arrangement",
+   "type": "e",
+   "enumeration": "L09",
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_02.02",
+   "code": "B_02.02.0100",
+   "csv_column": "c0100",
+   "name": "Notice period for the ICT third-party service provider",
+   "type": "i",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_02.02",
+   "code": "B_02.02.0110",
+   "csv_column": "c0110",
+   "name": "Notice period for the ICT third-party service provider",
+   "type": "i",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_02.02",
+   "code": "B_02.02.0120",
+   "csv_column": "c0120",
+   "name": "Country of the governing law of the contractual arrangement",
+   "type": "e",
+   "enumeration": "L01",
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_02.02",
+   "code": "B_02.02.0130",
+   "csv_column": "c0130",
+   "name": null,
+   "type": "e",
+   "enumeration": "L10",
+   "primary_key": true,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_02.02",
+   "code": "B_02.02.0140",
+   "csv_column": "c0140",
+   "name": "Storage of data",
+   "type": "e",
+   "enumeration": "L11",
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_02.02",
+   "code": "B_02.02.0150",
+   "csv_column": "c0150",
+   "name": null,
+   "type": "e",
+   "enumeration": "L10",
+   "primary_key": true,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_02.02",
+   "code": "B_02.02.0160",
+   "csv_column": "c0160",
+   "name": null,
+   "type": "e",
+   "enumeration": "L10",
+   "primary_key": true,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_02.02",
+   "code": "B_02.02.0170",
+   "csv_column": "c0170",
+   "name": "Sensitiveness of the data stored by the ICT third-party service provider",
+   "type": "e",
+   "enumeration": "L12",
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_02.02",
+   "code": "B_02.02.0180",
+   "csv_column": "c0180",
+   "name": "Level of reliance on the ICT service supporting the critical or important function.",
+   "type": "e",
+   "enumeration": "L13",
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_02.03",
+   "code": "B_02.03.0010",
+   "csv_column": "c0010",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R11 Contractual arr. reference number must match_B_02.01",
+     "target_table": "B_02.01"
+    }
+   ]
+  },
+  {
+   "table": "B_02.03",
+   "code": "B_02.03.0020",
+   "csv_column": "c0020",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R12 Contractual arr. reference number must match_B_02.01",
+     "target_table": "B_02.01"
+    }
+   ]
+  },
+  {
+   "table": "B_02.03",
+   "code": "B_02.03.0030",
+   "csv_column": "c0030",
+   "name": "Link",
+   "type": "t",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_03.01",
+   "code": "B_03.01.0010",
+   "csv_column": "c0010",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R10 Contractual arr. reference number must match_B_02.01",
+     "target_table": "B_02.01"
+    }
+   ]
+  },
+  {
+   "table": "B_03.01",
+   "code": "B_03.01.0020",
+   "csv_column": "c0020",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R2 - LEI of the entity must match_B_01.02",
+     "target_table": "B_01.02"
+    }
+   ]
+  },
+  {
+   "table": "B_03.01",
+   "code": "B_03.01.0030",
+   "csv_column": "c0030",
+   "name": "Link",
+   "type": "t",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_03.02",
+   "code": "B_03.02.0010",
+   "csv_column": "c0010",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R9 Contractual arr. reference number must match_B_02.01",
+     "target_table": "B_02.01"
+    }
+   ]
+  },
+  {
+   "table": "B_03.02",
+   "code": "B_03.02.0020",
+   "csv_column": "c0020",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R19 Identification code of the branch must match_B_05.01",
+     "target_table": "B_05.01"
+    }
+   ]
+  },
+  {
+   "table": "B_03.02",
+   "code": "B_03.02.0030",
+   "csv_column": "c0030",
+   "name": "Type of code to identify the ICT third-party service provider",
+   "type": "e",
+   "enumeration": "L07",
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_03.03",
+   "code": "B_03.03.0010",
+   "csv_column": "c0010",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R8 Contractual arr. reference number must match_B_02.01",
+     "target_table": "B_02.01"
+    }
+   ]
+  },
+  {
+   "table": "B_03.03",
+   "code": "B_03.03.0020",
+   "csv_column": "c0020",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R1 - LEI of the entity must match_B_01.02",
+     "target_table": "B_01.02"
+    }
+   ]
+  },
+  {
+   "table": "B_03.03",
+   "code": "B_03.03.0031",
+   "csv_column": "c0031",
+   "name": "Link",
+   "type": "t",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_04.01",
+   "code": "B_04.01.0010",
+   "csv_column": "c0010",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R16 Contractual arr. reference number must match_B_02.01",
+     "target_table": "B_02.01"
+    }
+   ]
+  },
+  {
+   "table": "B_04.01",
+   "code": "B_04.01.0020",
+   "csv_column": "c0020",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R4 - LEI of the entity must match_B_01.02",
+     "target_table": "B_01.02"
+    }
+   ]
+  },
+  {
+   "table": "B_04.01",
+   "code": "B_04.01.0030",
+   "csv_column": "c0030",
+   "name": "Nature of the entity making use of the ICT service(s)",
+   "type": "e",
+   "enumeration": "L14",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_04.01",
+   "code": "B_04.01.0040",
+   "csv_column": "c0040",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_05.01",
+   "code": "B_05.01.0010",
+   "csv_column": "c0010",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_05.01",
+   "code": "B_05.01.0020",
+   "csv_column": "c0020",
+   "name": "Type of code to identify the ICT third-party service provider",
+   "type": "e",
+   "enumeration": "L07",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_05.01",
+   "code": "B_05.01.0030",
+   "csv_column": "c0030",
+   "name": "Additional identification code of ICT third-party service provider",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_05.01",
+   "code": "B_05.01.0040",
+   "csv_column": "c0040",
+   "name": "Type of additional identification code of the ICT third-party service provider",
+   "type": "e",
+   "enumeration": "L07",
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_05.01",
+   "code": "B_05.01.0050",
+   "csv_column": "c0050",
+   "name": "Legal name of the ICT third-party service provider",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_05.01",
+   "code": "B_05.01.0060",
+   "csv_column": "c0060",
+   "name": "Name of the ICT third-party service provider in Latin alphabet",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_05.01",
+   "code": "B_05.01.0070",
+   "csv_column": "c0070",
+   "name": "Type of person of the ICT third-party service provider",
+   "type": "e",
+   "enumeration": "L15",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_05.01",
+   "code": "B_05.01.0080",
+   "csv_column": "c0080",
+   "name": "Country of the ICT third-party service provider’s headquarters",
+   "type": "e",
+   "enumeration": "L01",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_05.01",
+   "code": "B_05.01.0090",
+   "csv_column": "c0090",
+   "name": "Currency of the amount reported in RT.05.01.0070",
+   "type": "e",
+   "enumeration": "L05",
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_05.01",
+   "code": "B_05.01.0100",
+   "csv_column": "c0100",
+   "name": "Total annual expense or estimated cost of the ICT third-party service  provider",
+   "type": "m",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_05.01",
+   "code": "B_05.01.0110",
+   "csv_column": "c0110",
+   "name": "Identification code of the ICT third-party service provider’s ultimate parent undertaking",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": [
+    {
+     "name": "R18  -  Identification code must match_B_05.01",
+     "target_table": "B_05.01"
+    }
+   ]
+  },
+  {
+   "table": "B_05.01",
+   "code": "B_05.01.0120",
+   "csv_column": "c0120",
+   "name": "Type of additional identification code of the ICT third-party service provider",
+   "type": "e",
+   "enumeration": "L07",
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_05.02",
+   "code": "B_05.02.0010",
+   "csv_column": "c0010",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R14 Contractual arr. reference number must match_B_02.01",
+     "target_table": "B_02.01"
+    }
+   ]
+  },
+  {
+   "table": "B_05.02",
+   "code": "B_05.02.0020",
+   "csv_column": "c0020",
+   "name": null,
+   "type": "e",
+   "enumeration": "L08",
+   "primary_key": true,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_05.02",
+   "code": "B_05.02.0030",
+   "csv_column": "c0030",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R20 - Identification code of the branch must match_B_05.01",
+     "target_table": "B_05.01"
+    }
+   ]
+  },
+  {
+   "table": "B_05.02",
+   "code": "B_05.02.0040",
+   "csv_column": "c0040",
+   "name": "Type of code to identify the ICT third-party service provider",
+   "type": "e",
+   "enumeration": "L07",
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_05.02",
+   "code": "B_05.02.0050",
+   "csv_column": "c0050",
+   "name": null,
+   "type": "i",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_05.02",
+   "code": "B_05.02.0060",
+   "csv_column": "c0060",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R21 - Identification code of the branch must match_B_05.01",
+     "target_table": "B_05.01"
+    }
+   ]
+  },
+  {
+   "table": "B_05.02",
+   "code": "B_05.02.0070",
+   "csv_column": "c0070",
+   "name": "Type of code to identify the recipient of sub-contracted ICT services",
+   "type": "e",
+   "enumeration": "L07",
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_06.01",
+   "code": "B_06.01.0010",
+   "csv_column": "c0010",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_06.01",
+   "code": "B_06.01.0020",
+   "csv_column": "c0020",
+   "name": "Licenced activity",
+   "type": "e",
+   "enumeration": "L16",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_06.01",
+   "code": "B_06.01.0030",
+   "csv_column": "c0030",
+   "name": "Function name",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_06.01",
+   "code": "B_06.01.0040",
+   "csv_column": "c0040",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R5_B_01.02",
+     "target_table": "B_01.02"
+    }
+   ]
+  },
+  {
+   "table": "B_06.01",
+   "code": "B_06.01.0050",
+   "csv_column": "c0050",
+   "name": "Criticality or importance assessment",
+   "type": "e",
+   "enumeration": "L17",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_06.01",
+   "code": "B_06.01.0060",
+   "csv_column": "c0060",
+   "name": "Reasons for criticality or importance",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_06.01",
+   "code": "B_06.01.0070",
+   "csv_column": "c0070",
+   "name": "Date of the last assessment of criticality or importance",
+   "type": "d",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_06.01",
+   "code": "B_06.01.0080",
+   "csv_column": "c0080",
+   "name": "Recovery time objective of the function",
+   "type": "i",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_06.01",
+   "code": "B_06.01.0090",
+   "csv_column": "c0090",
+   "name": "Recovery point objective of the function",
+   "type": "i",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_06.01",
+   "code": "B_06.01.0100",
+   "csv_column": "c0100",
+   "name": "Impact of discontinuing the function",
+   "type": "e",
+   "enumeration": "L18",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_07.01",
+   "code": "B_07.01.0010",
+   "csv_column": "c0010",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R15 Contractual arr. reference number must match_B_02.01",
+     "target_table": "B_02.01"
+    }
+   ]
+  },
+  {
+   "table": "B_07.01",
+   "code": "B_07.01.0020",
+   "csv_column": "c0020",
+   "name": null,
+   "type": "s",
+   "enumeration": null,
+   "primary_key": true,
+   "mandatory": false,
+   "references": [
+    {
+     "name": "R22 - Identification code of the branch must match_B_05.01",
+     "target_table": "B_05.01"
+    }
+   ]
+  },
+  {
+   "table": "B_07.01",
+   "code": "B_07.01.0030",
+   "csv_column": "c0030",
+   "name": "Type of code to identify the ICT third-party service provider",
+   "type": "e",
+   "enumeration": "L07",
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_07.01",
+   "code": "B_07.01.0040",
+   "csv_column": "c0040",
+   "name": null,
+   "type": "e",
+   "enumeration": "L08",
+   "primary_key": true,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_07.01",
+   "code": "B_07.01.0050",
+   "csv_column": "c0050",
+   "name": "Substitutability of the ICT third-party service provider",
+   "type": "e",
+   "enumeration": "L19",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_07.01",
+   "code": "B_07.01.0060",
+   "csv_column": "c0060",
+   "name": "Reason if the ICT third-party service provider is considered not substitutable or difficult to be substitutable",
+   "type": "e",
+   "enumeration": "L20",
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_07.01",
+   "code": "B_07.01.0070",
+   "csv_column": "c0070",
+   "name": "Date of the last audit on the ICT third-party service provider",
+   "type": "d",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_07.01",
+   "code": "B_07.01.0080",
+   "csv_column": "c0080",
+   "name": "Existence of an exit plan",
+   "type": "e",
+   "enumeration": "L11",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_07.01",
+   "code": "B_07.01.0090",
+   "csv_column": "c0090",
+   "name": "Possibility of reintegration of the contracted ICT service",
+   "type": "e",
+   "enumeration": "L21",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_07.01",
+   "code": "B_07.01.0100",
+   "csv_column": "c0100",
+   "name": "Impact of discontinuing the ICT services",
+   "type": "e",
+   "enumeration": "L18",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_07.01",
+   "code": "B_07.01.0110",
+   "csv_column": "c0110",
+   "name": "Are there alternative ICT third-party service providers identified?",
+   "type": "e",
+   "enumeration": "L17",
+   "primary_key": false,
+   "mandatory": true,
+   "references": []
+  },
+  {
+   "table": "B_07.01",
+   "code": "B_07.01.0120",
+   "csv_column": "c0120",
+   "name": "Identification of alternative ICT TPP",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0010",
+   "csv_column": "c0010",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0020",
+   "csv_column": "c0020",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0030",
+   "csv_column": "c0030",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0040",
+   "csv_column": "c0040",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0050",
+   "csv_column": "c0050",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0060",
+   "csv_column": "c0060",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0070",
+   "csv_column": "c0070",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0080",
+   "csv_column": "c0080",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0090",
+   "csv_column": "c0090",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0100",
+   "csv_column": "c0100",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0110",
+   "csv_column": "c0110",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0120",
+   "csv_column": "c0120",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0130",
+   "csv_column": "c0130",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0140",
+   "csv_column": "c0140",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0150",
+   "csv_column": "c0150",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0160",
+   "csv_column": "c0160",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0170",
+   "csv_column": "c0170",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0180",
+   "csv_column": "c0180",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  },
+  {
+   "table": "B_99.01",
+   "code": "B_99.01.0190",
+   "csv_column": "c0190",
+   "name": "Description/Internal definition of the option",
+   "type": "s",
+   "enumeration": null,
+   "primary_key": false,
+   "mandatory": false,
+   "references": []
+  }
+ ]
+}

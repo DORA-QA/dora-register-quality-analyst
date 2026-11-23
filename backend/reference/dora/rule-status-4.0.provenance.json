@@ -1,0 +1,37 @@
+{
+  "rules": "rule-status-4.0.json",
+  "checked_by": "tools/build_rule_status.py",
+  "replaces": "docs/sources/CONF-ReglesEBA.xlsx, export of the professional tool of the PO (issue #127, red team RT-11), removed on 31/10/2026",
+  "inputs": [
+    {
+      "role": "rules",
+      "title": "EBA, list of validation rules, release 4.4 phase 1 (sheet VR_4.4.phase1), link '(from 4.0) EBA_Validation rules'",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-10/4c299b8b-c5ee-482d-b26d-454be40b129b/VR_4.4.phase1_.xlsx",
+      "page": "https://www.eba.europa.eu/risk-and-data-analysis/reporting/reporting-frameworks/validation-rules-packages",
+      "list": "VR_4.4.phase1",
+      "list_date": "2026-10-12",
+      "published": "2026-10",
+      "downloaded": "2026-10-31",
+      "local_copy": "sources/eba-validation-rules-4.4-phase1-2026-10.xlsx",
+      "sha256": "38c190fa4c2ff81f22a5bd2ed94f744fc64e4eb9b722676e07f89669d79b1aea",
+      "status": "verified: deposited by the PO (#127), SHA-256 computed; the 71 DORA rules (49 active, 22 inactive) equal, rule by rule, the list of 14/09/2026 used until then (id, table, type, severity, state, expression)"
+    },
+    {
+      "role": "deactivations",
+      "title": "EBA, small validation package 14/09/2026, micro taxonomy package 4.3.0.1 (set/dora-ignore-val.xml of release 4.0)",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/b39346c3-8a83-4692-9839-104ca1612914/Micro_taxonomy_package.zip",
+      "page": "https://www.eba.europa.eu/risk-and-data-analysis/reporting/reporting-frameworks/validation-rules-packages",
+      "published": "2026-09-14",
+      "downloaded": "2026-10-31",
+      "local_copy": "outside the repository (cross-check only)",
+      "sha256": "ea6184a7e3a67016346f2154bfb04ca0a489ea829cf344239367fa216d21709f",
+      "status": "verified: the 15 rules it switches off are the 15 inactive rules implemented in XBRL; the 7 other inactive rules are not in the taxonomy (Implemented in XBRL = No)"
+    },
+    {
+      "role": "taxonomy",
+      "title": "EBA XBRL taxonomy 4.0 (errata 5), see enumerations-4.0.provenance.json, role 'codes'",
+      "sha256": "27f3a44a6bdef56a7daf2114778707604c20b258e4466d5ebfb5c37b7598bad2",
+      "status": "verified: in_taxonomy is read from validation-rules-4.0.json (61 rules), which build_reference.py regenerates identically from this archive"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "lists": "enumerations-4.0.json",
+  "checked_by": "tools/build_enumerations.py",
+  "inputs": [
+    {
+      "role": "codes",
+      "title": "EBA XBRL taxonomy 4.0, full taxonomy and technical documentation (errata 5)",
+      "url": "https://www.eba.europa.eu/sites/default/files/2025-03/7e6f9a61-6c84-491a-bcf8-090d6a160270/Full_Taxonomy_and_technical_documentations%204.0_0.zip",
+      "page": "https://www.eba.europa.eu/risk-and-data-analysis/reporting-frameworks/reporting-framework-40",
+      "published": "2025-03-20",
+      "read_by": "tools/build_reference.py (AllowedValue of each table of the DORA module)",
+      "downloaded": "2026-10-31",
+      "local_copy": "outside the repository (106 MB): Full_Taxonomy_and_technical_documentations 4.0_0.zip, downloaded from the EBA website",
+      "sha256": "27f3a44a6bdef56a7daf2114778707604c20b258e4466d5ebfb5c37b7598bad2",
+      "status": "verified: archive deposited by the PO (PO-37), SHA-256 computed twice; tools/build_reference.py run on Full_Taxonomy.7z (DORA module) regenerates columns-4.0.json, fields-4.0.json, enumerations-4.0.json (21 lists, 41 fields) and validation-rules-4.0.json identical to the repository (#153)"
+    },
+    {
+      "role": "labels",
+      "title": "List of possible values for all data fields with drop downs (updated 3 March 2025)",
+      "url": "https://www.eba.europa.eu/sites/default/files/2025-03/213f539f-0742-44a8-8657-a5c4ecb0a202/List%20of%20possible%20values%20for%20all%20data%20fields%20with%20drop%20downs%20%28updated%203%20March%202025%29%20.xlsx",
+      "published": "2025-03-03",
+      "downloaded": "2026-10-30",
+      "local_copy": "sources/eba-dora-dropdown-values-2025-03-03.xlsx",
+      "sha256": "a0fed557cc6837f909227088338408581cd413cce046566dcc7b4253ba009c9f",
+      "status": "verified: SHA-256 given by the PO and recomputed (#153)"
+    }
+  ],
+  "documented_gaps": [
+    {
+      "header": "LISTCURRENCY",
+      "only_in_workbook": ["eba_CU:HRK"],
+      "decision": "PO, 30/10/2026: the taxonomy prevails (P4). The Croatian kuna, replaced by the euro on 1 January 2023, is not in list L05 of the taxonomy: a value HRK is outside the list."
+    },
+    {
+      "sheet": "B0202",
+      "header": "LISTCOUNTRY",
+      "only_in_taxonomy": ["eba_GA:CW", "eba_GA:DJ", "eba_GA:DM", "eba_GA:DO"],
+      "decision": "Truncation of the workbook: these four countries are on every other sheet. List L10 of the taxonomy is kept."
+    }
+  ]
+}

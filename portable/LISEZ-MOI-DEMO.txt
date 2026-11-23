@@ -1,0 +1,53 @@
+ROI QUALITY ENGINE - VERSION DE DÉMONSTRATION
+=============================================
+
+/!\ NE PAS UTILISER EN PRODUCTION.
+/!\ NE DÉPOSER AUCUN REGISTRE RÉEL NI AUCUNE DONNÉE CONFIDENTIELLE.
+    Utiliser uniquement les fichiers fictifs du dossier « exemples ».
+    Les résultats ne valent pas contrôle avant une remise réglementaire.
+
+DÉMARRER
+--------
+1. Décompresser le ZIP en entier (Windows : clic droit > « Extraire tout… »).
+   Ne pas lancer le programme depuis l'intérieur du ZIP.
+2. Windows : double-cliquer sur ROI-Quality-Engine-DEMO.exe
+   Si Windows affiche « Windows a protégé votre ordinateur » :
+   « Informations complémentaires » > « Exécuter quand même ».
+   macOS : clic droit sur Lancer-la-demo.command > « Ouvrir » (la première fois).
+3. Une fenêtre noire s'ouvre (ne pas la fermer), puis le navigateur affiche
+   l'outil à l'adresse http://127.0.0.1:8765 (ou l'adresse écrite dans la fenêtre).
+4. Vérifier le bandeau rouge « VERSION DE DÉMONSTRATION » et « Backend status : OK ».
+
+UTILISER
+--------
+- « Choose a file » (ou glisser-déposer) : choisir un fichier du dossier « exemples ».
+- Sélecteur EN | FR en haut à droite pour changer de langue.
+- Cliquer sur un constat pour voir l'explication, la correction et le conseil d'expert.
+- « Restart the validator » pour analyser un autre fichier.
+
+Fichiers d'exemple (tous fictifs) :
+- 529900P784EKW7VFMQ21.CON_FR_...zip : registre complet « golden », quasi conforme
+- golden-onegate.sample.xml           : le même golden dans son enveloppe ACPR
+- onegate-envelope-valid.sample.xml   : petite enveloppe ACPR valide
+- package-with-defects.sample.zip     : erreurs de structure (bloquant)
+- package-with-data-defects.sample.zip: erreurs de données (bloquant)
+- package-multi-defects.sample.zip    : un défaut par famille de contrôles métier
+- onegate-envelope-with-defects...xml : enveloppe ACPR défectueuse
+
+ARRÊTER
+-------
+Fermer la fenêtre noire (ou Ctrl+C dedans). Le registre analysé est effacé de
+la mémoire et les fichiers temporaires sont supprimés. Après la démo,
+supprimer le dossier décompressé.
+
+CONFIDENTIALITÉ
+---------------
+L'outil n'écoute que sur 127.0.0.1 (cette machine) et n'appelle aucun service
+externe. Si le pare-feu demande une autorisation réseau, choisir « Annuler » :
+la démo n'en a pas besoin.
+
+-----------------------------------------------------------------------------
+DEMO VERSION - NOT FOR PRODUCTION USE. Do not deposit real registers or any
+confidential data. Unzip, run ROI-Quality-Engine-DEMO.exe (Windows) or
+Lancer-la-demo.command (macOS), use the files in "exemples", close the console
+window to stop.

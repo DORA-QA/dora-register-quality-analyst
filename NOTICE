@@ -1,0 +1,36 @@
+DORA Register Quality Analyst (DORA QA)
+Copyright 2026 The DORA QA contributors
+Licensed under the European Union Public Licence v. 1.2 (EUPL-1.2), see LICENSE.
+
+This software includes or derives data from the following third-party sources.
+
+1. European Union legislation (EUR-Lex)
+   Regulation (EU) 2022/2554 (DORA) and Commission Implementing Regulation (EU) 2024/2956,
+   including its corrigendum of 19 September 2025, English and French versions
+   (backend/reference/dora/sources/its-2024-2956-*.pdf).
+   © European Union, https://eur-lex.europa.eu. Reuse authorised under Commission Decision
+   2011/833/EU. Only the official texts published in the Official Journal are authentic.
+
+2. European Banking Authority (EBA)
+   DORA reporting framework 4.0 (XBRL taxonomy, data model, validation rules, list of
+   dropdown values), used to build the reference files of backend/reference/dora/ and kept
+   in backend/reference/dora/sources/ and docs/sources/Data_Model_for_DORA_RoI.pdf.
+   Source: European Banking Authority, https://www.eba.europa.eu. Reproduction authorised
+   with acknowledgement of the source. The provenance of each file (URL, publication date,
+   SHA-256) is recorded in backend/reference/dora/*.provenance.json.
+
+3. Global Legal Entity Identifier Foundation (GLEIF) — online version only
+   The GLEIF checks read a local copy of the LEI and relationship data of the GLEIF Golden
+   Copy, converted to Parquet. Source: GLEIF, https://www.gleif.org, data published under
+   the Creative Commons CC0 1.0 licence. The date of the copy used is shown with every
+   GLEIF finding.
+
+4. Swagger UI (backend/api/static/swagger-ui/), Apache License 2.0, see the LICENSE and
+   NOTICE files in that folder.
+
+The binary releases also bundle Python and JavaScript libraries under permissive licences
+(MIT, BSD, Apache 2.0, PSF). Their list is given by the SBOM attached to each release.
+
+Disclaimer: DORA QA is provided "as is", without warranty. Its findings are indicative and
+do not constitute legal or regulatory advice or a certificate of compliance. It is not
+endorsed by the EBA, the ACPR, the AMF, the GLEIF or any competent authority.

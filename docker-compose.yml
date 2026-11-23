@@ -1,0 +1,133 @@
+# ROI Quality Engine - local stack.
+#
+#   docker compose up
+#
+# Frontend: http://localhost:3000
+# Backend:  http://localhost:8000
+# Swagger:  http://localhost:8000/docs
+#
+# Ports are published on 127.0.0.1 only: the product is reachable from this
+# machine and from nowhere else on the network.
+#
+# Confidentiality: the backend lives on an internal network with no route to the
+# internet. The frontend container relays port 8000 to it and is the only door.
+# Do not add `ports:` to the backend, and do not attach it to another network:
+# tests/test_deployment_security.py fails if either is done.
+#
+# GLEIF copy (branch feature/gleif-local): the gleif-updater container downloads, at start-up,
+# the latest copy published in the releases of the repository (tag gleif-*) into the volume
+# gleif-data, then stops. It is the only container with internet access and never sees a
+# register. The backend reads the volume (read-only) and stays on its internal network. While
+# the download runs, the page shows a waiting screen and no register is accepted.
+# Private repository: export ROI_GLEIF_TOKEN (read-only GitHub token) before `docker compose up`.
+#
+# Hardening (review S7): both containers run without root, on a read-only file system,
+# without Linux capabilities, cannot gain privileges, and have memory and process limits.
+# Writable places are in memory only (tmpfs). Check on a machine with
+# docker/verifier-durcissement.sh.
+
+name: roi-quality-engine
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend.Dockerfile
+    networks:
+      - internal
+    environment:
+      ROI_GLEIF_ENABLED: "true"
+      ROI_GLEIF_DIR: /data/gleif
+    volumes:
+      - gleif-data:/data/gleif:ro
+    # The web server spools each upload into /tmp before processing: keep it in
+    # memory only, never on the container disk (red team RT-10, decision PO-34).
+    tmpfs:
+      - /tmp:size=768m,mode=1777
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    # Memory includes the tmpfs above. A real register needs far less (50 000 rows of
+    # B_02.02: about 0.3 GB); the load package of 3.5 million rows peaks at about 2.2 GB
+    # (PO decision of 30/10: 3 GB). Beyond the limit the container is restarted, empty.
+    mem_limit: 3g
+    pids_limit: 256
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+      # Checked every second while starting, so that the page opens a few seconds after the
+      # backend (and can show the GLEIF waiting screen while the copy downloads).
+      start_interval: 1s
+
+  gleif-updater:
+    build:
+      context: .
+      dockerfile: docker/backend.Dockerfile
+    command: ["python", "-m", "gleif.updater"]
+    # Internet access (default network) to reach GitHub; no access to the backend network.
+    networks:
+      - default
+    environment:
+      ROI_GLEIF_DIR: /data/gleif
+      ROI_GLEIF_REPO: ${ROI_GLEIF_REPO:-stephanealpha/roi-quality-engine}
+      ROI_GLEIF_TOKEN: ${ROI_GLEIF_TOKEN:-}
+      # Acceptance tests only: keeps the waiting screen this many seconds (default 0).
+      ROI_GLEIF_HOLD_SECONDS: ${ROI_GLEIF_HOLD_SECONDS:-0}
+    volumes:
+      - gleif-data:/data/gleif
+    tmpfs:
+      - /tmp:size=64m
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 512m
+    pids_limit: 64
+    # Runs once per `docker compose up`, then stops.
+    restart: "no"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+      args:
+        VITE_API_URL: http://localhost:8000
+    ports:
+      - "127.0.0.1:3000:3000"
+      - "127.0.0.1:8000:8000"
+    networks:
+      - internal
+      - default
+    depends_on:
+      backend:
+        condition: service_healthy
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    # nginx (unprivileged image) keeps its pid file and temporary files in /tmp.
+    tmpfs:
+      - /tmp:size=64m
+    mem_limit: 256m
+    pids_limit: 128
+    restart: unless-stopped
+
+networks:
+  internal:
+    internal: true
+
+volumes:
+  # Public reference data only (GLEIF), never a register.
+  gleif-data:

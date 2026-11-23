@@ -1,0 +1,44 @@
+ROI QUALITY ENGINE - VERSION DE DÉMONSTRATION (variante VS Code)
+================================================================
+
+/!\ NE PAS UTILISER EN PRODUCTION.
+/!\ NE DÉPOSER AUCUN REGISTRE RÉEL NI AUCUNE DONNÉE CONFIDENTIELLE.
+    Utiliser uniquement les fichiers fictifs du dossier « exemples ».
+
+Cette variante sert quand le poste bloque les programmes non signés : elle
+utilise le Python officiel (signé) et VS Code. Aucun accès Internet n'est
+nécessaire : les bibliothèques sont fournies dans le dossier « wheels ».
+
+PRÉREQUIS
+---------
+- VS Code.
+- Python 3.13 exactement (python.org, ou « Python 3.13 » du Microsoft Store).
+  Vérifier dans un terminal :  py -3.13 --version   (ou  python --version)
+
+INSTALLER (une seule fois, 1 à 2 minutes)
+---------
+1. Décompresser le ZIP en entier dans un dossier court (ex. C:\Demo).
+2. VS Code : Fichier > Ouvrir le dossier... > ROI-Quality-Engine-DEMO-sources.
+   Si VS Code demande « Faites-vous confiance aux auteurs ? » : Oui.
+3. Terminal > Exécuter la tâche... > « 1 - Installer la démo (une seule fois) ».
+   Si « py » est introuvable : lancer « Créer l'environnement Python (variante
+   sans py) », puis « Installer les bibliothèques (hors ligne) ».
+
+LANCER
+------
+4. Terminal > Exécuter la tâche... > « 2 - Lancer la démo ».
+   (Ou F5 si l'extension Python de Microsoft est installée.)
+5. Le navigateur s'ouvre sur http://127.0.0.1:8765 (adresse aussi écrite
+   dans le terminal). Vérifier le bandeau rouge et « Backend status : OK ».
+
+UTILISER
+--------
+« Choose a file » : choisir un fichier du dossier « exemples ».
+EN | FR en haut à droite. Cliquer sur un constat pour le détail.
+
+ARRÊTER
+-------
+Dans le terminal de la tâche : Ctrl+C, ou l'icône corbeille du terminal.
+Après la démo, supprimer le dossier.
+
+L'outil n'écoute que sur 127.0.0.1 et n'appelle aucun service externe.

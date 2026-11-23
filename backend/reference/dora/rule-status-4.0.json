@@ -1,0 +1,717 @@
+{
+ "source": "EBA, list of validation rules VR_4.4.phase1, framework DORA",
+ "list": "VR_4.4.phase1",
+ "list_date": "2026-10-12",
+ "rules": [
+  {
+   "id": "e23674_e",
+   "table": "B_05.01",
+   "cells": "c0020; c0050; c0060; c0070; c0080; c0110",
+   "type": "existence",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": true,
+   "expression": "with {tB_05.01, default:null, interval:false}: not ( isnull ({(c0020, c0050, c0060, c0070, c0080, c0110)}) )"
+  },
+  {
+   "id": "e23675_e",
+   "table": "B_01.03",
+   "cells": "c*",
+   "type": "existence",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.03, default:null, interval:false}: not ( isnull ({c*}) )"
+  },
+  {
+   "id": "e23676_e",
+   "table": "B_01.02",
+   "cells": "c0020-0090",
+   "type": "existence",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.02, default:null, interval:false}: not ( isnull ({c0020-0090}) )"
+  },
+  {
+   "id": "e23677_e",
+   "table": "B_01.01",
+   "cells": "c*",
+   "type": "existence",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.01, default:null, interval:false}: not ( isnull ({c*}) )"
+  },
+  {
+   "id": "e23680_e",
+   "table": "B_02.02",
+   "cells": "c0040-0080",
+   "type": "existence",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": true,
+   "expression": "with {tB_02.02, default:null, interval:false}: not ( isnull ({c0040-0080}) )"
+  },
+  {
+   "id": "e23681_e",
+   "table": "B_07.01",
+   "cells": "c0050; c0070; c0080; c0090; c0100; c0110",
+   "type": "existence",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": true,
+   "expression": "with {tB_07.01, default:null, interval:false}: not ( isnull ({(c0050, c0070, c0080, c0090, c0100, c0110)}) )"
+  },
+  {
+   "id": "e23682_e",
+   "table": "B_06.01",
+   "cells": "c0020; c0030; c0050; c0070; c0080; c0090; c0100",
+   "type": "existence",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": true,
+   "expression": "with {tB_06.01, default:null, interval:false}: not ( isnull ({(c0020, c0030, c0050, c0070, c0080, c0090, c0100)}) )"
+  },
+  {
+   "id": "e23683_e",
+   "table": "B_04.01",
+   "cells": "c0030",
+   "type": "existence",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": true,
+   "expression": "with {tB_04.01, default:null, interval:false}: not ( isnull ({c0030}) )"
+  },
+  {
+   "id": "e23792_e",
+   "table": "B_02.01",
+   "cells": "c0020; c0040; c0050",
+   "type": "existence",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": true,
+   "expression": "with {tB_02.01, default:null, interval:false}: not ( isnull ({(c0020, c0040, c0050)}) )"
+  },
+  {
+   "id": "v22912_m",
+   "table": "B_02.01",
+   "cells": "c0020; c0030",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": true,
+   "expression": "with {tB_02.01, default: null, interval: false}: if ( {c0020} = [eba_CO:x3] ) then ( not ( isnull ({c0030}) ) ) endif"
+  },
+  {
+   "id": "v22913_s",
+   "table": "B_01.02",
+   "cells": "c0110",
+   "type": "sign",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.02, default: null, interval: false}: {c0110} >= 0"
+  },
+  {
+   "id": "v23716_s",
+   "table": "B_02.01",
+   "cells": "c0050",
+   "type": "sign",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_02.01, default: null, interval: false}: {c0050} >= 0"
+  },
+  {
+   "id": "v8803_m",
+   "table": "B_01.02",
+   "cells": "c0110; c0100",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.02, default: 0, interval: false}: if (not (isnull ({c0110}))) then (not (isnull ({c0100}))) endif"
+  },
+  {
+   "id": "v8804_m",
+   "table": "B_01.02",
+   "cells": "c0040; c0110",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with{tB_01.02, default:0, interval:false}: if({c0040} != [eba_CT:x318] and {c0040} != [eba_CT:x317]) then (not (isnull ({c0110}))) endif"
+  },
+  {
+   "id": "v8805_m",
+   "table": "B_02.01",
+   "cells": "c0020; c0030",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_02.01, default: 0, interval: false}:if({c0020} = [eba_CO:x3]) then (not (isnull ({c0030}))) endif"
+  },
+  {
+   "id": "v8816_m",
+   "table": "B_02.02",
+   "cells": "c0080; c0070",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": true,
+   "expression": "with {tB_02.02, default: 0, interval: false}: {c0080} > {c0070}"
+  },
+  {
+   "id": "v8817_m",
+   "table": "B_05.01",
+   "cells": "c0070; c0020",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": true,
+   "expression": "with{tB_05.01, default:0, interval: false}: if ({c0070} = [eba_CT:x212]) then ({c0020} in {[eba_qCO:qx2000], [eba_qCO:qx2002]}) endif"
+  },
+  {
+   "id": "v8818_m",
+   "table": "B_05.01",
+   "cells": "c0070; c0040",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": true,
+   "expression": "with{tB_05.01, default:0, interval: false}: if ({c0070} = [eba_CT:x212]) then ({c0040} in {[eba_qCO:qx2000], [eba_qCO:qx2002]}) endif"
+  },
+  {
+   "id": "v8821_m",
+   "table": "B_05.01",
+   "cells": "c0020; c0030",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": true,
+   "expression": "with{tB_05.01, default:0, interval: false}: if({c0020} = [eba_qCO:qx2000]) then ( (match({c0030}, \"^[A-Z0-9]{18}[0-9]{2}$\"))) endif"
+  },
+  {
+   "id": "v8823_m",
+   "table": "B_05.01",
+   "cells": "c0030; c0040",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": false,
+   "expression": "with {tB_05.01, default: 0, interval: false}: if({c0030} != \"null\") then ({c0040} != \"null\") endif"
+  },
+  {
+   "id": "v8824_m",
+   "table": "B_05.01",
+   "cells": "c0100; c0090",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": false,
+   "expression": "with {tB_05.01, default: 0, interval: false}: if({c0100} != \"null\") then ({c0090} != \"null\") endif"
+  },
+  {
+   "id": "v8825_m",
+   "table": "B_07.01",
+   "cells": "c0050; c0060",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_07.01, default:0, interval: false}: if {c0050} = [eba_ZZ:x959] or {c0050} = [eba_ZZ:x960] then (not (isnull ({c0060}))) endif"
+  },
+  {
+   "id": "v8826_m",
+   "table": "B_01.02",
+   "cells": "c0060",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "match({tB_01.02, c0060}, \"^[A-Z0-9]{18}[0-9]{2}$\")"
+  },
+  {
+   "id": "v8850_m",
+   "table": "B_05.01",
+   "cells": "c0030; c0040; c0050; c0060; c0070; c0080; c0090; c0100; c0110; c0120; c0020",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_05.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0040}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) or not (( isnull ({c0120}) )) then ( ( not ( isnull ({c0020}) ) )) endif"
+  },
+  {
+   "id": "v8851_m",
+   "table": "B_05.01",
+   "cells": "c0030; c0040; c0020; c0060; c0070; c0080; c0090; c0100; c0110; c0120; c0050",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_05.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0040}) )) or not (( isnull ({c0020}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) or not (( isnull ({c0120}) )) then ( ( not ( isnull ({c0050}) ) )) endif"
+  },
+  {
+   "id": "v8852_m",
+   "table": "B_05.01",
+   "cells": "c0030; c0040; c0050; c0020; c0070; c0080; c0090; c0100; c0110; c0120; c0060",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_05.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0040}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0020}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) or not (( isnull ({c0120}) )) then ( ( not ( isnull ({c0060}) ) )) endif"
+  },
+  {
+   "id": "v8853_m",
+   "table": "B_05.01",
+   "cells": "c0030; c0040; c0050; c0060; c0020; c0080; c0090; c0100; c0110; c0120; c0070",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_05.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0040}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0020}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) or not (( isnull ({c0120}) )) then ( ( not ( isnull ({c0070}) ) )) endif"
+  },
+  {
+   "id": "v8854_m",
+   "table": "B_05.01",
+   "cells": "c0030; c0040; c0050; c0060; c0070; c0020; c0090; c0100; c0110; c0120; c0080",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_05.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0040}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0020}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) or not (( isnull ({c0120}) )) then ( ( not ( isnull ({c0080}) ) )) endif"
+  },
+  {
+   "id": "v8855_m",
+   "table": "B_05.01",
+   "cells": "c0030; c0040; c0050; c0060; c0070; c0080; c0090; c0100; c0020; c0120; c0110",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_05.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0040}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0020}) )) or not (( isnull ({c0120}) )) then ( ( not ( isnull ({c0110}) ) )) endif"
+  },
+  {
+   "id": "v8856_m",
+   "table": "B_01.03",
+   "cells": "c0030; c0040",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.03, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) then ( ( not ( isnull ({c0040}) ) )) endif"
+  },
+  {
+   "id": "v8857_m",
+   "table": "B_01.03",
+   "cells": "c0040; c0030",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.03, default: null, interval: false}: if ( not ( isnull ({c0040}) ) ) then ( ( not ( isnull ({c0030}) ) )) endif"
+  },
+  {
+   "id": "v8858_m",
+   "table": "B_01.02",
+   "cells": "c0030; c0040; c0050; c0060; c0070; c0080; c0090; c0100; c0110; c0020",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.02, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0040}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) then ( ( not ( isnull ({c0020}) ) )) endif"
+  },
+  {
+   "id": "v8859_m",
+   "table": "B_01.02",
+   "cells": "c0020; c0040; c0050; c0060; c0070; c0080; c0090; c0100; c0110; c0030",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.02, default: null, interval: false}: if ( not ( isnull ({c0020}) ) ) or not (( isnull ({c0040}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) then ( ( not ( isnull ({c0030}) ) )) endif"
+  },
+  {
+   "id": "v8860_m",
+   "table": "B_01.02",
+   "cells": "c0030; c0020; c0050; c0060; c0070; c0080; c0090; c0100; c0110; c0040",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.02, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0020}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) then ( ( not ( isnull ({c0040}) ) )) endif"
+  },
+  {
+   "id": "v8861_m",
+   "table": "B_01.02",
+   "cells": "c0030; c0040; c0020; c0060; c0070; c0080; c0090; c0100; c0110; c0050",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.02, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0040}) )) or not (( isnull ({c0020}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) then ( ( not ( isnull ({c0050}) ) )) endif"
+  },
+  {
+   "id": "v8862_m",
+   "table": "B_01.02",
+   "cells": "c0030; c0040; c0020; c0050; c0070; c0080; c0090; c0100; c0110; c0060",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.02, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0040}) )) or not (( isnull ({c0020}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) then ( ( not ( isnull ({c0060}) ) )) endif"
+  },
+  {
+   "id": "v8863_m",
+   "table": "B_01.02",
+   "cells": "c0030; c0040; c0050; c0060; c0020; c0080; c0090; c0100; c0110; c0070",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.02, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0040}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0020}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) then ( ( not ( isnull ({c0070}) ) )) endif"
+  },
+  {
+   "id": "v8864_m",
+   "table": "B_01.02",
+   "cells": "c0030; c0040; c0050; c0060; c0070; c0020; c0090; c0100; c0110; c0080",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.02, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0040}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0020}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) then ( ( not ( isnull ({c0080}) ) )) endif"
+  },
+  {
+   "id": "v8865_m",
+   "table": "B_01.02",
+   "cells": "c0030; c0040; c0050; c0060; c0070; c0080; c0020; c0100; c0110; c0090",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.02, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0040}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0020}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) then ( ( not ( isnull ({c0090}) ) )) endif"
+  },
+  {
+   "id": "v8866_m",
+   "table": "B_02.01",
+   "cells": "c0020; c0030; c0040; c0050",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_02.01, default: null, interval: false}: if ( not ( isnull ({c0020}) ) ) or not (( isnull ({c0030}) )) or not (( isnull ({c0040}) )) then ( ( not ( isnull ({c0050}) ) )) endif"
+  },
+  {
+   "id": "v8867_m",
+   "table": "B_02.01",
+   "cells": "c0020; c0030; c0050; c0040",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_02.01, default: null, interval: false}: if ( not ( isnull ({c0020}) ) ) or not (( isnull ({c0030}) )) or not (( isnull ({c0050}) )) then ( ( not ( isnull ({c0040}) ) )) endif"
+  },
+  {
+   "id": "v8868_m",
+   "table": "B_02.01",
+   "cells": "c0050; c0030; c0040; c0020",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_02.01, default: null, interval: false}: if ( not ( isnull ({c0050}) ) ) or not (( isnull ({c0030}) )) or not (( isnull ({c0040}) )) then ( ( not ( isnull ({c0020}) ) )) endif"
+  },
+  {
+   "id": "v8869_m",
+   "table": "B_02.02",
+   "cells": "c0070; c0080; c0090; c0100; c0110; c0120; c0140; c0170; c0180; c0040",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_02.02, default: null, interval: false}: if ( not ( isnull ({c0070}) ) ) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) or not (( isnull ({c0120}) )) or not (( isnull ({c0140}) )) or not (( isnull ({c0170}) )) or not (( isnull ({c0180}) )) then ( ( not ( isnull ({c0040}) ) )) endif"
+  },
+  {
+   "id": "v8870_m",
+   "table": "B_02.02",
+   "cells": "c0040; c0080; c0090; c0100; c0110; c0120; c0140; c0170; c0180; c0070",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_02.02, default: null, interval: false}: if ( not ( isnull ({c0040}) ) ) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) or not (( isnull ({c0120}) )) or not (( isnull ({c0140}) )) or not (( isnull ({c0170}) )) or not (( isnull ({c0180}) )) then ( ( not ( isnull ({c0070}) ) )) endif"
+  },
+  {
+   "id": "v8871_m",
+   "table": "B_02.02",
+   "cells": "c0070; c0040; c0090; c0100; c0110; c0120; c0140; c0170; c0180; c0080",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_02.02, default: null, interval: false}: if ( not ( isnull ({c0070}) ) ) or not (( isnull ({c0040}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) or not (( isnull ({c0120}) )) or not (( isnull ({c0140}) )) or not (( isnull ({c0170}) )) or not (( isnull ({c0180}) )) then ( ( not ( isnull ({c0080}) ) )) endif"
+  },
+  {
+   "id": "v8872_m",
+   "table": "B_01.01",
+   "cells": "c0030; c0040; c0050; c0060; c0020",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0040}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) then ( ( not ( isnull ({c0020}) ) )) endif"
+  },
+  {
+   "id": "v8873_m",
+   "table": "B_01.01",
+   "cells": "c0020; c0040; c0050; c0060; c0030",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.01, default: null, interval: false}: if ( not ( isnull ({c0020}) ) ) or not (( isnull ({c0040}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) then ( ( not ( isnull ({c0030}) ) )) endif"
+  },
+  {
+   "id": "v8874_m",
+   "table": "B_01.01",
+   "cells": "c0030; c0020; c0050; c0060; c0040",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0020}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) then ( ( not ( isnull ({c0040}) ) )) endif"
+  },
+  {
+   "id": "v8875_m",
+   "table": "B_01.01",
+   "cells": "c0030; c0040; c0020; c0060; c0050",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0040}) )) or not (( isnull ({c0020}) )) or not (( isnull ({c0060}) )) then ( ( not ( isnull ({c0050}) ) )) endif"
+  },
+  {
+   "id": "v8876_m",
+   "table": "B_01.01",
+   "cells": "c0030; c0040; c0050; c0020; c0060",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_01.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0040}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0020}) )) then ( ( not ( isnull ({c0060}) ) )) endif"
+  },
+  {
+   "id": "v8877_m",
+   "table": "B_06.01",
+   "cells": "c0030; c0050; c0060; c0070; c0080; c0090; c0100; c0020",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_06.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) then ( ( not ( isnull ({c0020}) ) )) endif"
+  },
+  {
+   "id": "v8878_m",
+   "table": "B_06.01",
+   "cells": "c0020; c0050; c0060; c0070; c0080; c0090; c0100; c0030",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_06.01, default: null, interval: false}: if ( not ( isnull ({c0020}) ) ) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) then ( ( not ( isnull ({c0030}) ) )) endif"
+  },
+  {
+   "id": "v8879_m",
+   "table": "B_06.01",
+   "cells": "c0030; c0020; c0060; c0070; c0080; c0090; c0100; c0050",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_06.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0020}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) then ( ( not ( isnull ({c0050}) ) )) endif"
+  },
+  {
+   "id": "v8880_m",
+   "table": "B_06.01",
+   "cells": "c0030; c0050; c0060; c0020; c0080; c0090; c0100; c0070",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_06.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0020}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) then ( ( not ( isnull ({c0070}) ) )) endif"
+  },
+  {
+   "id": "v8881_m",
+   "table": "B_06.01",
+   "cells": "c0030; c0050; c0060; c0070; c0020; c0090; c0100; c0080",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_06.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0020}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) then ( ( not ( isnull ({c0080}) ) )) endif"
+  },
+  {
+   "id": "v8882_m",
+   "table": "B_06.01",
+   "cells": "c0030; c0050; c0060; c0070; c0080; c0020; c0100; c0090",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_06.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0020}) )) or not (( isnull ({c0100}) )) then ( ( not ( isnull ({c0090}) ) )) endif"
+  },
+  {
+   "id": "v8883_m",
+   "table": "B_06.01",
+   "cells": "c0030; c0050; c0060; c0070; c0080; c0020; c0100",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_06.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0050}) )) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0020}) )) or not (( isnull ({c0020}) )) then ( ( not ( isnull ({c0100}) ) )) endif"
+  },
+  {
+   "id": "v8884_m",
+   "table": "B_07.01",
+   "cells": "c0030; c0060; c0070; c0080; c0090; c0100; c0110; c0120; c0050",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_07.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) or not (( isnull ({c0120}) )) then ( ( not ( isnull ({c0050}) ) )) endif"
+  },
+  {
+   "id": "v8885_m",
+   "table": "B_07.01",
+   "cells": "c0030; c0060; c0050; c0080; c0090; c0100; c0110; c0120; c0070",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_07.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0060}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) or not (( isnull ({c0120}) )) then ( ( not ( isnull ({c0070}) ) )) endif"
+  },
+  {
+   "id": "v8886_m",
+   "table": "B_07.01",
+   "cells": "c0030; c0060; c0070; c0050; c0090; c0100; c0110; c0120; c0080",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_07.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) or not (( isnull ({c0120}) )) then ( ( not ( isnull ({c0080}) ) )) endif"
+  },
+  {
+   "id": "v8887_m",
+   "table": "B_07.01",
+   "cells": "c0030; c0060; c0070; c0080; c0050; c0100; c0110; c0120; c0090",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": true,
+   "expression": "with {tB_07.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0110}) )) or not (( isnull ({c0120}) )) then ( ( not ( isnull ({c0090}) ) )) endif"
+  },
+  {
+   "id": "v88889_m",
+   "table": "B_07.01",
+   "cells": "c0030; c0060; c0070; c0080; c0090; c0100; c0050; c0120; c0110",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_07.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0100}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0120}) )) then ( ( not ( isnull ({c0110}) ) )) endif"
+  },
+  {
+   "id": "v8888_m",
+   "table": "B_07.01",
+   "cells": "c0030; c0060; c0070; c0080; c0090; c0050; c0110; c0120; c0100",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": true,
+   "expression": "with {tB_07.01, default: null, interval: false}: if ( not ( isnull ({c0030}) ) ) or not (( isnull ({c0060}) )) or not (( isnull ({c0070}) )) or not (( isnull ({c0080}) )) or not (( isnull ({c0090}) )) or not (( isnull ({c0050}) )) or not (( isnull ({c0110}) )) or not (( isnull ({c0120}) )) then ( ( not ( isnull ({c0100}) ) )) endif"
+  },
+  {
+   "id": "v8890_m",
+   "table": "B_01.01",
+   "cells": "c0020",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": false,
+   "expression": "match({tB_01.01, c0020}[get ERI], \"^[A-Z0-9]{18}[0-9]{2}$\")"
+  },
+  {
+   "id": "v8891_m",
+   "table": "B_01.02",
+   "cells": "c0020",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": false,
+   "expression": "match({tB_01.02, c0020}[get ESI], \"^[A-Z0-9]{18}[0-9]{2}$\")"
+  },
+  {
+   "id": "v8892_m",
+   "table": "B_01.03",
+   "cells": "c0030",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": true,
+   "in_taxonomy": false,
+   "expression": "match({tB_01.03, c0030}[get LHH], \"^[A-Z0-9]{18}[0-9]{2}$\")"
+  },
+  {
+   "id": "v8893_m",
+   "table": "B_02.02",
+   "cells": "c0040",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": false,
+   "expression": "match({tB_02.02, c0040}[get LES], \"^[A-Z0-9]{18}[0-9]{2}$\")"
+  },
+  {
+   "id": "v8894_m",
+   "table": "B_03.01",
+   "cells": "c0030",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": false,
+   "expression": "match({tB_03.01, c0030}[get LEA], \"^[A-Z0-9]{18}[0-9]{2}$\")"
+  },
+  {
+   "id": "v8895_m",
+   "table": "B_03.03",
+   "cells": "c0031",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": false,
+   "expression": "match({tB_03.03, c0031}[get LEB], \"^[A-Z0-9]{18}[0-9]{2}$\")"
+  },
+  {
+   "id": "v8896_m",
+   "table": "B_04.01",
+   "cells": "c0030",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": false,
+   "expression": "match({tB_04.01, c0030}[get LES], \"^[A-Z0-9]{18}[0-9]{2}$\")"
+  },
+  {
+   "id": "v8897_m",
+   "table": "B_06.01",
+   "cells": "c0020",
+   "type": "user_defined",
+   "severity": "warning",
+   "active": false,
+   "in_taxonomy": false,
+   "expression": "match({tB_06.01, c0020}[get LES], \"^[A-Z0-9]{18}[0-9]{2}$\")"
+  }
+ ]
+}

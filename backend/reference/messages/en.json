@@ -1,0 +1,1225 @@
+{
+  "language_name": "English",
+  "messages": {
+    "FILE-001": {
+      "message": "This file cannot be analysed: it is neither an XML file nor a ZIP archive.",
+      "explanation": "The tool recognises a file by its content, not by its extension. It only analyses the register as a ZIP file, or the XML envelope that contains it.",
+      "recommendation": "Deposit the ZIP of the register, or the XML envelope that contains it.",
+      "expert_advice": "Check what was really exported. A .rar or .7z archive renamed .zip, or the Excel workbook itself, are the usual mistakes."
+    },
+    "FILE-002": {
+      "message": "The file is empty.",
+      "explanation": "The file contains no data, so nothing can be analysed.",
+      "recommendation": "Generate the file again and check its size before depositing it.",
+      "expert_advice": "An empty file usually comes from an export that failed silently or a transfer that was interrupted. Check the size of the file at the source before sending it again."
+    },
+    "XML-001": {
+      "message": "The XML file cannot be read: its characters do not match the declared encoding.",
+      "explanation": "The first line of the file announces an encoding (often UTF-8), but the content is written otherwise. Accented letters, for example, cannot be read reliably.",
+      "recommendation": "Save the file in UTF-8, or generate it again with your reporting tool.",
+      "expert_advice": "This typically happens when the envelope was edited in Notepad and saved as ANSI (Windows-1252) while its first line still declares UTF-8. Reopen it in an editor that shows the encoding (VS Code, Notepad++) and save it as UTF-8."
+    },
+    "XML-002": {
+      "message": "The XML file is damaged or incomplete.",
+      "explanation": "Its structure does not follow the rules of the XML format (an unclosed tag, for example). The file is refused before the register is even read.",
+      "recommendation": "Generate the envelope again with your reporting tool. The detail shows where the error is.",
+      "expert_advice": "Envelopes are rarely wrong when they come straight from a reporting tool. Look for a manual edit or a truncated transfer first: compare the file size with the original and check that the file ends with </XbrlDelivery>."
+    },
+    "XML-003": {
+      "message": "The XML file contains a forbidden declaration (DOCTYPE).",
+      "explanation": "This declaration serves no purpose in a filing and can be used for a cyber attack. For safety, the file is not processed.",
+      "recommendation": "Remove the line that starts with <!DOCTYPE, or generate the envelope again.",
+      "expert_advice": "A DOCTYPE is sometimes added by generic XML editors or converters. Generate the envelope from a plain template limited to the elements described by the ACPR."
+    },
+    "XML-004": {
+      "message": "The XML envelope does not follow the expected structure.",
+      "explanation": "The order or the name of some elements differs from the official model of the envelope. The portal may refuse the file.",
+      "recommendation": "Correct the elements listed in the detail, or generate the envelope again.",
+      "expert_advice": "Read the first error of the list: later ones are often consequences of it. Element order and namespace are the most frequent causes of schema differences."
+    },
+    "ENV-001": {
+      "message": "This XML file is not a OneGate filing envelope (first element: {root}).",
+      "explanation": "The tool only reads the envelope of the OneGate portal of the ACPR, which starts with the XbrlDelivery element.",
+      "recommendation": "Deposit a OneGate envelope, or the ZIP of the register directly.",
+      "expert_advice": "If your authority is not the ACPR, deposit the ZIP itself: its content is checked in the same way. The envelope is only used to transport it to OneGate."
+    },
+    "ENV-002": {
+      "message": "The envelope contains {count} registers; the tool analyses one at a time.",
+      "explanation": "An envelope that groups several declarations cannot be linked to a single register.",
+      "recommendation": "Deposit one envelope per register.",
+      "expert_advice": "Group remitters sometimes batch several entities in one envelope. Split the delivery so that each register can be checked, and corrected, on its own."
+    },
+    "ENV-003": {
+      "message": "The envelope does not contain the register (missing or empty <csv> element).",
+      "explanation": "In a OneGate envelope, the register (the ZIP file) is included as encoded text (base 64) in the <csv> element.",
+      "recommendation": "Generate the envelope again with your reporting tool, including the ZIP of the register.",
+      "expert_advice": "Check that the tag is written <csv> in lower case and sits inside <Report>. A template whose placeholder was never replaced gives exactly this finding."
+    },
+    "ENV-004": {
+      "message": "The content of the <csv> element is not valid base 64.",
+      "explanation": "The package cannot be decoded, so the ZIP archive cannot be rebuilt.",
+      "recommendation": "Encode the ZIP archive again in base 64, without line prefix or extra characters.",
+      "expert_advice": "On Windows, 'certutil -encode' adds BEGIN/END CERTIFICATE lines that must be removed. Prefer 'base64 -i package.zip' on macOS or 'base64 -w 0 package.zip' on Linux, and paste the output without any other character."
+    },
+    "ENV-005": {
+      "message": "The envelope is addressed to '{value}' instead of 'BDF'.",
+      "explanation": "For the OneGate portal, the recipient (<To> element) is always BDF, the Banque de France. This check only concerns registers filed with the ACPR.",
+      "recommendation": "Enter BDF in the <To> element.",
+      "expert_advice": "Copy the Administration block from the example of the ACPR technical note rather than typing it: the values are fixed and case sensitive."
+    },
+    "ENV-006": {
+      "message": "The filing domain of the envelope is '{value}' instead of DRB or DRA.",
+      "explanation": "The register is filed under the domain DRB for banks and DRA for insurance. This check only concerns registers filed with the ACPR.",
+      "recommendation": "Enter DRB (banking) or DRA (insurance) in the <Domain> element.",
+      "expert_advice": "The domain depends on the supervised population, not on the content of the register: DRB for entities under banking supervision, DRA for insurance. A group covering both sectors remits each entity under its own domain."
+    },
+    "ENV-007": {
+      "message": "The envelope does not say that this filing replaces the previous one (attribute action=\"replace\" missing).",
+      "explanation": "The ACPR requires this attribute on the <Report> element. Without it, a corrective filing may not replace the previous one.",
+      "recommendation": "Add action=\"replace\" to the <Report> element.",
+      "expert_advice": "This attribute is easily lost when the envelope is rebuilt by a script. Check it after each change to the envelope."
+    },
+    "ENV-008": {
+      "message": "The sender of the envelope (<From> element) is missing or is not a valid LEI.",
+      "explanation": "The <From> element must contain the LEI of the entity filing the register, a 20-character code.",
+      "recommendation": "Fill <From> with the LEI of the reporting entity.",
+      "expert_advice": "Use the LEI as registered with the GLEIF, 20 characters in upper case, with no space or line break around it. Check its renewal status at the same time: a lapsed LEI raises other findings at the authorities."
+    },
+    "ENV-009": {
+      "message": "The LEI of the sender of the envelope is not that of the entity reported in the register.",
+      "explanation": "The sender (<From> element) and the entity reported in the register (parameters.csv file) must be the same entity.",
+      "recommendation": "Enter in <From> the LEI of the entity reported in parameters.csv.",
+      "expert_advice": "First check whether the envelope is remitted by one entity on behalf of another, for example a parent company for a subsidiary: in that case confirm with the ACPR which LEI is expected in <From>. Otherwise it is usually a package reused from another entity of the group."
+    },
+    "ENV-010": {
+      "message": "The envelope contains no declaration (XbrlDeclarationReport element missing).",
+      "explanation": "In a OneGate envelope, the register is placed in an XbrlDeclarationReport element. Without it, there is nothing to file.",
+      "recommendation": "Generate the envelope again following the structure of the ACPR technical note.",
+      "expert_advice": "Start again from the example of the ACPR technical note. The element name is case sensitive."
+    },
+    "ZIP-001": {
+      "message": "The ZIP archive cannot be opened.",
+      "explanation": "The file is not a valid ZIP archive or it is truncated.",
+      "recommendation": "Create the archive again with a standard ZIP tool (not RAR or 7z).",
+      "expert_advice": "Create the archive with the built-in tool of the operating system. Archives produced by 7-Zip or WinRAR in their own format, even renamed to .zip, are not ZIP archives."
+    },
+    "ZIP-002": {
+      "message": "The ZIP archive is corrupted (file: {file}).",
+      "explanation": "The integrity check of a file inside the archive failed: its content does not match its checksum.",
+      "recommendation": "Create the archive again and check that the transfer did not alter it.",
+      "expert_advice": "Corruption almost always happens in transit: e-mail gateways, file transfer in text mode, incomplete download. Compare the size or a checksum of the file with the original."
+    },
+    "ZIP-003": {
+      "message": "The ZIP archive is password-protected.",
+      "explanation": "An encrypted archive cannot be read by the collection platforms nor by this product.",
+      "recommendation": "Create the archive without password.",
+      "expert_advice": "Do not protect the package itself. Confidentiality in transit is provided by the portal of the authority, and inside the firm by your usual secure channels."
+    },
+    "ZIP-004": {
+      "message": "The ZIP archive contains {count} entries, more than the limit of {limit}.",
+      "explanation": "A register package contains about twenty files. A much larger number indicates a wrong or unsafe archive.",
+      "recommendation": "Check the content of the archive.",
+      "expert_advice": "The wrong folder was probably compressed, for example a whole working directory. A register package holds 19 files."
+    },
+    "ZIP-005": {
+      "message": "The uncompressed size of the archive exceeds the limit of {limit} MB.",
+      "explanation": "The limit protects the product against archives designed to exhaust memory or disk.",
+      "recommendation": "Check the content of the archive.",
+      "expert_advice": "A register of this size is very unlikely. Check that the archive does not include exports, backups or several versions of the register."
+    },
+    "ZIP-006": {
+      "message": "The ZIP archive contains an unsafe path ({file}).",
+      "explanation": "Absolute paths, paths going up the folder tree ('..') and names containing control or invisible characters (null byte, right-to-left override) are not allowed in a package: they can hide the real name of a file. Such characters are shown as \\u0000.",
+      "recommendation": "Create the archive again from the package folder only.",
+      "expert_advice": "This comes from archives built by a script with absolute paths. Build the archive from the parent folder of the package, with relative paths."
+    },
+    "ZIP-007": {
+      "message": "The ZIP archive contains another archive ({file}).",
+      "explanation": "A package must contain the report files directly. A ZIP inside the ZIP cannot be processed by the collection platforms.",
+      "recommendation": "Compress the package folder once only.",
+      "expert_advice": "The package was compressed twice, or a previous version of the archive was left in the folder before compressing it again."
+    },
+    "ZIP-008": {
+      "message": "The ZIP archive is empty.",
+      "explanation": "The archive contains no file.",
+      "recommendation": "Create the archive again from the package folder.",
+      "expert_advice": "Check that the folder was not empty when it was compressed, which happens when the export wrote its files elsewhere."
+    },
+    "ZIP-009": {
+      "message": "The ZIP archive contains several files with the same name ({files}).",
+      "explanation": "Two files have exactly the same path in the archive. The engine reads only one, another tool might read the other: nothing guarantees that the file analysed is the one the authority will receive. The archive is not analysed.",
+      "recommendation": "Create the archive again from the package folder, which cannot hold two files with the same name.",
+      "expert_advice": "This comes from a file added a second time to an existing archive (updating a ZIP instead of creating it again). Starting from a clean folder avoids it."
+    },
+    "PKG-001": {
+      "message": "The archive must contain one single root folder (found: {found}).",
+      "explanation": "The ZIP archive contains exactly one folder, which holds the META-INF and reports sub-folders. Authorities reject any other layout.",
+      "recommendation": "Compress the package folder itself, not its content, and remove any other file or folder at the root.",
+      "expert_advice": "On macOS, the Finder 'Compress' command adds a __MACOSX folder and .DS_Store files that break this rule: use 'zip -r -X package.zip folder -x \"*.DS_Store\"' in the Terminal. On Windows, right-click the package folder itself and choose 'Send to > Compressed folder', not its content."
+    },
+    "PKG-002": {
+      "message": "The root folder name differs from the ZIP file name.",
+      "explanation": "The folder contained in the archive must have the same name as the ZIP file, without the .zip extension.",
+      "recommendation": "Rename the folder or the ZIP file so that both names match.",
+      "expert_advice": "The usual cause is a ZIP renamed after its creation, or a ' (1)' suffix added by the browser when the file was downloaded twice. Rename the ZIP, never the folder inside it, unless the folder itself is wrong."
+    },
+    "PKG-003": {
+      "message": "The package name does not follow the naming convention.",
+      "explanation": "The expected name is ReportSubject.CON or .IND_Country_FrameworkCodeModuleVersion_Module_ReferenceDate_CreationTimestamp, for example 5493001KJTIIGC8Y1R12.CON_FR_DORA010100_DORA_2025-12-31_20260315120000000.",
+      "recommendation": "Rename the package following the convention. The LEI, the reference date and the scope must match parameters.csv.",
+      "expert_advice": "Check each segment in order: LEI of the entity, then .CON for a consolidated register or .IND for an individual one, two-letter country code, DORA010100, DORA, reference date as yyyy-mm-dd, then the creation timestamp in digits only (yyyymmddhhmmss followed by milliseconds). Separators are underscores, except the dot before CON or IND."
+    },
+    "PKG-004": {
+      "message": "The package folder must contain exactly the sub-folders META-INF and reports (unexpected: {found}).",
+      "explanation": "Any additional folder, or a missing one, leads to the rejection of the package.",
+      "recommendation": "Keep only the META-INF and reports sub-folders in the package folder.",
+      "expert_advice": "Besides macOS artefacts (__MACOSX), look for working folders left by the reporting tool. Rebuild the package in an empty folder rather than cleaning an old one."
+    },
+    "PKG-005": {
+      "message": "Mandatory file missing: {file}.",
+      "explanation": "A package always contains META-INF/reportPackage.json, reports/report.json, reports/parameters.csv and reports/FilingIndicators.csv.",
+      "recommendation": "Add the missing file. The sample package published by the EBA shows its expected content.",
+      "expert_advice": "Start from the sample package published by the EBA and replace only the template files and the parameters. reportPackage.json and report.json are identical for every entity."
+    },
+    "PKG-006": {
+      "message": "The file {file} is not valid: {reason}.",
+      "explanation": "The metadata files of the package identify its format and the taxonomy it follows. If they cannot be read, the package cannot be interpreted.",
+      "recommendation": "Restore the file from the sample package published by the EBA and change only what is specific to your entity.",
+      "expert_advice": "Never edit these files in a word processor: it replaces straight quotes with typographic ones and breaks the JSON. Copy them unchanged from the EBA sample package."
+    },
+    "PKG-007": {
+      "message": "Unexpected file in the package: {file}.",
+      "explanation": "Only the files described as mandatory by the EBA are accepted in a package: 19 files (15 templates, report.json, parameters.csv, FilingIndicators.csv and reportPackage.json). Any other file, including the Excel version of the register, is rejected (EBA rule 720). FootNotes.csv is the exception: it is accepted and ignored (PKG-026).",
+      "recommendation": "Remove the file from the package.",
+      "expert_advice": "On macOS, the Finder adds .DS_Store files (and a __MACOSX folder) to every archive: create the ZIP with \"zip -r -X package.zip folder -x \\\"*.DS_Store\\\" -x \\\"__MACOSX/*\\\"\". Other classic intruders are the Excel version of the register, temporary files (~$..., Thumbs.db) and backup copies of a template. Only the 19 expected files must remain."
+    },
+    "PKG-008": {
+      "message": "Several files have the same name, ignoring case: {file}.",
+      "explanation": "File names that differ only by upper or lower case are ambiguous and cannot coexist on every system.",
+      "recommendation": "Keep a single file, named in lower case.",
+      "expert_advice": "This happens on Windows and macOS, which hide the problem because their file systems ignore case. Delete both files and export the template again under its lower case name."
+    },
+    "PKG-009": {
+      "message": "The taxonomy referenced by report.json is not supported: {value}.",
+      "explanation": "report.json must reference the entry point of the DORA module. The versions supported by the product are: {supported}.",
+      "recommendation": "Check the 'extends' value of report.json against the entry point published by the EBA for the reference date.",
+      "expert_advice": "The entry point must be copied exactly, starting with http:// and not https://. If the register targets a newer taxonomy than those supported, the product must be updated before its findings can be trusted."
+    },
+    "PKG-010": {
+      "message": "Template {template} is not in the file filed ({file} missing).",
+      "explanation": "For a first filing, all 15 templates are expected, even empty. For a partial filing (update of some information), the EBA and the ACPR accept that a template is missing.",
+      "recommendation": "Complete filing: add {file}, if need be with only its header line. Partial filing: nothing to do.",
+      "expert_advice": "Always export the 15 templates, even empty (for example b_01.03.csv for an entity without branches). It is the safest way."
+    },
+    "PKG-011": {
+      "message": "Template {template} is not declared in the list of templates filed (FilingIndicators.csv).",
+      "explanation": "FilingIndicators.csv lists the templates filed. All 15 templates must be in it; otherwise the filing is rejected.",
+      "recommendation": "Add the line '{template},true' to FilingIndicators.csv.",
+      "expert_advice": "This file is often copied from a previous filing. Compare it with the list of the 15 templates rather than with the files you have at hand."
+    },
+    "PKG-012": {
+      "message": "File {file} is present, but template {template} is declared 'not filed' (false) in FilingIndicators.csv.",
+      "explanation": "Since 1 July 2026, the EBA rejects a filing that contains the file of a template declared not filed, even if the file is empty.",
+      "recommendation": "Set the indicator of {template} to 'true'.",
+      "expert_advice": "For the register, the 15 templates are always filed. Set every indicator to true and keep empty templates as files with only their header line."
+    },
+    "PKG-013": {
+      "message": "Invalid filing indicator for {template}: '{value}'.",
+      "explanation": "Accepted values are « true » and « false » in lower case, as well as « 1 » and « 0 ». The value is case-sensitive: « TRUE » or « True » lead to a rejection.",
+      "recommendation": "Write « true » or « false » in lower case.",
+      "expert_advice": "Excel is the usual culprit: it turns true into TRUE as soon as the file is opened and saved. Edit FilingIndicators.csv in a text editor only."
+    },
+    "PKG-014": {
+      "message": "parameters.csv: parameter {name} is missing or invalid.",
+      "explanation": "parameters.csv carries the entity (entityID, as rs:LEI.IND or rs:LEI.CON), the reference date (refPeriod, as yyyy-mm-dd), the currency (baseCurrency, as iso4217:EUR) and the decimals settings.",
+      "recommendation": "Correct the parameter. Expected format: {expected}.",
+      "expert_advice": "Open parameters.csv in a text editor, not in Excel, which reformats the date as dd/mm/yyyy. Also look for a space after the comma, which is enough to invalidate a value."
+    },
+    "PKG-015": {
+      "message": "parameters.csv contains an unexpected parameter: {name}.",
+      "explanation": "Parameters that are not referenced by the DORA module cause a reading error on some collection platforms.",
+      "recommendation": "Remove the parameter from parameters.csv.",
+      "expert_advice": "Keep exactly the parameters of the EBA sample package for the DORA module. Parameters that exist in other reporting modules, such as decimalsPercentage, must not be added."
+    },
+    "PKG-016": {
+      "message": "The LEI of the package name differs from the entityID of parameters.csv.",
+      "explanation": "The same entity must be identified in the package name and in parameters.csv. The EBA rejects any package whose entityID does not match the entity identifier of the file name (rule 714).",
+      "recommendation": "Align the package name and the entityID parameter.",
+      "expert_advice": "This is typical of a package copied from another entity of the group, or from last year after a change of LEI. Decide which LEI is right, then correct both places."
+    },
+    "PKG-017": {
+      "message": "The reference date of the package name differs from the refPeriod of parameters.csv.",
+      "explanation": "The same reference date must appear in the name of the package and in parameters.csv.",
+      "recommendation": "Align the package name and the refPeriod parameter.",
+      "expert_advice": "Typical of a package rebuilt from the previous campaign: the name was updated but not parameters.csv, or the reverse. The reference date is 31 December of the year before the remittance."
+    },
+    "PKG-018": {
+      "message": "The file name {file} is not in lower case.",
+      "explanation": "Template files must be named in lower case (b_01.01.csv). A name in upper case is rejected (EBA rule 720).",
+      "recommendation": "Rename the file in lower case.",
+      "expert_advice": "Rename the file rather than exporting it again. On Windows and macOS a simple change of case may be ignored: rename it to a temporary name first."
+    },
+    "PKG-019": {
+      "message": "The module code of the package name ({value}) does not match the taxonomy version {version} (expected: {expected}).",
+      "explanation": "The package name carries the framework code and module version, which must be consistent with the taxonomy referenced by report.json.",
+      "recommendation": "Correct the package name or the entry point of report.json.",
+      "expert_advice": "Take the module code from the documentation of the taxonomy version you target, and keep the name and report.json aligned whenever you change version."
+    },
+    "PKG-020": {
+      "message": "FilingIndicators.csv declares an unknown template: {template}.",
+      "explanation": "Only the templates of the DORA module can be declared.",
+      "recommendation": "Remove the line or correct the template code (expected form: B_01.01).",
+      "expert_advice": "Template codes are written with an upper case B, an underscore and a dot: B_01.01. Codes written RT.01.01, as in the regulation, are not accepted here."
+    },
+    "PKG-021": {
+      "message": "The reporting scope of the package name ({name_scope}) differs from the entityID of parameters.csv ({param_scope}).",
+      "explanation": "The package is either individual (IND) or consolidated (CON), consistently in its name and in parameters.csv. A mismatch is rejected by the EBA together with the LEI (rule 714).",
+      "recommendation": "Align the package name and the entityID parameter.",
+      "expert_advice": "A scope mismatch between the package name and the entityID is rejected with rule 714: the ACPR rejects any entityID that does not match the file name, and the entityID carries the scope (rs:LEI.CON or rs:LEI.IND). Decide first what the register is: CON for the register maintained at consolidated or sub-consolidated level, IND for a single entity. Then align the name and entityID."
+    },
+    "CSV-001": {
+      "message": "File {file} is not encoded in UTF-8.",
+      "explanation": "All files of the package must be encoded in UTF-8. Saving a CSV from Excel on Windows often changes the encoding and corrupts accented characters.",
+      "recommendation": "Save the file again in UTF-8.",
+      "expert_advice": "In Excel, choose the format 'CSV UTF-8 (comma delimited)' rather than plain 'CSV', which writes in the Windows encoding and corrupts accented characters. Check the result in a text editor: entity names with accents are the first victims."
+    },
+    "CSV-002": {
+      "message": "File {file} starts with a byte order mark (BOM).",
+      "explanation": "The EBA filing rules accept UTF-8 with or without BOM, but the BOM is not recommended and some tools read it as part of the first column name. The product ignored it.",
+      "recommendation": "Prefer saving the file in UTF-8 without BOM.",
+      "expert_advice": "Excel's 'CSV UTF-8' format always adds a BOM. To remove it, open the file in VS Code or Notepad++ and save it as 'UTF-8' rather than 'UTF-8 with BOM'. If your authority has accepted such files before, this finding can be left as it is."
+    },
+    "CSV-003": {
+      "message": "File {file} has no header row.",
+      "explanation": "The first line of each CSV file must contain the column codes. An empty file cannot be read and its template is considered missing.",
+      "recommendation": "Add the header row. A template without data contains only this row.",
+      "expert_advice": "A zero-byte file is produced when an export finds no data and writes nothing. The header row must be written in every case, even alone."
+    },
+    "CSV-004": {
+      "message": "File {file}: at least one row does not have the same number of columns as the header.",
+      "explanation": "Each data row must have exactly as many values as the header has columns. A frequent cause is a comma inside a value that is not enclosed in double quotes.",
+      "recommendation": "Check the separators and enclose in double quotes the values that contain a comma.",
+      "expert_advice": "Look for free-text columns first: names, descriptions and addresses often contain commas or line breaks. Such values must be enclosed in double quotes, and a double quote inside a value must be doubled."
+    },
+    "CSV-005": {
+      "message": "File {file} does not use the comma as separator.",
+      "explanation": "The CSV files of the package are comma-separated. A semicolon is the usual sign of a file saved by Excel with European regional settings.",
+      "recommendation": "Save the file with a comma as separator.",
+      "expert_advice": "Excel uses the list separator of the Windows regional settings, which is the semicolon in most European locales. Change the list separator to a comma in the regional settings before exporting, or export with a tool that lets you choose the separator."
+    },
+    "CSV-006": {
+      "message": "File {file}: the header row contains a column without a name.",
+      "explanation": "Each column is identified by a code such as c0010. An empty header cell creates an extra, unnamed column that cannot be matched to the model. The table is not loaded, and the submission is rejected (rule 801: the ACPR and the EBA reject an empty header cell).",
+      "recommendation": "Remove the unnamed column, or give it its code, in the header row.",
+      "expert_advice": "It is almost always a trailing comma at the end of the header row, or an empty column left in the spreadsheet before export. A column with an unknown name is another case (DAT-001), and so is a missing model column (DAT-030)."
+    },
+    "CSV-007": {
+      "message": "File {file}: the header row contains the same column more than once ({columns}).",
+      "explanation": "Each model column must appear only once. A repeated column is an extra column: the engine cannot tell which one to read. The table is not loaded, and the submission is rejected (rule 801: the ACPR rejects an extra column in the header row).",
+      "recommendation": "Keep one column for each listed code and remove the duplicates, with their values.",
+      "expert_advice": "A duplicate usually comes from a column copied by hand in the spreadsheet, or from a mistyped code that repeats the neighbouring column. Check that the values of the column you keep are the right ones before removing the other."
+    },
+    "CSV-008": {
+      "message": "File {file}: a cell exceeds the limit of {limit} characters (line {line} of the file).",
+      "explanation": "The EBA data model limits text fields to 255 characters. A much longer cell cannot come from a correct register and could exhaust the memory of the computer: reading stops as soon as the limit is passed, and the table is not loaded.",
+      "recommendation": "Open the file at the given line and correct the cell that is too long.",
+      "expert_advice": "A huge cell usually comes from an opening quote with no closing quote: the rest of the file is then read as a single value. Look for a stray quote in the given cell or just before it."
+    },
+    "CSV-009": {
+      "message": "File {file}: the header row has {count} columns, beyond the limit of {limit}.",
+      "explanation": "The widest table of the model has about twenty columns. A file with this many columns matches no table of the register and could exhaust the computer: the table is not loaded.",
+      "recommendation": "Check that this file is the expected table and that its separator is the comma.",
+      "expert_advice": "This usually comes from a transposed table (rows and columns swapped) or from a data row stuck to the header row."
+    },
+    "CSV-010": {
+      "message": "The register exceeds the limit of {limit} rows, all tables together (limit reached at file {file}): no table is analysed.",
+      "explanation": "This limit protects the computer: beyond it, the analysis may exhaust the memory and stop without a result. The largest group registers measured stay well below. The register is not analysed in part, so as not to produce misleading findings.",
+      "recommendation": "Check that the archive does not contain repeated rows or several registers. If the register really is this large, the limit is raised with the ROI_MAX_ROWS setting, with more memory for Docker.",
+      "expert_advice": "An export that repeats itself (the same range of rows copied several times) or a provider table that repeats each provider for every contract are the usual causes. Count the rows of each file to find the one that swells."
+    },
+    "CSV-011": {
+      "message": "The last line of file {file} (line {line}) does not end with a line break.",
+      "explanation": "Since 02/10/2026, the ECB rejects any xBRL-CSV submission in which a line, the last one included, does not end with a line ending (LF or CR+LF). The EBA still accepts a last line without a line break, but the file fails the ECB check.",
+      "recommendation": "Add a line break at the end of the file, then rebuild the ZIP. Most export tools do it on their own: check the settings of the tool that produces this file.",
+      "expert_advice": "This usually comes from a file written with a separator placed between the lines rather than after each one (for example Join in VBA), or from a file edited by hand in an editor that removes the last line break."
+    },
+    "CSV-012": {
+      "message": "File {file} contains {count} non-standard line ending(s) (carriage return alone), the first one at line {line}.",
+      "explanation": "A line must end with LF or CR+LF. A carriage return alone (CR, the old Mac line ending) has been rejected by the ECB since 02/10/2026; depending on the tool that reads the file, it breaks the line or stays stuck to the cell value.",
+      "recommendation": "Save the file again with LF or CR+LF line endings (\"line endings\" setting of the editor or export tool), then rebuild the ZIP.",
+      "expert_advice": "A lone carriage return often comes from a value copied from Excel or a word processor (line break inside a cell) and written without quotes. A multi-line value between quotes is still allowed: it is not reported here."
+    },
+    "IMP-001": {
+      "message": "No table could be loaded from the package.",
+      "explanation": "None of the template files could be read, so there is no data to analyse.",
+      "recommendation": "Correct the blocking findings listed above and deposit the file again.",
+      "expert_advice": "Correct the package structure first: when the reports folder is not where it is expected, no template can be found, and the other findings are consequences."
+    },
+    "ENV-011": {
+      "message": "The OneGate portal will not recognise this envelope: its namespace is missing or wrong (found: \"{value}\").",
+      "explanation": "The ACPR requires the <XbrlDeclarationReport> element to carry the namespace http://www.onegate.eu/2010-01-01. This is what lets the portal identify the filing.",
+      "recommendation": "Declare xmlns=\"http://www.onegate.eu/2010-01-01\" on the <XbrlDeclarationReport> element.",
+      "expert_advice": "The namespace is easily dropped when the envelope is rebuilt by a script or an XML editor. Compare your envelope with a delivery accepted by the portal."
+    },
+    "PKG-022": {
+      "message": "In FilingIndicators.csv, template {template} is marked '{value}' instead of 'true'.",
+      "explanation": "The EBA accepts 1 instead of true, but the ACPR only accepts true and otherwise rejects the filing (error 808).",
+      "recommendation": "Replace '{value}' by 'true' (or 'false'), with the same form on every line.",
+      "expert_advice": "Mixing the two forms makes the file harder to read and to compare from one year to the next."
+    },
+    "DAT-001": {
+      "message": "Table {table}: {count} column code(s) of the header do not exist in the taxonomy.",
+      "explanation": "The header of a table may only use the column codes defined by the taxonomy for that table. The EBA rejects a file whose header contains an unknown code (rule 801).",
+      "recommendation": "Remove or correct the columns listed under 'Where'. Check the exact codes (c0010, c0020…) of the template.",
+      "expert_advice": "Typical causes: a column from an older taxonomy version, an extra column added by the export tool, or a code with a typo or a capital letter (c0010, not C0010)."
+    },
+    "DAT-002": {
+      "message": "Table {table} contains no data.",
+      "explanation": "The table of the entity maintaining the register must describe that entity: a register without any row in it cannot be exploited. The EBA rejects a package without data (rule 724).",
+      "recommendation": "Fill {table} with the entity maintaining the register of information.",
+      "expert_advice": "An empty {table} usually means the export was run on the wrong scope or before the entity data was entered. The rule is applied to this table only, until the EBA text confirms which other tables must contain data."
+    },
+    "DAT-003": {
+      "message": "Table {table}: {count} row(s) without a value in the primary key ({columns}).",
+      "explanation": "Every row must be identified by its primary key, and every column of that key must be filled. The EBA rejects a file with a missing key value (rule 805).",
+      "recommendation": "Fill the key columns of the rows listed under 'Where', or delete the rows if they are empty lines.",
+      "expert_advice": "Look first for empty trailing lines exported by a spreadsheet, and for a key column left out of the export: when the column is absent, every row is reported."
+    },
+    "DAT-004": {
+      "message": "Table {table}: {count} row(s) share a primary key already used earlier ({columns}).",
+      "explanation": "A primary key identifies one single row. The EBA reports duplicated keys (rule 806); the later occurrences are listed here.",
+      "recommendation": "Remove the duplicated rows, or correct the key values if they are different records.",
+      "expert_advice": "Duplicates often come from a table exported twice or from the same provider entered with two spellings. In a table with a composite key (several columns), the whole combination must be unique, not each column."
+    },
+    "DAT-005": {
+      "message": "Table {table}: {count} value(s) of {columns} match no record of {target}.",
+      "explanation": "This column refers to a record that must exist in another table (constraint {constraint} of the taxonomy). The EBA rejects a reference to a record that does not exist (rule 807).",
+      "recommendation": "Add the missing record to {target}, or correct the value listed under 'Where'.",
+      "expert_advice": "The comparison is exact: a space, a different case or a different identifier format makes a reference unknown. Check also that the referenced table was exported with all its rows."
+    },
+    "DAT-006": {
+      "message": "Table {table}, {column}: {count} LEI(s) do not have 20 characters.",
+      "explanation": "A LEI (ISO 17442) is made of exactly 20 characters. The EBA validation rules apply the mask of 18 letters or digits followed by 2 digits.",
+      "recommendation": "Check the values listed under 'Where' against the LEI of the entity (GLEIF record, contract, KYC file).",
+      "expert_advice": "A truncated LEI is often a spreadsheet that dropped leading zeros or cut the cell. A longer value is often two identifiers pasted together, or a LEI followed by a label."
+    },
+    "DAT-007": {
+      "message": "Table {table}, {column}: {count} LEI(s) contain forbidden characters.",
+      "explanation": "A LEI only uses capital letters A to Z and digits 0 to 9. Lower-case letters, accents, hyphens and symbols are not allowed.",
+      "recommendation": "Correct the values listed under 'Where', keeping capital letters and digits only.",
+      "expert_advice": "Lower case is the most frequent cause: the value may be right but typed in lower case. The tool never changes a value: correct it in the source file."
+    },
+    "DAT-008": {
+      "message": "Table {table}, {column}: {count} LEI(s) do not end with two digits.",
+      "explanation": "The last two characters of a LEI are check digits and must be digits. The value has 20 valid characters but does not follow the mask.",
+      "recommendation": "Check the last two characters of the values listed under 'Where'.",
+      "expert_advice": "This often reveals an identifier of another kind (a 20-character national code, for instance) filled in a LEI column."
+    },
+    "DAT-009": {
+      "message": "Table {table}, {column}: {count} LEI(s) contain spaces ({leading} leading, {trailing} trailing, {inner} inside).",
+      "explanation": "Spaces around or inside a LEI make the raw value differ from the registered identifier, so a comparison with another table or with GLEIF fails. The official LEI mask (rule v8826_m) is not met: the ESAs do not reject, but the finding is major. The other LEI checks are made on the value without spaces, which the tool never writes back.",
+      "recommendation": "Remove the spaces in the source file, for the values listed under 'Where'.",
+      "expert_advice": "The values are shown between quotes so the spaces are visible. A trailing space usually comes from a copy-paste or a fixed-width export."
+    },
+    "DAT-010": {
+      "message": "Table {table}, {column}: the check digits of {count} LEI(s) are invalid.",
+      "explanation": "The two last characters of a LEI are check digits defined by ISO 17442 (ISO 7064 MOD 97-10). The format is right, but the check does not pass: the value contains a typing error or is not a real LEI. The existence of the LEI in GLEIF is not checked.",
+      "recommendation": "Check the values listed under 'Where' against the source of the identifier (GLEIF record, contract).",
+      "expert_advice": "A single wrong character or two swapped characters is enough to fail the check, which makes it a reliable typing-error detector. Test identifiers invented for a demonstration fail it as well."
+    },
+    "DAT-011": {
+      "message": "Table {table}, {column}: {count} EUID(s) do not follow the expected syntax.",
+      "explanation": "An EUID (Implementing Regulation 2021/1042, annex, point 9) combines, with no mandatory separator, the two-letter country code, the identifier of the business register and the registration number, sometimes followed by a check digit: for example DEK1101R.HRB116737. The value contains spaces, does not start with two letters, has an empty part, several dots, or characters other than letters and digits.",
+      "recommendation": "Rewrite the values listed under 'Where' from the provider's business register.",
+      "expert_advice": "The regulation imposes no separator, so the dot is not required here (an EUID without a dot gets a simple information notice, DAT-031). A file with this defect was accepted by the ACPR, hence the minor severity. For a French company, the EUID combines the register (RCS and court town) and the SIREN."
+    },
+    "DAT-012": {
+      "message": "Table {table}, {column}: the country of {count} EUID(s) is not in the European Economic Area.",
+      "explanation": "The two letters at the start of an EUID name the country of the business register. The list of countries used here (EU, Iceland, Liechtenstein, Norway) is provisional.",
+      "recommendation": "Check the country prefix of the values listed under 'Where'. If the provider is registered outside the EEA, another type of code applies.",
+      "expert_advice": "Use the type of code that matches the provider (LEI, national code, company number…) when the register is not an EEA register. The list of countries is stored in reference/dora/eea-countries.json."
+    },
+    "DAT-013": {
+      "message": "Table {table}, {column}: the country of {count} EUID(s) differs from the headquarters country declared on the same row.",
+      "explanation": "The first two letters of an EUID name the State of the register where the entity is registered (Regulation 2021/1042, annex, point 9), not the State of its headquarters. For a company the two normally coincide: they should match the headquarters country declared on the same row. Greece is accepted as GR or EL.",
+      "recommendation": "Check the EUID prefix and the headquarters country (value after ≠) under 'Where'.",
+      "expert_advice": "A branch is registered in the register of the State where it is established, so its EUID may carry a country other than the company's headquarters. Check whether the provider is a branch before correcting. Only table B_05.01 is checked."
+    },
+    "DAT-015": {
+      "message": "Table {table}: {count} amount(s) of {column} end with a technical suffix (for example '78920030d-4').",
+      "explanation": "This suffix ('d' followed by a number) gives a precision specific to one cell. The EBA forbids it: the precision is declared once for the whole register.",
+      "recommendation": "Delete the 'd' and what follows in each value listed under 'Where' (78920030d-4 becomes 78920030).",
+      "expert_advice": "The suffix usually comes from the tool that produced the export. Correct its setting so that it does not come back in the next filing."
+    },
+    "PKG-023": {
+      "message": "parameters.csv: parameter {name} is {value}, which does not meet the EBA accuracy requirement.",
+      "explanation": "Since 1 April 2025, monetary amounts must have a precision of -4 or higher (-4 = rounded to 10,000, i.e. ±5,000; -3 = rounded to 1,000, i.e. ±500) and integers 0. A lower value, such as -5, makes amounts too approximate.",
+      "recommendation": "Correct the parameter. Expected value: {expected}.",
+      "expert_advice": "The Irish portal answers 'Decimals value is too low' in this case. Both -4 and -3 are accepted; choose according to the real accuracy of your amounts."
+    },
+    "PKG-024": {
+      "message": "macOS metadata ignored ({count} file(s)): {files}.",
+      "explanation": "The archive contains files added automatically by macOS (__MACOSX folder, ._* files, .DS_Store). They are not part of the package: they are ignored and do not affect the validation.",
+      "recommendation": "No action needed for this tool. For a filing, prefer an archive built without these files.",
+      "expert_advice": "The regulator's portal has not confirmed whether it accepts these files (question asked to the ACPR). To be safe, rebuild the archive without them before filing."
+    },
+    "PKG-025": {
+      "message": "Paths written with \"\\\" instead of \"/\" in the archive ({count} file(s)): {files}.",
+      "explanation": "The ZIP standard separator is \"/\". Paths with \"\\\" are read by this tool, but some readers may reject the package.",
+      "recommendation": "Rebuild the archive with a tool that writes \"/\" as the separator.",
+      "expert_advice": "This happens with old Windows archivers or scripts building paths by hand. The regulator's portal has not confirmed its behaviour (see PO-13)."
+    },
+    "DAT-014": {
+      "message": "Table {table}, {column}: {count} identifier(s) do not match the declared type but look like another type.",
+      "explanation": "Each code comes with its type (LEI, EUID, company number, VAT, national code, passport). Here the value does not follow the format of the declared type, but clearly has the format of another type: for example a French VAT number declared as EUID. The error is in the type, not in the value.",
+      "recommendation": "Under 'Where', read 'declared type → recognised type' and correct the type column (next column). Change the value only if it is really wrong.",
+      "expert_advice": "The regulation expects a LEI or an EUID for a company in the European Union, and a LEI for others. When there is no LEI, the EBA accepts in practice the SIREN/SIRET (or the local equivalent) and the VAT number. For a natural person: passport or identity document number."
+    },
+    "DAT-016": {
+      "message": "Table {table}, {column}: {count} French EUID(s) are not of the form FR + register code + SIREN (9 digits).",
+      "explanation": "An EUID is made of the country code, the register code and the local identifier of the company. In France the register code is 'RCS' followed by the town of the register (for example RCSPARIS), and the local identifier is the SIREN. The dot between the register code and the SIREN is optional.",
+      "recommendation": "Check the EUID on the provider's Kbis extract: it must contain the register code and then the SIREN.",
+      "expert_advice": "The check requires a non-empty register code and a final SIREN; it does not check that the town of the register exists."
+    },
+    "DAT-017": {
+      "message": "Table {table}, {column}: {count} registration number(s) of a provider do not have the expected national format (SIREN of 9 digits or SIRET of 14 digits in France).",
+      "explanation": "For a provider headquartered in a country of the national identifiers reference (B_05.01.0080), the company registration number (CRN type) must follow the national format; in France it is the SIREN or the SIRET, made of digits only.",
+      "recommendation": "Remove spaces and letters, or correct the type if the value is another identifier.",
+      "expert_advice": "Only countries whose format is confirmed by an official source are checked (national identifiers reference); the others are not checked yet."
+    },
+    "DAT-018": {
+      "message": "Table {table}, {column}: {count} VAT number(s) of a provider do not have the expected national format (in France: FR + 2-digit key + SIREN).",
+      "explanation": "The intra-community VAT number must follow the format of its country (country prefix, then digits or letters depending on the country); the French number is made of FR, a 2-digit key and the SIREN (9 digits), 13 characters in all.",
+      "recommendation": "Correct the number (no spaces), or the type if it is another identifier.",
+      "expert_advice": "The key is not recomputed: only the format is checked. Countries whose format is not confirmed are not checked."
+    },
+    "DAT-019": {
+      "message": "Table {table}, {column}: {count} additional code(s) of a legal person declared as national code or passport number.",
+      "explanation": "For a legal person (B_05.01.0070), the additional identification code (B_05.01.0030) can be neither a national code nor a passport number: these types are kept for individuals acting in a business capacity (ITS, annex I, B_05.01.0040). LEI, EUID, company number and VAT number are accepted. When the type of person is empty, which is reported elsewhere, the check applies.",
+      "recommendation": "Correct the type of the additional code (B_05.01.0040), or leave the code empty if there is no other one. If the provider is in fact a natural person, correct B_05.01.0070.",
+      "expert_advice": "The ITS asks for a LEI or an EUID as additional code of a legal person, but the matching EBA rule (v8818_m) is inactive: a company number or a VAT number is therefore not reported."
+    },
+    "DAT-020": {
+      "message": "Table {table}, {column}: {count} additional code(s) identical to the main code of the provider.",
+      "explanation": "The additional code (B_05.01.0030) is meant to give another identifier than the main code (B_05.01.0010). Repeating the same code adds nothing.",
+      "recommendation": "Give another identifier of the provider, or leave the additional code empty.",
+      "expert_advice": "If the provider has only one identifier, leave the additional code empty: this is better than a repetition."
+    },
+    "DAT-021": {
+      "message": "Table {table}, {column}: {count} branch code(s) identical to the LEI of the head office.",
+      "explanation": "A branch may be identified by a LEI only if it differs from the head office's LEI (B_01.03.0020). Otherwise a unique code specific to the branch is needed.",
+      "recommendation": "Replace the branch code with a unique identifier specific to the branch.",
+      "expert_advice": "The same code must not be used for two branches either."
+    },
+    "DAT-022": {
+      "message": "Table {table}, {column}: {count} value(s) exceed the maximum length of {limit} characters.",
+      "explanation": "The EBA data model sets a maximum length for each text column (255 characters for names, codes and references). A longer value cannot be stored as it is.",
+      "recommendation": "Shorten each value listed under 'Where' (length found > length allowed).",
+      "expert_advice": "Length is counted in characters, not bytes: an accented letter counts as one. A value that is too long often comes from a cell where several pieces of information were pasted together."
+    },
+    "DAT-027": {
+      "message": "Table {table}: {count} row(s) declare a branch ({condition}) without a branch code ({column}).",
+      "explanation": "The branch code is mandatory only when the entity using the ICT service is a branch. It must then repeat the code declared in the list of branches (B_01.03.0010). When the entity is not a branch, the EBA asks for 'Not Applicable'.",
+      "recommendation": "For each row listed, fill in the branch code as declared in B_01.03.0010, or correct the nature of the entity if it is not a branch.",
+      "expert_advice": "In that case, column B_04.01.0020 holds the LEI of the entity the branch belongs to (its head office), not a code of the branch. BLOCKER severity: choice of the project's experts, PROVISIONAL until an authority publishes a rejection code for this check."
+    },
+    "DAT-028": {
+      "message": "Table {table}: {count} row(s) that are not branches ({condition}) leave {column} empty instead of 'Not Applicable'.",
+      "explanation": "The branch code is a key of the table. When the entity is not a branch, the EBA asks for the text 'Not Applicable' rather than an empty cell. The ACPR currently accepts an empty cell, hence a minor severity.",
+      "recommendation": "Type 'Not Applicable' (free text, there is no code in a list) in the branch code column of the rows listed.",
+      "expert_advice": "In Excel, an empty cell and a cell with a formula returning nothing look the same: check the exported CSV file in a text editor."
+    },
+    "DAT-023": {
+      "message": "Table {table}: {count} row(s) where {column} is empty although {triggers} is filled in.",
+      "explanation": "These pieces of information go together: as soon as one is filled in, the EBA also asks for the empty column. Without it, the row is incomplete.",
+      "recommendation": "On each row listed under 'Where', fill in the empty column. If the other information was entered by mistake, delete it instead.",
+      "expert_advice": "Do not fill the cell with an approximate value just to clear the alert. If you do not have the information, first check that the other cells of the row really had to be filled in."
+    },
+    "DAT-024": {
+      "message": "Table {table}: {count} row(s) where {column} is empty although {condition}.",
+      "explanation": "With this answer, the EBA asks for more detail in the column left empty.",
+      "recommendation": "On each row listed under 'Where', first check the answer chosen. If it is right, fill in the empty column. If it is wrong, correct it: the detail will then no longer be required.",
+      "expert_advice": "Most of the time, the answer chosen from the list is wrong (wrong line of the drop-down list, copy-paste from another register), not the empty cell. Have it confirmed by the person who knows the contract or the provider."
+    },
+    "DAT-025": {
+      "message": "Table {table}: {count} value(s) of {column} are not numbers.",
+      "explanation": "The EBA checks {column} by comparing it with a number. A value that is not a number cannot be checked.",
+      "recommendation": "Replace each value listed under 'Where' by a plain number: dot as decimal separator, no unit, no space or thousands separator (example: 1250000.50).",
+      "expert_advice": "Typical causes: a decimal comma, a currency symbol, a space as thousands separator, or text pasted in a numeric cell."
+    },
+    "DAT-026": {
+      "message": "Table {table}: {count} value(s) of {column} do not meet the rule '{operator} {constant}'.",
+      "explanation": "The EBA requires {column} to be {operator} {constant}. The values listed under 'Where' do not meet this rule.",
+      "recommendation": "Correct each value listed under 'Where'. Amounts such as total assets or counts cannot be negative.",
+      "expert_advice": "A sign error (a minus sign copied from an accounting export) is the most frequent cause."
+    },
+    "DAT-029": {
+      "message": "Table {table}: {count} row(s) cite in {column} a contract whose type ({type_column}) is not the framework agreement {expected}.",
+      "explanation": "{column} names the framework contractual arrangement the contract depends on. The cited contract must exist in the contract list and must itself be declared as a framework agreement ({expected}). A reference to a contract of another type is inconsistent.",
+      "recommendation": "For each row listed under 'Where', cite a contract that really is a framework agreement, or fix the type of the cited contract if it was entered wrongly.",
+      "expert_advice": "Check the type of the cited contract (column 0020) first: it is more often wrong than the reference. BLOCKER severity: choice of the project's experts, PROVISIONAL until an authority publishes a rejection code for this check."
+    },
+    "PKG-026": {
+      "message": "File {file} is not analysed.",
+      "explanation": "This footnotes file is accepted and ignored by the EBA; the tool does the same. The ACPR does not list it among the files allowed, and its position is not confirmed yet.",
+      "recommendation": "Nothing to do for the analysis. For a filing to the ACPR, remove this file to be safe.",
+      "expert_advice": "Its content has no effect on the result. If the ACPR confirms that it refuses it, this finding will become blocking."
+    },
+    "DAT-030": {
+      "message": "Table {table}: {count} schema column(s) missing from the header.",
+      "explanation": "Every column of the table schema must appear in the file header, optional ones included (left empty). This is the ACPR reading (note of 27/08/2025, p. 6-7: one column fewer gives rejection 801) and of the Filing Rules v5.9 (p. 64, rule 2). The EBA (observations of April 2025, p. 26) would accept a file without a column: DORA QA follows the ACPR, by project choice.",
+      "recommendation": "Add the missing columns to the header, with an empty value in each row when the data is optional.",
+      "expert_advice": "Automatic processing of filings by the regulator requires a complete schema, with no gaps. Export the table again from the EBA model rather than adding columns by hand."
+    },
+    "DAT-031": {
+      "message": "Table {table}, {column}: {count} EUID(s) without a dot between the register identifier and the registration number.",
+      "explanation": "An EUID must contain the identifier of the business register and the registration number (Implementing Regulation 2021/1042, annex, point 9). The regulation imposes no separator, but without a dot there is no way to check that the register identifier is present. The EBA recommends checking for the dot.",
+      "recommendation": "Where possible, use the EUID as shown in the European register (e-Justice portal), with its dot.",
+      "expert_advice": "This is not an error: an EUID without a dot was accepted by the ACPR. But the EBA found 58,170 EUIDs with an invalid format when checking them against BRIS, and lists the dot among the simple checks to apply. A complete EUID avoids later verification failures."
+    },
+    "DAT-032": {
+      "message": "Table {table}, {column}: {count} row(s) leave this mandatory field empty.",
+      "explanation": "This field is mandatory on every row of the table: it is not nullable in the EBA data model, and the taxonomy declares it mandatory. No active EBA rule checks it, but the ACPR rejects a non-nullable field left empty (code v888*_m).",
+      "recommendation": "Fill in the field on the rows listed under 'Where'.",
+      "expert_advice": "B_04.01.0030 (nature of the entity using the service) conditions B_04.01.0040: without it, nobody can tell whether a branch code is expected. B_07.01.0090 (possibility of reintegrating the service) belongs to the entity's assessment of the service: a value of the list must always be chosen. The other mandatory fields are checked by the EBA conditional rules (DAT-023)."
+    },
+    "ENG-001": {
+      "message": "The check {rule} could not run: its findings are missing from this report.",
+      "explanation": "An internal error of the tool stopped this check. The other checks ran normally, but the report is incomplete on this point.",
+      "recommendation": "Do not read the absence of findings for this check as compliance. Report the check code to the product team.",
+      "expert_advice": "The error does not come from the compliance of the register: no data was logged. An unexpected value in a column read by this check is the most likely cause."
+    },
+    "REL-001": {
+      "message": "The entity maintaining the register (B_01.01.0010) is not listed among the entities in scope (B_01.02).",
+      "explanation": "B_01.02 lists all the financial entities in the scope of the register; the entity maintaining it is one of them (ITS, annex I, template B_01.02). Without it, its arrangements, functions and signatures cannot be linked.",
+      "recommendation": "Add to B_01.02 a row for the LEI reported in B_01.01.0010, with the same name and country.",
+      "expert_advice": "First check that the LEI of B_01.01 is exactly the one of B_01.02: one different character (O and 0, a space) breaks the link."
+    },
+    "REL-002": {
+      "message": "Table {table}: {count} entity(ies) have a different name in {target} for the same identifier.",
+      "explanation": "One entity, identified by one LEI, must have the same characteristics in every table. The names compared still differ once case, accents, punctuation and extra spaces are removed.",
+      "recommendation": "Keep the official name (the one of the LEI record) and report it identically in each table listed under 'Where'.",
+      "expert_advice": "A different name often reveals an identifier copied from another entity: check the LEI before correcting the name."
+    },
+    "REL-003": {
+      "message": "Table {table}: {count} entity(ies) have a name written differently in {target} (case, accents or punctuation).",
+      "explanation": "The names are identical once case, accents, punctuation and spaces are neutralised: this is the same entity, but the spelling is not uniform. This is a quality advice, not a regulatory non-compliance.",
+      "recommendation": "Use one spelling of the name in every table, preferably the legal name of the LEI record.",
+      "expert_advice": "One spelling eases the matching done by the authorities and by concentration analyses."
+    },
+    "REL-004": {
+      "message": "Table {table}: {count} entity(ies) have a different country in {target} for the same identifier.",
+      "explanation": "The country of an entity (headquarters) is unique: it must be the same wherever the same LEI is reported.",
+      "recommendation": "Correct the wrong country so that it is identical in every table listed under 'Where'.",
+      "expert_advice": "The country of B_05.01.0080 is the provider's headquarters; do not confuse it with the country of provision of the service (B_02.02.0130)."
+    },
+    "REL-005": {
+      "message": "{count} intra-group provider(s) report an ultimate parent (B_05.01.0110) outside the chain of their parents in B_01.02.",
+      "explanation": "An intra-group provider is also listed in B_01.02 with its direct parent. Its ultimate parent must be an entity of that chain: the head of the sub-group or the ultimate parent of the group (choice of the project's experts of 29/10/2026 for sub-consolidated registers).",
+      "recommendation": "Report in B_05.01.0110 an entity of the provider's chain of parents in B_01.02, normally the ultimate parent of the group (position x53).",
+      "expert_advice": "Also check the direct parent reported in B_01.02.0060: the error is sometimes there rather than in B_05.01."
+    },
+    "BUS-001": {
+      "message": "{count} entities are reported as 'ultimate parent' of the group in B_01.02: there can only be one.",
+      "explanation": "A group has only one ultimate parent undertaking. With several, the authority cannot rebuild the organisation of the group.",
+      "recommendation": "In the column 'Hierarchy of the financial entity within the group' (B_01.02.0050), keep 'The financial entity is the ultimate parent undertaking in the consolidation' for one entity only; give the others their actual position.",
+      "expert_advice": "In a sub-consolidated register, the head of the sub-group is not the ultimate parent if an entity above it is reported: choose an intermediate position."
+    },
+    "BUS-002": {
+      "message": "{count} entity(ies) of B_01.02 have a chain of direct parents that loops or does not reach the ultimate parent.",
+      "explanation": "Going up the direct parents (B_01.02.0060), every entity must reach the ultimate parent (position x53), the only one allowed to name itself. A loop, or a chain that stops elsewhere, makes the structure of the group inconsistent.",
+      "recommendation": "Correct the direct parent of the entities listed so that the chain goes up to the ultimate parent.",
+      "expert_advice": "An entity naming itself as direct parent without being in position x53 is the most frequent cause."
+    },
+    "BUS-003": {
+      "message": "{count} provider(s) report a type of code of their ultimate parent (B_05.01.0120) different from that parent's type in B_05.01.0020.",
+      "explanation": "The ITS (annex I, B_05.01.0120) requires the type of code of the ultimate parent to match the one reported in B_05.01.0020 on that parent's row.",
+      "recommendation": "Report in B_05.01.0120 the type reported in B_05.01.0020 on the ultimate parent's row.",
+      "expert_advice": "If the two types differ for one code, one of them is wrong: a LEI has 20 characters, the last 2 being digits."
+    },
+    "BUS-004": {
+      "message": "{count} ultimate parent(s) of providers do not name themselves as ultimate parent in B_05.01.0110.",
+      "explanation": "An ultimate parent has, by definition, no parent above it: its own row of B_05.01 must report its own code in B_05.01.0110.",
+      "recommendation": "Report the entity's own code in B_05.01.0110 on the ultimate parent's row, or name the real ultimate parent on the rows citing it.",
+      "expert_advice": "This often reveals an intermediate parent wrongly reported as ultimate parent."
+    },
+    "BUS-005": {
+      "message": "{count} entity(ies) of B_01.02 have inconsistent dates (integration, update, deletion).",
+      "explanation": "The date of integration in the register (B_01.02.0080) cannot be after the last update (0070), and the date of deletion (0090) is 9999-12-31 or not before the integration.",
+      "recommendation": "Correct the dates of the entities listed under 'Where'.",
+      "expert_advice": "An update date earlier than the integration often comes from an import that did not refresh that field."
+    },
+    "REL-006": {
+      "message": "Table {table}: {count} reference(s) to a provider with a type of code different from the one reported in B_05.01.0020.",
+      "explanation": "The ITS asks to repeat the type of code 'as reported in column B_05.01.0020' wherever the provider's code is repeated (B_02.02.0040, B_03.02.0030, B_05.02.0040 and 0070, B_07.01.0030). Blocking by choice of the project's experts; no rejection rule of the authorities is known (provisional status).",
+      "recommendation": "Report the type declared in B_05.01.0020 for that provider in each row listed under 'Where', or correct B_05.01.0020 if it is wrong.",
+      "expert_advice": "A code has one type only: if a SIREN is declared as LEI in one place and as CRN in another, one of them is wrong."
+    },
+    "REL-007": {
+      "message": "{count} provider(s), legal person(s), identified by neither a LEI nor an EUID.",
+      "explanation": "Article 3(5) of the ITS requires a valid and active LEI, or an EUID, to identify providers that are legal persons; only individuals acting in a business capacity may use another code. The check covers every legal person of B_05.01: direct providers, subcontractors and ultimate parents. The authorities and the list L07 of the taxonomy accept other types for now (CRN, VAT): this is a warning, not a rejection.",
+      "recommendation": "Obtain and report the LEI of the provider (or its EUID for a company of the European Union) in B_05.01.0010, with the matching type in B_05.01.0020.",
+      "expert_advice": "Keep the current national identifier as additional identifier (B_05.01.0030): it helps reconciliations. For a provider outside the European Union, only the LEI fits. For a subcontractor of a critical or important function, the requirement is stronger (BUS-019, major)."
+    },
+    "DQ-001": {
+      "message": "{count} group(s) of providers have the same name and the same country with different identifiers.",
+      "explanation": "Once normalised (case, accents, punctuation, usual legal forms), these providers have the same name and the same country of headquarters: the same provider is probably reported twice. This is an expert advice: nothing is merged.",
+      "recommendation": "Check the identifiers of the rows listed; if it is the same provider, keep one row with its LEI and report its references in the other tables.",
+      "expert_advice": "Namesake companies of one country exist (subsidiaries, entities in liquidation): compare the LEIs in GLEIF before merging."
+    },
+    "DQ-002": {
+      "message": "{count} provider(s) have an additional code equal to the main code of another provider.",
+      "explanation": "The additional code (B_05.01.0030) of a provider designates an entity already reported under that code: the same provider is probably reported twice, under two identifiers.",
+      "recommendation": "Check the two rows listed and keep one row per provider, identified preferably by its LEI.",
+      "expert_advice": "This often happens when a provider was first reported with its SIREN, then with its LEI."
+    },
+    "DQ-003": {
+      "message": "{count} French EUID(s) contain the SIREN of another provider reported.",
+      "explanation": "A French EUID ends with the company's SIREN. Another provider is reported with that same SIREN (or a SIRET, a VAT number containing it) as main code: it is probably the same company.",
+      "recommendation": "Check the two rows listed and keep one row per provider.",
+      "expert_advice": "Prefer the LEI as main code; the EUID or SIREN may remain as additional code."
+    },
+    "DQ-004": {
+      "message": "{count} provider(s) reported in B_05.01 are used nowhere.",
+      "explanation": "No arrangement (B_02.02, B_03.02), supply chain (B_05.02) or assessment (B_07.01) cites these providers, and they are the ultimate parent of no other provider.",
+      "recommendation": "Remove these rows if they are no longer needed, or complete the arrangements and chains that concern them.",
+      "expert_advice": "Information only: ultimate parents are excluded from this check, since the ITS has them reported even without a direct relationship."
+    },
+    "REL-008": {
+      "message": "{count} row(s) of B_02.02 link an arrangement to an entity missing from B_04.01 for that arrangement.",
+      "explanation": "The ITS (B_02.02.0020) asks for the entity making use of the services 'as reported in column B_04.01.0020': every arrangement and entity pair of B_02.02 must be in B_04.01.",
+      "recommendation": "Add the missing row to B_04.01 (arrangement, LEI of the entity, nature and branch), or correct the entity of B_02.02.",
+      "expert_advice": "For a group contract used by several entities, B_04.01 needs one row per entity (EBA FAQ, Q96)."
+    },
+    "REL-009": {
+      "message": "{count} arrangement(s) of B_02.01 have no signing entity in B_03.01.",
+      "explanation": "Every arrangement is signed by at least one entity in scope, reported in B_03.01. Without a signatory, the arrangement cannot be linked to a responsible entity.",
+      "recommendation": "Add to B_03.01 the entity that signed the arrangement (reference and LEI).",
+      "expert_advice": "A group contract signed by the parent for its subsidiaries is reported with the parent as signatory, the subsidiaries in B_04.01."
+    },
+    "REL-010": {
+      "message": "{count} arrangement(s) of B_02.01 have no row in B_02.02.",
+      "explanation": "B_02.02 details every arrangement: entity, provider, function, type of service, dates. Without a row in B_02.02, the arrangement has no function nor service, and its state (running or ended) cannot be derived.",
+      "recommendation": "Add at least one row to B_02.02 for each arrangement listed.",
+      "expert_advice": "An overarching arrangement without direct service is also reported in B_02.02, with the services it covers."
+    },
+    "REL-011": {
+      "message": "{count} arrangement(s) of B_02.01 have no entity making use of them in B_04.01.",
+      "explanation": "B_04.01 lists the entities using the services of each arrangement. Without it, the entities depending on the arrangement are unknown.",
+      "recommendation": "Add to B_04.01 the entities using the services of the arrangement.",
+      "expert_advice": "Think of branches: the entity is reported with the branch code in B_04.01.0040."
+    },
+    "DQ-005": {
+      "message": "{count} arrangement(s) of B_02.01 are cited in no other table.",
+      "explanation": "These arrangements appear neither in the details (B_02.02) nor among signatories, users, supply chains or assessments, and no subsequent arrangement cites them: they seem unused.",
+      "recommendation": "Complete the tables concerning these arrangements, or remove them from the register if they are no longer in force.",
+      "expert_advice": "An unused arrangement distorts the counts of arrangements reported to the authorities."
+    },
+    "DQ-006": {
+      "message": "{count} arrangement(s) have ended at the reference date ({reference}).",
+      "explanation": "All the rows of B_02.02 of these arrangements have an end date before the reference date of the register. Information only: an arrangement ended within the period remains reported.",
+      "recommendation": "Check that these arrangements belong to this register and that their reason of termination is filled.",
+      "expert_advice": "Arrangements ended several years ago can often be removed at the annual update."
+    },
+    "DQ-007": {
+      "message": "{count} overarching arrangement(s) are cited by no subsequent arrangement.",
+      "explanation": "An overarching arrangement (x2) is normally the reference of subsequent arrangements (x3). Information only: an overarching arrangement without subsequent one is often legitimate.",
+      "recommendation": "Check that the subsequent arrangements cite this overarching arrangement in B_02.01.0030.",
+      "expert_advice": "A group overarching arrangement may have no subsequent arrangement when orders are placed directly under it; document it in the description of the arrangement."
+    },
+    "DQ-008": {
+      "message": "{count} arrangement(s) start after the reference date ({reference}).",
+      "explanation": "The start date of all their rows of B_02.02 is after the reference date of the register. Information only.",
+      "recommendation": "Check that these arrangements already belong to this register.",
+      "expert_advice": "An arrangement signed before the reference date but taking effect later may be in the register; make sure it is intended."
+    },
+    "BUS-006": {
+      "message": "{count} standalone or overarching arrangement(s) report an overarching arrangement in B_02.01.0030.",
+      "explanation": "The ITS states that B_02.01.0030 does not apply to a standalone or overarching arrangement: only a subsequent arrangement (x3) cites its overarching one.",
+      "recommendation": "Empty B_02.01.0030 for these arrangements, or correct their type in B_02.01.0020.",
+      "expert_advice": "This rule also prevents circular references between arrangements."
+    },
+    "BUS-007": {
+      "message": "{count} subsequent arrangement(s) do not have the provider of their overarching arrangement.",
+      "explanation": "The signing provider (B_03.02) of a subsequent arrangement is normally the one of the overarching arrangement it cites. Expert advice: a group overarching arrangement may cover subsidiaries of the provider.",
+      "recommendation": "Check the provider reported in B_03.02 for the subsequent arrangement and for its overarching one.",
+      "expert_advice": "If the overarching arrangement was signed by the provider's parent and the subsequent one by a subsidiary, keep both and document the link."
+    },
+    "BUS-008": {
+      "message": "{count} row(s) of B_02.02 have a start date after the end date.",
+      "explanation": "The start date of an arrangement (B_02.02.0070) cannot be after its end date (B_02.02.0080).",
+      "recommendation": "Correct the start or end dates of the rows listed.",
+      "expert_advice": "Start and end columns swapped at import is the most frequent cause."
+    },
+    "BUS-009": {
+      "message": "{count} row(s) of B_02.02 have ended without reason of termination.",
+      "explanation": "The ITS (B_02.02.0090) asks for the reason of termination or ending when the arrangement has been terminated or has ended. The end date of these rows precedes the reference date and the reason is empty.",
+      "recommendation": "Report the reason of termination (list L09) for the rows listed.",
+      "expert_advice": "For a contract that reached its term without renewal, the reason is 'Termination not for cause: expired and not renewed'."
+    },
+    "BUS-010": {
+      "message": "{count} row(s) of B_02.02 have a reason of termination while the arrangement is running.",
+      "explanation": "A reason of termination (B_02.02.0090) only makes sense for an ended arrangement; the end date of these rows is on or after the reference date.",
+      "recommendation": "Empty the reason of termination, or correct the end date if the arrangement has ended.",
+      "expert_advice": "A future end date with a reason filled often means a notice period running: the effective end must be the termination date."
+    },
+    "DQ-009": {
+      "message": "{count} notice period(s) are longer than the arrangement.",
+      "explanation": "The notice period of the entity (B_02.02.0100) or of the provider (0110), in days, exceeds the time between start and end dates. Information only.",
+      "recommendation": "Check the unit (days) and the value of the notice periods listed.",
+      "expert_advice": "A notice period entered in months instead of days often explains the gap."
+    },
+    "DQ-010": {
+      "message": "{count} arrangement date(s) are improbable.",
+      "explanation": "A start date before 1950, or an end date between 2100 and 9999-12-30, is unusual. For an indefinite duration, the ITS asks for 9999-12-31. Information only.",
+      "recommendation": "Check the dates listed; use 9999-12-31 for an arrangement of indefinite duration.",
+      "expert_advice": "Dates such as 2999-12-31 or 9999-12-30 are in-house conventions: the ITS only knows 9999-12-31."
+    },
+    "BUS-011": {
+      "message": "{count} arrangement(s) have different governing laws across their rows of B_02.02.",
+      "explanation": "The governing law (B_02.02.0120) is the one of the arrangement: it must be the same on all the rows of one arrangement.",
+      "recommendation": "Use one governing law on all the rows of the arrangement.",
+      "expert_advice": "If two parts of a contract fall under different laws, they are often two distinct arrangements."
+    },
+    "BUS-012": {
+      "message": "{count} function identifier(s) do not follow the form 'F' followed by a number.",
+      "explanation": "The ITS (B_06.01.0010) requires an identifier made of the capital letter F followed by a natural number: F1, F2…",
+      "recommendation": "Rename the identifiers listed (F1, F2…) and report the new identifier in B_02.02.0050.",
+      "expert_advice": "A free identifier ('FCT-001', 'f1') is the usual cause; change it everywhere at once."
+    },
+    "BUS-013": {
+      "message": "{count} function identifier(s) are used for several entities.",
+      "explanation": "The ITS asks for a unique identifier for each combination of entity, activity and function: one identifier serves one entity only (decision of the PO of 28/10/2026).",
+      "recommendation": "Give a distinct identifier to the function of each entity (F1 for one, F5 for the other).",
+      "expert_advice": "The EBA key (identifier and LEI) accepts this case, but the ITS is stricter: the submission will not be rejected."
+    },
+    "REL-012": {
+      "message": "{count} critical or important function(s) are supported by no arrangement in B_02.02.",
+      "explanation": "A function reported as critical or important (B_06.01.0050 = Yes) without any row of B_02.02 is linked to no ICT service. Blocking by choice of the project's experts; no rejection rule of the authorities is known (provisional status).",
+      "recommendation": "Add to B_02.02 the arrangements supporting the function, or review its criticality assessment.",
+      "expert_advice": "If the function really uses no third-party ICT service, document it: the register only covers functions supported by ICT services."
+    },
+    "DQ-011": {
+      "message": "{count} non-critical function(s) are supported by no arrangement in B_02.02.",
+      "explanation": "These functions are reported in B_06.01 without any row of B_02.02. Information only.",
+      "recommendation": "Check that these functions belong to the register.",
+      "expert_advice": "A function without third-party ICT service normally does not belong to the register, unless it is supported by an intra-group provider."
+    },
+    "BUS-015": {
+      "message": "{count} inconsistency(ies) in the assessment of the functions.",
+      "explanation": "A function not assessed should have no date of assessment; a critical function must have an RTO and an RPO defined (different from 0) and an assessed impact.",
+      "recommendation": "Correct the values listed under 'Where'.",
+      "expert_advice": "An RTO or RPO of 0 often means 'not defined' in the source tool: replace it with the real value."
+    },
+    "BUS-016": {
+      "message": "{count} critical function(s) without reasons of criticality.",
+      "explanation": "The reasons of criticality (B_06.01.0060) are optional for the EBA, but they document why the function is critical or important. Expert advice.",
+      "recommendation": "Report the reasons of criticality of the functions listed.",
+      "expert_advice": "A short justification is enough: applicable regulation, client impact, volume processed."
+    },
+    "BUS-017": {
+      "message": "{count} date(s) of assessment or audit are after the reference date ({reference}).",
+      "explanation": "An assessment of criticality (B_06.01.0070) or an audit (B_07.01.0070) cannot have taken place after the reference date of the register; only the conventional value 9999-12-31 is accepted.",
+      "recommendation": "Correct the dates listed.",
+      "expert_advice": "A future date often comes from a planned assessment entered in advance: report the last assessment performed."
+    },
+    "DQ-012": {
+      "message": "{count} function(s) with the same name have a different criticality depending on the entity.",
+      "explanation": "One function (normalised name) is critical for one entity and not for another. This is possible, but to be justified.",
+      "recommendation": "Check the criticality assessment of the functions listed.",
+      "expert_advice": "One function can be critical for a bank and not for an asset manager of the group: document the difference."
+    },
+    "DQ-013": {
+      "message": "{count} non-critical function(s) show characteristics of a critical function.",
+      "explanation": "These functions are reported as non-critical but have an RTO of 4 hours or less, or a high impact if interrupted. Information only.",
+      "recommendation": "Check the criticality assessment of the functions listed.",
+      "expert_advice": "A short RTO on a non-critical function may be legitimate (business requirement): document it."
+    },
+    "REL-013": {
+      "message": "{count} service(s) supporting a critical function are missing from B_07.01.",
+      "explanation": "B_07.01 assesses the ICT services supporting critical or important functions (ITS, template B_07.01). No row exists for this contract, provider and type of service.",
+      "recommendation": "Add to B_07.01 the assessment of the service (contract, provider, type of service).",
+      "expert_advice": "All the mandatory columns of B_07.01 must be filled for this service (substitutability, exit plan, reintegration, impact, alternatives)."
+    },
+    "REL-014": {
+      "message": "{count} row(s) of B_07.01 match no row of B_02.02.",
+      "explanation": "An assessment of B_07.01 concerns a service reported in B_02.02: same contract, same provider and same type of service.",
+      "recommendation": "Correct the row of B_07.01 or add the missing service to B_02.02.",
+      "expert_advice": "Check the type of service: an S14 assessed while the contract reports S15 is enough to break the link."
+    },
+    "REL-015": {
+      "message": "{count} row(s) of B_02.02 report a level of reliance for a non-critical function.",
+      "explanation": "The level of reliance (B_02.02.0180) is only required for a service supporting a critical or important function. Expert advice: the ITS does not forbid it elsewhere.",
+      "recommendation": "Empty the level of reliance for non-critical functions, or review their criticality.",
+      "expert_advice": "If your tool requires the field for all functions, leave it empty for non-critical functions."
+    },
+    "REL-016": {
+      "message": "{count} row(s) of B_02.02 do not report the level of reliance of a critical function.",
+      "explanation": "The ITS makes the level of reliance (B_02.02.0180) mandatory if the ICT service supports a critical or important function.",
+      "recommendation": "Report the level of reliance (list L13) for the rows listed.",
+      "expert_advice": "The level 'Full reliance' (x797) signals a total dependency: it calls for an exit plan (B_07.01.0080)."
+    },
+    "REL-017": {
+      "message": "{count} service(s) supporting a critical function have no exit strategy.",
+      "explanation": "B_07.01.0080 reports no exit plan for a service supporting a critical or important function. Expert advice: DORA expects exit strategies for these services.",
+      "recommendation": "Prepare an exit plan for these services, then update B_07.01.0080.",
+      "expert_advice": "The EBA guidelines on outsourcing and Article 28 of DORA require documented and tested exit strategies for these services."
+    },
+    "REL-018": {
+      "message": "{count} pair(s) of arrangement and type of service have no rank 1 row in B_05.02.",
+      "explanation": "A rank 1 is expected for each pair (arrangement, ICT service type): it names the direct provider. Exception: an arrangement cited in B_02.03.0020, whose rank 1 is carried by the intra-group arrangement.",
+      "recommendation": "Add the rank 1 row (direct provider, recipient = provider) for each pair listed.",
+      "expert_advice": "A sub-contracted arrangement without rank 1 usually means only the sub-contractors were entered."
+    },
+    "REL-019": {
+      "message": "{count} row(s) of B_05.02 break the sub-contracting chain.",
+      "explanation": "A row of rank n >= 2 must name as recipient (B_05.02.0060) a provider of rank n-1 of the same arrangement and service type. Several providers may share a rank (1, 1, 2 is possible). Provisional severity, pending cross-checking with an authority rule.",
+      "recommendation": "Fix the rank or the recipient, or add the missing row of rank n-1.",
+      "expert_advice": "A skipped rank (1 then 3) is the most frequent error."
+    },
+    "BUS-018": {
+      "message": "{count} rank 1 row(s) have a recipient different from the provider.",
+      "explanation": "At rank 1 the recipient of the services (B_05.02.0060 and 0070) is the provider itself (0030 and 0040). Blocking by choice of the project's experts, provisional status: the ITS says the column 'does not apply at the 1st rank' but the EBA key requires a value.",
+      "recommendation": "Copy the provider's code and type of code to the recipient.",
+      "expert_advice": "The rank 1 recipient is sometimes the financial entity: the EBA tool expects the provider."
+    },
+    "REL-020": {
+      "message": "{count} inconsistency(ies) between the intra-group mechanism of B_02.03 and the intra-group providers of B_01.02.",
+      "explanation": "An arrangement cited in B_02.03.0010 must have an intra-group provider (B_01.02, type x317) at rank 1; a chain going through an intra-group provider must be linked in B_02.03.",
+      "recommendation": "Complete B_02.03 or correct the entity type in B_01.02.",
+      "expert_advice": "B_02.03 prevails for the rank 1 exception (decision P8)."
+    },
+    "REL-021": {
+      "message": "{count} arrangement(s) linked in B_02.03 have no provider outside the group.",
+      "explanation": "The arrangement linked (B_02.03.0020) to an intra-group arrangement is a contract with a third party: at least one of its providers must be outside the group.",
+      "recommendation": "Identify the first sub-contractor outside the group in B_05.02.",
+      "expert_advice": "A linked arrangement whose providers are all intra-group is a B_02.03 link to review."
+    },
+    "BUS-019": {
+      "message": "{count} provider(s) of a chain supporting a critical function have neither a LEI nor an EUID.",
+      "explanation": "The ITS asks for a LEI or an EUID for legal-person providers; individuals acting in a business capacity are excluded. Provisional severity, pending cross-checking. The validity of the LEI is not checked.",
+      "recommendation": "Obtain and report the LEI (or EUID) of each provider listed.",
+      "expert_advice": "Non-EU sub-contractors often have a LEI: ask for it before entering a national code."
+    },
+    "DAT-033": {
+      "message": "Table {table}: {count} value(s) of {column} are not among the allowed choices.",
+      "explanation": "This column only accepts a code from the EBA list (for example eba_GA:FR for France). A label or a misspelt code is not recognised.",
+      "recommendation": "Replace each value listed under 'Where' by the right code from the list. When the tool suggests a code (arrow), it is the one that matches the value entered.",
+      "expert_advice": "The error often comes from a label entered instead of the code ('France' instead of eba_GA:FR) or from a tool that changes the case. A currency no longer in use, such as the Croatian kuna (HRK), is not in the list."
+    },
+    "DAT-034": {
+      "message": "Table {table}, {column}: {count} natural person(s) declared with an EUID.",
+      "explanation": "The EUID identifies companies and branches entered in a business register of the Union (Implementing Regulation 2021/1042, annex, point 9). A natural person (B_05.01.0070) cannot have one: either the type of person or the type of code is wrong.",
+      "recommendation": "If the provider is a company, correct B_05.01.0070 to legal person. Otherwise, report a code suited to a natural person (national code, passport) and correct its type (B_05.01.0020 or B_05.01.0040).",
+      "expert_advice": "A sole trader entered in a national register has no EUID within the meaning of BRIS: their national number is reported as a company number."
+    },
+    "DAT-035": {
+      "message": "Table {table}, {column}: {count} natural person(s) declared with a LEI.",
+      "explanation": "GLEIF issues LEIs to individuals acting in a business capacity (sole traders), but the case is rare. This finding points to a possible error in the type of person (B_05.01.0070), not to a non-compliance.",
+      "recommendation": "Check in GLEIF that the LEI belongs to a sole trader. If it is a company, correct B_05.01.0070 to legal person.",
+      "expert_advice": "A company wrongly reported as a natural person escapes the LEI or EUID check required for legal persons (REL-007, BUS-019): the error in the type of person is worth correcting."
+    },
+    "DQ-014": {
+      "message": "{count} provider(s) have a total annual cost lower than the sum of the arrangements that reference them.",
+      "explanation": "The total annual cost of a provider (B_05.01.0100) should cover at least the annual costs of the arrangements that reference it in B_03.02 (B_02.01.0050). It may be higher, for services outside the register.",
+      "recommendation": "For each provider listed under 'Where', check its total annual cost and those of its arrangements, and correct the wrong amount.",
+      "expert_advice": "Information only, with no effect on the score. Overarching arrangements reported at 0 are normal: only subsequent arrangements carry the amounts."
+    },
+    "DQ-015": {
+      "message": "{count} arrangement(s) are in another currency than the provider they reference: the amounts were not compared.",
+      "explanation": "For one arrangement and one provider, the currency of the cost of the arrangement (B_02.01.0040) and that of the total cost of the provider (B_05.01.0090) must be the same. The tool does not convert currencies.",
+      "recommendation": "Check the currency of each arrangement listed under 'Where' and that of the provider, then report the amounts in the same currency.",
+      "expert_advice": "Information only, with no effect on the score. As a rule, the reporting currency of the register (B_01.02.0100) is used for every amount."
+    },
+    "GLF-001": {
+      "message": "Table {table}, {column}: {count} LEI not found in GLEIF (GLEIF copy of {copy_date}).",
+      "explanation": "The EBA checks each LEI against the GLEIF database (rule {rule}). These LEI have a correct format but no GLEIF record exists for them: they were mistyped, invented, or belong to an entity that never registered.",
+      "recommendation": "Look up each value listed under 'Where' on the GLEIF website and copy the exact LEI of the entity. If the entity has no LEI, use another identifier allowed for this column.",
+      "expert_advice": "EBA warning, no rejection: the register is accepted but the finding comes back in the data quality feedback. A test LEI, valid in format, always ends here."
+    },
+    "GLF-002": {
+      "message": "Table {table}, {column}: {count} LEI not valid in GLEIF (GLEIF copy of {copy_date}).",
+      "explanation": "The register requires a valid and active LEI (Implementing Regulation (EU) 2024/2956, art. 3(5)). In GLEIF these LEI are retired, merged, annulled, duplicates or pending (transfer, archival, validation), or the entity is inactive: they cannot be kept as identifiers.",
+      "recommendation": "Replace each LEI by the one now in use. When GLEIF gives a successor, it is shown after the arrow under 'Where'.",
+      "expert_advice": "A merger usually leaves a RETIRED or MERGED LEI pointing to the LEI of the absorbing entity. Check also the contracts: the counterparty may have changed."
+    },
+    "GLF-003": {
+      "message": "Table {table}, {column}: {count} LEI not renewed (LAPSED) in GLEIF (GLEIF copy of {copy_date}).",
+      "explanation": "A LEI must be renewed every year. These LEI still exist but their renewal is overdue: GLEIF shows them as LAPSED. The regulation asks for an active LEI; the ESAs did not enforce the status strictly in 2025 (EBA FAQ, question 44).",
+      "recommendation": "Ask the entity concerned to renew its LEI with its LEI issuer, or check that you reported the right LEI.",
+      "expert_advice": "LAPSED does not mean wrong: the identifier stays the same after renewal. Many providers let their LEI lapse; asking them early avoids a finding the year enforcement is tightened."
+    },
+    "GLF-004": {
+      "message": "Table {table}, {column}: {count} LEI to be renewed before {deadline} (GLEIF copy of {copy_date}).",
+      "explanation": "These LEI are valid today, but their renewal date falls before the probable end of the processing of the register by the EBA (30 April after the reference date). The EBA checks the LEI when it processes the register, not at the reference date: a LEI not renewed by then will be LAPSED.",
+      "recommendation": "Remind the entities concerned to renew their LEI before the date shown under 'Where'.",
+      "expert_advice": "Information only. The date of 30 April is an estimate: the EBA ran its data quality checks in April in 2026."
+    },
+    "GLF-005": {
+      "message": "Table {table}, {column}: the country of {count} entity(ies) differs from GLEIF (GLEIF copy of {copy_date}).",
+      "explanation": "The EBA compares the country of each entity of B_01.02 with GLEIF (rule {rule}). The country reported is neither the country of the legal address nor that of the headquarters recorded in GLEIF.",
+      "recommendation": "Check the country of the entity and correct either the register or the GLEIF record (through the LEI issuer).",
+      "expert_advice": "EBA warning, no rejection. The EBA does not say which GLEIF address it uses: this check accepts either the legal address or the headquarters."
+    },
+    "GLF-006": {
+      "message": "Table {table}, {column}: the country of {count} entity(ies) differs from GLEIF (GLEIF copy of {copy_date}).",
+      "explanation": "The country reported is neither the country of the legal address nor that of the headquarters recorded in GLEIF for the same LEI.",
+      "recommendation": "Check the country of the entity and correct the register if needed.",
+      "expert_advice": "Not an EBA rule: a consistency check of this product. A provider whose GLEIF record is outdated can also explain the difference."
+    },
+    "GLF-007": {
+      "message": "Table {table}, {column}: the name of {count} entity(ies) differs from the GLEIF legal name (GLEIF copy of {copy_date}).",
+      "explanation": "The name reported does not resemble the legal name recorded in GLEIF for the same LEI, even after removing case, accents and punctuation. The LEI may belong to another entity.",
+      "recommendation": "Compare the names listed under 'Where' with GLEIF: correct the LEI if it is not the right entity, or the name otherwise.",
+      "expert_advice": "A trade name, an old name or a name in another alphabet can explain the difference. When the LEI is wrong, the whole row describes the wrong company."
+    },
+    "GLF-008": {
+      "message": "Table {table}, {column}: the direct parent of {count} entity(ies) differs from GLEIF (GLEIF copy of {copy_date}).",
+      "explanation": "The LEI of the direct parent reported in B_01.02.0060 is not the direct accounting consolidating parent recorded in GLEIF.",
+      "recommendation": "Check the group structure and correct the register, or ask the entity to update its parent in GLEIF.",
+      "expert_advice": "GLEIF records accounting consolidation parents, reported by the entities themselves: a recent reorganisation may not be there yet."
+    },
+    "GLF-009": {
+      "message": "Table {table}, {column}: the ultimate parent of {count} provider(s) differs from GLEIF (GLEIF copy of {copy_date}).",
+      "explanation": "For every provider identified by a LEI, the ultimate parent reported in B_05.01.0110 must be the ultimate accounting consolidating parent recorded in GLEIF. Here it is different, empty (∅), or identified otherwise than by a LEI (type in brackets).",
+      "recommendation": "Report in B_05.01.0110 the LEI of the ultimate parent given by GLEIF (after 'GLEIF' under 'Where'), with the type LEI in B_05.01.0120.",
+      "expert_advice": "Useful for concentration: a wrong ultimate parent splits a group into several providers in the supervisors' view."
+    },
+    "GLF-010": {
+      "message": "GLEIF checks not performed: no GLEIF copy is installed.",
+      "explanation": "The LEI are checked against a local copy of the GLEIF data, downloaded when the tool starts. No copy could be installed (no network or no access to the repository): the GLEIF checks are shown as not evaluated.",
+      "recommendation": "Restart the tool with an internet connection, and check the access to the repository (ROI_GLEIF_TOKEN) if it is private.",
+      "expert_advice": "The rest of the analysis is complete: only the GLEIF comparisons are missing."
+    },
+    "GLF-011": {
+      "message": "GLEIF copy of {copy_date}: {days} days old.",
+      "explanation": "The GLEIF checks used a copy published {days} days ago. A LEI may have lapsed or been retired since.",
+      "recommendation": "Restart the tool with an internet connection to download the latest copy, then analyse the register again.",
+      "expert_advice": "GLEIF publishes its files several times a day; the copy is refreshed when a new release is published on the repository."
+    }
+  },
+  "references": {
+    "product": "Technical check of DORA QA (no regulatory source)",
+    "acpr_technical_note": "ACPR, 'Note technique 2025 - Formats de fichier' (xBRL-CSV collections on OneGate)",
+    "eba_package_guide": "EBA, 'Preparing .csv and .zip files for reporting' (DORA module, release 4.0)",
+    "eba_technical_checks": "EBA, 'Overview of the RoI reporting technical checks and validation rules'",
+    "eba_filing_rule_1_6": "EBA XBRL Filing Rules v5.7, rule 1.6",
+    "ecb_csv_line_endings": "ECB, line-ending check on all xBRL-CSV submissions since 02/10/2026 (eSurfi announcement of 20/10/2026, \"Format de remise\" page); the EBA accepts a last line without a line break (S12 p. 25)",
+    "eba_filing_rules_v58": "EBA XBRL Filing Rules v5.8, sixth additional rule for xBRL-CSV, as announced on the EBA reporting framework 4.2 page",
+    "eba_filing_rule_1_4": "EBA XBRL Filing Rules v5.7, rule 1.4",
+    "eba_observations_2025": "EBA, “Observations from reporting of RoI to the ESAs – key common issues” (16 April 2025, updated 16 May 2025)",
+    "eba_validation_rules": "EBA, validation rules of the DORA taxonomy 4.0 (rules v8821 and v8826, published with the 'warning' severity)",
+    "iso_17442": "ISO 17442-1, Legal entity identifier (LEI); check characters by ISO 7064 MOD 97-10",
+    "eba_decimals_suffix": "EBA xBRL-CSV filing rules: the 'Decimals suffix' feature (for example 78920030d-4 in a monetary cell) must not be used; precision is given by parameters.csv (rule restated by XBRL France, 'EBA reporting framework updates – xBRL-CSV')",
+    "eba_accuracy_rule": "EBA XBRL Filing Rules v5.8, rule 2.18 'Accuracy Requirements table' (monetary >= -4 from 01/04/2025; integer 0)",
+    "its_annex_i_b0501_0010": "Implementing Regulation (EU) 2024/2956, annex I, B_05.01.0010: “Where LEI is used, it shall be provided as a 20-character, alpha-numeric code based on the ISO 17442 standard. Where EUID is used, it shall be provided as specified in Article 9 of the Commission Implementing Regulation (EU) 2021/1042”",
+    "dila_siren_siret": "Service-public.fr (DILA, French government), “Comment obtenir un numéro Siren ou un Siret ?” (page F32135, checked on 30/01/2025): the SIREN has 9 digits; the SIRET has 14 digits, the 9 digits of the SIREN followed by 5 digits specific to each establishment",
+    "dila_vat_number": "Service-public.fr (DILA, French government), page F23570 on the intra-community VAT number (checked on 03/03/2025): FR + 2-digit computer key + SIREN",
+    "its_annex_i_b0501_0040": "Implementing Regulation (EU) 2024/2956, annex I, B_05.01.0040: “LEI or EUID shall be used for legal persons, as identified in B_05.01.0070, whereas alternative code may be used only for an individual acting in a business capacity”",
+    "po_additional_code": "Product Owner rule (issue #8). Annex I of Implementing Regulation (EU) 2024/2956 describes B_05.01.0030 as an “additional code […] where available”; it does not explicitly forbid repeating the main code",
+    "its_annex_i_b0103_0010": "Implementing Regulation (EU) 2024/2956, annex I, B_01.03.0010: “(a) LEI of the branch if unique for this branch and different from B_01.03.0020; (b) other identification code […] (where the LEI of the branch is equivalent to the one in template B_01.03.0020 or equivalent to the LEI of another branch)”",
+    "its_annex_i_b0201_0030": "Implementing Regulation (EU) 2024/2956, annex I, B_02.01.0030 “Overarching contractual arrangement reference number”: not applicable if the arrangement is itself the overarching arrangement or a standalone arrangement",
+    "eba_data_model": "EBA, Data Model for DORA RoI (version of 01/04/2025), 'Length' column",
+    "its_2024_2956": "Implementing Regulation (EU) 2024/2956, annex: B_04.01.0040 'mandatory if the entity making use of the ICT services is a branch (B_04.01.0030)'",
+    "eba_qa_2024_7282": "EBA, Q&A 2024_7282 and DORA RoI reporting FAQ of 28/03/2025 (question 64): B_04.01.0040 = 'Not Applicable' when the entity is not a branch",
+    "eba_validation_rules_conditional": "EBA, validation rules of the DORA taxonomy 4.0, list of 14/09/2026 (active rules, published with the 'warning' severity)",
+    "cssf_esa_errors": "CSSF, 'Guidance for interpretation and resolution of ESA error messages related to the DORA register', v1.0 of 15/05/2025: rule 714, the entityID must repeat the first 24 characters of the ZIP name (LEI + .CON/.IND), error leading to rejection",
+    "acpr_main_errors_2025": "ACPR, “Principales erreurs identifiées dans les RoI – explications des codes erreurs” (27 August 2025)",
+    "bris_2021_1042": "Commission Implementing Regulation (EU) 2021/1042 of 18 June 2021 (business registers interconnection system, BRIS), annex, point 9: structure of the EUID",
+    "its_2024_2956_annex_i": "Implementing Regulation (EU) 2024/2956, annex I (instructions of the register templates)",
+    "po_sprint3_decisions": "Choice of the project's experts (Sprint 3 scoping, 28 and 29/10/2026): expert check, no rejection rule of the authorities",
+    "its_2024_2956_art_3_5": "Implementing Regulation (EU) 2024/2956, Article 3(5): valid and active LEI or EUID for providers that are legal persons",
+    "eba_taxonomy_4_0": "EBA, XBRL taxonomy 4.0 (DORA module), allowed values of the closed lists; labels: 'List of possible values for all data fields with drop downs' of 3 March 2025",
+    "po_sprint4_decisions": "Choice of the project's experts (Sprint 4, 02/11/2026): expert check, no rejection rule of the authorities",
+    "partial_filing_sources": "EBA, 'Observations from reporting of RoI to the ESAs – key common issues' (April 2025, p. 16 and 29: rule 720 relaxed); ACPR, 'Principales erreurs identifiées dans les RoI' (27/08/2025, p. 5: partial filing)",
+    "filing_indicator_sources": "EBA, 'Observations from reporting of RoI to the ESAs – key common issues' (April 2025, p. 14 and 24: 1 accepted for true); ACPR, 'Principales erreurs identifiées dans les RoI' (27/08/2025, p. 5: only true allowed, rejection 808)",
+    "footnotes_sources": "EBA, 'Observations from reporting of RoI to the ESAs – key common issues' (April 2025, p. 24: FootNotes.csv accepted and ignored); ACPR, 'Principales erreurs identifiées dans les RoI' (27/08/2025, p. 5: files allowed); question asked to the ACPR (#16)",
+    "po35_amounts": "Choice of the project's experts (PO-35, 03/11/2026): expert check, severity INFO, with no effect on the quality score",
+    "eba_gleif_rules": "EBA, overview of the technical checks, validation rules and business checks for RoI reporting (updated 28/04/2025): rules VR_2, VR_12, VR_16, VR_23, VR_71 and VR_77 against the GLEIF database; CSSF guide for the submission of the register of information, §7.2",
+    "its_lei_active": "Implementing Regulation (EU) 2024/2956, art. 3(5): valid and active LEI; EBA FAQ on the reporting of the registers of information, question 44",
+    "gleif_data": "Local copy of the GLEIF data (LEI records and relationships), compared by this product"
+  },
+  "fragments": {
+    "nothing": "nothing",
+    "folder_vs_zip": "folder: {folder}\nZIP file: {zip}",
+    "document_type": "documentInfo.documentType must be {expected}",
+    "extends_one": "documentInfo.extends must contain exactly one taxonomy entry point",
+    "json_invalid": "not valid JSON",
+    "first_line": "the first line must be '{header}'",
+    "two_values": "each line must contain exactly two values",
+    "expected_entity_id": "rs:{{LEI}}.IND or rs:{{LEI}}.CON",
+    "expected_date": "yyyy-mm-dd",
+    "expected_currency": "iso4217:EUR",
+    "expected_integer_0": "an integer, for example 0, or INF",
+    "expected_integer_m3": "an integer, for example -3, or INF",
+    "xml_position": "line {line}, column {column}: {parser}",
+    "file_too_large": "The file exceeds the limit of {limit} MB.",
+    "unknown_import": "Unknown or expired import. The last two imports stay available, up to 30 minutes without activity.",
+    "decimals_monetary": "an integer greater than or equal to -4 (for example -3)",
+    "decimals_integer": "0",
+    "internal_error": "Internal error during the analysis. The file was not kept; try again, then report the problem if it persists.",
+    "missing_client_header": "Request refused: the {header} header is missing. Only the interface of the application can send a register.",
+    "unknown_finding": "Unknown finding for this analysis.",
+    "field_label": "'{label}' ({code})",
+    "member_label": "'{label}'",
+    "or": "or",
+    "and": "and",
+    "test_equal": "{column} is {members}",
+    "test_not_equal": "{column} is other than {members}",
+    "op_ge": "greater than or equal to",
+    "op_le": "less than or equal to",
+    "op_gt": "greater than",
+    "op_lt": "less than",
+    "op_eq": "equal to",
+    "op_ne": "different from",
+    "gleif_updating": "The GLEIF copy is being updated online: no register can be accepted for the moment. Try again in a few moments."
+  },
+  "steps": {
+    "detection": "File type detection",
+    "xml_validation": "XML validation",
+    "extraction": "Package extraction",
+    "zip_validation": "ZIP validation",
+    "package_validation": "Package validation",
+    "csv_import": "CSV import",
+    "dataset": "Dataset",
+    "technical_rules": "Technical rules"
+  },
+  "checks": {
+    "file_type": "The file is an XML or a ZIP",
+    "file_not_empty": "The file is not empty",
+    "xml_encoding": "XML encoding is readable",
+    "xml_well_formed": "XML is well-formed",
+    "xml_no_doctype": "No DOCTYPE or entity declarations",
+    "env_root": "Delivery envelope recognised",
+    "env_single_declaration": "Exactly one declaration in the envelope",
+    "env_namespace": "OneGate namespace of the declaration",
+    "env_payload": "<csv> package present and base 64",
+    "env_sender": "Sender (From): valid LEI",
+    "env_recipient": "Recipient: BDF",
+    "env_domain": "Delivery domain: DRA or DRB",
+    "env_action": "Report action: replace",
+    "env_lei_match": "Envelope LEI matches the package LEI",
+    "zip_open": "ZIP archive opens and is not empty",
+    "zip_integrity": "ZIP archive is not corrupted",
+    "zip_password": "Archive is not password-protected",
+    "zip_limits": "Entry count and size within limits",
+    "zip_safe_content": "Safe paths, no nested archive",
+    "pkg_root": "One root folder, named like the ZIP",
+    "pkg_name": "Package name follows the convention",
+    "pkg_folders": "META-INF and reports folders",
+    "pkg_files": "Mandatory files present, no undeclared file",
+    "pkg_file_names": "Lower-case file names, no duplicates",
+    "pkg_taxonomy": "Taxonomy and module supported",
+    "pkg_templates": "All 15 tables are present",
+    "pkg_indicator_lines": "FilingIndicators: one line per table, known tables",
+    "pkg_indicator_alt_values": "Filing indicator values 1 and 0 (EBA / ACPR divergence)",
+    "pkg_indicator_values": "FilingIndicators: valid and consistent values",
+    "pkg_parameters": "parameters.csv: expected parameters",
+    "pkg_entity": "Entity identifier and scope match the name",
+    "pkg_period": "Reference date matches the name",
+    "csv_encoding": "CSV files are UTF-8",
+    "csv_header": "Headers present and unique",
+    "csv_limits": "Table size within limits",
+    "csv_line_endings": "LF or CR+LF line endings",
+    "csv_columns": "Constant column count",
+    "csv_separator": "Comma separator",
+    "tables_loaded": "At least one table loaded",
+    "data_header_complete": "All schema columns present in the header",
+    "data_headers": "Header columns exist in the taxonomy",
+    "data_entity": "The reporting entity is described (B_01.01)",
+    "data_primary_keys": "Primary keys filled and unique",
+    "data_foreign_keys": "References to other tables exist",
+    "data_lei_format": "LEI: 20 characters, capitals and digits, mask",
+    "data_lei_checksum": "LEI: check digits (ISO 17442, MOD 97-10)",
+    "data_lei_spaces": "LEI: no spaces around or inside",
+    "data_euid_syntax": "EUID: syntax <country><code>",
+    "data_euid_country": "EUID: country in the European Economic Area",
+    "data_euid_country_match": "EUID: country consistent with the headquarters country",
+    "data_numeric_suffix": "Numbers: no decimals suffix",
+    "data_identifier_type": "Identifiers: type consistent with the value",
+    "data_french_identifiers": "French identifiers: SIREN, SIRET, VAT, EUID",
+    "data_additional_code": "Additional code of the provider",
+    "data_branch_code": "Branch code distinct from the head office",
+    "data_max_length": "Text: maximum length of the data model",
+    "eba_conditional_rules": "EBA conditional rules (presence, group, codified value, numeric comparison)",
+    "data_mandatory_fields": "Mandatory fields of the data model without an active EBA rule",
+    "engine_rules": "All checks completed",
+    "rel_reporting_entity": "Entity maintaining the register listed among the entities",
+    "rel_entity_attributes": "Same entity, same name and same country in every table",
+    "rel_intra_group_parent": "Ultimate parent of an intra-group provider",
+    "bus_group_parent": "Ultimate parent of the group and chain of parents",
+    "bus_provider_parent": "Ultimate parents of the providers",
+    "bus_entity_dates": "Dates of the entities of the group",
+    "rel_provider_code_type": "Same type of code for a provider everywhere",
+    "rel_direct_provider_identifier": "LEI or EUID of providers that are legal persons",
+    "dq_duplicate_providers": "Providers probably reported twice",
+    "dq_unused_providers": "Providers reported but not used",
+    "rel_arrangement_relations": "Mandatory relations of an arrangement",
+    "dq_arrangement_use": "Use of the arrangements",
+    "bus_overarching": "Overarching and subsequent arrangements",
+    "bus_arrangement_dates": "Dates and end of the arrangements",
+    "dq_arrangement_dates": "Plausibility of durations and notice periods",
+    "bus_governing_law": "Governing law of an arrangement",
+    "bus_function_identifier": "Function identifier",
+    "rel_function_coverage": "Critical functions covered by an arrangement",
+    "dq_function_coverage": "Functions without arrangement",
+    "bus_function_assessment": "Consistency of the assessment of the functions",
+    "bus_assessment_dates": "Dates of assessment and audit",
+    "dq_function_assessment": "Plausibility of the criticality of the functions",
+    "rel_critical_services": "Services of the critical functions",
+    "rel_chain_rank_one": "Rank 1 of each arrangement and service",
+    "rel_chain_continuity": "Continuity of the sub-contracting chains",
+    "bus_chain_rank_one_recipient": "Recipient of rank 1",
+    "rel_chain_intra_group": "Intra-group chains",
+    "bus_critical_chain_identifier": "Identifiers of the critical chains",
+    "data_closed_lists": "Closed lists",
+    "data_natural_person_identifier": "Identifiers of natural persons",
+    "dq_amounts": "Consistency of the amounts between arrangements and providers",
+    "gleif_lei_exists": "LEI: found in GLEIF (EBA VR_2, VR_12, VR_23, VR_71, VR_77)",
+    "gleif_lei_valid": "LEI: valid in GLEIF (not retired, annulled, duplicate or pending)",
+    "gleif_lei_renewed": "LEI: renewed (not LAPSED)",
+    "gleif_lei_renewal_due": "LEI: renewal not due before the EBA processing",
+    "gleif_entity_country": "Entity country consistent with GLEIF (EBA VR_16)",
+    "gleif_other_country": "Other countries consistent with GLEIF",
+    "gleif_name": "Names consistent with the GLEIF legal name",
+    "gleif_direct_parent": "Direct parent consistent with GLEIF",
+    "gleif_ultimate_parent": "Ultimate parent of providers consistent with GLEIF",
+    "gleif_copy_available": "GLEIF copy installed",
+    "gleif_copy_recent": "GLEIF copy recent"
+  },
+  "categories": {
+    "file": "File",
+    "envelope": "XML envelope",
+    "archive": "ZIP archive",
+    "structure": "Package structure",
+    "indicators": "Tables and filing indicators",
+    "parameters": "Report parameters",
+    "tables": "Data files",
+    "data": "Data",
+    "cross_table": "Consistency between tables",
+    "data_quality": "Data quality",
+    "gleif": "GLEIF reference data"
+  },
+  "overview": {
+    "verdict_blocked": "The register cannot be filed as it is: {count} blocking finding(s).",
+    "verdict_corrections": "The register can be filed, but corrections are expected.",
+    "verdict_good": "The register is of good quality.",
+    "verdict_good_minor": "The register is of good quality; {count} minor point(s) remain to be reviewed.",
+    "score_none": "not evaluated",
+    "figures": "Regulatory score: {regulatory}; quality score: {quality}. {findings}",
+    "findings": "{total} finding(s): {blocker} blocking, {major} major, {minor} minor, {info} for information.",
+    "no_finding": "No finding.",
+    "tables": "The findings are concentrated on {list}.",
+    "table_count": "{table} ({count} finding(s))",
+    "profiles": "{official} finding(s) come from official rules, {expert} from expert advice.",
+    "note": "Overview produced automatically from the findings, without artificial intelligence. Internal indicators, without regulatory value.",
+    "gleif_unavailable": "The LEI were not checked against GLEIF: no GLEIF copy is installed.",
+    "gleif_ok": "GLEIF check (copy of {date}): the {checked} LEI checked are found, valid and consistent with the register.",
+    "gleif_issues": "GLEIF check (copy of {date}): {checked} LEI checked; {list}.",
+    "gleif_absent": "{count} not found",
+    "gleif_invalid": "{count} not valid",
+    "gleif_lapsed": "{count} not renewed",
+    "gleif_due": "{count} to be renewed before the EBA processing",
+    "gleif_mismatch": "{count} difference(s) of country, name or parent with GLEIF"
+  }
+}

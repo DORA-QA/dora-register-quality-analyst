@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# The jobs only read the repository: the token gets no write right (review of 30/10).
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    name: Backend (ruff, mypy, pytest)
+    runs-on: ubuntu-26.04
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+      - run: uv sync --frozen
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      # mypy, step 1 (decision A8 of the PO): contracts and the Sprint 4 modules, strict, blocking.
+      - run: uv run mypy
+      # Steps 2 and 3: the rest of the backend, report only; the number of errors goes down
+      # sprint after sprint (docs/typage.md).
+      - name: mypy report (rules, import, API), not blocking
+        run: uv run mypy rules import_engine api
+        continue-on-error: true
+      - run: uv run pytest
+
+  frontend:
+    name: Frontend (eslint, prettier, vitest, build)
+    runs-on: ubuntu-26.04
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm run test
+      - run: npm run build
+
+  docker:
+    name: Docker images build
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@v7
+      - run: docker compose build

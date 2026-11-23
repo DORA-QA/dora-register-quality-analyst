@@ -1,0 +1,800 @@
+{
+ "version": "2026-10-19",
+ "status": "PROVISIONAL",
+ "scope": "Formats des numéros de TVA et d'immatriculation (hors LEI et EUID) pour l'UE, l'Irlande du Nord, le Royaume-Uni et la Suisse. Branché sur DAT-017 / DAT-018 pour les pays dont tous les formats sont CONFIRMED (issue #41).",
+ "policy": "Hiérarchie des sources de docs/methode.md : CONFIRMED = format lu sur une source officielle (absolue ou fiable) ; A_VERIFIER = format connu de Claude, à confirmer avant tout contrôle bloquant.",
+ "sources": {
+  "euipo": {
+   "label": "EUIPO (europa.eu), « VAT numbers EU », tableau des formats de TVA",
+   "url": "https://euipo.europa.eu/tunnel-web/secure/webdav/guest/document_library/Documents/COSME/VAT%20numbers%20EU.pdf",
+   "level": "absolue"
+  },
+  "vero": {
+   "label": "Administration fiscale finlandaise (vero.fi), « VAT numbers issued by different EU countries », mise à jour du 17/01/2025",
+   "url": "https://www.vero.fi/en/businesses-and-corporations/taxes-and-charges/vat/international-commerce/vat-number/vat-numbers-issued-by-different-eu-countries/",
+   "level": "fiable"
+  },
+  "service_public": {
+   "label": "service-public.gouv.fr, numéro de TVA intracommunautaire (FR + clé 2 chiffres + SIREN)",
+   "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23570",
+   "level": "absolue"
+  },
+  "data_gouv": {
+   "label": "annuaire-entreprises.data.gouv.fr, SIREN et SIRET",
+   "url": "https://annuaire-entreprises.data.gouv.fr/definitions/numero-siret",
+   "level": "absolue"
+  },
+  "be_bce": {
+   "label": "SPF Économie (economie.fgov.be), « Les numéros d'entreprise passent au 1 » : 10 chiffres, 0 puis 1 depuis le 19/09/2023",
+   "url": "https://news.economie.fgov.be/228779-les-numeros-d-entreprise-passent-au-1/",
+   "level": "fiable"
+  },
+  "nl_kvk": {
+   "label": "KVK (kvk.nl), « KVK number: all you need to know » : 8 chiffres",
+   "url": "https://www.kvk.nl/en/about-the-business-register/kvk-number-all-you-need-to-know/",
+   "level": "fiable"
+  },
+  "at_fb": {
+   "label": "Justiz (justiz.gv.at), aide Firmenbuchnummer : jusqu'à 6 chiffres et une lettre (ex. 123456b)",
+   "url": "https://edikte.justiz.gv.at/edikte/ex/edparm3.nsf/h/IDHLf01!OpenDocument",
+   "level": "fiable"
+  },
+  "fi_ytj": {
+   "label": "YTJ (ytj.fi), Business ID : 7 chiffres, un tiret, un chiffre de contrôle",
+   "url": "https://www.ytj.fi/en/index/businessid.html",
+   "level": "fiable"
+  },
+  "es_boe": {
+   "label": "BOE, Orden EHA/451/2008, art. 2 : NIF des personnes morales sur 9 caractères",
+   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2008-3580",
+   "level": "fiable"
+  },
+  "it_ri": {
+   "label": "Registro Imprese (registroimprese.it) : codice fiscale = partita IVA pour les sociétés ; REA = sigle de province + numéro",
+   "url": "https://www.registroimprese.it/codice-fiscale-p.iva-rea",
+   "level": "fiable"
+  },
+  "pl_gus": {
+   "label": "GUS (stat.gov.pl) : REGON 9 chiffres (unité juridique) ou 14 (unité locale)",
+   "url": "https://stat.gov.pl/metainformacje/slownik-pojec/pojecia-stosowane-w-statystyce-publicznej/2963,pojecie.html",
+   "level": "fiable"
+  },
+  "ch_estv": {
+   "label": "AFC (estv.admin.ch), UID : CHE-123.456.789 ; numéro de TVA = UID + MWST, TVA ou IVA",
+   "url": "https://www.estv.admin.ch/de/unternehmens-identifikationsnummer-uid",
+   "level": "fiable"
+  },
+  "uk_hmrc": {
+   "label": "HMRC (gov.uk), COM40011 : préfixe de 2 lettres + jusqu'à 6 caractères, ou jusqu'à 8 chiffres",
+   "url": "https://www.gov.uk/hmrc-internal-manuals/cotax-manual/com40011",
+   "level": "fiable"
+  },
+  "ie_cro": {
+   "label": "CRO (opendata.cro.ie), dictionnaire de données : numéro de société numérique",
+   "url": "https://opendata.cro.ie/dataset/companies/resource/3fef41bc-b8f4-4b10-8434-ce51c29b1bba",
+   "level": "fiable"
+  }
+ },
+ "countries": {
+  "AT": {
+   "name": "Autriche",
+   "vat": {
+    "pattern": "^ATU\\d{8}$",
+    "description": "ATU + 8 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "Firmenbuchnummer",
+     "pattern": "^(FN ?)?\\d{1,6}[a-zA-Z]$",
+     "description": "jusqu'à 6 chiffres + 1 lettre (préfixe FN facultatif)",
+     "sources": [
+      "at_fb"
+     ],
+     "status": "CONFIRMED"
+    }
+   ]
+  },
+  "BE": {
+   "name": "Belgique",
+   "vat": {
+    "pattern": "^BE[01]\\d{9}$",
+    "description": "BE + 10 chiffres (commence par 0 ou 1)",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "Numéro d'entreprise BCE/KBO",
+     "pattern": "^[01]\\d{3}\\.?\\d{3}\\.?\\d{3}$",
+     "description": "10 chiffres, commence par 0 (anciens) ou 1 (depuis le 19/09/2023), points facultatifs",
+     "sources": [
+      "be_bce"
+     ],
+     "status": "CONFIRMED",
+     "note": "La TVA est BE + le numéro d'entreprise"
+    }
+   ]
+  },
+  "BG": {
+   "name": "Bulgarie",
+   "vat": {
+    "pattern": "^BG\\d{9,10}$",
+    "description": "BG + 9 ou 10 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "EIK (UIC)",
+     "pattern": "^\\d{9}(\\d{4})?$",
+     "description": "9 ou 13 chiffres",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle"
+    }
+   ]
+  },
+  "HR": {
+   "name": "Croatie",
+   "vat": {
+    "pattern": "^HR\\d{11}$",
+    "description": "HR + 11 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "OIB",
+     "pattern": "^\\d{11}$",
+     "description": "11 chiffres",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle"
+    }
+   ]
+  },
+  "CY": {
+   "name": "Chypre",
+   "vat": {
+    "pattern": "^CY\\d{8}[A-Z]$",
+    "description": "CY + 8 chiffres + 1 lettre",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "Numéro d'enregistrement",
+     "pattern": "^HE ?\\d{1,6}$",
+     "description": "HE + jusqu'à 6 chiffres (sociétés)",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle"
+    }
+   ]
+  },
+  "CZ": {
+   "name": "Tchéquie",
+   "vat": {
+    "pattern": "^CZ\\d{8,10}$",
+    "description": "CZ + 8 à 10 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "IČO",
+     "pattern": "^\\d{8}$",
+     "description": "8 chiffres",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle"
+    }
+   ]
+  },
+  "DK": {
+   "name": "Danemark",
+   "vat": {
+    "pattern": "^DK\\d{8}$",
+    "description": "DK + 8 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "CVR",
+     "pattern": "^\\d{8}$",
+     "description": "8 chiffres",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle ; la TVA est DK + CVR"
+    }
+   ]
+  },
+  "EE": {
+   "name": "Estonie",
+   "vat": {
+    "pattern": "^EE\\d{9}$",
+    "description": "EE + 9 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "Registrikood",
+     "pattern": "^\\d{8}$",
+     "description": "8 chiffres",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle"
+    }
+   ]
+  },
+  "FI": {
+   "name": "Finlande",
+   "vat": {
+    "pattern": "^FI\\d{8}$",
+    "description": "FI + 8 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "Y-tunnus (Business ID)",
+     "pattern": "^\\d{7}-\\d$",
+     "description": "7 chiffres, un tiret, 1 chiffre de contrôle",
+     "sources": [
+      "fi_ytj"
+     ],
+     "status": "CONFIRMED",
+     "note": "La TVA reprend les 8 chiffres sans tiret (à confirmer)"
+    }
+   ]
+  },
+  "FR": {
+   "name": "France",
+   "vat": {
+    "pattern": "^FR[0-9A-Z]{2}\\d{9}$",
+    "description": "FR + 2 caractères (clé) + SIREN",
+    "sources": [
+     "euipo",
+     "vero",
+     "service_public"
+    ],
+    "status": "CONFIRMED",
+    "note": "service-public.gouv.fr parle d'une clé de 2 chiffres ; les sources européennes admettent des lettres. DAT-018 n'accepte aujourd'hui que des chiffres"
+   },
+   "crn": [
+    {
+     "name": "SIREN",
+     "pattern": "^\\d{9}$",
+     "description": "9 chiffres",
+     "sources": [
+      "service_public",
+      "data_gouv"
+     ],
+     "status": "CONFIRMED"
+    },
+    {
+     "name": "SIRET",
+     "pattern": "^\\d{14}$",
+     "description": "14 chiffres (SIREN + NIC)",
+     "sources": [
+      "data_gouv"
+     ],
+     "status": "CONFIRMED"
+    }
+   ]
+  },
+  "DE": {
+   "name": "Allemagne",
+   "vat": {
+    "pattern": "^DE\\d{9}$",
+    "description": "DE + 9 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "Registernummer",
+     "pattern": "^(HRA|HRB|GnR|PR|VR) ?\\d{1,6} ?[A-Z]{0,2}$",
+     "description": "section du registre (HRA, HRB…) + numéro ; pas de numéro national unique, le tribunal du registre est nécessaire",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle ; sections HRA/HRB confirmées par handelsregister.de"
+    }
+   ]
+  },
+  "GR": {
+   "name": "Grèce",
+   "vat": {
+    "pattern": "^EL\\d{9}$",
+    "description": "EL (et non GR) + 9 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "Numéro GEMI",
+     "pattern": "^\\d{12}$",
+     "description": "12 chiffres",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle"
+    },
+    {
+     "name": "AFM (numéro fiscal)",
+     "pattern": "^\\d{9}$",
+     "description": "9 chiffres",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle"
+    }
+   ]
+  },
+  "HU": {
+   "name": "Hongrie",
+   "vat": {
+    "pattern": "^HU\\d{8}$",
+    "description": "HU + 8 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "Cégjegyzékszám",
+     "pattern": "^\\d{2}-?\\d{2}-?\\d{6}$",
+     "description": "10 chiffres (cour – forme – numéro)",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle"
+    }
+   ]
+  },
+  "IE": {
+   "name": "Irlande",
+   "vat": {
+    "pattern": "^IE(\\d{7}[A-Z]{1,2}|\\d[A-Z0-9+*]\\d{5}[A-Z])$",
+    "description": "IE + 8 ou 9 caractères",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "Numéro CRO",
+     "pattern": "^\\d{1,6}$",
+     "description": "numérique",
+     "sources": [
+      "ie_cro"
+     ],
+     "status": "CONFIRMED",
+     "note": "Longueur maximale non précisée par la source (6 chiffres supposés)"
+    }
+   ]
+  },
+  "IT": {
+   "name": "Italie",
+   "vat": {
+    "pattern": "^IT\\d{11}$",
+    "description": "IT + 11 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "Codice fiscale / Partita IVA",
+     "pattern": "^\\d{11}$",
+     "description": "11 chiffres (identiques pour les sociétés)",
+     "sources": [
+      "it_ri",
+      "euipo"
+     ],
+     "status": "CONFIRMED"
+    },
+    {
+     "name": "Numéro REA",
+     "pattern": "^[A-Z]{2}-? ?\\d{1,7}$",
+     "description": "sigle de province + numéro",
+     "sources": [
+      "it_ri"
+     ],
+     "status": "CONFIRMED",
+     "note": "Nombre de chiffres non précisé"
+    }
+   ]
+  },
+  "LV": {
+   "name": "Lettonie",
+   "vat": {
+    "pattern": "^LV\\d{11}$",
+    "description": "LV + 11 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "Numéro d'enregistrement",
+     "pattern": "^\\d{11}$",
+     "description": "11 chiffres",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle"
+    }
+   ]
+  },
+  "LT": {
+   "name": "Lituanie",
+   "vat": {
+    "pattern": "^LT(\\d{9}|\\d{12})$",
+    "description": "LT + 9 ou 12 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "Juridinio asmens kodas",
+     "pattern": "^\\d{9}$",
+     "description": "9 chiffres",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle"
+    }
+   ]
+  },
+  "LU": {
+   "name": "Luxembourg",
+   "vat": {
+    "pattern": "^LU\\d{8}$",
+    "description": "LU + 8 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "Numéro RCS",
+     "pattern": "^[A-L] ?\\d{1,6}$",
+     "description": "lettre de section (B pour les sociétés commerciales) + numéro",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle"
+    }
+   ]
+  },
+  "MT": {
+   "name": "Malte",
+   "vat": {
+    "pattern": "^MT\\d{8}$",
+    "description": "MT + 8 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "Numéro d'enregistrement",
+     "pattern": "^C ?\\d{1,6}$",
+     "description": "C + numéro",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle"
+    }
+   ]
+  },
+  "NL": {
+   "name": "Pays-Bas",
+   "vat": {
+    "pattern": "^NL\\d{9}B\\d{2}$",
+    "description": "NL + 9 chiffres + B + 2 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "KVK-nummer",
+     "pattern": "^\\d{8}$",
+     "description": "8 chiffres",
+     "sources": [
+      "nl_kvk"
+     ],
+     "status": "CONFIRMED"
+    }
+   ]
+  },
+  "PL": {
+   "name": "Pologne",
+   "vat": {
+    "pattern": "^PL\\d{10}$",
+    "description": "PL + 10 chiffres (NIP)",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "REGON",
+     "pattern": "^(\\d{9}|\\d{14})$",
+     "description": "9 chiffres (unité juridique) ou 14 (unité locale)",
+     "sources": [
+      "pl_gus"
+     ],
+     "status": "CONFIRMED"
+    },
+    {
+     "name": "KRS",
+     "pattern": "^\\d{10}$",
+     "description": "10 chiffres",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle"
+    },
+    {
+     "name": "NIP",
+     "pattern": "^\\d{10}$",
+     "description": "10 chiffres",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle ; la TVA est PL + NIP"
+    }
+   ]
+  },
+  "PT": {
+   "name": "Portugal",
+   "vat": {
+    "pattern": "^PT\\d{9}$",
+    "description": "PT + 9 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "NIPC",
+     "pattern": "^\\d{9}$",
+     "description": "9 chiffres",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle ; la TVA est PT + NIPC"
+    }
+   ]
+  },
+  "RO": {
+   "name": "Roumanie",
+   "vat": {
+    "pattern": "^RO\\d{2,10}$",
+    "description": "RO + 2 à 10 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "CUI",
+     "pattern": "^\\d{2,10}$",
+     "description": "2 à 10 chiffres",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle"
+    },
+    {
+     "name": "Numéro ONRC",
+     "pattern": "^J\\d{2}/\\d{1,6}/\\d{4}$|^J\\d{13}$",
+     "description": "ancien format J40/1234/2010, nouveau format J + 13 chiffres",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle"
+    }
+   ]
+  },
+  "SK": {
+   "name": "Slovaquie",
+   "vat": {
+    "pattern": "^SK\\d{10}$",
+    "description": "SK + 10 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "IČO",
+     "pattern": "^\\d{8}$",
+     "description": "8 chiffres",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle"
+    }
+   ]
+  },
+  "SI": {
+   "name": "Slovénie",
+   "vat": {
+    "pattern": "^SI\\d{8}$",
+    "description": "SI + 8 chiffres",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "Matična številka",
+     "pattern": "^\\d{7}(\\d{3})?$",
+     "description": "7 ou 10 chiffres",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle"
+    }
+   ]
+  },
+  "ES": {
+   "name": "Espagne",
+   "vat": {
+    "pattern": "^ES([A-Z]\\d{7}[A-Z0-9]|\\d{8}[A-Z])$",
+    "description": "ES + 9 caractères (première ou dernière position alphabétique)",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "NIF (personne morale)",
+     "pattern": "^[A-HJNP-SUVW]\\d{7}[0-9A-Z]$",
+     "description": "lettre de forme juridique + 7 chiffres + caractère de contrôle",
+     "sources": [
+      "es_boe"
+     ],
+     "status": "CONFIRMED"
+    }
+   ]
+  },
+  "SE": {
+   "name": "Suède",
+   "vat": {
+    "pattern": "^SE\\d{10}01$",
+    "description": "SE + 10 chiffres + 01",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "Organisationsnummer",
+     "pattern": "^\\d{6}-?\\d{4}$",
+     "description": "10 chiffres (NNNNNN-NNNN)",
+     "sources": [],
+     "status": "A_VERIFIER",
+     "note": "Format connu de Claude, non vérifié sur une source officielle ; la TVA est SE + numéro + 01"
+    }
+   ]
+  },
+  "XI": {
+   "name": "Irlande du Nord (TVA UE pour les biens)",
+   "vat": {
+    "pattern": "^XI(\\d{9}|\\d{12}|GD\\d{3}|HA\\d{3})$",
+    "description": "XI + 9 ou 12 chiffres (ou GD/HA + 3 chiffres)",
+    "sources": [
+     "vero"
+    ],
+    "status": "CONFIRMED",
+    "note": "Applicable aux échanges de biens avec l'UE du 01/01/2021 au 31/12/2028 selon vero.fi"
+   }
+  },
+  "GB": {
+   "name": "Royaume-Uni",
+   "vat": {
+    "pattern": "^GB(\\d{9}|\\d{12}|GD\\d{3}|HA\\d{3})$",
+    "description": "GB + 9 ou 12 chiffres (ou GD/HA + 3 chiffres)",
+    "sources": [
+     "euipo",
+     "vero"
+    ],
+    "status": "CONFIRMED",
+    "note": "Plus dans VIES depuis 2021 ; format national toujours utilisé"
+   },
+   "crn": [
+    {
+     "name": "Companies House number",
+     "pattern": "^([A-Z]{2}[A-Z0-9]{1,6}|\\d{1,8})$",
+     "description": "2 lettres + jusqu'à 6 caractères, ou jusqu'à 8 chiffres",
+     "sources": [
+      "uk_hmrc"
+     ],
+     "status": "CONFIRMED",
+     "note": "Le numéro est en pratique toujours affiché sur 8 caractères (zéros à gauche)"
+    }
+   ]
+  },
+  "CH": {
+   "name": "Suisse",
+   "vat": {
+    "pattern": "^CHE-?\\d{3}\\.?\\d{3}\\.?\\d{3} ?(MWST|TVA|IVA)$",
+    "description": "UID + MWST, TVA ou IVA (VAT n'est pas admis)",
+    "sources": [
+     "ch_estv"
+    ],
+    "status": "CONFIRMED"
+   },
+   "crn": [
+    {
+     "name": "UID",
+     "pattern": "^CHE-?\\d{3}\\.?\\d{3}\\.?\\d{3}$",
+     "description": "CHE + 9 chiffres (CHE-123.456.789)",
+     "sources": [
+      "ch_estv"
+     ],
+     "status": "CONFIRMED"
+    }
+   ]
+  }
+ }
+}

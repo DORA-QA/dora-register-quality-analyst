@@ -1,0 +1,81 @@
+{
+  "golden": "529900P784EKW7VFMQ21.CON_FR_DORA010100_DORA_2026-12-31_20261029182948489.zip",
+  "version": "2026-10-29",
+  "provided_by": "experts du projet (registre fictif), version du 29/10/2026",
+  "fictitious": true,
+  "issue": "#136",
+  "scenarios": [
+    {
+      "id": "G1",
+      "label": "Plusieurs entités du groupe",
+      "where": "B_01.02 : ETABLISSEMENT FINANCIER FICTIF, PRESTA INTRAGROUPE FICTIF, SECOND ETABLISSEMENT FINANCIER FILS, MAISON MERE ULTIME ET ABSOLUE"
+    },
+    {
+      "id": "G2",
+      "label": "Mère ultime du groupe distincte de l'entité qui tient le registre",
+      "where": "B_01.02 : 529900R81VAA8RCKLQ52 en x53 (se désigne elle-même) ; 529900P784EKW7VFMQ21 (B_01.01) en x551, mère directe 529900R81VAA8RCKLQ52 (registre sous-consolidé) ; second prestataire intragroupe PRESTA INTRAGROUPE FICTIF DE NIVEAU 0 (529900D18SWZVAN3CV11, x317) rattaché à la mère ultime (B_05.01.0110 = 529900R81VAA8RCKLQ52), contrat CONTRAT IG LEVEL 0"
+    },
+    {
+      "id": "G3",
+      "label": "Plusieurs bénéficiaires d'un même contrat",
+      "where": "CONTRAT CONSULTANT : B_04.01 et B_02.02 pour 529900P784EKW7VFMQ21 (F1) et 529900WFW9ZXG409UL36 (F2)"
+    },
+    {
+      "id": "G4",
+      "label": "Même prestataire pour plusieurs entités, sous des contrats distincts",
+      "where": "PSEUDO FOURNISSEUR A : CONTRAT DIRECT EF et CONTRAT EXPIRE (529900P784EKW7VFMQ21), CONTRAT PARTAGE (529900WFW9ZXG409UL36)"
+    },
+    {
+      "id": "G5",
+      "label": "Rang 3",
+      "where": "CONTRAT FILIALE SOUS TRAITE A / S19 : SOUS-SOUS-TRAITANT DE C (529900JULHLZDL9AS417), destinataire SOUS-TRAITANT DE C"
+    },
+    {
+      "id": "G6",
+      "label": "Chaîne ramifiée",
+      "where": "CONTRAT FILIALE SOUS TRAITE A / S19 : SOUS-TRAITANT DE C et SECOND SOUS-TRAITANT DE C au rang 2, destinataire FOURNISSEUR C"
+    },
+    {
+      "id": "G7",
+      "label": "Accord terminé",
+      "where": "CONTRAT EXPIRE : fin 2024-12-31, motif eba_CO:x4"
+    },
+    {
+      "id": "G8",
+      "label": "Personne physique",
+      "where": "Jean LE CONSULTANT (X4RTBPFW4, code national, eba_CT:x213), prestataire direct de CONTRAT CONSULTANT, qui soutient F1 et F2 (critiques)"
+    },
+    {
+      "id": "G9",
+      "label": "Prestataire hors UE identifié par LEI",
+      "where": "SOUS-TRAITANT DE C (US), SECOND SOUS-TRAITANT DE C (US), SOUS-SOUS-TRAITANT DE C (MX)"
+    }
+  ],
+  "expected_findings": {
+    "current_engine": [
+      {
+        "code": "REL-007",
+        "severity": "MINOR",
+        "occurrences": 2,
+        "where": "PSEUDO FOURNISSEUR B (SIREN, qx2003), FOURNISSEUR C (CRN, qx2003) : prestataires directs sans LEI ni EUID (ITS art. 3 §5), admis par décision du PO du 29/10"
+      },
+      {
+        "code": "DQ-006",
+        "severity": "INFO",
+        "occurrences": 1,
+        "where": "CONTRAT EXPIRE (fin 2024-12-31, motif eba_CO:x4) : accord terminé à la date de référence, scénario G7"
+      },
+      {
+        "code": "REL-017",
+        "severity": "MINOR",
+        "occurrences": 5,
+        "where": "B_07.01.0080 = Non (x29) sur les 4 lignes INTRA GROUPE et la ligne CONSULTANT, qui soutiennent les fonctions critiques F1 et F2 : absence de stratégie de sortie (conseil expert), admis par décision du PO du 29/10"
+      }
+    ],
+    "after_sprint_3": []
+  },
+  "notes": [
+    "Mère ultime du prestataire intragroupe 5299003U9L1RY87FL751 = entité qui tient le registre (tête du sous-groupe) : accepté par décision du PO du 29/10 (sous-consolidation).",
+    "B_03.03 aligné sur la lecture B de PO-36 (#146) : fournisseurs intragroupe (INTRA GROUPE et IG LEVEL 0 : prestataire intragroupe ; CADRE et SUBSEQUENT : 5299003U9L1RY87FL751 ; CONSULTANT : 529900WFW9ZXG409UL36, qui partage le contrat avec 529900P784EKW7VFMQ21) ; aucune ligne pour les accords signés pour usage propre."
+  ]
+}

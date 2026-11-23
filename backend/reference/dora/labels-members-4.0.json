@@ -1,0 +1,805 @@
+{
+ "source": "Règlement d'exécution (UE) 2024/2956, JO L du 2.12.2024, versions anglaise et française officielles : annexe I (instructions des colonnes à liste fermée) et annexe III (types de services TIC). Libellés recopiés tels quels ; quand une option est une phrase longue, seuls ses premiers mots sont repris (L20).",
+ "decided": "PO, 04/11/2026, #179",
+ "not_in_its": {
+  "eba_qCO:qx2001": "Code national : ajouté par la taxonomie EBA 4.0, absent de l'ITS (P4)",
+  "eba_ZZ:x0": "Not applicable : ajouté par la taxonomie EBA 4.0, absent de l'ITS"
+ },
+ "not_covered": "Pays (L01, L10), devises (L05) et activités autorisées (L16, annexe II) : libellés anglais de l'EBA en attendant une source officielle",
+ "members": [
+  {
+   "code": "eba_CT:x12",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 1,
+   "en": "credit institutions",
+   "fr": "les établissements de crédit"
+  },
+  {
+   "code": "eba_CT:x300",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 2,
+   "en": "payment institutions, including payment institutions exempted pursuant to Directive (EU) 2015/2366",
+   "fr": "les établissements de paiement, y compris les établissements de paiement exemptés en vertu de la directive (UE) 2015/2366"
+  },
+  {
+   "code": "eba_CT:x301",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 3,
+   "en": "account information service providers",
+   "fr": "les prestataires de services d’information sur les comptes"
+  },
+  {
+   "code": "eba_CT:x302",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 4,
+   "en": "electronic money institutions, including electronic money institutions exempted pursuant to Directive 2009/110/EC",
+   "fr": "les établissements de monnaie électronique, y compris les établissements de monnaie électronique exemptés en vertu de la directive 2009/110/CE"
+  },
+  {
+   "code": "eba_CT:x599",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 5,
+   "en": "investment firms",
+   "fr": "les entreprises d’investissement"
+  },
+  {
+   "code": "eba_CT:x303",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 6,
+   "en": "crypto-asset service providers authorised under Regulation (EU) 2023/1114",
+   "fr": "les prestataires de services sur crypto-actifs agréés en vertu du règlement (UE) 2023/1114"
+  },
+  {
+   "code": "eba_CT:x310",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 7,
+   "en": "issuers of asset-referenced tokens authorised under Regulation (EU) 2023/1114",
+   "fr": "les émetteurs de jetons se référant à un ou des actifs agréés en vertu du règlement (UE) 2023/1114"
+  },
+  {
+   "code": "eba_CT:x304",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 8,
+   "en": "central securities depositories",
+   "fr": "les dépositaires centraux de titres"
+  },
+  {
+   "code": "eba_CT:x643",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 9,
+   "en": "central counterparties",
+   "fr": "les contreparties centrales"
+  },
+  {
+   "code": "eba_CT:x305",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 10,
+   "en": "trading venues",
+   "fr": "les plates-formes de négociation"
+  },
+  {
+   "code": "eba_CT:x306",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 11,
+   "en": "trade repositories",
+   "fr": "les référentiels centraux"
+  },
+  {
+   "code": "eba_CT:x307",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 12,
+   "en": "managers of alternative investment funds",
+   "fr": "les gestionnaires de fonds d’investissement alternatifs"
+  },
+  {
+   "code": "eba_CT:x639",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 13,
+   "en": "management companies",
+   "fr": "les sociétés de gestion"
+  },
+  {
+   "code": "eba_CT:x308",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 14,
+   "en": "data reporting service providers",
+   "fr": "les prestataires de services de communication de données"
+  },
+  {
+   "code": "eba_CT:x309",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 15,
+   "en": "insurance and reinsurance undertakings",
+   "fr": "les entreprises d’assurance et de réassurance"
+  },
+  {
+   "code": "eba_CT:x320",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 16,
+   "en": "insurance intermediaries, reinsurance intermediaries and ancillary insurance intermediaries",
+   "fr": "les intermédiaires d’assurance, les intermédiaires de réassurance et les intermédiaires d’assurance à titre accessoire"
+  },
+  {
+   "code": "eba_CT:x311",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 17,
+   "en": "institutions for occupational retirement provision",
+   "fr": "les institutions de retraite professionnelle"
+  },
+  {
+   "code": "eba_CT:x312",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 18,
+   "en": "credit rating agencies",
+   "fr": "les agences de notation de crédit"
+  },
+  {
+   "code": "eba_CT:x313",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 19,
+   "en": "administrators of critical benchmarks",
+   "fr": "les administrateurs d’indices de référence d’importance critique"
+  },
+  {
+   "code": "eba_CT:x314",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 20,
+   "en": "crowdfunding service providers",
+   "fr": "les prestataires de services de financement participatif"
+  },
+  {
+   "code": "eba_CT:x315",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 21,
+   "en": "securitisation repositories",
+   "fr": "les référentiels des titrisations"
+  },
+  {
+   "code": "eba_CT:x316",
+   "lists": "L02/L03",
+   "its": "B_01.02.0040",
+   "option": 22,
+   "en": "other financial entity",
+   "fr": "une autre entité financière"
+  },
+  {
+   "code": "eba_CT:x317",
+   "lists": "L03",
+   "its": "B_01.02.0040",
+   "option": 23,
+   "en": "non-financial entity: ICT intra-group service provider",
+   "fr": "une entité non financière: un prestataire de services TIC intra-groupe"
+  },
+  {
+   "code": "eba_CT:x318",
+   "lists": "L03",
+   "its": "B_01.02.0040",
+   "option": 24,
+   "en": "non-financial entity: other",
+   "fr": "une entité non financière: autre"
+  },
+  {
+   "code": "eba_RP:x53",
+   "lists": "L04",
+   "its": "B_01.02.0050",
+   "option": 1,
+   "en": "The financial entity is the ultimate parent undertaking in the consolidation",
+   "fr": "l’entité financière est l’entreprise mère ultime dans la consolidation"
+  },
+  {
+   "code": "eba_RP:x551",
+   "lists": "L04",
+   "its": "B_01.02.0050",
+   "option": 2,
+   "en": "The financial entity is the parent undertaking of a sub-consolidated part in the consolidation",
+   "fr": "l’entité financière est l’entreprise mère d’une partie sous-consolidée de la consolidation"
+  },
+  {
+   "code": "eba_RP:x56",
+   "lists": "L04",
+   "its": "B_01.02.0050",
+   "option": 3,
+   "en": "The financial entity is a subsidiary in the consolidation and is not a parent undertaking of a sub-consolidated part",
+   "fr": "l’entité financière est une filiale dans la consolidation et n’est pas une entreprise mère d’une partie sous-consolidée"
+  },
+  {
+   "code": "eba_RP:x21",
+   "lists": "L04",
+   "its": "B_01.02.0050",
+   "option": 4,
+   "en": "The financial entity is not part of a group",
+   "fr": "l’entité financière ne fait pas partie d’un groupe"
+  },
+  {
+   "code": "eba_RP:x210",
+   "lists": "L04",
+   "its": "B_01.02.0050",
+   "option": 5,
+   "en": "The financial entity is a service provider to which the financial entity (or the third-party service provider acting on its behalf) is outsourcing all its operational activities",
+   "fr": "l’entité financière est un prestataire de services auquel l’entité financière (ou le prestataire tiers de services agissant pour son compte) sous-traite toutes ses activités opérationnelles"
+  },
+  {
+   "code": "eba_CO:x1",
+   "lists": "L06",
+   "its": "B_02.01.0020",
+   "option": 1,
+   "en": "standalone arrangement",
+   "fr": "accord autonome"
+  },
+  {
+   "code": "eba_CO:x2",
+   "lists": "L06",
+   "its": "B_02.01.0020",
+   "option": 2,
+   "en": "overarching / master contractual arrangement",
+   "fr": "accord contractuel général/directeur"
+  },
+  {
+   "code": "eba_CO:x3",
+   "lists": "L06",
+   "its": "B_02.01.0020",
+   "option": 3,
+   "en": "subsequent or associated arrangement",
+   "fr": "accord ultérieur ou associé"
+  },
+  {
+   "code": "eba_qCO:qx2000",
+   "lists": "L07",
+   "its": "B_05.01.0040",
+   "option": 1,
+   "en": "LEI",
+   "fr": "LEI"
+  },
+  {
+   "code": "eba_qCO:qx2002",
+   "lists": "L07",
+   "its": "B_05.01.0040",
+   "option": 2,
+   "en": "EUID",
+   "fr": "EUID"
+  },
+  {
+   "code": "eba_qCO:qx2003",
+   "lists": "L07",
+   "its": "B_05.01.0040",
+   "option": 3,
+   "en": "Corporate registration number",
+   "fr": "numéro d’enregistrement de société"
+  },
+  {
+   "code": "eba_qCO:qx2004",
+   "lists": "L07",
+   "its": "B_05.01.0040",
+   "option": 4,
+   "en": "VAT number",
+   "fr": "numéro de TVA"
+  },
+  {
+   "code": "eba_qCO:qx2005",
+   "lists": "L07",
+   "its": "B_05.01.0040",
+   "option": 5,
+   "en": "Passport Number",
+   "fr": "numéro de passeport"
+  },
+  {
+   "code": "eba_TA:S01",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 1,
+   "en": "ICT project management",
+   "fr": "Gestion des projets de TIC",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_TA:S02",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 2,
+   "en": "ICT Development",
+   "fr": "Développement des TIC",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_TA:S03",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 3,
+   "en": "ICT help desk and first level support",
+   "fr": "Service d’assistance informatique (helpdesk) et d’assistance de premier niveau",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_TA:S04",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 4,
+   "en": "ICT security management services",
+   "fr": "Services de gestion de la sécurité des TIC",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_TA:S05",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 5,
+   "en": "Provision of data",
+   "fr": "Fourniture de données",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_TA:S06",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 6,
+   "en": "Data analysis",
+   "fr": "Analyse de données",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_TA:S07",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 7,
+   "en": "ICT, facilities and hosting services (excluding Cloud services)",
+   "fr": "TIC, installations et services d’hébergement (à l’exclusion des services en nuage)",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_TA:S08",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 8,
+   "en": "Computation",
+   "fr": "Calcul",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_TA:S09",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 9,
+   "en": "Non-Cloud Data storage",
+   "fr": "Stockage non-nuage de données",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_TA:S10",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 10,
+   "en": "Telecom carrier",
+   "fr": "Opérateurs de télécommunications",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_TA:S11",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 11,
+   "en": "Network infrastructure",
+   "fr": "Infrastructure de réseau",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_TA:S12",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 12,
+   "en": "Hardware and physical devices",
+   "fr": "Matériel et dispositifs physiques",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_TA:S13",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 13,
+   "en": "Software licencing (excluding SaaS)",
+   "fr": "Licences logicielles (à l’exclusion des logiciels à la demande)",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_TA:S14",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 14,
+   "en": "ICT operation management (including maintenance)",
+   "fr": "Gestion de l’exploitation des TIC (y compris la maintenance)",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_TA:S15",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 15,
+   "en": "ICT Consulting",
+   "fr": "Conseil en matière de TIC",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_TA:S16",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 16,
+   "en": "ICT Risk management",
+   "fr": "Gestion du risque lié aux TIC",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_TA:S17",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 17,
+   "en": "Cloud services: IaaS",
+   "fr": "Services en nuage: IaaS",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_TA:S18",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 18,
+   "en": "Cloud services: PaaS",
+   "fr": "Services en nuage: PaaS",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_TA:S19",
+   "lists": "L08",
+   "its": "Annex III",
+   "option": 19,
+   "en": "Cloud services: SaaS",
+   "fr": "Services en nuage: Logiciel à la demande",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_CO:x4",
+   "lists": "L09",
+   "its": "B_02.02.0090",
+   "option": 1,
+   "en": "Termination not for cause: The contractual arrangement has expired/ended and has not been renewed by any of the parties",
+   "fr": "Résiliation sans motif: L’accord contractuel a expiré/a pris fin et n’a été renouvelé par aucune des parties"
+  },
+  {
+   "code": "eba_CO:x5",
+   "lists": "L09",
+   "its": "B_02.02.0090",
+   "option": 2,
+   "en": "Termination for cause: The contractual arrangement has been terminated, the ICT third-party service provider being in a breach of applicable law, regulations or contractual provisions",
+   "fr": "Résiliation motivée: L’accord contractuel a été résilié, le prestataire tiers de services TIC ayant enfreint des lois, des réglementations ou des dispositions contractuelles applicables"
+  },
+  {
+   "code": "eba_CO:x6",
+   "lists": "L09",
+   "its": "B_02.02.0090",
+   "option": 3,
+   "en": "Termination for cause: The contractual arrangement has been terminated, due to the fact that impediments of the ICT third-party service provider capable of altering the supported function have been identified",
+   "fr": "Résiliation motivée: L’accord contractuel a été résilié, car des défauts du prestataire tiers de services TIC capables de nuire à la fonction soutenue ont été identifiés"
+  },
+  {
+   "code": "eba_CO:x7",
+   "lists": "L09",
+   "its": "B_02.02.0090",
+   "option": 4,
+   "en": "Termination for cause: The contractual arrangement has been terminated due to weaknesses of the ICT third-party service provider regarding the management and security of sensitive data or information of any of the counterparties",
+   "fr": "Résiliation motivée: L’accord contractuel a été résilié en raison de faiblesses du prestataire tiers de services TIC en ce qui concerne la gestion et la sécurité de données ou informations sensibles de l’une des contreparties"
+  },
+  {
+   "code": "eba_CO:x8",
+   "lists": "L09",
+   "its": "B_02.02.0090",
+   "option": 5,
+   "en": "Termination following a request by a competent authority",
+   "fr": "Résiliation à la suite d’une demande émanant d’une autorité compétente"
+  },
+  {
+   "code": "eba_CO:x9",
+   "lists": "L09",
+   "its": "B_02.02.0090",
+   "option": 6,
+   "en": "Other",
+   "fr": "Autre"
+  },
+  {
+   "code": "eba_BT:x28",
+   "lists": "L11/L17",
+   "its": "B_02.02.0140",
+   "option": 1,
+   "en": "Yes",
+   "fr": "Oui"
+  },
+  {
+   "code": "eba_BT:x29",
+   "lists": "L11/L17",
+   "its": "B_02.02.0140",
+   "option": 2,
+   "en": "No",
+   "fr": "Non"
+  },
+  {
+   "code": "eba_BT:x21",
+   "lists": "L17",
+   "its": "B_06.01.0060",
+   "option": 3,
+   "en": "Assessment not performed",
+   "fr": "Évaluation non réalisée"
+  },
+  {
+   "code": "eba_ZZ:x791",
+   "lists": "L12/L18",
+   "its": "B_02.02.0170",
+   "option": 1,
+   "en": "Low",
+   "fr": "Faible"
+  },
+  {
+   "code": "eba_ZZ:x792",
+   "lists": "L12/L18",
+   "its": "B_02.02.0170",
+   "option": 2,
+   "en": "Medium",
+   "fr": "Moyen"
+  },
+  {
+   "code": "eba_ZZ:x793",
+   "lists": "L12/L18",
+   "its": "B_02.02.0170",
+   "option": 3,
+   "en": "High",
+   "fr": "Élevé"
+  },
+  {
+   "code": "eba_ZZ:x799",
+   "lists": "L18",
+   "its": "B_06.01.0110",
+   "option": 4,
+   "en": "Assessment not performed",
+   "fr": "Évaluation non réalisée"
+  },
+  {
+   "code": "eba_ZZ:x794",
+   "lists": "L13",
+   "its": "B_02.02.0180",
+   "option": 1,
+   "en": "Not significant",
+   "fr": "Insignifiant"
+  },
+  {
+   "code": "eba_ZZ:x795",
+   "lists": "L13",
+   "its": "B_02.02.0180",
+   "option": 2,
+   "en": "Low reliance",
+   "fr": "Faible dépendance"
+  },
+  {
+   "code": "eba_ZZ:x796",
+   "lists": "L13",
+   "its": "B_02.02.0180",
+   "option": 3,
+   "en": "Material reliance",
+   "fr": "Dépendance significative"
+  },
+  {
+   "code": "eba_ZZ:x797",
+   "lists": "L13",
+   "its": "B_02.02.0180",
+   "option": 4,
+   "en": "Full reliance",
+   "fr": "Dépendance totale"
+  },
+  {
+   "code": "eba_ZZ:x838",
+   "lists": "L14",
+   "its": "B_04.01.0030",
+   "option": 1,
+   "en": "The financial entity making use of the ICT service(s) is a branch of a financial entity",
+   "fr": "L’entité financière ayant recours aux services TIC est une succursale d’une entité financière"
+  },
+  {
+   "code": "eba_ZZ:x839",
+   "lists": "L14",
+   "its": "B_04.01.0030",
+   "option": 2,
+   "en": "The financial entity making use of the ICT service(s) is not a branch",
+   "fr": "L’entité financière ayant recours aux services TIC n’est pas une succursale"
+  },
+  {
+   "code": "eba_CT:x212",
+   "lists": "L15",
+   "its": "B_05.01.0070",
+   "option": 1,
+   "en": "Legal person, excluding individuals acting in business capacity",
+   "fr": "Personne morale, à l’exclusion des personnes physiques agissant à titre professionnel",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_CT:x213",
+   "lists": "L15",
+   "its": "B_05.01.0070",
+   "option": 2,
+   "en": "Individual acting in a business capacity",
+   "fr": "Personne physique agissant à titre professionnel"
+  },
+  {
+   "code": "eba_ZZ:x959",
+   "lists": "L19",
+   "its": "B_07.01.0050",
+   "option": 1,
+   "en": "Not substitutable",
+   "fr": "Non substituable"
+  },
+  {
+   "code": "eba_ZZ:x960",
+   "lists": "L19",
+   "its": "B_07.01.0050",
+   "option": 2,
+   "en": "Highly complex substitutability",
+   "fr": "Substituabilité très complexe"
+  },
+  {
+   "code": "eba_ZZ:x961",
+   "lists": "L19",
+   "its": "B_07.01.0050",
+   "option": 3,
+   "en": "Medium complexity in terms of substitutability",
+   "fr": "Substituabilité moyennement complexe"
+  },
+  {
+   "code": "eba_ZZ:x962",
+   "lists": "L19",
+   "its": "B_07.01.0050",
+   "option": 4,
+   "en": "Easily substitutable",
+   "fr": "Facilement substituable"
+  },
+  {
+   "code": "eba_ZZ:x963",
+   "lists": "L20",
+   "its": "B_07.01.0060",
+   "option": 1,
+   "en": "The lack of real alternatives, even partial",
+   "fr": "L’absence de réelles solutions de substitution, même partielles",
+   "checked_by_hand": true
+  },
+  {
+   "code": "eba_ZZ:x964",
+   "lists": "L20",
+   "its": "B_07.01.0060",
+   "option": 2,
+   "en": "Difficulties in relation to a partial or full migration of the relevant data and workloads",
+   "fr": "Des difficultés liées à la migration partielle ou totale des données et des charges de travail pertinentes"
+  },
+  {
+   "code": "eba_ZZ:x965",
+   "lists": "L20",
+   "its": "B_07.01.0060",
+   "option": 3,
+   "en": "Both reasons referred to in points 1 and 2",
+   "fr": "Les deux raisons visées aux points 1 et 2"
+  },
+  {
+   "code": "eba_ZZ:x798",
+   "lists": "L21",
+   "its": "B_07.01.0090",
+   "option": 1,
+   "en": "Easy",
+   "fr": "Facile"
+  },
+  {
+   "code": "eba_ZZ:x966",
+   "lists": "L21",
+   "its": "B_07.01.0090",
+   "option": 2,
+   "en": "Difficult",
+   "fr": "Difficile"
+  },
+  {
+   "code": "eba_ZZ:x967",
+   "lists": "L21",
+   "its": "B_07.01.0090",
+   "option": 3,
+   "en": "Highly complex",
+   "fr": "Très complexe"
+  }
+ ],
+ "tables": [
+  {
+   "code": "B_01.01",
+   "en": "Financial entity maintaining the register of information",
+   "fr": "Entité financière tenant le registre d’informations"
+  },
+  {
+   "code": "B_01.02",
+   "en": "List of financial entities within the scope of the register of information",
+   "fr": "Liste des entités financières relevant du périmètre du registre d’informations"
+  },
+  {
+   "code": "B_01.03",
+   "en": "List of branches",
+   "fr": "Liste des succursales"
+  },
+  {
+   "code": "B_02.01",
+   "en": "Contractual arrangements – General information",
+   "fr": "Accords contractuels — Informations générales"
+  },
+  {
+   "code": "B_02.02",
+   "en": "Contractual arrangements – Specific information",
+   "fr": "Accords contractuels — Informations spécifiques"
+  },
+  {
+   "code": "B_02.03",
+   "en": "List of intra-group contractual arrangements",
+   "fr": "Liste des accords contractuels intra-groupe"
+  },
+  {
+   "code": "B_03.01",
+   "en": "Entities signing the contractual arrangements for receiving ICT service(s) on behalf of the financial entities making use of the ICT service(s)",
+   "fr": "Entités signant les accords contractuels pour la réception d’un ou de plusieurs services TIC pour le compte des entités financières ayant recours aux services TIC"
+  },
+  {
+   "code": "B_03.02",
+   "en": "ICT third-party service providers signing the contractual arrangements for providing ICT service(s)",
+   "fr": "Prestataires tiers de services TIC signant les accords contractuels pour la fourniture de services TIC"
+  },
+  {
+   "code": "B_03.03",
+   "en": "Financial entities signing the contractual arrangements for providing ICT service(s) to other financial entities in the consolidation",
+   "fr": "Entités financières signant les accords contractuels pour la fourniture de services TIC à d’autres entités financières dans le cadre de la consolidation"
+  },
+  {
+   "code": "B_04.01",
+   "en": "Financial entities making use of the ICT services",
+   "fr": "Entités financières ayant recours aux services TIC"
+  },
+  {
+   "code": "B_05.01",
+   "en": "ICT third-party service provider",
+   "fr": "Prestataire tiers de services TIC"
+  },
+  {
+   "code": "B_05.02",
+   "en": "ICT service supply chains",
+   "fr": "Chaînes d’approvisionnement de services TIC"
+  },
+  {
+   "code": "B_06.01",
+   "en": "Functions identification",
+   "fr": "Identification des fonctions"
+  },
+  {
+   "code": "B_07.01",
+   "en": "Assessment of the ICT services",
+   "fr": "Évaluation des services TIC"
+  },
+  {
+   "code": "B_99.01",
+   "en": "Terminology used by financial entities using the ICT services",
+   "fr": "Terminologie utilisée par les entités financières ayant recours aux services TIC"
+  }
+ ]
+}
