@@ -1,0 +1,130 @@
+# Daily GLEIF copy of DORA QA (online version).
+#
+# To be placed in .github/workflows/ of the PUBLIC data repository stephanealpha/dora-qa-gleif-data
+# (scheduled workflows only run from the default branch of the repository that holds them).
+#
+# Every night: reads the latest GLEIF Golden Copy, rebuilds the Parquet files with the tools of
+# DORA QA (backend/tools/build_gleif.py, read from the public code repository) and publishes them
+# as a release "gleif-AAAAMMJJ-HHMM" of the data repository. The online version of DORA QA
+# downloads the latest release at start-up, without any token.
+#
+# - Nothing is published when the Golden Copy has not changed since the last release.
+# - A copy that looks incomplete (too few rows) is never published: the previous one stays.
+# - Only the last KEEP releases are kept (older releases and their tags are deleted).
+name: GLEIF copy
+
+on:
+  schedule:
+    # GitHub reads the schedule in UTC only. 02:30 UTC = 03:30 in Paris in winter, 04:30 in summer.
+    # The GLEIF makes the Golden Copy of 00:00 UTC available at 02:00 UTC.
+    - cron: "30 2 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Rebuild and publish even if this Golden Copy is already published"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gleif-copy
+  cancel-in-progress: false
+
+env:
+  CODE_REPO: stephanealpha/dora-register-quality-analyst
+  CODE_REF: main
+  KEEP: "3"
+  MIN_LEI_ROWS: "3000000"
+  MIN_RR_ROWS: "300000"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: code/backend
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          repository: ${{ env.CODE_REPO }}
+          ref: ${{ env.CODE_REF }}
+          path: code
+
+      - name: Latest GLEIF Golden Copy
+        id: latest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          curl -fsSL --retry 3 https://goldencopy.gleif.org/api/v2/golden-copies/publishes/latest -o latest.json
+          published="$(jq -r '.data.publish_date' latest.json)"          # 2026-11-08 00:00:00
+          lei_url="$(jq -r '.data.lei2.full_file.xml.url' latest.json)"
+          rr_url="$(jq -r '.data.rr.full_file.xml.url' latest.json)"
+          if [[ "$published" == null || "$lei_url" == null || "$rr_url" == null ]]; then
+            echo "::error::Unexpected answer of the GLEIF API"; jq 'paths | map(tostring) | join(".")' latest.json | head -40
+            exit 1
+          fi
+          content_date="${published/ /T}Z"                              # 2026-11-08T00:00:00Z
+          tag="gleif-$(date -u -d "$content_date" +%Y%m%d-%H%M)"
+          echo "Golden Copy published $content_date -> $tag"
+          skip=false
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1 && [[ "${{ inputs.force }}" != true ]]; then
+            echo "::notice::$tag already published, nothing to do"
+            skip=true
+          fi
+          {
+            echo "content_date=$content_date"; echo "tag=$tag"; echo "skip=$skip"
+            echo "lei_url=$lei_url"; echo "rr_url=$rr_url"
+          } >> "$GITHUB_OUTPUT"
+
+      - uses: astral-sh/setup-uv@v7
+        if: steps.latest.outputs.skip == 'false'
+
+      - name: Build the Parquet files
+        if: steps.latest.outputs.skip == 'false'
+        run: |
+          uv sync --frozen
+          curl -fsSL --retry 3 "${{ steps.latest.outputs.lei_url }}" -o lei2.xml.zip
+          curl -fsSL --retry 3 "${{ steps.latest.outputs.rr_url }}" -o rr.xml.zip
+          uv run python -m tools.build_gleif --lei lei2.xml.zip --rr rr.xml.zip --out gleif-release \
+            --content-date "${{ steps.latest.outputs.content_date }}" \
+            --source "GLEIF Golden Copy du ${{ steps.latest.outputs.content_date }} (LEI-CDF, RR-CDF), CC0"
+
+      - name: Check the copy before publishing
+        if: steps.latest.outputs.skip == 'false'
+        run: |
+          python3 - <<'PY'
+          import json, os, sys
+          files = json.load(open("gleif-release/manifest.json"))["files"]
+          lei, rr = files["lei.parquet"]["rows"], files["rr.parquet"]["rows"]
+          print(f"LEI: {lei:,}  relationships: {rr:,}")
+          if lei < int(os.environ["MIN_LEI_ROWS"]) or rr < int(os.environ["MIN_RR_ROWS"]):
+              sys.exit("::error::The copy looks incomplete: not published, the previous one stays")
+          PY
+
+      - name: Publish the release
+        if: steps.latest.outputs.skip == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ROI_GLEIF_REPO: ${{ github.repository }}
+          ROI_GLEIF_TARGET: ${{ github.sha }}
+        run: |
+          if [[ "${{ inputs.force }}" == true ]]; then
+            gh release delete "${{ steps.latest.outputs.tag }}" --repo "$GITHUB_REPOSITORY" --yes --cleanup-tag 2>/dev/null || true
+          fi
+          tools/publish_gleif_release.sh gleif-release
+
+      - name: Keep the last releases only
+        if: steps.latest.outputs.skip == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/releases?per_page=100" --paginate \
+            --jq '.[] | select(.tag_name | startswith("gleif-")) | .tag_name' \
+            | sort -r | tail -n +"$((KEEP + 1))" \
+            | while read -r old; do
+                echo "Deleting $old"
+                gh release delete "$old" --repo "$GITHUB_REPOSITORY" --yes --cleanup-tag
+              done

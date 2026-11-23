@@ -55,7 +55,14 @@ def _table_of(message: MessageModel) -> str | None:
     return None
 
 
-def _gleif(coverage: GleifCoverage | None, language: str) -> str | None:
+def gleif_offline_notice(language: str) -> str:
+    """Sentence of the offline version: the GLEIF checks are not available (decision A9)."""
+    return _text("gleif_offline", language)
+
+
+def _gleif(coverage: GleifCoverage | None, language: str, offline: bool = False) -> str | None:
+    if offline:
+        return _text("gleif_offline", language)
     if coverage is None:
         return None
     if not coverage.available:
@@ -81,6 +88,7 @@ def build_overview(
     scores: ScoresModel | None,
     language: str,
     gleif: GleifCoverage | None = None,
+    gleif_offline: bool = False,
 ) -> OverviewModel:
     if counts.blocker:
         verdict, headline = "BLOCKED", _text("verdict_blocked", language, count=counts.blocker)
@@ -164,7 +172,7 @@ def build_overview(
         headline=headline,
         figures=figures,
         tables=tables,
-        gleif=_gleif(gleif, language),
+        gleif=_gleif(gleif, language, gleif_offline),
         priorities=priorities,
         profiles=profiles,
         note=_text("note", language),

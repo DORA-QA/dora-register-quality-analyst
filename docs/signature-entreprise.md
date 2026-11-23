@@ -15,7 +15,7 @@ uv run --project backend --with pyinstaller python portable/build.py            
 uv run --project backend --with pyinstaller python portable/build.py --online     # version en ligne
 ```
 
-Les ZIP sont produits dans `dist-portable/`. Comparez si besoin leur contenu à celui de la Release.
+Les ZIP sont produits dans `dist-portable/`, le dossier de l'application dans `dist-portable/app/DORA-QA/`. Comparez si besoin leur contenu à celui de la Release.
 
 ## 2. Signer sous Windows (Authenticode)
 
@@ -23,8 +23,8 @@ Avec le certificat de signature de code de votre entreprise (magasin de certific
 
 ```powershell
 signtool sign /fd SHA256 /tr http://timestamp.digicert.com /td SHA256 /a `
-  dist-portable\DORA-QA\DORA-QA.exe
-signtool verify /pa dist-portable\DORA-QA\DORA-QA.exe
+  dist-portable\app\DORA-QA\DORA-QA.exe
+signtool verify /pa dist-portable\app\DORA-QA\DORA-QA.exe
 ```
 
 Rezippez ensuite le dossier, ou emballez-le dans un MSI (WiX, Inno Setup) pour un déploiement par Intune ou SCCM.
@@ -35,8 +35,8 @@ Avec un certificat « Developer ID Application » de votre entreprise :
 
 ```bash
 codesign --deep --force --options runtime --timestamp \
-  --sign "Developer ID Application: Votre Entreprise (TEAMID)" dist-portable/DORA-QA/DORA-QA
-ditto -c -k --keepParent dist-portable/DORA-QA DORA-QA.zip
+  --sign "Developer ID Application: Votre Entreprise (TEAMID)" dist-portable/app/DORA-QA/DORA-QA
+ditto -c -k --keepParent dist-portable/app/DORA-QA DORA-QA.zip
 xcrun notarytool submit DORA-QA.zip --keychain-profile "notary" --wait
 ```
 

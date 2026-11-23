@@ -15,7 +15,7 @@ import polars as pl
 import pytest
 
 from api.config import get_settings
-from contracts.check_report import load_registry
+from contracts.check_report import load_checks, load_registry
 from contracts.dataset import PackageMetadata, RoIDataset
 from contracts.gleif import GleifState
 from contracts.messages import load_catalog, render_message
@@ -509,3 +509,62 @@ def test_build_script_writes_a_copy_the_store_and_the_updater_accept(tmp_path) -
     assert ParquetGleifStore(root).parents({LEI_CHILD}, "IS_DIRECTLY_CONSOLIDATED_BY") == {
         LEI_CHILD: LEI_PARENT
     }
+
+
+# ------------------------------------------------------------------ editions (A9)
+
+
+def _checks_and_overview(client, valid_zip) -> tuple[list[dict], dict]:
+    with open(valid_zip, "rb") as handle:
+        body = client.post(
+            "/api/import", files={"file": ("p.zip", handle, "application/zip")}
+        ).json()
+    return body["checks"], body["overview"]
+
+
+def test_offline_version_leaves_the_gleif_checks_out_and_says_so(client, valid_zip) -> None:
+    checks, overview = _checks_and_overview(client, valid_zip)
+    assert not [c for c in checks if c["category"] == "gleif"]
+    assert overview["gleif"].startswith("GLEIF checks are not available in this offline version")
+
+
+def test_online_version_runs_and_scores_the_gleif_checks(gleif_settings, valid_zip) -> None:
+    from fastapi.testclient import TestClient
+
+    from api.main import app
+    from tests.factories import CLIENT_HEADERS
+
+    install_copy(gleif_settings)
+    write_status(gleif_settings, GleifState.READY)
+    with TestClient(app, headers=CLIENT_HEADERS) as client:
+        checks, overview = _checks_and_overview(client, valid_zip)
+    assert len([c for c in checks if c["category"] == "gleif"]) == len(
+        [c for c in load_checks() if c.category == "gleif"]
+    )
+    assert "offline" not in overview["gleif"]
+
+
+# ------------------------------------------------------------------ strict offline rule (PO-38)
+
+
+def test_heartbeat_keeps_the_api_closed_while_the_updater_waits(tmp_path, monkeypatch) -> None:
+    monkeypatch.setattr(updater, "HEARTBEAT_SECONDS", 0.05)
+    with updater.Heartbeat(tmp_path):
+        time.sleep(0.3)  # a blocked read: nothing else writes the status
+        assert read_status(tmp_path, heartbeat_timeout=0.2).state is GleifState.UPDATING
+    write_status(tmp_path, GleifState.UNAVAILABLE)
+    assert read_status(tmp_path).state is GleifState.UNAVAILABLE
+
+
+def test_an_update_that_lasts_too_long_gives_up(tmp_path, monkeypatch) -> None:
+    monkeypatch.setattr(updater, "MAX_SECONDS", -1)
+    progress = updater._Progress(tmp_path, 10)
+    with pytest.raises(updater.UpdateError, match="too_long"):
+        progress.add(1)
+
+
+def test_network_timeouts_stay_under_the_heartbeat_timeout() -> None:
+    from gleif.status import HEARTBEAT_TIMEOUT_SECONDS
+
+    assert updater.TIMEOUT_SECONDS * 2 < HEARTBEAT_TIMEOUT_SECONDS
+    assert "roi-quality-engine" not in updater.DEFAULT_REPO

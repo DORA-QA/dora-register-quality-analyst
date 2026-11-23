@@ -57,6 +57,8 @@ export const fr: Dictionary = {
     status: 'GLEIF :',
     copy: 'copie du {date}',
     unavailable: 'aucune copie installée, les contrôles GLEIF ne seront pas réalisés',
+    offline:
+      'contrôles non disponibles dans cette version hors ligne (existence, statut, pays et mère ultime des LEI non vérifiés auprès du GLEIF)',
     splashTitle: 'Mise à jour en ligne en cours',
     splashBody: "L'outil met à jour en ligne sa copie de la base GLEIF.",
     splashNoImport: "Il ne peut pas accepter de registre pour l'instant.",

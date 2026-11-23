@@ -17,7 +17,7 @@ from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
 
-from api.config import APP_VERSION, Settings
+from api.config import APP_VERSION, Settings, get_settings
 from api.services.results_store import ResultsStore
 from contracts import data_model, identifiers, tables
 from contracts.api_models import (
@@ -87,6 +87,10 @@ from scoring import (
     scores,
     summarize,
 )
+
+# Categories of the checks that need the GLEIF copy: left out of the offline version.
+GLEIF_CATEGORIES = ("gleif",)
+
 
 logger = logging.getLogger("roi.import")
 
@@ -352,7 +356,14 @@ def build_response(outcome: ImportOutcome, language: str = DEFAULT_LANGUAGE) -> 
     )
     ordered = ordered_messages(outcome)
     metadata = outcome.metadata
-    results = evaluate_checks(messages, outcome.steps, metadata.source_type, outcome.blind_codes)
+    offline = not get_settings().gleif_enabled
+    results = evaluate_checks(
+        messages,
+        outcome.steps,
+        metadata.source_type,
+        outcome.blind_codes,
+        excluded_categories=GLEIF_CATEGORIES if offline else (),
+    )
     summary = summarize(results)
     computed = scores(results, outcome.blind_codes)
     categories = list(dict.fromkeys(r.definition.category for r in results))
@@ -453,7 +464,12 @@ def build_response(outcome: ImportOutcome, language: str = DEFAULT_LANGUAGE) -> 
         ),
     )
     response.overview = build_overview(
-        response.messages, counts, response.scores, language, gleif=outcome.gleif
+        response.messages,
+        counts,
+        response.scores,
+        language,
+        gleif=outcome.gleif,
+        gleif_offline=offline,
     )
     return response
 

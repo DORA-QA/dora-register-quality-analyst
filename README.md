@@ -24,10 +24,10 @@ Choisissez la version hors ligne si votre DSI interdit toute connexion sortante.
 
 ## Installation
 
-Téléchargez le ZIP de votre système dans les [Releases](../../releases), vérifiez son empreinte SHA-256 (publiée avec la release), décompressez-le, puis lancez :
+Téléchargez dans les [Releases](../../releases) le ZIP de votre système et de la version choisie (`DORA-QA-hors-ligne-…` ou `DORA-QA-en-ligne-…`), vérifiez son empreinte SHA-256 (fichier `SHA256SUMS.txt` de la release), décompressez-le, puis lancez :
 
 - **Windows** : `DORA-QA.exe`. Le programme n'est pas signé : SmartScreen peut afficher « Windows a protégé votre ordinateur » ; cliquez sur *Informations complémentaires*, puis *Exécuter quand même*.
-- **macOS** (Apple Silicon) : `DORA-QA`. L'application n'est pas notarisée : au premier lancement, macOS la bloque. Ouvrez *Réglages Système > Confidentialité et sécurité*, puis cliquez sur *Ouvrir quand même* en face de DORA QA.
+- **macOS** (Apple Silicon) : `Lancer-DORA-QA.command`. L'application n'est pas notarisée : au premier lancement, macOS la bloque. Ouvrez *Réglages Système > Confidentialité et sécurité*, puis cliquez sur *Ouvrir quand même* en face de DORA QA.
 
 Le navigateur s'ouvre sur l'interface. Fermez la fenêtre du terminal pour arrêter l'application.
 
@@ -53,7 +53,7 @@ cd backend && uv sync --frozen
 uv run python ../portable/launcher.py
 ```
 
-Construction des ZIP : `uv run --project backend --with pyinstaller python portable/build.py`. Une pile Docker (`docker compose up --build`) reste disponible pour un déploiement isolé sur serveur.
+Construction des ZIP : `uv run --project backend --with pyinstaller python portable/build.py` (version hors ligne) ou `… build.py --online` (version en ligne). Sans ZIP, choisissez la version avec `DORA_QA_EDITION=online`. Une pile Docker (`docker compose up --build`) reste disponible pour un déploiement isolé sur serveur.
 
 Documentation technique : [architecture](docs/architecture.md), [scores](docs/scores.md), [GLEIF](docs/gleif.md), [listes fermées](docs/listes-fermees.md), [identifiants nationaux](docs/referentiel-identifiants-nationaux.md).
 
@@ -73,6 +73,6 @@ Code publié sous **[EUPL 1.2](LICENSE)** (European Union Public Licence). Le te
 
 - **Private by design**: the register never leaves the computer; nothing is kept after the analysis.
 - **Two versions**: *offline* (no connection ever, no GLEIF checks) and *online* (downloads a public copy of the GLEIF data at start-up only, before any register is accepted).
-- **Install**: download the ZIP from the [Releases](../../releases), check its SHA-256, unzip and run `DORA-QA.exe` (Windows) or `DORA-QA` (macOS). The binaries are not signed: allow them once in SmartScreen or in *System Settings > Privacy & Security*.
+- **Install**: download the ZIP from the [Releases](../../releases), check its SHA-256, unzip and run `DORA-QA.exe` (Windows) or `Lancer-DORA-QA.command` (macOS). The binaries are not signed: allow them once in SmartScreen or in *System Settings > Privacy & Security*.
 - **Disclaimer**: DORA QA is free software provided "as is", without warranty. Its findings are indicative and are neither legal or regulatory advice nor an enforceable certificate of compliance. The reporting entity remains solely responsible for its register.
 - **Licence**: [EUPL 1.2](LICENSE). Never attach a real register to an issue.

@@ -3,12 +3,17 @@
 
 Run from the repository root, on the target system (Windows, macOS or Linux):
 
-    uv run --project backend --with pyinstaller python portable/build.py
+    uv run --project backend --with pyinstaller python portable/build.py            # offline
+    uv run --project backend --with pyinstaller python portable/build.py --online   # online
+
+The offline version carries no network code (the GLEIF updater is left out of the bundle); the
+online version downloads the public GLEIF copy at start-up (see launcher.py).
 
 Steps: build the interface (same-origin API), freeze the backend and the launcher with
 PyInstaller (one folder), add the user guide, then zip everything into dist-portable/.
 """
 
+import argparse
 import platform
 import shutil
 import subprocess
@@ -49,9 +54,15 @@ def build_frontend() -> Path:
     return dist
 
 
-def freeze(dist: Path) -> Path:
+EDITION_LABELS = {"offline": "hors-ligne", "online": "en-ligne"}
+
+
+def freeze(dist: Path, edition: str) -> Path:
     work = OUT / "build"
     shutil.rmtree(work, ignore_errors=True)
+    work.mkdir(parents=True)
+    # Read by the launcher at start-up: the version is fixed by the build.
+    (work / "edition.txt").write_text(edition, encoding="utf-8")
     cmd = [
         sys.executable,
         "-m",
@@ -77,11 +88,14 @@ def freeze(dist: Path) -> Path:
         f"{BACKEND / 'api' / 'static'}{SEP}api/static",
         "--add-data",
         f"{dist}{SEP}frontend",
+        "--add-data",
+        f"{work / 'edition.txt'}{SEP}.",
     ]
     for package in (
         "api",
         "contracts",
         "dataset",
+        "gleif",
         "import_engine",
         "indicators",
         "reports",
@@ -92,11 +106,14 @@ def freeze(dist: Path) -> Path:
         cmd += ["--collect-submodules", package]
     for package in ("polars", "duckdb", "lxml"):
         cmd += ["--collect-all", package]
+    if edition == "offline":
+        # No network code in the offline version: the only module that goes online stays out.
+        cmd += ["--exclude-module", "gleif.updater"]
     run(cmd, REPO)
     return OUT / "app" / NAME
 
 
-def package(app: Path) -> Path:
+def package(app: Path, edition: str) -> Path:
     shutil.copy(REPO / "portable" / "LISEZ-MOI.txt", app / "LISEZ-MOI.txt")
     shutil.copy(REPO / "LICENSE", app / "LICENSE.txt")
     shutil.copy(REPO / "NOTICE", app / "NOTICE.txt")
@@ -113,7 +130,8 @@ def package(app: Path) -> Path:
         starter.chmod(0o755)
 
     system = {"win32": "windows", "darwin": "macos"}.get(sys.platform, "linux")
-    archive = OUT / f"{NAME}-{version()}-{system}-{platform.machine().lower()}.zip"
+    label = EDITION_LABELS[edition]
+    archive = OUT / f"{NAME}-{label}-{version()}-{system}-{platform.machine().lower()}.zip"
     archive.unlink(missing_ok=True)
     with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as zf:
         for path in sorted(app.rglob("*")):
@@ -128,8 +146,11 @@ def package(app: Path) -> Path:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--online", action="store_true", help="online version (GLEIF copy)")
+    edition = "online" if parser.parse_args().online else "offline"
     shutil.rmtree(OUT / "app", ignore_errors=True)
-    archive = package(freeze(build_frontend()))
+    archive = package(freeze(build_frontend(), edition), edition)
     size = archive.stat().st_size / 1_000_000
     print(f"\nZIP portable : {archive} ({size:.0f} Mo)")
 

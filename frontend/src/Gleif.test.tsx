@@ -2,7 +2,7 @@
 import { screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
-import { HEALTH, json, renderApp } from './test/app';
+import { FAILED_IMPORT, HEALTH, json, mockApi, renderApp } from './test/app';
 
 const MB = 1024 * 1024;
 
@@ -48,5 +48,13 @@ describe('GLEIF copy (branch gleif-local)', () => {
       await screen.findByText(/no copy installed, the GLEIF checks will not be performed/),
     ).toBeInTheDocument();
     expect(screen.getByLabelText('Register file')).toBeInTheDocument();
+  });
+});
+
+describe('Offline version', () => {
+  it('says on the home screen that the GLEIF checks are not available', async () => {
+    mockApi(async () => json(FAILED_IMPORT));
+    renderApp();
+    expect(await screen.findByText(/checks not available in this offline version/)).toBeVisible();
   });
 });

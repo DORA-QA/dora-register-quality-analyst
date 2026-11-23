@@ -1213,6 +1213,7 @@
     "table_count": "{table} ({count} finding(s))",
     "profiles": "{official} finding(s) come from official rules, {expert} from expert advice.",
     "note": "Overview produced automatically from the findings, without artificial intelligence. Internal indicators, without regulatory value.",
+    "gleif_offline": "GLEIF checks are not available in this offline version: the existence, status, country and ultimate parent of the LEI are not checked against the GLEIF.",
     "gleif_unavailable": "The LEI were not checked against GLEIF: no GLEIF copy is installed.",
     "gleif_ok": "GLEIF check (copy of {date}): the {checked} LEI checked are found, valid and consistent with the register.",
     "gleif_issues": "GLEIF check (copy of {date}): {checked} LEI checked; {list}.",

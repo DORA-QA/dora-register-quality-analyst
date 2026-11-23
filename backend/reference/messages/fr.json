@@ -1213,6 +1213,7 @@
     "table_count": "{table} ({count} constat(s))",
     "profiles": "{official} constat(s) relèvent des règles officielles, {expert} des conseils de l'expert.",
     "note": "Synthèse produite automatiquement à partir des constats, sans intelligence artificielle. Indicateurs internes, sans valeur réglementaire.",
+    "gleif_offline": "Contrôles GLEIF non disponibles dans cette version hors ligne : l'existence, le statut, le pays et la mère ultime des LEI ne sont pas vérifiés auprès du GLEIF.",
     "gleif_unavailable": "Les LEI n'ont pas été vérifiés auprès du GLEIF : aucune copie du GLEIF n'est installée.",
     "gleif_ok": "Vérification GLEIF (copie du {date}) : les {checked} LEI vérifiés sont présents, valides et cohérents avec le registre.",
     "gleif_issues": "Vérification GLEIF (copie du {date}) : {checked} LEI vérifiés ; {list}.",
