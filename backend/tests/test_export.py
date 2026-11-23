@@ -5,20 +5,24 @@ import csv
 import io
 import json
 
-from reports.export import FIELDS, csv_stream, neutralise
+from contracts.disclaimer import DISCLAIMER
+from reports.export import FIELDS, csv_stream, jsonl_stream, neutralise
 from tests.test_import_api import post
 from tests.test_results_and_occurrences import big, many_rows_package  # noqa: F401
 
 
 def read_csv(body: bytes) -> list[dict[str, str]]:
+    """The finding lines, without the disclaimer that closes the file."""
     text = body.decode("utf-8")
     assert text.startswith("﻿")
-    return list(csv.DictReader(io.StringIO(text[1:]), delimiter=";"))
+    content, _, closing = text[1:].partition("\r\n\r\n")
+    assert next(csv.reader(io.StringIO(closing), delimiter=";"))[0] in DISCLAIMER.values()
+    return list(csv.DictReader(io.StringIO(content + "\r\n"), delimiter=";"))
 
 
 def test_there_are_22_fields_with_english_headers() -> None:
     assert len(FIELDS) == 22
-    header = "".join(csv_stream([])).lstrip("﻿").strip()
+    header = "".join(csv_stream([])).lstrip("﻿").splitlines()[0]
     assert header.split(";") == list(FIELDS)
 
 
@@ -37,7 +41,7 @@ def test_csv_has_one_line_per_occurrence_beyond_the_25_of_the_answer(big) -> Non
     assert answer.headers["content-type"].startswith("text/csv")
     assert answer.headers["cache-control"] == "no-store"
     disposition = answer.headers["content-disposition"]
-    assert f"roi-findings-{body['import_id']}-" in disposition and disposition.endswith('.csv"')
+    assert f"dora-qa-findings-{body['import_id']}-" in disposition and disposition.endswith('.csv"')
     lines = read_csv(answer.content)
     expected = sum(max(m["occurrences_total"], 1) for m in body["messages"])
     assert len(lines) == expected
@@ -71,6 +75,7 @@ def test_the_filters_of_the_screen_apply(big) -> None:  # noqa: F811
     row = finding["occurrences"][0]["row"]
     only = client.get(url, params={"findings": str(finding["index"]), "row": row})
     lines = [json.loads(line) for line in only.text.splitlines()]
+    assert lines.pop() == {"record_type": "disclaimer", "text": DISCLAIMER["en"]}
     assert lines and all(line["finding_index"] == finding["index"] for line in lines)
     assert all(line["source_row"] == row for line in lines)
     assert set(lines[0]) == set(FIELDS)
@@ -82,3 +87,12 @@ def test_unknown_import_or_bad_filter(client, big) -> None:  # noqa: F811
     bad = client.get(f"/api/import/{body['import_id']}/export.csv", params={"findings": "a"})
     assert bad.status_code == 400
     assert client.get(f"/api/import/{body['import_id']}/export.xlsx").status_code == 422
+
+
+def test_every_export_ends_with_the_disclaimer_in_the_language_asked() -> None:
+    rows = list(
+        csv.reader(io.StringIO("".join(csv_stream([], "fr")).lstrip("\ufeff")), delimiter=";")
+    )
+    assert rows[-2:] == [[], [DISCLAIMER["fr"]]]
+    last = json.loads("".join(jsonl_stream([], "fr")).splitlines()[-1])
+    assert last == {"record_type": "disclaimer", "text": DISCLAIMER["fr"]}

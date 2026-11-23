@@ -34,9 +34,11 @@ export const fr: Dictionary = {
     close: 'Fermer',
   },
   language: { label: 'Langue' },
-  demo: {
-    title: 'VERSION DE DÉMONSTRATION – NE PAS UTILISER EN PRODUCTION',
-    body: 'Cette version sert uniquement à la démonstration. Ne déposez aucun registre réel ni aucune donnée confidentielle, et ne vous fiez pas à ses résultats pour une remise.',
+  disclaimer: {
+    title: 'Avertissement',
+    body: "DORA QA est un outil gratuit fourni « en l'état », sans garantie. Ses constats et conseils sont indicatifs : ils reposent sur la lecture des textes réglementaires et sur l'expérience des experts du projet, mais ne remplacent pas un avis juridique ou réglementaire et ne constituent pas une attestation de conformité opposable. Un registre sans constat peut encore être rejeté par l'autorité compétente. L'entité déclarante reste seule responsable du contenu et de la remise de son registre d'information. Le développeur décline toute responsabilité quant à l'usage des résultats.",
+    accept: "J'ai lu et j'accepte cet avertissement",
+    continue: 'Continuer',
   },
   backend: {
     status: 'État du backend\u00a0:',

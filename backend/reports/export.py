@@ -10,7 +10,9 @@ Brief of the Sprint 4, §15 and §16; note of 02/11/2026, §2.6:
 - CSV for spreadsheets: UTF-8 with a byte order mark, semicolons; a cell that starts with
   ``=``, ``+``, ``-``, ``@``, a tab or a carriage return is prefixed with ``'`` so that a
   spreadsheet does not run it as a formula;
-- texts in the language asked; values from the register included unless the user excludes them.
+- texts in the language asked; values from the register included unless the user excludes them;
+- the disclaimer of DORA QA closes every export: after an empty line, as a one-cell line in the
+  CSV; as a last object ``{"record_type": "disclaimer", "text": ...}`` in JSON Lines.
 """
 
 import csv
@@ -19,6 +21,7 @@ import json
 from collections.abc import Callable, Iterable, Iterator
 
 from contracts.check_report import category_of_code, check_of_code, origin_of_code
+from contracts.disclaimer import disclaimer
 from contracts.messages import Occurrence, ValidationMessage, render_message
 
 FIELDS = (
@@ -131,7 +134,7 @@ def neutralise(value: str | int | None) -> str:
     return f"'{text}" if text.startswith(FORMULA_STARTS) else text
 
 
-def csv_stream(lines: Iterable[Row]) -> Iterator[str]:
+def csv_stream(lines: Iterable[Row], language: str = "en") -> Iterator[str]:
     buffer = io.StringIO()
     writer = csv.writer(buffer, delimiter=";", lineterminator="\r\n")
 
@@ -146,8 +149,13 @@ def csv_stream(lines: Iterable[Row]) -> Iterator[str]:
     for line in lines:
         writer.writerow([neutralise(line[name]) for name in FIELDS])
         yield flush()
+    writer.writerow([])
+    writer.writerow([disclaimer(language)])
+    yield flush()
 
 
-def jsonl_stream(lines: Iterable[Row]) -> Iterator[str]:
+def jsonl_stream(lines: Iterable[Row], language: str = "en") -> Iterator[str]:
     for line in lines:
         yield json.dumps({name: line[name] for name in FIELDS}, ensure_ascii=False) + "\n"
+    closing = {"record_type": "disclaimer", "text": disclaimer(language)}
+    yield json.dumps(closing, ensure_ascii=False) + "\n"

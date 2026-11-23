@@ -1,0 +1,132 @@
+name: Release
+
+# Portable ZIPs of DORA QA for Windows and macOS (Apple Silicon), plus the "sources" variant for
+# workstations that block unsigned programs.
+# - pull request touching the build: Windows only, to check that it still builds and starts;
+# - manual run: every ZIP, downloadable from the run page (Artifacts) for 14 days;
+# - tag vX.Y.Z: every ZIP, SHA-256 sums and SBOM published as a GitHub release.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "portable/**"
+      - "backend/api/**"
+      - "backend/pyproject.toml"
+      - "backend/uv.lock"
+      - "frontend/package-lock.json"
+      - ".github/workflows/release.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: ZIP ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ${{ github.event_name == 'pull_request' && fromJSON('["windows-latest"]') || fromJSON('["windows-latest", "macos-latest"]') }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - run: uv python install 3.13
+      - run: uv sync --frozen --no-dev --project backend
+      - run: uv run --project backend --with pyinstaller python portable/build.py
+      - name: Smoke test (launch, health, import)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/zip"
+          unzip -q dist-portable/DORA-QA-*.zip -d "$RUNNER_TEMP/zip"
+          exe="$RUNNER_TEMP/zip/DORA-QA/DORA-QA"
+          [ -f "$exe.exe" ] && exe="$exe.exe"
+          DORA_QA_NO_BROWSER=1 "$exe" > "$RUNNER_TEMP/app.log" 2>&1 &
+          for i in $(seq 1 90); do
+            curl -sf http://127.0.0.1:8765/health > /dev/null && break || sleep 1
+          done
+          curl -sf http://127.0.0.1:8765/health
+          status=$(curl -s -H "X-ROI-Client: ci" -F "file=@sample-data/package-with-defects.sample.zip" \
+            http://127.0.0.1:8765/api/import | python -c "import json,sys; print(json.load(sys.stdin)['status'])")
+          test "$status" = "FAILED"
+          curl -sf http://127.0.0.1:8765/ | grep -q "<title>DORA QA</title>"
+      - uses: actions/upload-artifact@v7
+        with:
+          name: dora-qa-${{ matrix.os }}
+          path: dist-portable/*.zip
+          retention-days: 14
+
+  sources:
+    # Variant for workstations that block unsigned programs: sources + offline wheels,
+    # run from VS Code with the official Python 3.13. Smoke-tested like a user would.
+    name: ZIP sources windows (VS Code)
+    if: github.event_name != 'pull_request'
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - uses: astral-sh/setup-uv@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - run: uv run --project backend --python 3.13 --with pip python portable/build_sources.py
+      - name: Smoke test (offline install, launch, health, import)
+        shell: pwsh
+        run: |
+          $zip = Get-ChildItem dist-portable/DORA-QA-sources-*.zip | Select-Object -First 1
+          Expand-Archive $zip.FullName -DestinationPath $env:RUNNER_TEMP/dora
+          Set-Location $env:RUNNER_TEMP/dora/DORA-QA-sources
+          py -3.13 -m venv .venv
+          .venv\Scripts\python.exe -m pip install --no-index --find-links wheels -r requirements.txt --disable-pip-version-check
+          $env:DORA_QA_NO_BROWSER = "1"
+          $p = Start-Process .venv\Scripts\python.exe -ArgumentList portable/launcher.py -PassThru
+          $ok = $false
+          foreach ($i in 1..60) {
+            try { Invoke-RestMethod http://127.0.0.1:8765/health | Out-Null; $ok = $true; break } catch { Start-Sleep 1 }
+          }
+          if (-not $ok) { throw "health check failed" }
+          $r = curl.exe -s -H "X-ROI-Client: ci" -F "file=@exemples/package-with-defects.sample.zip" http://127.0.0.1:8765/api/import | ConvertFrom-Json
+          if ($r.status -ne "FAILED") { throw "unexpected status $($r.status)" }
+          Stop-Process $p.Id
+      - uses: actions/upload-artifact@v7
+        with:
+          name: dora-qa-sources-windows
+          path: dist-portable/DORA-QA-sources-*.zip
+          retention-days: 14
+
+  publish:
+    name: GitHub release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [build, sources]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v5
+        with:
+          path: release
+          merge-multiple: true
+      - name: SBOM (SPDX) of the sources and their locked dependencies
+        uses: anchore/sbom-action@v0
+        with:
+          path: .
+          format: spdx-json
+          output-file: release/dora-qa-${{ github.ref_name }}.spdx.json
+          upload-artifact: false
+      - name: SHA-256 sums
+        working-directory: release
+        run: sha256sum * > SHA256SUMS.txt && cat SHA256SUMS.txt
+      - uses: softprops/action-gh-release@v2
+        with:
+          draft: true
+          generate_release_notes: true
+          files: release/*

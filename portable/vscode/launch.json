@@ -1,10 +1,10 @@
 {
   // Optional: F5 needs the Microsoft Python extension. Without it, use the tasks
-  // (Terminal > Run Task... > "2 - Lancer la démo").
+  // (Terminal > Run Task... > "2 - Lancer DORA QA").
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Lancer la démo ROI (DEMO, not for production)",
+      "name": "Lancer DORA QA",
       "type": "debugpy",
       "request": "launch",
       "program": "${workspaceFolder}/portable/launcher.py",

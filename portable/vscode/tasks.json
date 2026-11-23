@@ -1,11 +1,11 @@
 {
-  // ROI Quality Engine - DEMO VERSION, NOT FOR PRODUCTION USE.
+  // DORA QA - DORA Register Quality Analyst (variante VS Code).
   // Menu Terminal > Run Task... (Terminal > Exécuter la tâche...).
   // "process" tasks: no shell needed (works even if PowerShell scripts or cmd are restricted).
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "1 - Installer la démo (une seule fois)",
+      "label": "1 - Installer DORA QA (une seule fois)",
       "dependsOrder": "sequence",
       "dependsOn": ["Créer l'environnement Python", "Installer les bibliothèques (hors ligne)"],
       "problemMatcher": []
@@ -39,7 +39,7 @@
       "problemMatcher": []
     },
     {
-      "label": "2 - Lancer la démo",
+      "label": "2 - Lancer DORA QA",
       "type": "process",
       "command": "${workspaceFolder}/.venv/bin/python",
       "windows": { "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe" },

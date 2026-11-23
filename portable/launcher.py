@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: EUPL-1.2
-"""Launcher of the portable demo build of ROI Quality Engine.
+"""Launcher of the portable build of DORA QA.
 
 Starts the API on 127.0.0.1 only, serving the interface itself (api/portable.py), opens the
 default browser and runs until the window is closed or Ctrl+C is pressed. Nothing is written
@@ -22,9 +22,9 @@ from pathlib import Path
 PREFERRED_PORT = 8765
 BANNER = r"""
 ============================================================================
-  ROI Quality Engine - VERSION DE DEMONSTRATION / DEMO VERSION
-  NE PAS UTILISER EN PRODUCTION - NOT FOR PRODUCTION USE
-  Aucune donnee reelle ou confidentielle. No real or confidential data.
+  DORA QA - DORA Register Quality Analyst
+  Analyse locale : le registre ne quitte pas ce poste. Local analysis only.
+  Outil fourni "en l'etat", sans garantie / provided "as is", no warranty.
 ============================================================================
 """
 
@@ -64,7 +64,9 @@ def open_browser_when_ready(url: str) -> None:
             time.sleep(0.5)
     print(f"\n  Interface : {url}")
     print("  (Fermez cette fenetre pour arreter / close this window to stop)\n")
-    webbrowser.open(url)
+    # DORA_QA_NO_BROWSER=1: automated checks of the build (CI), nobody to look at the page.
+    if not os.environ.get("DORA_QA_NO_BROWSER"):
+        webbrowser.open(url)
 
 
 def main() -> None:
@@ -90,7 +92,7 @@ def main() -> None:
     url = f"http://127.0.0.1:{port}"
     print("  Demarrage... / Starting...")
     threading.Thread(target=open_browser_when_ready, args=(url,), daemon=True).start()
-    # 127.0.0.1 only: the demo is never reachable from the network.
+    # 127.0.0.1 only: the tool is never reachable from the network.
     uvicorn.run(app, host="127.0.0.1", port=port, log_level="warning")
 
 

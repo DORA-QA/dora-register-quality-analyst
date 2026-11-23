@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: EUPL-1.2
-"""Build the portable demo ZIP of ROI Quality Engine for the current system.
+"""Build the portable ZIP of DORA QA for the current system.
 
 Run from the repository root, on the target system (Windows, macOS or Linux):
 
@@ -20,7 +20,7 @@ REPO = Path(__file__).resolve().parent.parent
 BACKEND = REPO / "backend"
 FRONTEND = REPO / "frontend"
 OUT = REPO / "dist-portable"
-NAME = "ROI-Quality-Engine-DEMO"
+NAME = "DORA-QA"
 SEP = ";" if sys.platform == "win32" else ":"
 
 
@@ -97,7 +97,9 @@ def freeze(dist: Path) -> Path:
 
 
 def package(app: Path) -> Path:
-    shutil.copy(REPO / "portable" / "LISEZ-MOI-DEMO.txt", app / "LISEZ-MOI-DEMO.txt")
+    shutil.copy(REPO / "portable" / "LISEZ-MOI.txt", app / "LISEZ-MOI.txt")
+    shutil.copy(REPO / "LICENSE", app / "LICENSE.txt")
+    shutil.copy(REPO / "NOTICE", app / "NOTICE.txt")
     samples = app / "exemples"
     samples.mkdir(exist_ok=True)
     # Fictitious files only (sample-data/README.md): the golden keeps its official name.
@@ -106,7 +108,7 @@ def package(app: Path) -> Path:
     for sample in wanted:
         shutil.copy(sample, samples / sample.name)
     if sys.platform != "win32":
-        starter = app / "Lancer-la-demo.command"
+        starter = app / "Lancer-DORA-QA.command"
         starter.write_text(f'#!/bin/sh\ncd "$(dirname "$0")"\n./{NAME}\n', encoding="utf-8")
         starter.chmod(0o755)
 
@@ -129,7 +131,7 @@ def main() -> None:
     shutil.rmtree(OUT / "app", ignore_errors=True)
     archive = package(freeze(build_frontend()))
     size = archive.stat().st_size / 1_000_000
-    print(f"\nZIP portable de demonstration : {archive} ({size:.0f} Mo)")
+    print(f"\nZIP portable : {archive} ({size:.0f} Mo)")
 
 
 if __name__ == "__main__":

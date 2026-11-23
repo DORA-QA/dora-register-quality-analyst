@@ -1,13 +1,12 @@
-ROI QUALITY ENGINE - VERSION DE DÉMONSTRATION (variante VS Code)
-================================================================
-
-/!\ NE PAS UTILISER EN PRODUCTION.
-/!\ NE DÉPOSER AUCUN REGISTRE RÉEL NI AUCUNE DONNÉE CONFIDENTIELLE.
-    Utiliser uniquement les fichiers fictifs du dossier « exemples ».
+DORA QA - DORA REGISTER QUALITY ANALYST (variante VS Code)
+=========================================================
 
 Cette variante sert quand le poste bloque les programmes non signés : elle
 utilise le Python officiel (signé) et VS Code. Aucun accès Internet n'est
 nécessaire : les bibliothèques sont fournies dans le dossier « wheels ».
+
+AVERTISSEMENT : outil gratuit fourni « en l'état », sans garantie. Les constats
+et conseils sont indicatifs. Texte complet affiché au lancement.
 
 PRÉREQUIS
 ---------
@@ -17,28 +16,22 @@ PRÉREQUIS
 
 INSTALLER (une seule fois, 1 à 2 minutes)
 ---------
-1. Décompresser le ZIP en entier dans un dossier court (ex. C:\Demo).
-2. VS Code : Fichier > Ouvrir le dossier... > ROI-Quality-Engine-DEMO-sources.
+1. Décompresser le ZIP en entier dans un dossier court (ex. C:\DORA-QA).
+2. VS Code : Fichier > Ouvrir le dossier... > DORA-QA-sources.
    Si VS Code demande « Faites-vous confiance aux auteurs ? » : Oui.
-3. Terminal > Exécuter la tâche... > « 1 - Installer la démo (une seule fois) ».
+3. Terminal > Exécuter la tâche... > « 1 - Installer DORA QA (une seule fois) ».
    Si « py » est introuvable : lancer « Créer l'environnement Python (variante
    sans py) », puis « Installer les bibliothèques (hors ligne) ».
 
 LANCER
 ------
-4. Terminal > Exécuter la tâche... > « 2 - Lancer la démo ».
+4. Terminal > Exécuter la tâche... > « 2 - Lancer DORA QA ».
    (Ou F5 si l'extension Python de Microsoft est installée.)
 5. Le navigateur s'ouvre sur http://127.0.0.1:8765 (adresse aussi écrite
-   dans le terminal). Vérifier le bandeau rouge et « Backend status : OK ».
-
-UTILISER
---------
-« Choose a file » : choisir un fichier du dossier « exemples ».
-EN | FR en haut à droite. Cliquer sur un constat pour le détail.
+   dans le terminal). Accepter l'avertissement, puis choisir un fichier.
 
 ARRÊTER
 -------
 Dans le terminal de la tâche : Ctrl+C, ou l'icône corbeille du terminal.
-Après la démo, supprimer le dossier.
 
-L'outil n'écoute que sur 127.0.0.1 et n'appelle aucun service externe.
+L'outil n'écoute que sur 127.0.0.1. Licence : EUPL 1.2.

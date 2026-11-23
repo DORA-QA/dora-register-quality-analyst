@@ -4,14 +4,16 @@ import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import { useState } from 'react';
 
 import type { ImportFailure } from './api/imports';
 import { AboutDialog } from './components/AboutDialog';
 import { BackendStatus } from './components/BackendStatus';
-import { DemoBanner } from './components/DemoBanner';
+import { DisclaimerDialog } from './components/DisclaimerDialog';
 import { GleifInfo, GleifSplash } from './components/GleifSplash';
 import { ImportResult } from './components/ImportResult';
 import { LanguageSelector } from './components/LanguageSelector';
+import { Reassurance } from './components/Reassurance';
 import { UploadPanel } from './components/UploadPanel';
 import { API_URL, APP_NAME, APP_VERSION } from './config';
 import { useBackendHealth } from './hooks/useBackendHealth';
@@ -25,17 +27,19 @@ function explain(failure: ImportFailure, t: Dictionary): string {
   return failure.detail ?? format(t.errors.http, { status: failure.status ?? '' });
 }
 
-export function App() {
+/** ``disclaimerAccepted`` is only set by the tests; the user always sees the disclaimer first. */
+export function App({ disclaimerAccepted = false }: { disclaimerAccepted?: boolean }) {
   const { language, t } = useI18n();
   const { health, checkAgain } = useBackendHealth();
   const { current, start, reset } = useImport(language);
   const gleif = useGleifStatus();
+  const [accepted, setAccepted] = useState(disclaimerAccepted);
 
   if (gleif.state === 'UPDATING') return <GleifSplash status={gleif} />;
 
   return (
     <>
-      <DemoBanner />
+      {!accepted && <DisclaimerDialog onAccept={() => setAccepted(true)} />}
       <Container component="main" maxWidth="md" sx={{ py: { xs: 5, sm: 8 } }}>
         <Box
           component="header"
@@ -72,7 +76,7 @@ export function App() {
             onFile={start}
           />
         )}
-        {/* Demo build: the "your register stays with you" block is hidden, real data is not welcome. */}
+        {current.state === 'idle' && <Reassurance />}
 
         {current.state === 'error' && (
           <Alert severity="error" variant="outlined" sx={{ mt: 3 }}>

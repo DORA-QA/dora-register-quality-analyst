@@ -42,7 +42,7 @@ class Settings(BaseSettings):
     # inside the container. It must never be a mounted volume.
     temp_dir: str | None = None
 
-    # Portable demo build only (api/portable.py): folder of the built interface, served by the
+    # Portable build only (api/portable.py): folder of the built interface, served by the
     # API itself on the same origin. Empty in Docker, where nginx serves the interface.
     static_dir: str | None = None
     # Local copy of the GLEIF data (branch feature/gleif-local). Written by the gleif-updater

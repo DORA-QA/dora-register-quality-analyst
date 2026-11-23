@@ -23,7 +23,7 @@ const ABOUT: AboutInfo = {
     },
   ],
   legal_notice: null,
-  licence: null,
+  licence: 'EUPL-1.2 (European Union Public Licence v. 1.2)',
 };
 
 describe('About the engine', () => {
@@ -34,7 +34,7 @@ describe('About the engine', () => {
     expect(screen.getByText('Local analysis · no data sent')).toBeInTheDocument();
   });
 
-  it('lists the engine, the sources, the score warning and empty legal places', async () => {
+  it('lists the engine, the sources, the score warning, the disclaimer and the licence', async () => {
     mockApi(async (url) => (url.endsWith('/about') ? json(ABOUT) : json({}, 500)));
     renderApp();
 
@@ -51,7 +51,8 @@ describe('About the engine', () => {
     ).toHaveAttribute('href', 'https://eur-lex.europa.eu/eli/reg/2022/2554/oj');
     expect(within(dialog).getByText(/SHA-256 38c190fa4c2f/)).toBeInTheDocument();
     expect(within(dialog).getByText(/without regulatory value/)).toBeInTheDocument();
-    expect(within(dialog).getAllByText('To come.')).toHaveLength(2);
+    expect(within(dialog).getByText(/provided "as is", without warranty/)).toBeVisible();
+    expect(within(dialog).getByText(/^EUPL-1.2/)).toBeVisible();
   });
 
   it('says so when the engine cannot be read', async () => {
