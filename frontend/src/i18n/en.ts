@@ -49,6 +49,8 @@ export const en = {
     status: 'GLEIF:',
     copy: 'copy of {date}',
     unavailable: 'no copy installed, the GLEIF checks will not be performed',
+    offline:
+      'checks not available in this offline version (existence, status, country and ultimate parent of the LEI not checked against the GLEIF)',
     splashTitle: 'Online update in progress',
     splashBody: 'The tool is updating its copy of the GLEIF database online.',
     splashNoImport: 'It cannot accept a register for the moment.',

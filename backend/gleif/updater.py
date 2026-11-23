@@ -1,19 +1,26 @@
 # SPDX-License-Identifier: EUPL-1.2
-"""Downloads the latest GLEIF copy published on the repository, then exits.
+"""Downloads the latest GLEIF copy published on GitHub, then exits (online version only).
 
-Run by the ``gleif-updater`` container at start-up (``python -m gleif.updater``). This container is
-the only one with internet access; it never sees a register. The backend reads the copy from the
-shared volume and stays on its internal network.
+Run at start-up, before any register is accepted, in a process of its own that never sees a
+register: by the portable launcher (``DORA-QA --gleif-update``) or by the ``gleif-updater``
+container of the Docker stack (``python -m gleif.updater``). The analysis only reads the copy.
 
-Source: the releases of the repository whose tag starts with ``gleif-`` (built by
-``tools/build_gleif.py``, published by ``tools/publish_gleif_release.sh``). Each release holds
-``manifest.json`` (date of the GLEIF publication, SHA-256 of each file) and the Parquet files.
+Strict rule "never online during an analysis" (decision A9, issue PO-38 point 1):
+
+- a heartbeat thread rewrites ``status.json`` every 2 s while this process runs, even when a read
+  is blocked, so the API keeps refusing registers as long as the process is alive;
+- every network operation times out after ``TIMEOUT_SECONDS`` and the whole update after
+  ``MAX_SECONDS``; the launcher also kills the process if it outlives that limit.
+
+Source: the public releases of the data repository whose tag starts with ``gleif-`` (built by
+``tools/build_gleif.py``). Each release holds ``manifest.json`` (date of the GLEIF publication,
+SHA-256 of each file) and the Parquet files. No token is needed.
 
 Environment:
-    ROI_GLEIF_DIR          shared folder (default /data/gleif)
-    ROI_GLEIF_REPO         owner/name of the repository (default stephanealpha/roi-quality-engine)
+    ROI_GLEIF_DIR          folder of the copy (default /data/gleif)
+    ROI_GLEIF_REPO         owner/name of the data repository (default: ``DEFAULT_REPO``)
     ROI_GLEIF_TAG_PREFIX   prefix of the release tags (default gleif-)
-    ROI_GLEIF_TOKEN        GitHub token with read access, needed while the repository is private
+    ROI_GLEIF_TOKEN        optional GitHub token (higher rate limit, private test repository)
     ROI_GLEIF_API          GitHub API (default https://api.github.com)
     ROI_GLEIF_HOLD_SECONDS acceptance tests only: keep the state UPDATING this many seconds before
                            starting (default 0), so that the waiting screen can be checked even
@@ -29,6 +36,7 @@ import logging
 import os
 import shutil
 import sys
+import threading
 import time
 import urllib.error
 import urllib.request
@@ -43,16 +51,21 @@ from gleif.layout import (
     DATA_FILES,
     MANIFEST,
     MANIFEST_FORMAT,
+    STATUS,
     installed_manifest,
+    read_json,
     root_dir,
 )
 from gleif.status import write_status
 
 logger = logging.getLogger("roi.gleif.updater")
-DEFAULT_REPO = "stephanealpha/roi-quality-engine"
+DEFAULT_REPO = "stephanealpha/dora-qa-gleif-data"
 DEFAULT_PREFIX = "gleif-"
 DEFAULT_API = "https://api.github.com"
-TIMEOUT_SECONDS = 60
+# Each network operation: well under the heartbeat timeout of the API (gleif.status, 60 s).
+TIMEOUT_SECONDS = 20
+# Whole update: beyond, the update gives up and the tool starts with the installed copy, if any.
+MAX_SECONDS = 900
 CHUNK = 1 << 20
 HEARTBEAT_SECONDS = 2.0
 
@@ -73,7 +86,7 @@ class GitHubReleases:
 
     def _request(self, url: str, accept: str) -> urllib.request.Request:
         request = urllib.request.Request(url, headers={"Accept": accept})
-        request.add_header("User-Agent", "roi-quality-engine-gleif-updater")
+        request.add_header("User-Agent", "dora-qa-gleif-updater")
         if self._token:
             # Not forwarded on redirect (the asset is served from a signed storage URL).
             request.add_unredirected_header("Authorization", f"Bearer {self._token}")
@@ -124,9 +137,12 @@ def _assets(release: JsonDict) -> dict[str, JsonDict]:
 class _Progress:
     def __init__(self, root: Path, total: int) -> None:
         self.root, self.total, self.received, self._last = root, total, 0, 0.0
+        self.deadline = time.monotonic() + MAX_SECONDS
 
     def add(self, size: int) -> None:
         self.received += size
+        if time.monotonic() > self.deadline:
+            raise UpdateError("too_long", f"over {MAX_SECONDS} s")
         if time.monotonic() - self._last >= HEARTBEAT_SECONDS:
             self.beat()
 
@@ -215,6 +231,34 @@ def hold(root: Path, seconds: float) -> None:
         time.sleep(min(HEARTBEAT_SECONDS, left))
 
 
+class Heartbeat:
+    """Writes UPDATING every ``HEARTBEAT_SECONDS`` while the update runs, whatever it waits for."""
+
+    def __init__(self, root: Path) -> None:
+        self._root = root
+        self._stop = threading.Event()
+        self._thread = threading.Thread(target=self._run, daemon=True, name="gleif-heartbeat")
+
+    def _run(self) -> None:
+        while not self._stop.wait(HEARTBEAT_SECONDS):
+            current = read_json(self._root / STATUS) or {}
+            write_status(
+                self._root,
+                GleifState.UPDATING,
+                received_bytes=int(current.get("received_bytes", 0) or 0),
+                total_bytes=int(current.get("total_bytes", 0) or 0),
+            )
+
+    def __enter__(self) -> "Heartbeat":
+        write_status(self._root, GleifState.UPDATING, received_bytes=0, total_bytes=0)
+        self._thread.start()
+        return self
+
+    def __exit__(self, *_: object) -> None:
+        self._stop.set()
+        self._thread.join()
+
+
 def main() -> int:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
     root = root_dir()
@@ -234,7 +278,8 @@ def main() -> int:
     )
     prefix = os.environ.get("ROI_GLEIF_TAG_PREFIX", DEFAULT_PREFIX)
     try:
-        update(root, source, prefix)
+        with Heartbeat(root):
+            update(root, source, prefix)
         error = None
     except UpdateError as failure:
         logger.warning("GLEIF update failed: %s", failure)

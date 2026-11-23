@@ -1,7 +1,7 @@
 name: Release
 
-# Portable ZIPs of DORA QA for Windows and macOS (Apple Silicon), plus the "sources" variant for
-# workstations that block unsigned programs.
+# Portable ZIPs of DORA QA, offline and online versions, for Windows and macOS (Apple Silicon),
+# plus the "sources" variant (offline) for workstations that block unsigned programs.
 # - pull request touching the build: Windows only, to check that it still builds and starts;
 # - manual run: every ZIP, downloadable from the run page (Artifacts) for 14 days;
 # - tag vX.Y.Z: every ZIP, SHA-256 sums and SBOM published as a GitHub release.
@@ -23,11 +23,12 @@ permissions:
 
 jobs:
   build:
-    name: ZIP ${{ matrix.os }}
+    name: ZIP ${{ matrix.edition }} ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: ${{ github.event_name == 'pull_request' && fromJSON('["windows-latest"]') || fromJSON('["windows-latest", "macos-latest"]') }}
+        edition: [offline, online]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     steps:
@@ -38,8 +39,8 @@ jobs:
           node-version: 22
       - run: uv python install 3.13
       - run: uv sync --frozen --no-dev --project backend
-      - run: uv run --project backend --with pyinstaller python portable/build.py
-      - name: Smoke test (launch, health, import)
+      - run: uv run --project backend --with pyinstaller python portable/build.py ${{ matrix.edition == 'online' && '--online' || '' }}
+      - name: Smoke test (launch, health, version, import)
         shell: bash
         run: |
           set -euo pipefail
@@ -52,13 +53,25 @@ jobs:
             curl -sf http://127.0.0.1:8765/health > /dev/null && break || sleep 1
           done
           curl -sf http://127.0.0.1:8765/health
+          gleif=$(curl -s http://127.0.0.1:8765/api/gleif/status | python -c "import json,sys; print(json.load(sys.stdin)['state'])")
+          if [ "${{ matrix.edition }}" = offline ]; then
+            test "$gleif" = DISABLED
+          else
+            # The update runs first: wait until it is over (no register accepted meanwhile).
+            for i in $(seq 1 300); do
+              [ "$gleif" != UPDATING ] && break
+              sleep 2
+              gleif=$(curl -s http://127.0.0.1:8765/api/gleif/status | python -c "import json,sys; print(json.load(sys.stdin)['state'])")
+            done
+            test "$gleif" != DISABLED && test "$gleif" != UPDATING
+          fi
           status=$(curl -s -H "X-ROI-Client: ci" -F "file=@sample-data/package-with-defects.sample.zip" \
             http://127.0.0.1:8765/api/import | python -c "import json,sys; print(json.load(sys.stdin)['status'])")
           test "$status" = "FAILED"
           curl -sf http://127.0.0.1:8765/ | grep -q "<title>DORA QA</title>"
       - uses: actions/upload-artifact@v7
         with:
-          name: dora-qa-${{ matrix.os }}
+          name: dora-qa-${{ matrix.edition }}-${{ matrix.os }}
           path: dist-portable/*.zip
           retention-days: 14
 

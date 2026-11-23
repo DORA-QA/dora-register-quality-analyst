@@ -16,7 +16,8 @@ def read_csv(body: bytes) -> list[dict[str, str]]:
     text = body.decode("utf-8")
     assert text.startswith("﻿")
     content, _, closing = text[1:].partition("\r\n\r\n")
-    assert next(csv.reader(io.StringIO(closing), delimiter=";"))[0] in DISCLAIMER.values()
+    last = list(csv.reader(io.StringIO(closing), delimiter=";"))[-1]
+    assert last[0] in DISCLAIMER.values()
     return list(csv.DictReader(io.StringIO(content + "\r\n"), delimiter=";"))
 
 
@@ -76,6 +77,8 @@ def test_the_filters_of_the_screen_apply(big) -> None:  # noqa: F811
     only = client.get(url, params={"findings": str(finding["index"]), "row": row})
     lines = [json.loads(line) for line in only.text.splitlines()]
     assert lines.pop() == {"record_type": "disclaimer", "text": DISCLAIMER["en"]}
+    # Offline version (default of the tests): the absence of the GLEIF checks is written too.
+    assert lines.pop()["text"].startswith("GLEIF checks are not available")
     assert lines and all(line["finding_index"] == finding["index"] for line in lines)
     assert all(line["source_row"] == row for line in lines)
     assert set(lines[0]) == set(FIELDS)

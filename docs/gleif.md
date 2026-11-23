@@ -1,52 +1,48 @@
-# Contrôles GLEIF (branche `feature/gleif-local`)
+# Contrôles GLEIF (version en ligne)
 
-Les LEI du registre sont comparés à une **copie locale** des données du GLEIF. L'analyse d'un
-registre reste entièrement hors ligne : seul un petit conteneur de mise à jour, qui ne voit jamais
-de registre, va sur Internet au démarrage.
+DORA QA existe en deux versions (décision A9 du 23/11/2026) :
 
-## Fonctionnement
+- **hors ligne** : aucun code réseau ; les contrôles GLEIF sont **exclus** des constats et des
+  scores, et l'écran d'accueil, la synthèse « En résumé » et les exports l'indiquent ;
+- **en ligne** : les LEI du registre sont comparés à une **copie locale** des données publiques du
+  GLEIF. L'analyse d'un registre reste entièrement hors ligne : seule la mise à jour de la copie,
+  dans un processus séparé qui ne voit jamais de registre, va sur Internet au démarrage.
+
+## Fonctionnement de la version en ligne
 
 ```text
-docker compose up
- ├─ gleif-updater  (réseau « default », Internet)        ─┐
- │    lit la dernière release « gleif-* » du dépôt        │ volume gleif-data
- │    vérifie les SHA-256, installe la copie, s'arrête    │ (données publiques GLEIF)
- ├─ backend        (réseau interne, sans Internet) ◄──────┘ lecture seule
- └─ frontend       (seule porte, 127.0.0.1)
+DORA-QA (lanceur)
+ ├─ écrit « mise à jour en cours » : aucun registre accepté (HTTP 503, écran d'attente)
+ ├─ DORA-QA --gleif-update   (processus séparé, Internet)
+ │    lit la dernière release « gleif-* » du dépôt public dora-qa-gleif-data
+ │    vérifie les SHA-256, installe la copie dans le cache utilisateur, s'arrête
+ └─ moteur + interface sur 127.0.0.1 : lisent la copie, ne vont jamais sur Internet
 ```
 
-1. Au démarrage, `gleif-updater` lit les releases du dépôt dont le tag commence par `gleif-`,
-   prend la plus récente, compare son `manifest.json` à la copie installée et ne télécharge que si
-   elle a changé (environ 100 Mo). Les fichiers sont vérifiés (SHA-256) puis installés d'un seul
-   coup (renommage du dossier) : le backend ne voit jamais une copie à moitié écrite.
-2. Pendant le téléchargement, il réécrit `status.json` toutes les 2 secondes. Le backend répond
-   `UPDATING` sur `GET /api/gleif/status` et **refuse les registres** (HTTP 503).
-3. La page affiche un **écran d'attente** (« Mise à jour en ligne en cours… Il ne peut pas
-   accepter de registre pour l'instant ») avec la progression, puis se ferme toute seule.
-4. En cas d'échec (pas de réseau, pas d'accès au dépôt), la copie déjà installée est gardée. Sans
-   aucune copie, l'analyse se fait normalement et les contrôles GLEIF sont « non évalués »
-   (GLF-010). Un conteneur de mise à jour silencieux plus de 60 s ne bloque plus l'outil.
+1. Au démarrage, le lanceur ferme les imports, puis lance la mise à jour dans un **processus
+   séparé**. Celui-ci lit les releases du dépôt public `stephanealpha/dora-qa-gleif-data`, prend la
+   plus récente et ne télécharge que si elle a changé (environ 100 Mo). Les fichiers sont vérifiés
+   (SHA-256) puis installés d'un seul coup : le moteur ne voit jamais une copie à moitié écrite.
+2. Tant que ce processus tourne, un fil dédié réécrit `status.json` toutes les 2 secondes, **même
+   si une lecture réseau est bloquée** : le moteur répond `UPDATING` et refuse les registres.
+3. **Règle stricte** « jamais connecté pendant une analyse » : chaque opération réseau expire au
+   bout de 20 s, la mise à jour entière au bout de 15 min ; au-delà, le lanceur tue le processus.
+   Une fois le processus terminé, plus rien ne va sur Internet.
+4. En cas d'échec (pas de réseau, pare-feu), la copie déjà installée est gardée. Sans aucune copie,
+   l'analyse se fait normalement et les contrôles GLEIF sont « non évalués » (GLF-010).
+
+Emplacement de la copie (données publiques uniquement, jamais de registre) :
+`%LOCALAPPDATA%\DORA-QA\gleif` (Windows), `~/Library/Caches/DORA-QA/gleif` (macOS),
+`~/.cache/dora-qa/gleif` (Linux).
+
+**Pile Docker** : le conteneur `gleif-updater` joue le rôle du processus séparé ; il est le seul à
+avoir accès à Internet, le moteur reste sur un réseau interne. Version hors ligne en Docker :
+`ROI_GLEIF_ENABLED=false` et retrait du service `gleif-updater`.
 
 ### Voir l'écran d'attente (recette)
 
-Avec une bonne connexion, la copie (environ 100 Mo) est souvent installée avant que la page ne
-s'ouvre. Pour vérifier l'écran, la variable `ROI_GLEIF_HOLD_SECONDS` garde l'état « mise à jour »
-le temps demandé avant de télécharger (0 par défaut, 600 au plus) :
-
-```bash
-ROI_GLEIF_HOLD_SECONDS=60 docker compose up --build
-```
-
-### Dépôt privé
-
-Tant que le dépôt est privé, le conteneur a besoin d'un jeton GitHub en lecture seule :
-
-```bash
-export ROI_GLEIF_TOKEN=github_pat_...   # jeton « fine-grained », droit Contents: Read-only
-docker compose up --build
-```
-
-Le jeton n'est passé qu'au conteneur `gleif-updater`, jamais au backend ni au navigateur.
+`ROI_GLEIF_HOLD_SECONDS=60` garde l'état « mise à jour » le temps demandé avant de télécharger
+(0 par défaut, 600 au plus).
 
 ## Contrôles
 
@@ -68,7 +64,7 @@ Chaque constat cite la date de la copie GLEIF utilisée. Seuls les LEI bien form
 (le format relève de DAT-006 à DAT-010). Les pays sont comparés à l'adresse légale **et** au siège
 GLEIF : l'EBA ne dit pas lequel VR_16 utilise.
 
-Décisions du PO (08/11/2026) :
+Décisions des experts du projet (08/11/2026) :
 
 - source : **Golden Copy** du GLEIF (sans doublons techniques), et non les fichiers concaténés ;
 - DUPLICATE, ANNULLED et tous les statuts PENDING_* sont **non valides** (GLF-002) ;
@@ -83,19 +79,16 @@ d'arrêté. L'outil apprécie donc le statut à la date de la copie installée e
 
 ## Publier une nouvelle copie
 
-**Chaque nuit** : workflow *GLEIF copy* (`.github/workflows/gleif-copy.yml`), à 02:30 UTC
-(03:30 à Paris l'hiver, 04:30 l'été ; GitHub ne connaît que l'heure UTC). Le GLEIF met à
-disposition la Golden Copy de 00:00 UTC à 02:00 UTC.
+**Chaque nuit**, dans le dépôt public de données `dora-qa-gleif-data` : workflow *GLEIF copy*
+(modèle dans `tools/gleif-data-repo/`), à 02:30 UTC. Le GLEIF met à disposition la Golden Copy de
+00:00 UTC à 02:00 UTC.
 
 1. Lit la dernière Golden Copy (API `goldencopy.gleif.org/api/v2/golden-copies/publishes/latest`).
 2. Ne fait rien si la release correspondante existe déjà.
-3. Télécharge les fichiers XML (environ 925 Mo + 32 Mo compressés), construit les Parquet.
+3. Télécharge les fichiers XML (environ 925 Mo + 32 Mo compressés), construit les Parquet avec les
+   outils de ce dépôt.
 4. Refuse de publier une copie suspecte (moins de 3 millions de LEI ou 300 000 relations).
-5. Publie la release `gleif-AAAAMMJJ-HHMM`, puis ne garde que les 7 dernières.
-
-Lancement manuel possible (Actions › GLEIF copy › Run workflow, option « force »). GitHub n'exécute
-les tâches planifiées que depuis la branche par défaut : le fichier doit être sur `main` (il
-construit avec les outils de `feature/gleif-local` tant que la branche n'est pas fusionnée).
+5. Publie la release `gleif-AAAAMMJJ-HHMM`, puis ne garde que les 2 dernières (2 jours).
 
 **À la main**, à partir des fichiers XML du GLEIF (LEI-CDF et RR-CDF, Golden Copy ou Concatenated
 Files, en ZIP ou décompressés) :
@@ -111,8 +104,6 @@ environ 8 minutes sur un cœur ; recherche de 5 000 LEI en 0,15 s.
 
 ## Limites connues
 
-- Le ZIP portable Windows (branche `demo/portable`) n'a pas de conteneur de mise à jour : ces
-  contrôles n'y sont pas branchés.
 - Les exceptions de niveau 2 (motif d'absence de mère) ne sont pas utilisées.
 - Les noms GLEIF translittérés ne sont pas extraits : un nom en écriture locale peut donner
   GLF-007 à tort.

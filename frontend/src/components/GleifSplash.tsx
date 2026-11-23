@@ -66,11 +66,14 @@ export function GleifSplash({ status }: { status: GleifStatus }) {
 /** One line under the backend status: date of the GLEIF copy, or why there is none. */
 export function GleifInfo({ status }: { status: GleifStatus }) {
   const { t } = useI18n();
-  if (status.state === 'DISABLED' || status.state === 'UPDATING') return null;
+  if (status.state === 'UPDATING') return null;
+  // Offline version (decision A9): say plainly that the GLEIF checks are not part of it.
   const text =
-    status.state === 'READY' && status.content_date
-      ? format(t.gleif.copy, { date: status.content_date.slice(0, 10) })
-      : t.gleif.unavailable;
+    status.state === 'DISABLED'
+      ? t.gleif.offline
+      : status.state === 'READY' && status.content_date
+        ? format(t.gleif.copy, { date: status.content_date.slice(0, 10) })
+        : t.gleif.unavailable;
   return (
     <Typography variant="body2" color="text.secondary">
       {t.gleif.status} {text}

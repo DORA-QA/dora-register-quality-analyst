@@ -144,14 +144,20 @@ def evaluate_checks(
     steps: Mapping[str, str],
     source_type: str,
     blind_codes: Iterable[str] = (),
+    excluded_categories: Iterable[str] = (),
 ) -> list[CheckResult]:
+    """One result per check. Checks of ``excluded_categories`` are left out entirely: they are
+    neither shown nor scored (GLEIF checks in the offline version, decision A9)."""
     by_code: dict[str, list[Severity]] = {}
     for message in messages:
         by_code.setdefault(message.code, []).append(message.severity)
 
     blind = set(blind_codes)
+    excluded = set(excluded_categories)
     results = []
     for definition in load_checks():
+        if definition.category in excluded:
+            continue
         concerns_file = not definition.xml_only or source_type == XML_SOURCE
         applicable = concerns_file and steps.get(definition.step, "SKIPPED") != "SKIPPED"
         found = [code for code in definition.codes if code in by_code]

@@ -12,7 +12,9 @@ Brief of the Sprint 4, §15 and §16; note of 02/11/2026, §2.6:
   spreadsheet does not run it as a formula;
 - texts in the language asked; values from the register included unless the user excludes them;
 - the disclaimer of DORA QA closes every export: after an empty line, as a one-cell line in the
-  CSV; as a last object ``{"record_type": "disclaimer", "text": ...}`` in JSON Lines.
+  CSV; as a last object ``{"record_type": "disclaimer", "text": ...}`` in JSON Lines. Notes on
+  the analysis (GLEIF checks absent from the offline version) come just before it, the same way,
+  with ``"record_type": "notice"``.
 """
 
 import csv
@@ -134,7 +136,9 @@ def neutralise(value: str | int | None) -> str:
     return f"'{text}" if text.startswith(FORMULA_STARTS) else text
 
 
-def csv_stream(lines: Iterable[Row], language: str = "en") -> Iterator[str]:
+def csv_stream(
+    lines: Iterable[Row], language: str = "en", notes: Iterable[str] = ()
+) -> Iterator[str]:
     buffer = io.StringIO()
     writer = csv.writer(buffer, delimiter=";", lineterminator="\r\n")
 
@@ -150,12 +154,18 @@ def csv_stream(lines: Iterable[Row], language: str = "en") -> Iterator[str]:
         writer.writerow([neutralise(line[name]) for name in FIELDS])
         yield flush()
     writer.writerow([])
+    for note in notes:
+        writer.writerow([note])
     writer.writerow([disclaimer(language)])
     yield flush()
 
 
-def jsonl_stream(lines: Iterable[Row], language: str = "en") -> Iterator[str]:
+def jsonl_stream(
+    lines: Iterable[Row], language: str = "en", notes: Iterable[str] = ()
+) -> Iterator[str]:
     for line in lines:
         yield json.dumps({name: line[name] for name in FIELDS}, ensure_ascii=False) + "\n"
+    for note in notes:
+        yield json.dumps({"record_type": "notice", "text": note}, ensure_ascii=False) + "\n"
     closing = {"record_type": "disclaimer", "text": disclaimer(language)}
     yield json.dumps(closing, ensure_ascii=False) + "\n"

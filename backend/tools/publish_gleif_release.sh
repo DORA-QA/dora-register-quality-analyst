@@ -9,7 +9,7 @@
 set -euo pipefail
 
 folder="${1:?usage: publish_gleif_release.sh <folder>}"
-repo="${ROI_GLEIF_REPO:-stephanealpha/roi-quality-engine}"
+repo="${ROI_GLEIF_REPO:-stephanealpha/dora-qa-gleif-data}"
 for file in manifest.json lei.parquet rr.parquet; do
   [[ -f "$folder/$file" ]] || { echo "missing: $folder/$file" >&2; exit 1; }
 done

@@ -35,6 +35,7 @@ from contracts.api_models import FindingMatchModel, ImportResponse, OccurrencesP
 from contracts.gleif import GleifState
 from contracts.messages import render_text, resolve_language, supported_languages
 from reports import export
+from reports.overview import gleif_offline_notice
 from scoring import profile_of_code
 
 router = APIRouter(prefix="/api", tags=["import"])
@@ -333,12 +334,13 @@ def export_findings(
         include_values=values,
         profile_of=profile_of_code,
     )
+    notes = () if get_settings().gleif_enabled else (gleif_offline_notice(language),)
     stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
     file_name = f"dora-qa-findings-{outcome.import_id}-{stamp}.{extension}"
     stream, media = (
-        (export.csv_stream(lines, language), "text/csv; charset=utf-8")
+        (export.csv_stream(lines, language, notes), "text/csv; charset=utf-8")
         if extension == "csv"
-        else (export.jsonl_stream(lines, language), "application/x-ndjson; charset=utf-8")
+        else (export.jsonl_stream(lines, language, notes), "application/x-ndjson; charset=utf-8")
     )
     return StreamingResponse(
         stream,

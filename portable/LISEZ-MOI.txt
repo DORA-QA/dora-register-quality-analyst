@@ -38,10 +38,23 @@ ARRÊTER
 Fermer la fenêtre du terminal (ou Ctrl+C dedans). Le registre analysé est
 effacé de la mémoire et les fichiers temporaires sont supprimés.
 
+VERSION HORS LIGNE / VERSION EN LIGNE
+-------------------------------------
+- Hors ligne (ZIP « DORA-QA-hors-ligne ») : aucune connexion, jamais. Les
+  contrôles GLEIF (existence, statut, pays et mère ultime des LEI) ne sont pas
+  disponibles ; l'écran l'indique.
+- En ligne (ZIP « DORA-QA-en-ligne ») : au démarrage seulement, l'outil
+  télécharge la copie publique du GLEIF (environ 100 Mo, uniquement si elle a
+  changé). Aucun registre n'est accepté pendant ce téléchargement ; ensuite,
+  plus aucune connexion. La copie est gardée dans le dossier de cache de
+  l'utilisateur (données publiques uniquement).
+
 CONFIDENTIALITÉ
 ---------------
-L'outil n'écoute que sur 127.0.0.1 (ce poste). Si le pare-feu demande une
-autorisation réseau, choisir « Annuler » : l'analyse n'en a pas besoin.
+L'outil n'écoute que sur 127.0.0.1 (ce poste) et le registre ne quitte jamais
+ce poste. Version hors ligne : si le pare-feu demande une autorisation réseau,
+choisir « Annuler ». Version en ligne : autoriser l'accès sortant à github.com
+pour la mise à jour GLEIF, ou utiliser la version hors ligne.
 
 LICENCE
 -------
@@ -53,4 +66,6 @@ DORA QA analyses a DORA register of information on this computer only.
 Free software provided "as is", without warranty; findings are indicative.
 Unzip, run DORA-QA.exe (Windows) or Lancer-DORA-QA.command (macOS; allow it
 once in System Settings > Privacy & Security), accept the disclaimer, then
-choose a file. Close the terminal window to stop. Licence: EUPL 1.2.
+choose a file. Close the terminal window to stop. Offline version: never
+online, no GLEIF checks. Online version: downloads the public GLEIF copy at
+start-up only, before any register is accepted. Licence: EUPL 1.2.

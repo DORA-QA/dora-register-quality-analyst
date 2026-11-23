@@ -45,8 +45,9 @@ class Settings(BaseSettings):
     # Portable build only (api/portable.py): folder of the built interface, served by the
     # API itself on the same origin. Empty in Docker, where nginx serves the interface.
     static_dir: str | None = None
-    # Local copy of the GLEIF data (branch feature/gleif-local). Written by the gleif-updater
-    # container in a shared volume, read here only: the backend itself never goes online.
+    # Local copy of the GLEIF data, online version only. Written by the updater (a separate
+    # process or container) and read here only: the analysis itself never goes online. False:
+    # offline version, the GLEIF checks are left out and the screen says so (decision A9).
     gleif_enabled: bool = False
     gleif_dir: str = "/data/gleif"
 
