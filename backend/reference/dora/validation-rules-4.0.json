@@ -1,0 +1,473 @@
+{
+ "source": "EBA reporting framework 4.0, DORA module",
+ "severities_in_package": [
+  "WARNING"
+ ],
+ "rules": [
+  {
+   "id": "e23674_e_0",
+   "expression": "not(empty({B_05.01,,0050,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23674_e_1",
+   "expression": "not(empty({B_05.01,,0110,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23674_e_2",
+   "expression": "not(empty({B_05.01,,0070,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23674_e_3",
+   "expression": "not(empty({B_05.01,,0020,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23674_e_4",
+   "expression": "not(empty({B_05.01,,0060,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23674_e_5",
+   "expression": "not(empty({B_05.01,,0080,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23675_e_0",
+   "expression": "not(empty({B_01.03,,0030,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23675_e_1",
+   "expression": "not(empty({B_01.03,,0040,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23676_e_0",
+   "expression": "not(empty({B_01.02,,0040,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23676_e_1",
+   "expression": "not(empty({B_01.02,,0050,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23676_e_2",
+   "expression": "not(empty({B_01.02,,0090,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23676_e_3",
+   "expression": "not(empty({B_01.02,,0080,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23676_e_4",
+   "expression": "not(empty({B_01.02,,0030,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23676_e_5",
+   "expression": "not(empty({B_01.02,,0070,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23676_e_6",
+   "expression": "not(empty({B_01.02,,0020,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23676_e_7",
+   "expression": "not(empty({B_01.02,,0060,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23677_e_0",
+   "expression": "not(empty({B_01.01,,0020,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23677_e_1",
+   "expression": "not(empty({B_01.01,,0030,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23677_e_2",
+   "expression": "not(empty({B_01.01,,0040,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23677_e_3",
+   "expression": "not(empty({B_01.01,,0050,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23677_e_4",
+   "expression": "not(empty({B_01.01,,0060,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23680_e_0",
+   "expression": "not(empty({B_02.02,,0070,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23680_e_1",
+   "expression": "not(empty({B_02.02,,0080,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23680_e_2",
+   "expression": "not(empty({B_02.02,,0040,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23681_e_0",
+   "expression": "not(empty({B_07.01,,0110,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23681_e_1",
+   "expression": "not(empty({B_07.01,,0090,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23681_e_2",
+   "expression": "not(empty({B_07.01,,0070,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23681_e_3",
+   "expression": "not(empty({B_07.01,,0100,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23681_e_4",
+   "expression": "not(empty({B_07.01,,0050,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23681_e_5",
+   "expression": "not(empty({B_07.01,,0080,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23682_e_0",
+   "expression": "not(empty({B_06.01,,0090,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23682_e_1",
+   "expression": "not(empty({B_06.01,,0020,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23682_e_2",
+   "expression": "not(empty({B_06.01,,0030,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23682_e_3",
+   "expression": "not(empty({B_06.01,,0080,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23682_e_4",
+   "expression": "not(empty({B_06.01,,0100,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23682_e_5",
+   "expression": "not(empty({B_06.01,,0050,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23682_e_6",
+   "expression": "not(empty({B_06.01,,0070,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23683_e_0",
+   "expression": "not(empty({B_04.01,,0030,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23792_e_0",
+   "expression": "not(empty({B_02.01,,0020,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23792_e_1",
+   "expression": "not(empty({B_02.01,,0050,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "e23792_e_2",
+   "expression": "not(empty({B_02.01,,0040,}))",
+   "severity": "warning"
+  },
+  {
+   "id": "v22912_m_0",
+   "expression": "if ({B_02.01,,0020,} = {{[EBA_CO:x3]}}) then (not(empty({B_02.01,,0030,}))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v22913_s_0",
+   "expression": "{B_01.02,,0110,} >= 0",
+   "severity": "warning"
+  },
+  {
+   "id": "v23716_s_0",
+   "expression": "{B_02.01,,0050,} >= 0",
+   "severity": "warning"
+  },
+  {
+   "id": "v8803_m_0",
+   "expression": "if (not(empty({B_01.02,,0110,}))) then (not(empty({B_01.02,,0100,}))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8804_m_0",
+   "expression": "if ({B_01.02,,0040,} != {{[EBA_CT:x318]}} and {B_01.02,,0040,} != {{[EBA_CT:x317]}}) then (not(empty({B_01.02,,0110,}))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8805_m_0",
+   "expression": "if ({B_02.01,,0020,} = {{[EBA_CO:x3]}}) then (not(empty({B_02.01,,0030,}))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8816_m_0",
+   "expression": "{B_02.02,,0080,} > {B_02.02,,0070,}",
+   "severity": "warning"
+  },
+  {
+   "id": "v8817_m_0",
+   "expression": "if ({B_05.01,,0070,} = {{[EBA_CT:x212]}}) then ({B_05.01,,0020,} in {{[EBA_qCO:qx2002],[EBA_qCO:qx2000]}}) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8818_m_0",
+   "expression": "if ({B_05.01,,0070,} = {{[EBA_CT:x212]}}) then ({B_05.01,,0040,} in {{[EBA_qCO:qx2000],[EBA_qCO:qx2002]}}) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8821_m_0",
+   "expression": "if ({B_05.01,,0020,} = {{[EBA_qCO:qx2000]}}) then ((match({B_05.01,,0030,},^[A-Z0-9]{{18}}[0-9]{{2}}$))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8825_m_0",
+   "expression": "if {B_07.01,,0050,} = {{[EBA_ZZ:x959]}} or {B_07.01,,0050,} = {{[EBA_ZZ:x960]}} then (not(empty({B_07.01,,0060,}))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8826_m_0",
+   "expression": "match({B_01.02,,0060,},^[A-Z0-9]{{18}}[0-9]{{2}}$)",
+   "severity": "warning"
+  },
+  {
+   "id": "v8850_m_0",
+   "expression": "if (not(empty({B_05.01,,0030,}))) or not((empty({B_05.01,,0040,}))) or not((empty({B_05.01,,0050,}))) or not((empty({B_05.01,,0060,}))) or not((empty({B_05.01,,0070,}))) or not((empty({B_05.01,,0080,}))) or not((empty({B_05.01,,0090,}))) or not((empty({B_05.01,,0100,}))) or not((empty({B_05.01,,0110,}))) or not((empty({B_05.01,,0120,}))) then ((not(empty({B_05.01,,0020,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8851_m_0",
+   "expression": "if (not(empty({B_05.01,,0030,}))) or not((empty({B_05.01,,0040,}))) or not((empty({B_05.01,,0020,}))) or not((empty({B_05.01,,0060,}))) or not((empty({B_05.01,,0070,}))) or not((empty({B_05.01,,0080,}))) or not((empty({B_05.01,,0090,}))) or not((empty({B_05.01,,0100,}))) or not((empty({B_05.01,,0110,}))) or not((empty({B_05.01,,0120,}))) then ((not(empty({B_05.01,,0050,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8852_m_0",
+   "expression": "if (not(empty({B_05.01,,0030,}))) or not((empty({B_05.01,,0040,}))) or not((empty({B_05.01,,0050,}))) or not((empty({B_05.01,,0020,}))) or not((empty({B_05.01,,0070,}))) or not((empty({B_05.01,,0080,}))) or not((empty({B_05.01,,0090,}))) or not((empty({B_05.01,,0100,}))) or not((empty({B_05.01,,0110,}))) or not((empty({B_05.01,,0120,}))) then ((not(empty({B_05.01,,0060,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8853_m_0",
+   "expression": "if (not(empty({B_05.01,,0030,}))) or not((empty({B_05.01,,0040,}))) or not((empty({B_05.01,,0050,}))) or not((empty({B_05.01,,0060,}))) or not((empty({B_05.01,,0020,}))) or not((empty({B_05.01,,0080,}))) or not((empty({B_05.01,,0090,}))) or not((empty({B_05.01,,0100,}))) or not((empty({B_05.01,,0110,}))) or not((empty({B_05.01,,0120,}))) then ((not(empty({B_05.01,,0070,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8854_m_0",
+   "expression": "if (not(empty({B_05.01,,0030,}))) or not((empty({B_05.01,,0040,}))) or not((empty({B_05.01,,0050,}))) or not((empty({B_05.01,,0060,}))) or not((empty({B_05.01,,0070,}))) or not((empty({B_05.01,,0020,}))) or not((empty({B_05.01,,0090,}))) or not((empty({B_05.01,,0100,}))) or not((empty({B_05.01,,0110,}))) or not((empty({B_05.01,,0120,}))) then ((not(empty({B_05.01,,0080,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8855_m_0",
+   "expression": "if (not(empty({B_05.01,,0030,}))) or not((empty({B_05.01,,0040,}))) or not((empty({B_05.01,,0050,}))) or not((empty({B_05.01,,0060,}))) or not((empty({B_05.01,,0070,}))) or not((empty({B_05.01,,0080,}))) or not((empty({B_05.01,,0090,}))) or not((empty({B_05.01,,0100,}))) or not((empty({B_05.01,,0020,}))) or not((empty({B_05.01,,0120,}))) then ((not(empty({B_05.01,,0110,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8856_m_0",
+   "expression": "if (not(empty({B_01.03,,0030,}))) then ((not(empty({B_01.03,,0040,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8857_m_0",
+   "expression": "if (not(empty({B_01.03,,0040,}))) then ((not(empty({B_01.03,,0030,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8858_m_0",
+   "expression": "if (not(empty({B_01.02,,0030,}))) or not((empty({B_01.02,,0040,}))) or not((empty({B_01.02,,0050,}))) or not((empty({B_01.02,,0060,}))) or not((empty({B_01.02,,0070,}))) or not((empty({B_01.02,,0080,}))) or not((empty({B_01.02,,0090,}))) or not((empty({B_01.02,,0100,}))) or not((empty({B_01.02,,0110,}))) then ((not(empty({B_01.02,,0020,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8859_m_0",
+   "expression": "if (not(empty({B_01.02,,0020,}))) or not((empty({B_01.02,,0040,}))) or not((empty({B_01.02,,0050,}))) or not((empty({B_01.02,,0060,}))) or not((empty({B_01.02,,0070,}))) or not((empty({B_01.02,,0080,}))) or not((empty({B_01.02,,0090,}))) or not((empty({B_01.02,,0100,}))) or not((empty({B_01.02,,0110,}))) then ((not(empty({B_01.02,,0030,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8860_m_0",
+   "expression": "if (not(empty({B_01.02,,0030,}))) or not((empty({B_01.02,,0020,}))) or not((empty({B_01.02,,0050,}))) or not((empty({B_01.02,,0060,}))) or not((empty({B_01.02,,0070,}))) or not((empty({B_01.02,,0080,}))) or not((empty({B_01.02,,0090,}))) or not((empty({B_01.02,,0100,}))) or not((empty({B_01.02,,0110,}))) then ((not(empty({B_01.02,,0040,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8861_m_0",
+   "expression": "if (not(empty({B_01.02,,0030,}))) or not((empty({B_01.02,,0040,}))) or not((empty({B_01.02,,0020,}))) or not((empty({B_01.02,,0060,}))) or not((empty({B_01.02,,0070,}))) or not((empty({B_01.02,,0080,}))) or not((empty({B_01.02,,0090,}))) or not((empty({B_01.02,,0100,}))) or not((empty({B_01.02,,0110,}))) then ((not(empty({B_01.02,,0050,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8862_m_0",
+   "expression": "if (not(empty({B_01.02,,0030,}))) or not((empty({B_01.02,,0040,}))) or not((empty({B_01.02,,0020,}))) or not((empty({B_01.02,,0050,}))) or not((empty({B_01.02,,0070,}))) or not((empty({B_01.02,,0080,}))) or not((empty({B_01.02,,0090,}))) or not((empty({B_01.02,,0100,}))) or not((empty({B_01.02,,0110,}))) then ((not(empty({B_01.02,,0060,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8863_m_0",
+   "expression": "if (not(empty({B_01.02,,0030,}))) or not((empty({B_01.02,,0040,}))) or not((empty({B_01.02,,0050,}))) or not((empty({B_01.02,,0060,}))) or not((empty({B_01.02,,0020,}))) or not((empty({B_01.02,,0080,}))) or not((empty({B_01.02,,0090,}))) or not((empty({B_01.02,,0100,}))) or not((empty({B_01.02,,0110,}))) then ((not(empty({B_01.02,,0070,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8864_m_0",
+   "expression": "if (not(empty({B_01.02,,0030,}))) or not((empty({B_01.02,,0040,}))) or not((empty({B_01.02,,0050,}))) or not((empty({B_01.02,,0060,}))) or not((empty({B_01.02,,0070,}))) or not((empty({B_01.02,,0020,}))) or not((empty({B_01.02,,0090,}))) or not((empty({B_01.02,,0100,}))) or not((empty({B_01.02,,0110,}))) then ((not(empty({B_01.02,,0080,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8865_m_0",
+   "expression": "if (not(empty({B_01.02,,0030,}))) or not((empty({B_01.02,,0040,}))) or not((empty({B_01.02,,0050,}))) or not((empty({B_01.02,,0060,}))) or not((empty({B_01.02,,0070,}))) or not((empty({B_01.02,,0080,}))) or not((empty({B_01.02,,0020,}))) or not((empty({B_01.02,,0100,}))) or not((empty({B_01.02,,0110,}))) then ((not(empty({B_01.02,,0090,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8866_m_0",
+   "expression": "if (not(empty({B_02.01,,0020,}))) or not((empty({B_02.01,,0030,}))) or not((empty({B_02.01,,0040,}))) then ((not(empty({B_02.01,,0050,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8867_m_0",
+   "expression": "if (not(empty({B_02.01,,0020,}))) or not((empty({B_02.01,,0030,}))) or not((empty({B_02.01,,0050,}))) then ((not(empty({B_02.01,,0040,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8868_m_0",
+   "expression": "if (not(empty({B_02.01,,0050,}))) or not((empty({B_02.01,,0030,}))) or not((empty({B_02.01,,0040,}))) then ((not(empty({B_02.01,,0020,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8869_m_0",
+   "expression": "if (not(empty({B_02.02,,0070,}))) or not((empty({B_02.02,,0080,}))) or not((empty({B_02.02,,0090,}))) or not((empty({B_02.02,,0100,}))) or not((empty({B_02.02,,0110,}))) or not((empty({B_02.02,,0120,}))) or not((empty({B_02.02,,0140,}))) or not((empty({B_02.02,,0170,}))) or not((empty({B_02.02,,0180,}))) then ((not(empty({B_02.02,,0040,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8870_m_0",
+   "expression": "if (not(empty({B_02.02,,0040,}))) or not((empty({B_02.02,,0080,}))) or not((empty({B_02.02,,0090,}))) or not((empty({B_02.02,,0100,}))) or not((empty({B_02.02,,0110,}))) or not((empty({B_02.02,,0120,}))) or not((empty({B_02.02,,0140,}))) or not((empty({B_02.02,,0170,}))) or not((empty({B_02.02,,0180,}))) then ((not(empty({B_02.02,,0070,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8871_m_0",
+   "expression": "if (not(empty({B_02.02,,0070,}))) or not((empty({B_02.02,,0040,}))) or not((empty({B_02.02,,0090,}))) or not((empty({B_02.02,,0100,}))) or not((empty({B_02.02,,0110,}))) or not((empty({B_02.02,,0120,}))) or not((empty({B_02.02,,0140,}))) or not((empty({B_02.02,,0170,}))) or not((empty({B_02.02,,0180,}))) then ((not(empty({B_02.02,,0080,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8872_m_0",
+   "expression": "if (not(empty({B_01.01,,0030,}))) or not((empty({B_01.01,,0040,}))) or not((empty({B_01.01,,0050,}))) or not((empty({B_01.01,,0060,}))) then ((not(empty({B_01.01,,0020,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8873_m_0",
+   "expression": "if (not(empty({B_01.01,,0020,}))) or not((empty({B_01.01,,0040,}))) or not((empty({B_01.01,,0050,}))) or not((empty({B_01.01,,0060,}))) then ((not(empty({B_01.01,,0030,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8874_m_0",
+   "expression": "if (not(empty({B_01.01,,0030,}))) or not((empty({B_01.01,,0020,}))) or not((empty({B_01.01,,0050,}))) or not((empty({B_01.01,,0060,}))) then ((not(empty({B_01.01,,0040,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8875_m_0",
+   "expression": "if (not(empty({B_01.01,,0030,}))) or not((empty({B_01.01,,0040,}))) or not((empty({B_01.01,,0020,}))) or not((empty({B_01.01,,0060,}))) then ((not(empty({B_01.01,,0050,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8876_m_0",
+   "expression": "if (not(empty({B_01.01,,0030,}))) or not((empty({B_01.01,,0040,}))) or not((empty({B_01.01,,0050,}))) or not((empty({B_01.01,,0020,}))) then ((not(empty({B_01.01,,0060,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8877_m_0",
+   "expression": "if (not(empty({B_06.01,,0030,}))) or not((empty({B_06.01,,0050,}))) or not((empty({B_06.01,,0060,}))) or not((empty({B_06.01,,0070,}))) or not((empty({B_06.01,,0080,}))) or not((empty({B_06.01,,0090,}))) or not((empty({B_06.01,,0100,}))) then ((not(empty({B_06.01,,0020,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8878_m_0",
+   "expression": "if (not(empty({B_06.01,,0020,}))) or not((empty({B_06.01,,0050,}))) or not((empty({B_06.01,,0060,}))) or not((empty({B_06.01,,0070,}))) or not((empty({B_06.01,,0080,}))) or not((empty({B_06.01,,0090,}))) or not((empty({B_06.01,,0100,}))) then ((not(empty({B_06.01,,0030,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8879_m_0",
+   "expression": "if (not(empty({B_06.01,,0030,}))) or not((empty({B_06.01,,0020,}))) or not((empty({B_06.01,,0060,}))) or not((empty({B_06.01,,0070,}))) or not((empty({B_06.01,,0080,}))) or not((empty({B_06.01,,0090,}))) or not((empty({B_06.01,,0100,}))) then ((not(empty({B_06.01,,0050,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8880_m_0",
+   "expression": "if (not(empty({B_06.01,,0030,}))) or not((empty({B_06.01,,0050,}))) or not((empty({B_06.01,,0060,}))) or not((empty({B_06.01,,0020,}))) or not((empty({B_06.01,,0080,}))) or not((empty({B_06.01,,0090,}))) or not((empty({B_06.01,,0100,}))) then ((not(empty({B_06.01,,0070,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8881_m_0",
+   "expression": "if (not(empty({B_06.01,,0030,}))) or not((empty({B_06.01,,0050,}))) or not((empty({B_06.01,,0060,}))) or not((empty({B_06.01,,0070,}))) or not((empty({B_06.01,,0020,}))) or not((empty({B_06.01,,0090,}))) or not((empty({B_06.01,,0100,}))) then ((not(empty({B_06.01,,0080,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8882_m_0",
+   "expression": "if (not(empty({B_06.01,,0030,}))) or not((empty({B_06.01,,0050,}))) or not((empty({B_06.01,,0060,}))) or not((empty({B_06.01,,0070,}))) or not((empty({B_06.01,,0080,}))) or not((empty({B_06.01,,0020,}))) or not((empty({B_06.01,,0100,}))) then ((not(empty({B_06.01,,0090,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8883_m_0",
+   "expression": "if (not(empty({B_06.01,,0030,}))) or not((empty({B_06.01,,0050,}))) or not((empty({B_06.01,,0060,}))) or not((empty({B_06.01,,0070,}))) or not((empty({B_06.01,,0080,}))) or not((empty({B_06.01,,0020,}))) or not((empty({B_06.01,,0020,}))) then ((not(empty({B_06.01,,0100,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8884_m_0",
+   "expression": "if (not(empty({B_07.01,,0030,}))) or not((empty({B_07.01,,0060,}))) or not((empty({B_07.01,,0070,}))) or not((empty({B_07.01,,0080,}))) or not((empty({B_07.01,,0090,}))) or not((empty({B_07.01,,0100,}))) or not((empty({B_07.01,,0110,}))) or not((empty({B_07.01,,0120,}))) then ((not(empty({B_07.01,,0050,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8885_m_0",
+   "expression": "if (not(empty({B_07.01,,0030,}))) or not((empty({B_07.01,,0060,}))) or not((empty({B_07.01,,0050,}))) or not((empty({B_07.01,,0080,}))) or not((empty({B_07.01,,0090,}))) or not((empty({B_07.01,,0100,}))) or not((empty({B_07.01,,0110,}))) or not((empty({B_07.01,,0120,}))) then ((not(empty({B_07.01,,0070,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8886_m_0",
+   "expression": "if (not(empty({B_07.01,,0030,}))) or not((empty({B_07.01,,0060,}))) or not((empty({B_07.01,,0070,}))) or not((empty({B_07.01,,0050,}))) or not((empty({B_07.01,,0090,}))) or not((empty({B_07.01,,0100,}))) or not((empty({B_07.01,,0110,}))) or not((empty({B_07.01,,0120,}))) then ((not(empty({B_07.01,,0080,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8887_m_0",
+   "expression": "if (not(empty({B_07.01,,0030,}))) or not((empty({B_07.01,,0060,}))) or not((empty({B_07.01,,0070,}))) or not((empty({B_07.01,,0080,}))) or not((empty({B_07.01,,0050,}))) or not((empty({B_07.01,,0100,}))) or not((empty({B_07.01,,0110,}))) or not((empty({B_07.01,,0120,}))) then ((not(empty({B_07.01,,0090,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v88889_m_0",
+   "expression": "if (not(empty({B_07.01,,0030,}))) or not((empty({B_07.01,,0060,}))) or not((empty({B_07.01,,0070,}))) or not((empty({B_07.01,,0080,}))) or not((empty({B_07.01,,0090,}))) or not((empty({B_07.01,,0100,}))) or not((empty({B_07.01,,0050,}))) or not((empty({B_07.01,,0120,}))) then ((not(empty({B_07.01,,0110,})))) else True",
+   "severity": "warning"
+  },
+  {
+   "id": "v8888_m_0",
+   "expression": "if (not(empty({B_07.01,,0030,}))) or not((empty({B_07.01,,0060,}))) or not((empty({B_07.01,,0070,}))) or not((empty({B_07.01,,0080,}))) or not((empty({B_07.01,,0090,}))) or not((empty({B_07.01,,0050,}))) or not((empty({B_07.01,,0110,}))) or not((empty({B_07.01,,0120,}))) then ((not(empty({B_07.01,,0100,})))) else True",
+   "severity": "warning"
+  }
+ ]
+}

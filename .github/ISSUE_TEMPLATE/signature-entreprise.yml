@@ -1,0 +1,35 @@
+name: Demande de signature entreprise / Enterprise signing request
+description: Votre entreprise souhaite un exécutable signé, ou de l'aide pour le signer elle-même.
+labels: [signature]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Cette issue est **publique** : n'y indiquez aucune information confidentielle.
+        Vous pouvez aussi signer DORA QA vous-même : voir docs/signature-entreprise.md.
+  - type: input
+    id: company
+    attributes:
+      label: Entreprise (facultatif)
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Plateforme
+      multiple: true
+      options: [Windows, macOS]
+    validations:
+      required: true
+  - type: dropdown
+    id: need
+    attributes:
+      label: Besoin
+      options:
+        - Aide pour reconstruire et signer avec notre propre certificat
+        - Paquet MSI pour un déploiement (Intune, SCCM)
+        - Autre
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Précisions

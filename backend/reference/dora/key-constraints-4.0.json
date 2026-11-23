@@ -1,0 +1,410 @@
+{
+ "source": "EBA data model for DORA RoI + constraint names of the reporting framework 4.0",
+ "status": "The pairing of columns is derived from the data model (primary keys and meaning of each column); to confirm against the EBA technical checks on the first real register.",
+ "constraints": [
+  {
+   "id": "R6",
+   "name": "R6 -  LEI of the parent should be also a record_B_01.02",
+   "source_table": "B_01.02",
+   "source_columns": [
+    "c0060"
+   ],
+   "target_table": "B_01.02",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_01.02.0060"
+   ],
+   "target_fields": [
+    "B_01.02.0010"
+   ]
+  },
+  {
+   "id": "R3",
+   "name": "R3_B_01.02",
+   "source_table": "B_01.03",
+   "source_columns": [
+    "c0020"
+   ],
+   "target_table": "B_01.02",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_01.03.0020"
+   ],
+   "target_fields": [
+    "B_01.02.0010"
+   ]
+  },
+  {
+   "id": "R13",
+   "name": "R13 Contractual arr. reference number must match_B_02.01",
+   "source_table": "B_02.01",
+   "source_columns": [
+    "c0030"
+   ],
+   "target_table": "B_02.01",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_02.01.0030"
+   ],
+   "target_fields": [
+    "B_02.01.0010"
+   ]
+  },
+  {
+   "id": "R11",
+   "name": "R11 Contractual arr. reference number must match_B_02.01",
+   "source_table": "B_02.03",
+   "source_columns": [
+    "c0010"
+   ],
+   "target_table": "B_02.01",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_02.03.0010"
+   ],
+   "target_fields": [
+    "B_02.01.0010"
+   ]
+  },
+  {
+   "id": "R12",
+   "name": "R12 Contractual arr. reference number must match_B_02.01",
+   "source_table": "B_02.03",
+   "source_columns": [
+    "c0020"
+   ],
+   "target_table": "B_02.01",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_02.03.0020"
+   ],
+   "target_fields": [
+    "B_02.01.0010"
+   ]
+  },
+  {
+   "id": "R10",
+   "name": "R10 Contractual arr. reference number must match_B_02.01",
+   "source_table": "B_03.01",
+   "source_columns": [
+    "c0010"
+   ],
+   "target_table": "B_02.01",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_03.01.0010"
+   ],
+   "target_fields": [
+    "B_02.01.0010"
+   ]
+  },
+  {
+   "id": "R2",
+   "name": "R2 - LEI of the entity must match_B_01.02",
+   "source_table": "B_03.01",
+   "source_columns": [
+    "c0020"
+   ],
+   "target_table": "B_01.02",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_03.01.0020"
+   ],
+   "target_fields": [
+    "B_01.02.0010"
+   ]
+  },
+  {
+   "id": "R9",
+   "name": "R9 Contractual arr. reference number must match_B_02.01",
+   "source_table": "B_03.02",
+   "source_columns": [
+    "c0010"
+   ],
+   "target_table": "B_02.01",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_03.02.0010"
+   ],
+   "target_fields": [
+    "B_02.01.0010"
+   ]
+  },
+  {
+   "id": "R19",
+   "name": "R19 Identification code of the branch must match_B_05.01",
+   "source_table": "B_03.02",
+   "source_columns": [
+    "c0020"
+   ],
+   "target_table": "B_05.01",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_03.02.0020"
+   ],
+   "target_fields": [
+    "B_05.01.0010"
+   ]
+  },
+  {
+   "id": "R8",
+   "name": "R8 Contractual arr. reference number must match_B_02.01",
+   "source_table": "B_03.03",
+   "source_columns": [
+    "c0010"
+   ],
+   "target_table": "B_02.01",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_03.03.0010"
+   ],
+   "target_fields": [
+    "B_02.01.0010"
+   ]
+  },
+  {
+   "id": "R1",
+   "name": "R1 - LEI of the entity must match_B_01.02",
+   "source_table": "B_03.03",
+   "source_columns": [
+    "c0020"
+   ],
+   "target_table": "B_01.02",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_03.03.0020"
+   ],
+   "target_fields": [
+    "B_01.02.0010"
+   ]
+  },
+  {
+   "id": "R16",
+   "name": "R16 Contractual arr. reference number must match_B_02.01",
+   "source_table": "B_04.01",
+   "source_columns": [
+    "c0010"
+   ],
+   "target_table": "B_02.01",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_04.01.0010"
+   ],
+   "target_fields": [
+    "B_02.01.0010"
+   ]
+  },
+  {
+   "id": "R4",
+   "name": "R4 - LEI of the entity must match_B_01.02",
+   "source_table": "B_04.01",
+   "source_columns": [
+    "c0020"
+   ],
+   "target_table": "B_01.02",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_04.01.0020"
+   ],
+   "target_fields": [
+    "B_01.02.0010"
+   ]
+  },
+  {
+   "id": "R18",
+   "name": "R18  -  Identification code must match_B_05.01",
+   "source_table": "B_05.01",
+   "source_columns": [
+    "c0110"
+   ],
+   "target_table": "B_05.01",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_05.01.0110"
+   ],
+   "target_fields": [
+    "B_05.01.0010"
+   ]
+  },
+  {
+   "id": "R14",
+   "name": "R14 Contractual arr. reference number must match_B_02.01",
+   "source_table": "B_05.02",
+   "source_columns": [
+    "c0010"
+   ],
+   "target_table": "B_02.01",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_05.02.0010"
+   ],
+   "target_fields": [
+    "B_02.01.0010"
+   ]
+  },
+  {
+   "id": "R20",
+   "name": "R20 - Identification code of the branch must match_B_05.01",
+   "source_table": "B_05.02",
+   "source_columns": [
+    "c0030"
+   ],
+   "target_table": "B_05.01",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_05.02.0030"
+   ],
+   "target_fields": [
+    "B_05.01.0010"
+   ]
+  },
+  {
+   "id": "R21",
+   "name": "R21 - Identification code of the branch must match_B_05.01",
+   "source_table": "B_05.02",
+   "source_columns": [
+    "c0060"
+   ],
+   "target_table": "B_05.01",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_05.02.0060"
+   ],
+   "target_fields": [
+    "B_05.01.0010"
+   ]
+  },
+  {
+   "id": "R5",
+   "name": "R5_B_01.02",
+   "source_table": "B_06.01",
+   "source_columns": [
+    "c0040"
+   ],
+   "target_table": "B_01.02",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_06.01.0040"
+   ],
+   "target_fields": [
+    "B_01.02.0010"
+   ]
+  },
+  {
+   "id": "R15",
+   "name": "R15 Contractual arr. reference number must match_B_02.01",
+   "source_table": "B_07.01",
+   "source_columns": [
+    "c0010"
+   ],
+   "target_table": "B_02.01",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_07.01.0010"
+   ],
+   "target_fields": [
+    "B_02.01.0010"
+   ]
+  },
+  {
+   "id": "R22",
+   "name": "R22 - Identification code of the branch must match_B_05.01",
+   "source_table": "B_07.01",
+   "source_columns": [
+    "c0020"
+   ],
+   "target_table": "B_05.01",
+   "target_columns": [
+    "c0010"
+   ],
+   "source_fields": [
+    "B_07.01.0020"
+   ],
+   "target_fields": [
+    "B_05.01.0010"
+   ]
+  },
+  {
+   "id": "R17",
+   "name": "R17 Contractual arr and Id. code must match_B_03.02",
+   "source_table": "B_02.02",
+   "source_columns": [
+    "c0010",
+    "c0030"
+   ],
+   "target_table": "B_03.02",
+   "target_columns": [
+    "c0010",
+    "c0020"
+   ],
+   "source_fields": [
+    "B_02.02.0010",
+    "B_02.02.0030"
+   ],
+   "target_fields": [
+    "B_03.02.0010",
+    "B_03.02.0020"
+   ]
+  },
+  {
+   "id": "R7",
+   "name": "R7 - LEI of the entity and function id. must match_B_06.01",
+   "source_table": "B_02.02",
+   "source_columns": [
+    "c0020",
+    "c0050"
+   ],
+   "target_table": "B_06.01",
+   "target_columns": [
+    "c0040",
+    "c0010"
+   ],
+   "source_fields": [
+    "B_02.02.0020",
+    "B_02.02.0050"
+   ],
+   "target_fields": [
+    "B_06.01.0040",
+    "B_06.01.0010"
+   ]
+  }
+ ]
+}

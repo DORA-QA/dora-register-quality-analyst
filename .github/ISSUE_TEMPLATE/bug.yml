@@ -1,0 +1,19 @@
+name: Anomalie / Bug
+description: L'application ne démarre pas, plante ou affiche une erreur.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "⚠️ **N'ajoutez jamais de registre réel**, même partiel."
+  - type: input
+    id: version
+    attributes:
+      label: Version de DORA QA, édition et système (Windows, macOS, Docker)
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Étapes pour reproduire, et message affiché
+    validations:
+      required: true

@@ -1,0 +1,29 @@
+name: Constat erroné / Wrong finding
+description: Un constat vous semble faux, manquant ou mal classé.
+labels: [constat]
+body:
+  - type: markdown
+    attributes:
+      value: "⚠️ **N'ajoutez jamais de registre réel**, même partiel. Décrivez le cas ou joignez un fichier fictif."
+  - type: input
+    id: version
+    attributes:
+      label: Version de DORA QA et édition (hors ligne / en ligne)
+    validations:
+      required: true
+  - type: input
+    id: code
+    attributes:
+      label: Code du constat (ex. DAT-005)
+  - type: textarea
+    id: observed
+    attributes:
+      label: Ce que l'outil indique
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Ce que vous attendiez, et la source réglementaire (règle EBA, article de l'ITS, note de l'autorité)
+    validations:
+      required: true

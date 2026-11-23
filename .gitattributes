@@ -1,0 +1,10 @@
+# Same line endings on macOS, Linux and Windows.
+* text=auto eol=lf
+*.woff binary
+*.woff2 binary
+*.png binary
+*.zip binary
+# Golden envelope kept byte-identical to the PO file (CRLF).
+sample-data/golden-onegate.sample.xml -text
+*.xlsx binary
+*.pdf binary

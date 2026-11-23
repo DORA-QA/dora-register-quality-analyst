@@ -1,0 +1,2153 @@
+{
+ "checks": [
+  {
+   "code": "FILE-001",
+   "group": "file_type",
+   "category": "file",
+   "step": "detection",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "FILE-002",
+   "group": "file_not_empty",
+   "category": "file",
+   "step": "detection",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "XML-001",
+   "group": "xml_encoding",
+   "category": "envelope",
+   "step": "xml_validation",
+   "xml_only": true,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "XML-002",
+   "group": "xml_well_formed",
+   "category": "envelope",
+   "step": "xml_validation",
+   "xml_only": true,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "XML-004",
+   "group": "xml_well_formed",
+   "category": "envelope",
+   "step": "xml_validation",
+   "xml_only": true,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "XML-003",
+   "group": "xml_no_doctype",
+   "category": "envelope",
+   "step": "xml_validation",
+   "xml_only": true,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ENV-001",
+   "group": "env_root",
+   "category": "envelope",
+   "step": "extraction",
+   "xml_only": true,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ENV-002",
+   "group": "env_single_declaration",
+   "category": "envelope",
+   "step": "extraction",
+   "xml_only": true,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.3.0",
+   "severity_status": "PO_VALIDATED"
+  },
+  {
+   "code": "ENV-010",
+   "group": "env_single_declaration",
+   "category": "envelope",
+   "step": "extraction",
+   "xml_only": true,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ENV-011",
+   "group": "env_namespace",
+   "category": "envelope",
+   "step": "extraction",
+   "xml_only": true,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.4.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ENV-003",
+   "group": "env_payload",
+   "category": "envelope",
+   "step": "extraction",
+   "xml_only": true,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ENV-004",
+   "group": "env_payload",
+   "category": "envelope",
+   "step": "extraction",
+   "xml_only": true,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ENV-008",
+   "group": "env_sender",
+   "category": "envelope",
+   "step": "extraction",
+   "xml_only": true,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ENV-005",
+   "group": "env_recipient",
+   "category": "envelope",
+   "step": "extraction",
+   "xml_only": true,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ENV-006",
+   "group": "env_domain",
+   "category": "envelope",
+   "step": "extraction",
+   "xml_only": true,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ENV-007",
+   "group": "env_action",
+   "category": "envelope",
+   "step": "extraction",
+   "xml_only": true,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ENV-009",
+   "group": "env_lei_match",
+   "category": "envelope",
+   "step": "package_validation",
+   "xml_only": true,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.3.0",
+   "severity_status": "PO_VALIDATED"
+  },
+  {
+   "code": "ZIP-001",
+   "group": "zip_open",
+   "category": "archive",
+   "step": "zip_validation",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ZIP-008",
+   "group": "zip_open",
+   "category": "archive",
+   "step": "zip_validation",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ZIP-009",
+   "group": "zip_safe_content",
+   "category": "archive",
+   "step": "zip_validation",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.8.7",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ZIP-002",
+   "group": "zip_integrity",
+   "category": "archive",
+   "step": "zip_validation",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ZIP-003",
+   "group": "zip_password",
+   "category": "archive",
+   "step": "zip_validation",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ZIP-004",
+   "group": "zip_limits",
+   "category": "archive",
+   "step": "zip_validation",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ZIP-005",
+   "group": "zip_limits",
+   "category": "archive",
+   "step": "zip_validation",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ZIP-006",
+   "group": "zip_safe_content",
+   "category": "archive",
+   "step": "zip_validation",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ZIP-007",
+   "group": "zip_safe_content",
+   "category": "archive",
+   "step": "zip_validation",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-001",
+   "group": "pkg_root",
+   "category": "structure",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-002",
+   "group": "pkg_root",
+   "category": "structure",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-003",
+   "group": "pkg_name",
+   "category": "structure",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-004",
+   "group": "pkg_folders",
+   "category": "structure",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-005",
+   "group": "pkg_files",
+   "category": "structure",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-006",
+   "group": "pkg_files",
+   "category": "structure",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-007",
+   "group": "pkg_files",
+   "category": "structure",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-008",
+   "group": "pkg_file_names",
+   "category": "structure",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-018",
+   "group": "pkg_file_names",
+   "category": "structure",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-009",
+   "group": "pkg_taxonomy",
+   "category": "structure",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-019",
+   "group": "pkg_taxonomy",
+   "category": "structure",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-010",
+   "group": "pkg_templates",
+   "category": "indicators",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-011",
+   "group": "pkg_indicator_lines",
+   "category": "indicators",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-020",
+   "group": "pkg_indicator_lines",
+   "category": "indicators",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-012",
+   "group": "pkg_indicator_values",
+   "category": "indicators",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-013",
+   "group": "pkg_indicator_values",
+   "category": "indicators",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-022",
+   "group": "pkg_indicator_alt_values",
+   "category": "indicators",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.5.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-014",
+   "group": "pkg_parameters",
+   "category": "parameters",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-015",
+   "group": "pkg_parameters",
+   "category": "parameters",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-023",
+   "group": "pkg_parameters",
+   "category": "parameters",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.3",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "PKG-024",
+   "group": "pkg_files",
+   "category": "structure",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.0",
+   "severity_status": "PO_VALIDATED"
+  },
+  {
+   "code": "PKG-025",
+   "group": "pkg_files",
+   "category": "structure",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.0",
+   "severity_status": "PO_VALIDATED"
+  },
+  {
+   "code": "PKG-026",
+   "group": "pkg_files",
+   "category": "structure",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-016",
+   "group": "pkg_entity",
+   "category": "parameters",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-021",
+   "group": "pkg_entity",
+   "category": "parameters",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "PKG-017",
+   "group": "pkg_period",
+   "category": "parameters",
+   "step": "package_validation",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "CSV-001",
+   "group": "csv_encoding",
+   "category": "tables",
+   "step": "csv_import",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "CSV-002",
+   "group": "csv_encoding",
+   "category": "tables",
+   "step": "csv_import",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "CSV-003",
+   "group": "csv_header",
+   "category": "tables",
+   "step": "csv_import",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "CSV-006",
+   "group": "csv_header",
+   "category": "tables",
+   "step": "csv_import",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "CSV-007",
+   "group": "csv_header",
+   "category": "tables",
+   "step": "csv_import",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "CSV-008",
+   "group": "csv_limits",
+   "category": "tables",
+   "step": "csv_import",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.8.6",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "CSV-009",
+   "group": "csv_limits",
+   "category": "tables",
+   "step": "csv_import",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.8.6",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "CSV-010",
+   "group": "csv_limits",
+   "category": "tables",
+   "step": "csv_import",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.8.6",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "CSV-011",
+   "group": "csv_line_endings",
+   "category": "tables",
+   "step": "csv_import",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.8.8",
+   "severity_status": "PO_VALIDATED"
+  },
+  {
+   "code": "CSV-012",
+   "group": "csv_line_endings",
+   "category": "tables",
+   "step": "csv_import",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.8.8",
+   "severity_status": "PO_VALIDATED"
+  },
+  {
+   "code": "CSV-004",
+   "group": "csv_columns",
+   "category": "tables",
+   "step": "csv_import",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "CSV-005",
+   "group": "csv_separator",
+   "category": "tables",
+   "step": "csv_import",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "IMP-001",
+   "group": "tables_loaded",
+   "category": "tables",
+   "step": "csv_import",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.3.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "DAT-001",
+   "group": "data_headers",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.1",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "DAT-002",
+   "group": "data_entity",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.1",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "DAT-003",
+   "group": "data_primary_keys",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.1",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "DAT-027",
+   "group": "data_primary_keys",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.6",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "DAT-028",
+   "group": "data_primary_keys",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.6",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "DAT-004",
+   "group": "data_primary_keys",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.1",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "DAT-005",
+   "group": "data_foreign_keys",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.1",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "DAT-006",
+   "group": "data_lei_format",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.1",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "DAT-007",
+   "group": "data_lei_format",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.1",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "DAT-008",
+   "group": "data_lei_format",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.1",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "DAT-010",
+   "group": "data_lei_checksum",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.1",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "DAT-009",
+   "group": "data_lei_spaces",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.1",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "DAT-011",
+   "group": "data_euid_syntax",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.1",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "DAT-012",
+   "group": "data_euid_country",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.1",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "DAT-013",
+   "group": "data_euid_country_match",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.2",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "DAT-015",
+   "group": "data_numeric_suffix",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.3",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "DAT-014",
+   "group": "data_identifier_type",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.4",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "DAT-016",
+   "group": "data_french_identifiers",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.4",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "DAT-017",
+   "group": "data_french_identifiers",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.4",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "DAT-018",
+   "group": "data_french_identifiers",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.4",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "DAT-019",
+   "group": "data_additional_code",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.4",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "DAT-020",
+   "group": "data_additional_code",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.6.4",
+   "severity_status": "PO_VALIDATED"
+  },
+  {
+   "code": "DAT-021",
+   "group": "data_branch_code",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.4",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "DAT-022",
+   "group": "data_max_length",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.5",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "DAT-023",
+   "group": "eba_conditional_rules",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.5",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "DAT-024",
+   "group": "eba_conditional_rules",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.5",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "DAT-025",
+   "group": "eba_conditional_rules",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.5",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "DAT-026",
+   "group": "eba_conditional_rules",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.5",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "DAT-029",
+   "group": "data_foreign_keys",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.6.6",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "DAT-030",
+   "group": "data_header_complete",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "DAT-031",
+   "group": "data_euid_syntax",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.0",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "DAT-032",
+   "group": "data_mandatory_fields",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.1",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "ENG-001",
+   "group": "engine_rules",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.7.2",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "REL-001",
+   "group": "rel_reporting_entity",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.3",
+   "severity_status": "CONFIRMED",
+   "source_tables": [
+    "B_01.01"
+   ],
+   "target_tables": [
+    "B_01.02"
+   ]
+  },
+  {
+   "code": "REL-002",
+   "group": "rel_entity_attributes",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.3",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_01.01",
+    "B_01.02"
+   ],
+   "target_tables": [
+    "B_01.02",
+    "B_05.01"
+   ]
+  },
+  {
+   "code": "REL-003",
+   "group": "rel_entity_attributes",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.3",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_01.01",
+    "B_01.02"
+   ],
+   "target_tables": [
+    "B_01.02",
+    "B_05.01"
+   ]
+  },
+  {
+   "code": "REL-004",
+   "group": "rel_entity_attributes",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.3",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_01.01",
+    "B_01.02"
+   ],
+   "target_tables": [
+    "B_01.02",
+    "B_05.01"
+   ]
+  },
+  {
+   "code": "REL-005",
+   "group": "rel_intra_group_parent",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.3",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_05.01"
+   ],
+   "target_tables": [
+    "B_01.02"
+   ]
+  },
+  {
+   "code": "BUS-001",
+   "group": "bus_group_parent",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.3",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_01.02"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "BUS-002",
+   "group": "bus_group_parent",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.3",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_01.02"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "BUS-003",
+   "group": "bus_provider_parent",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.3",
+   "severity_status": "CONFIRMED",
+   "source_tables": [
+    "B_05.01"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "BUS-004",
+   "group": "bus_provider_parent",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.3",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_05.01"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "BUS-005",
+   "group": "bus_entity_dates",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.3",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_01.02"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "REL-006",
+   "group": "rel_provider_code_type",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.4",
+   "severity_status": "PROVISIONAL",
+   "source_tables": [
+    "B_02.02",
+    "B_03.02",
+    "B_05.02",
+    "B_07.01"
+   ],
+   "target_tables": [
+    "B_05.01"
+   ]
+  },
+  {
+   "code": "REL-007",
+   "group": "rel_direct_provider_identifier",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.4",
+   "severity_status": "CONFIRMED",
+   "source_tables": [
+    "B_05.01"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "DQ-001",
+   "group": "dq_duplicate_providers",
+   "category": "data_quality",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.4",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_05.01"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "DQ-002",
+   "group": "dq_duplicate_providers",
+   "category": "data_quality",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.4",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_05.01"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "DQ-003",
+   "group": "dq_duplicate_providers",
+   "category": "data_quality",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.4",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_05.01"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "DQ-004",
+   "group": "dq_unused_providers",
+   "category": "data_quality",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.4",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_05.01"
+   ],
+   "target_tables": [
+    "B_02.02",
+    "B_03.02",
+    "B_05.02",
+    "B_07.01"
+   ]
+  },
+  {
+   "code": "REL-008",
+   "group": "rel_arrangement_relations",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.5",
+   "severity_status": "CONFIRMED",
+   "source_tables": [
+    "B_02.02"
+   ],
+   "target_tables": [
+    "B_04.01"
+   ]
+  },
+  {
+   "code": "REL-009",
+   "group": "rel_arrangement_relations",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.5",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_02.01"
+   ],
+   "target_tables": [
+    "B_03.01"
+   ]
+  },
+  {
+   "code": "REL-010",
+   "group": "rel_arrangement_relations",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.5",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_02.01"
+   ],
+   "target_tables": [
+    "B_02.02"
+   ]
+  },
+  {
+   "code": "REL-011",
+   "group": "rel_arrangement_relations",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.5",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_02.01"
+   ],
+   "target_tables": [
+    "B_04.01"
+   ]
+  },
+  {
+   "code": "DQ-005",
+   "group": "dq_arrangement_use",
+   "category": "data_quality",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.5",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_02.01"
+   ],
+   "target_tables": [
+    "B_02.02",
+    "B_02.03",
+    "B_03.01",
+    "B_03.02",
+    "B_03.03",
+    "B_04.01",
+    "B_05.02",
+    "B_07.01"
+   ]
+  },
+  {
+   "code": "DQ-006",
+   "group": "dq_arrangement_use",
+   "category": "data_quality",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.5",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_02.02"
+   ],
+   "target_tables": [
+    "B_01.01"
+   ]
+  },
+  {
+   "code": "DQ-007",
+   "group": "dq_arrangement_use",
+   "category": "data_quality",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.5",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_02.01"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "DQ-008",
+   "group": "dq_arrangement_use",
+   "category": "data_quality",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.5",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_02.02"
+   ],
+   "target_tables": [
+    "B_01.01"
+   ]
+  },
+  {
+   "code": "BUS-006",
+   "group": "bus_overarching",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.5",
+   "severity_status": "CONFIRMED",
+   "source_tables": [
+    "B_02.01"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "BUS-007",
+   "group": "bus_overarching",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.5",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_02.01"
+   ],
+   "target_tables": [
+    "B_03.02"
+   ]
+  },
+  {
+   "code": "BUS-008",
+   "group": "bus_arrangement_dates",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.5",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_02.02"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "BUS-009",
+   "group": "bus_arrangement_dates",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.5",
+   "severity_status": "CONFIRMED",
+   "source_tables": [
+    "B_02.02"
+   ],
+   "target_tables": [
+    "B_01.01"
+   ]
+  },
+  {
+   "code": "BUS-010",
+   "group": "bus_arrangement_dates",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.5",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_02.02"
+   ],
+   "target_tables": [
+    "B_01.01"
+   ]
+  },
+  {
+   "code": "DQ-009",
+   "group": "dq_arrangement_dates",
+   "category": "data_quality",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.5",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_02.02"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "DQ-010",
+   "group": "dq_arrangement_dates",
+   "category": "data_quality",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.5",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_02.02"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "BUS-011",
+   "group": "bus_governing_law",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.5",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_02.02"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "BUS-012",
+   "group": "bus_function_identifier",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.6",
+   "severity_status": "CONFIRMED",
+   "source_tables": [
+    "B_06.01"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "BUS-013",
+   "group": "bus_function_identifier",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.6",
+   "severity_status": "CONFIRMED",
+   "source_tables": [
+    "B_06.01"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "REL-012",
+   "group": "rel_function_coverage",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.6",
+   "severity_status": "PROVISIONAL",
+   "source_tables": [
+    "B_06.01"
+   ],
+   "target_tables": [
+    "B_02.02"
+   ]
+  },
+  {
+   "code": "DQ-011",
+   "group": "dq_function_coverage",
+   "category": "data_quality",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.6",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_06.01"
+   ],
+   "target_tables": [
+    "B_02.02"
+   ]
+  },
+  {
+   "code": "BUS-015",
+   "group": "bus_function_assessment",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.6",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_06.01"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "BUS-016",
+   "group": "bus_function_assessment",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.6",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_06.01"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "BUS-017",
+   "group": "bus_assessment_dates",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.6",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_06.01",
+    "B_07.01"
+   ],
+   "target_tables": [
+    "B_01.01"
+   ]
+  },
+  {
+   "code": "DQ-012",
+   "group": "dq_function_assessment",
+   "category": "data_quality",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.6",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_06.01"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "DQ-013",
+   "group": "dq_function_assessment",
+   "category": "data_quality",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.6",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_06.01"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "REL-013",
+   "group": "rel_critical_services",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.6",
+   "severity_status": "CONFIRMED",
+   "source_tables": [
+    "B_02.02"
+   ],
+   "target_tables": [
+    "B_07.01"
+   ]
+  },
+  {
+   "code": "REL-014",
+   "group": "rel_critical_services",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.6",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_07.01"
+   ],
+   "target_tables": [
+    "B_02.02"
+   ]
+  },
+  {
+   "code": "REL-015",
+   "group": "rel_critical_services",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.6",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_02.02"
+   ],
+   "target_tables": [
+    "B_06.01"
+   ]
+  },
+  {
+   "code": "REL-016",
+   "group": "rel_critical_services",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.6",
+   "severity_status": "CONFIRMED",
+   "source_tables": [
+    "B_02.02"
+   ],
+   "target_tables": [
+    "B_06.01"
+   ]
+  },
+  {
+   "code": "REL-017",
+   "group": "rel_critical_services",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.6",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_07.01"
+   ],
+   "target_tables": [
+    "B_06.01"
+   ]
+  },
+  {
+   "code": "REL-018",
+   "group": "rel_chain_rank_one",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.7",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_05.02"
+   ],
+   "target_tables": [
+    "B_02.02"
+   ]
+  },
+  {
+   "code": "REL-019",
+   "group": "rel_chain_continuity",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.7",
+   "severity_status": "PROVISIONAL",
+   "source_tables": [
+    "B_05.02"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "BUS-018",
+   "group": "bus_chain_rank_one_recipient",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.7",
+   "severity_status": "PROVISIONAL",
+   "source_tables": [
+    "B_05.02"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "REL-020",
+   "group": "rel_chain_intra_group",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.7",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_05.02"
+   ],
+   "target_tables": [
+    "B_02.03",
+    "B_01.02"
+   ]
+  },
+  {
+   "code": "REL-021",
+   "group": "rel_chain_intra_group",
+   "category": "cross_table",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.7.7",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_02.03"
+   ],
+   "target_tables": [
+    "B_05.02"
+   ]
+  },
+  {
+   "code": "BUS-019",
+   "group": "bus_critical_chain_identifier",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.7",
+   "severity_status": "PROVISIONAL",
+   "source_tables": [
+    "B_05.02"
+   ],
+   "target_tables": [
+    "B_05.01"
+   ]
+  },
+  {
+   "code": "DAT-033",
+   "group": "data_closed_lists",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.7.8",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "DAT-034",
+   "group": "data_natural_person_identifier",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.8.1",
+   "severity_status": "PROVISIONAL",
+   "source_tables": [
+    "B_05.01"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "DAT-035",
+   "group": "data_natural_person_identifier",
+   "category": "data",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.8.1",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_05.01"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "DQ-014",
+   "group": "dq_amounts",
+   "category": "data_quality",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.8.4",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_05.01"
+   ],
+   "target_tables": [
+    "B_02.01",
+    "B_03.02"
+   ],
+   "scored": false
+  },
+  {
+   "code": "DQ-015",
+   "group": "dq_amounts",
+   "category": "data_quality",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "PO_VALIDATED",
+   "introduced": "0.8.4",
+   "severity_status": "PO_VALIDATED",
+   "source_tables": [
+    "B_02.01"
+   ],
+   "target_tables": [
+    "B_05.01",
+    "B_03.02"
+   ],
+   "scored": false
+  },
+  {
+   "code": "GLF-001",
+   "group": "gleif_lei_exists",
+   "category": "gleif",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.8.8",
+   "severity_status": "CONFIRMED"
+  },
+  {
+   "code": "GLF-002",
+   "group": "gleif_lei_valid",
+   "category": "gleif",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.8.8",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "GLF-003",
+   "group": "gleif_lei_renewed",
+   "category": "gleif",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "regulatory",
+   "origin": "OFFICIAL",
+   "introduced": "0.8.8",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "GLF-004",
+   "group": "gleif_lei_renewal_due",
+   "category": "gleif",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "DATA_QUALITY",
+   "introduced": "0.8.8",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "GLF-005",
+   "group": "gleif_entity_country",
+   "category": "gleif",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "official_guide",
+   "origin": "OFFICIAL",
+   "introduced": "0.8.8",
+   "severity_status": "CONFIRMED",
+   "source_tables": [
+    "B_01.02"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "GLF-006",
+   "group": "gleif_other_country",
+   "category": "gleif",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "DATA_QUALITY",
+   "introduced": "0.8.8",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "GLF-007",
+   "group": "gleif_name",
+   "category": "gleif",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "DATA_QUALITY",
+   "introduced": "0.8.8",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "GLF-008",
+   "group": "gleif_direct_parent",
+   "category": "gleif",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "DATA_QUALITY",
+   "introduced": "0.8.8",
+   "severity_status": "PROVISIONAL",
+   "source_tables": [
+    "B_01.02"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "GLF-009",
+   "group": "gleif_ultimate_parent",
+   "category": "gleif",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "DATA_QUALITY",
+   "introduced": "0.8.8",
+   "severity_status": "PROVISIONAL",
+   "source_tables": [
+    "B_05.01"
+   ],
+   "target_tables": []
+  },
+  {
+   "code": "GLF-010",
+   "group": "gleif_copy_available",
+   "category": "gleif",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.8.8",
+   "severity_status": "PROVISIONAL"
+  },
+  {
+   "code": "GLF-011",
+   "group": "gleif_copy_recent",
+   "category": "gleif",
+   "step": "technical_rules",
+   "xml_only": false,
+   "source": "product",
+   "origin": "TECHNICAL",
+   "introduced": "0.8.8",
+   "severity_status": "PROVISIONAL"
+  }
+ ]
+}

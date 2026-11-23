@@ -1,0 +1,18 @@
+.git
+.github
+docs
+sample-data
+**/node_modules
+**/dist
+**/.venv
+**/__pycache__
+**/.pytest_cache
+**/.ruff_cache
+**/.env
+**/.env.*
+!**/.env.example
+# Not needed to run the product (review S7): tests, fixtures and tools stay out of the images.
+backend/tests
+backend/tools
+backend/.coverage
+**/.mypy_cache

@@ -1,0 +1,1667 @@
+{
+  "FILE-001": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "FILE-002": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "XML-001": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "XML-002": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "XML-003": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "XML-004": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "ENV-001": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "acpr_technical_note",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "ENV-002": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "ENV-003": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "acpr_technical_note",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "ENV-004": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "acpr_technical_note",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "ENV-005": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "acpr_technical_note",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "ENV-006": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "acpr_technical_note",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "ENV-007": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "acpr_technical_note",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "ENV-008": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "acpr_technical_note",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "ENV-009": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "ENV-010": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "acpr_technical_note",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "ZIP-001": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "ZIP-002": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "ZIP-003": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "ZIP-004": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "ZIP-005": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "ZIP-006": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "ZIP-007": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "ZIP-008": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.724"
+    ]
+  },
+  "ZIP-009": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-001": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "eba_package_guide",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-002": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "eba_package_guide",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-003": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "eba_package_guide",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-004": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "eba_package_guide",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-005": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "eba_package_guide",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-006": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "eba_package_guide",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-007": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "eba_observations_2025",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.720"
+    ]
+  },
+  "PKG-008": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-009": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "eba_package_guide",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-010": {
+    "severity": "INFO",
+    "severity_status": "CONFIRMED",
+    "reference": {
+      "key": "partial_filing_sources",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.720"
+    ]
+  },
+  "PKG-011": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "eba_filing_rule_1_6",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.1.6.b",
+      "EBA.1.6.e"
+    ]
+  },
+  "PKG-012": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "eba_filing_rules_v58",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-013": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "eba_filing_rule_1_6",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.808",
+      "EBA.1.6.b",
+      "EBA.1.6.e",
+      "EBA.1.7.1"
+    ]
+  },
+  "PKG-014": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "eba_package_guide",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-015": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "eba_package_guide",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "xbrlce:unreferencedParameter"
+    ]
+  },
+  "PKG-016": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "eba_observations_2025",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.714"
+    ]
+  },
+  "PKG-017": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "eba_package_guide",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-018": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "eba_observations_2025",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.720"
+    ]
+  },
+  "PKG-019": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "eba_package_guide",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-020": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "eba_package_guide",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-021": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "acpr_main_errors_2025",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.714"
+    ]
+  },
+  "CSV-001": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "eba_filing_rule_1_4",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.306"
+    ]
+  },
+  "CSV-002": {
+    "severity": "MINOR",
+    "reference": {
+      "key": "eba_filing_rule_1_4",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "CSV-003": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "eba_technical_checks",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.809",
+      "EBA.1.7.1"
+    ]
+  },
+  "CSV-004": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.809",
+      "xbrlce:unmappedCellValue"
+    ]
+  },
+  "CSV-005": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "eba_package_guide",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "CSV-006": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "acpr_main_errors_2025",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.801"
+    ]
+  },
+  "CSV-007": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "acpr_main_errors_2025",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.801"
+    ]
+  },
+  "CSV-008": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "CSV-009": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "CSV-010": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "CSV-011": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "ecb_csv_line_endings",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "CSV-012": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "ecb_csv_line_endings",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "IMP-001": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "eba_technical_checks",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.724"
+    ]
+  },
+  "ENV-011": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "acpr_technical_note",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-022": {
+    "severity": "MINOR",
+    "reference": {
+      "key": "filing_indicator_sources",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.808"
+    ]
+  },
+  "DAT-001": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "eba_observations_2025",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.801"
+    ]
+  },
+  "DAT-002": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "eba_observations_2025",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.724"
+    ],
+    "severity_status": "CONFIRMED"
+  },
+  "DAT-003": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "eba_observations_2025",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.805"
+    ]
+  },
+  "DAT-004": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "eba_observations_2025",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.806"
+    ],
+    "severity_status": "CONFIRMED"
+  },
+  "DAT-005": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "eba_observations_2025",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.807"
+    ]
+  },
+  "DAT-006": {
+    "severity": "MAJOR",
+    "severity_status": "CONFIRMED",
+    "reference": {
+      "key": "eba_validation_rules",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.v8826",
+      "EBA.v8821"
+    ]
+  },
+  "DAT-007": {
+    "severity": "MAJOR",
+    "severity_status": "CONFIRMED",
+    "reference": {
+      "key": "eba_validation_rules",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.v8826",
+      "EBA.v8821"
+    ]
+  },
+  "DAT-008": {
+    "severity": "MAJOR",
+    "severity_status": "CONFIRMED",
+    "reference": {
+      "key": "eba_validation_rules",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.v8826",
+      "EBA.v8821"
+    ]
+  },
+  "DAT-009": {
+    "severity": "MAJOR",
+    "severity_status": "CONFIRMED",
+    "reference": {
+      "key": "eba_validation_rules",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.v8826"
+    ]
+  },
+  "DAT-010": {
+    "severity": "MAJOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "iso_17442",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-011": {
+    "severity": "MINOR",
+    "severity_status": "CONFIRMED",
+    "reference": {
+      "key": "bris_2021_1042",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.VR_72"
+    ]
+  },
+  "DAT-012": {
+    "severity": "MAJOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "eba_observations_2025",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.VR_72"
+    ]
+  },
+  "DAT-013": {
+    "severity": "MINOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "bris_2021_1042",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-015": {
+    "severity": "MAJOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "eba_decimals_suffix",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-023": {
+    "severity": "MAJOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "eba_accuracy_rule",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-024": {
+    "severity": "INFO",
+    "severity_status": "PO_VALIDATED",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-025": {
+    "severity": "MINOR",
+    "severity_status": "PO_VALIDATED",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-014": {
+    "severity": "MAJOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "its_annex_i_b0501_0010",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-016": {
+    "severity": "MINOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "bris_2021_1042",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-017": {
+    "severity": "MINOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "dila_siren_siret",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-018": {
+    "severity": "MINOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "dila_vat_number",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-019": {
+    "severity": "MINOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "its_annex_i_b0501_0040",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-020": {
+    "severity": "MINOR",
+    "severity_status": "PO_VALIDATED",
+    "reference": {
+      "key": "po_additional_code",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-021": {
+    "severity": "MINOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "its_annex_i_b0103_0010",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-022": {
+    "severity": "MAJOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "eba_data_model",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-027": {
+    "severity": "BLOCKER",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "its_2024_2956",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-028": {
+    "severity": "MINOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "eba_qa_2024_7282",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-023": {
+    "severity": "MAJOR",
+    "severity_status": "CONFIRMED",
+    "reference": {
+      "key": "eba_validation_rules_conditional",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-024": {
+    "severity": "MAJOR",
+    "severity_status": "CONFIRMED",
+    "reference": {
+      "key": "eba_validation_rules_conditional",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-025": {
+    "severity": "MAJOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "eba_validation_rules_conditional",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-026": {
+    "severity": "MAJOR",
+    "severity_status": "CONFIRMED",
+    "reference": {
+      "key": "eba_validation_rules_conditional",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-029": {
+    "severity": "BLOCKER",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "its_annex_i_b0201_0030",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "PKG-026": {
+    "severity": "INFO",
+    "severity_status": "CONFIRMED",
+    "reference": {
+      "key": "footnotes_sources",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-030": {
+    "severity": "BLOCKER",
+    "severity_status": "CONFIRMED",
+    "reference": {
+      "key": "acpr_main_errors_2025",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.801"
+    ]
+  },
+  "DAT-031": {
+    "severity": "INFO",
+    "severity_status": "CONFIRMED",
+    "reference": {
+      "key": "eba_observations_2025",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.VR_72"
+    ]
+  },
+  "DAT-032": {
+    "severity": "MAJOR",
+    "severity_status": "CONFIRMED",
+    "reference": {
+      "key": "acpr_main_errors_2025",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "ENG-001": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "product",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "REL-001": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "its_2024_2956_annex_i",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "REL-002": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "REL-003": {
+    "severity": "MINOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "REL-004": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "REL-005": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "BUS-001": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "BUS-002": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "BUS-003": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "its_2024_2956_annex_i",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "BUS-004": {
+    "severity": "MINOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "BUS-005": {
+    "severity": "MINOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "REL-006": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "its_2024_2956_annex_i",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PROVISIONAL"
+  },
+  "REL-007": {
+    "severity": "MINOR",
+    "reference": {
+      "key": "its_2024_2956_art_3_5",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DQ-001": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "DQ-002": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "DQ-003": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "DQ-004": {
+    "severity": "INFO",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "REL-008": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "its_2024_2956_annex_i",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "REL-009": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "REL-010": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "REL-011": {
+    "severity": "MINOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "DQ-005": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "DQ-006": {
+    "severity": "INFO",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "DQ-007": {
+    "severity": "INFO",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "DQ-008": {
+    "severity": "INFO",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "BUS-006": {
+    "severity": "MINOR",
+    "reference": {
+      "key": "its_2024_2956_annex_i",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "BUS-007": {
+    "severity": "MINOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "BUS-008": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "BUS-009": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "its_2024_2956_annex_i",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "BUS-010": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "DQ-009": {
+    "severity": "INFO",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "DQ-010": {
+    "severity": "INFO",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "BUS-011": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "BUS-012": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "its_2024_2956_annex_i",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "BUS-013": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "its_2024_2956_annex_i",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "REL-012": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PROVISIONAL"
+  },
+  "DQ-011": {
+    "severity": "INFO",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "BUS-015": {
+    "severity": "MINOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "BUS-016": {
+    "severity": "MINOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "BUS-017": {
+    "severity": "MINOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "DQ-012": {
+    "severity": "MINOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "DQ-013": {
+    "severity": "INFO",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "REL-013": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "its_2024_2956_annex_i",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "REL-014": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "REL-015": {
+    "severity": "MINOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "REL-016": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "its_2024_2956_annex_i",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "REL-017": {
+    "severity": "MINOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "REL-018": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "REL-019": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "its_2024_2956_annex_i",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PROVISIONAL"
+  },
+  "BUS-018": {
+    "severity": "BLOCKER",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PROVISIONAL"
+  },
+  "REL-020": {
+    "severity": "MINOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "REL-021": {
+    "severity": "MINOR",
+    "reference": {
+      "key": "po_sprint3_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "BUS-019": {
+    "severity": "MAJOR",
+    "reference": {
+      "key": "its_2024_2956",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PROVISIONAL"
+  },
+  "DAT-033": {
+    "severity": "MAJOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "eba_taxonomy_4_0",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-034": {
+    "severity": "MINOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "bris_2021_1042",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DAT-035": {
+    "severity": "INFO",
+    "severity_status": "PO_VALIDATED",
+    "reference": {
+      "key": "po_sprint4_decisions",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "DQ-014": {
+    "severity": "INFO",
+    "reference": {
+      "key": "po35_amounts",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "DQ-015": {
+    "severity": "INFO",
+    "reference": {
+      "key": "po35_amounts",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": [],
+    "severity_status": "PO_VALIDATED"
+  },
+  "GLF-001": {
+    "severity": "MAJOR",
+    "severity_status": "CONFIRMED",
+    "reference": {
+      "key": "eba_gleif_rules",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.VR_2",
+      "EBA.VR_12",
+      "EBA.VR_23",
+      "EBA.VR_71",
+      "EBA.VR_77"
+    ]
+  },
+  "GLF-002": {
+    "severity": "MAJOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "its_lei_active",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "GLF-003": {
+    "severity": "MINOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "its_lei_active",
+      "type": "regulatory",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "GLF-004": {
+    "severity": "INFO",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "gleif_data",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "GLF-005": {
+    "severity": "MAJOR",
+    "severity_status": "CONFIRMED",
+    "reference": {
+      "key": "eba_gleif_rules",
+      "type": "official_guide",
+      "verified": true
+    },
+    "official_codes": [
+      "EBA.VR_16"
+    ]
+  },
+  "GLF-006": {
+    "severity": "MINOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "gleif_data",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "GLF-007": {
+    "severity": "MINOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "gleif_data",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "GLF-008": {
+    "severity": "MINOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "gleif_data",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "GLF-009": {
+    "severity": "MINOR",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "gleif_data",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "GLF-010": {
+    "severity": "INFO",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "gleif_data",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  },
+  "GLF-011": {
+    "severity": "INFO",
+    "severity_status": "PROVISIONAL",
+    "reference": {
+      "key": "gleif_data",
+      "type": "product",
+      "verified": true
+    },
+    "official_codes": []
+  }
+}

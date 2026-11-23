@@ -1,0 +1,38 @@
+{
+ "status": "PROVISIONAL",
+ "source": "EBA, observations sur les remises de test (avril 2025) ; docs/eba-observations-avril-2025.md. La liste EBA du 14/09/2026 publie les 93 règles en « warning », sans colonne de rejet : le mapping reste donc provisoire.",
+ "mapping": {
+  "rejects": "BLOCKER",
+  "does_not_reject": "MAJOR"
+ },
+ "rules": {
+  "EBA.103": {"rejects": true, "object": "Structure"},
+  "EBA.306": {"rejects": true, "object": "Encodage"},
+  "EBA.714": {"rejects": true, "object": "entityID différent du nom du fichier"},
+  "EBA.720": {"rejects": true, "object": "Fichiers supplémentaires ou non décrits ; casse"},
+  "EBA.723": {"rejects": true, "object": "En-tête de parameters"},
+  "EBA.724": {"rejects": true, "object": "Aucune donnée"},
+  "EBA.801": {"rejects": true, "object": "Code d'en-tête inconnu"},
+  "EBA.805": {"rejects": true, "object": "Clé primaire manquante"},
+  "EBA.807": {"rejects": true, "object": "Clé étrangère"},
+  "EBA.808": {"rejects": true, "object": "Indicateurs de remise"},
+  "EBA.809": {"rejects": true, "object": "Nombre de colonnes"},
+  "EBA.806": {"rejects": false, "object": "Doublons de clés"},
+  "EBA.v8821": {"rejects": false, "object": "Champs obligatoires (conditionnels)"},
+  "EBA.v8826": {"rejects": false, "object": "Champs obligatoires (conditionnels)"}
+ },
+ "exceptions": {
+  "PKG-022": "Décision du PO : 1/0 acceptés pour les indicateurs de remise, avec avertissement (MINOR) au lieu du rejet de la règle 808. Divergence EBA / ACPR (S13 p. 5), signalée en affichage expert (PO-25, #95).",
+  "PKG-010": "Décision du PO (PO-29, #99) : un tableau non remis est INFO (remise partielle admise par l'EBA, S12 p. 16 et 29, et par l'ACPR, S13 p. 5), à condition que son indicateur de remise soit présent (PKG-011 reste BLOCKER).",
+  "PKG-026": "FootNotes.csv est accepté et ignoré (PO-30, #100) : prévu par XBRL et ignoré par l'EBA (S12 p. 24).",
+  "DAT-030": "Décision du PO (PO-26, #96) : l'ACPR (S13 p. 6-7) et les Filing Rules v5.9 (p. 64, règle 2) exigent toutes les colonnes du schéma ; l'EBA (S12 p. 26) accepte un fichier sans une colonne. Le PO suit l'ACPR.",
+  "DAT-009": "MAJOR confirmé (PO-27, #97) : la règle v8826_m ne rejette pas chez les AES (donc MAJOR, comme DAT-006 à DAT-008).",
+  "DAT-011": "MINOR confirmé (PO-24, #94) : le règlement d'exécution 2021/1042 (annexe, point 9) fixe la structure de l'EUID ; VR_72 ne rejette pas, et un EUID mal formé a été accepté par l'ACPR.",
+  "DAT-031": "INFO (PO-24, #94) : le règlement 2021/1042 n'impose pas de séparateur ; l'EBA recommande le point (S12 p. 20). Information seulement.",
+  "PKG-021": "BLOCKER confirmé (PO-16, #84) : l'entityID porte le périmètre (CON/IND) ; l'ACPR rejette en 714 tout entityID qui ne correspond pas au nom du fichier (S13 p. 5).",
+  "DAT-026": "MAJOR confirmé (PO-16, #84) : règle de signe v22913, active ; toutes les règles de validation EBA sont publiées en « warning », donc sans rejet.",
+  "CSV-006": "BLOCKER (PO-16, #84 ; #109) : cellule d'en-tête vide = colonne en trop sans nom, rejetée en 801 par l'ACPR (S13 p. 6) et par l'EBA (S12 p. 25).",
+  "CSV-007": "BLOCKER (#109) : nom de colonne en double = colonne en trop dans la ligne d'en-têtes, rejetée en 801 par l'ACPR (S13 p. 6).",
+  "DAT-032": "MAJOR (PO-32, #121) : champ non nullable du modèle de données de l'EBA, laissé vide ; l'ACPR le rejette (v888*_m, S13 p. 7), les AES ne rejettent pas les valeurs obligatoires manquantes (S12 p. 3). Champs concernés : ceux qu'aucune règle active ne couvre (B_04.01.0030, B_07.01.0090)."
+ }
+}

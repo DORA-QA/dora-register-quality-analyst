@@ -1,0 +1,47 @@
+{
+  "package": "package-multi-defects.sample.zip",
+  "description": "Golden du 29/10 auquel on applique ensemble une mutation par famille de contrôles du Sprint 3 (brief §16.3). Données fictives.",
+  "built_by": "backend/tests/make_samples.py (MULTI_DEFECT_CASES)",
+  "base": "529900P784EKW7VFMQ21.CON_FR_DORA010100_DORA_2026-12-31_20261029182948489.zip",
+  "engine_version": "0.9.0",
+  "mutations": [
+    {"case": "M-REL-004", "code": "REL-004", "defect": "pays de l'entité différent entre B_01.02, B_01.01 et B_05.01"},
+    {"case": "M-DQ-001", "code": "DQ-001", "defect": "même prestataire déclaré deux fois (même nom, forme juridique en plus, même pays)"},
+    {"case": "M-BUS-009", "code": "BUS-009", "defect": "accord terminé sans motif de fin"},
+    {"case": "M-REL-012", "code": "REL-012", "defect": "fonction critique soutenue par aucun accord"},
+    {"case": "M-REL-016", "code": "REL-016", "defect": "niveau de dépendance vide pour une fonction critique"},
+    {"case": "M-REL-019", "code": "REL-019", "defect": "rupture de chaîne : un rang 3 devient rang 4"},
+    {"case": "M-BUS-019", "code": "BUS-019", "defect": "prestataire d'une chaîne critique identifié ni par un LEI ni par un EUID"},
+    {"case": "M-DAT-033", "code": "DAT-033", "defect": "libellé « High » à la place du code eba_ZZ:x793 (liste L18)"},
+    {"case": "M-DAT-033-HRK", "code": "DAT-033", "defect": "devise eba_CU:HRK, absente de la liste L05 de la taxonomie"}
+  ],
+  "expected": {
+    "status": "FAILED",
+    "findings": [
+      {"code": "REL-004", "severity": "MAJOR", "findings": 2, "occurrences": 4},
+      {"code": "DQ-001", "severity": "MAJOR", "findings": 1, "occurrences": 2},
+      {"code": "BUS-009", "severity": "MAJOR", "findings": 1, "occurrences": 1},
+      {"code": "REL-012", "severity": "BLOCKER", "findings": 1, "occurrences": 1},
+      {"code": "REL-016", "severity": "MAJOR", "findings": 1, "occurrences": 1},
+      {"code": "REL-019", "severity": "MAJOR", "findings": 1, "occurrences": 1},
+      {"code": "BUS-019", "severity": "MAJOR", "findings": 1, "occurrences": 1},
+      {"code": "DAT-033", "severity": "MAJOR", "findings": 2, "occurrences": 2},
+      {"code": "DQ-004", "severity": "INFO", "findings": 1, "occurrences": 1},
+      {"code": "REL-007", "severity": "MINOR", "findings": 1, "occurrences": 3},
+      {"code": "DQ-006", "severity": "INFO", "findings": 1, "occurrences": 1},
+      {"code": "DQ-015", "severity": "INFO", "findings": 1, "occurrences": 1},
+      {"code": "REL-017", "severity": "MINOR", "findings": 1, "occurrences": 5},
+      {"code": "PKG-002", "severity": "MAJOR", "findings": 1, "occurrences": 0}
+    ]
+  },
+  "exceptions": [
+    {"code": "REL-007", "reason": "Admis au golden (2 occurrences, décision du PO du 29/10). La 3e occurrence est le doublon de M-DQ-001, déclaré sans LEI ni EUID."},
+    {"code": "DQ-006", "reason": "Admis au golden : accord terminé du scénario G7."},
+    {"code": "DQ-015", "reason": "Effet de M-DAT-033-HRK (0.8.4, CL-44) : l'accord passe en HRK alors que son prestataire déclare ses montants en EUR ; les montants ne sont pas comparés."},
+    {"code": "REL-017", "reason": "Admis au golden : 5 services de fonctions critiques sans stratégie de sortie (décision du PO du 29/10)."},
+    {"code": "DQ-004", "reason": "Effet de bord connu de M-DQ-001 : le doublon n'est utilisé par aucun tableau."},
+    {"code": "REL-004", "reason": "Deux constats, un par tableau source (B_01.01 et B_05.01), chacun avec ses deux côtés : 4 occurrences."},
+    {"code": "PKG-002", "reason": "Le fichier d'exemple porte un nom de recette alors que son dossier racine garde le nom officiel du golden."},
+    {"code": "DAT-033", "reason": "Deux colonnes en défaut (B_06.01.0100 et B_02.01.0040) : un constat par colonne."}
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  // ROI Quality Engine - DEMO VERSION, NOT FOR PRODUCTION USE.
+  // Menu Terminal > Run Task... (Terminal > Exécuter la tâche...).
+  // "process" tasks: no shell needed (works even if PowerShell scripts or cmd are restricted).
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "1 - Installer la démo (une seule fois)",
+      "dependsOrder": "sequence",
+      "dependsOn": ["Créer l'environnement Python", "Installer les bibliothèques (hors ligne)"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Créer l'environnement Python",
+      "type": "process",
+      "command": "python3.13",
+      "args": ["-m", "venv", ".venv"],
+      "windows": { "command": "py", "args": ["-3.13", "-m", "venv", ".venv"] },
+      "problemMatcher": []
+    },
+    {
+      // Fallback when the "py" launcher is missing (Python from the Microsoft Store):
+      // run this task, then "Installer les bibliothèques (hors ligne)".
+      "label": "Créer l'environnement Python (variante sans py)",
+      "type": "process",
+      "command": "python",
+      "args": ["-m", "venv", ".venv"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Installer les bibliothèques (hors ligne)",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "windows": { "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe" },
+      "args": [
+        "-m", "pip", "install", "--no-index", "--find-links", "wheels",
+        "-r", "requirements.txt", "--disable-pip-version-check"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "2 - Lancer la démo",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/bin/python",
+      "windows": { "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe" },
+      "args": ["portable/launcher.py"],
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
+    }
+  ]
+}

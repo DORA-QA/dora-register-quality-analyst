@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Node
+node_modules/
+dist/
+coverage/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Confidentiality: no register data is ever committed.
+# Only fictitious samples explicitly named *.sample.* are allowed.
+sample-data/*
+!sample-data/README.md
+!sample-data/*.sample.*
+# Golden package (fictitious LEI 529900P784EKW7VFMQ21, PO 20/10/2026): its official name is required.
+!sample-data/529900P784EKW7VFMQ21.CON_*.zip
+
+# Golden package: the local file may hold real data and is never committed.
+# An anonymised copy is committed as golden.sample.zip.
+backend/tests/golden/*
+!backend/tests/golden/README.md
+!backend/tests/golden/*.sample.zip
+dist-portable/
+
+# Frontend build info
+frontend/tsconfig.tsbuildinfo

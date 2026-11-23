@@ -1,0 +1,845 @@
+{
+ "source": "EBA reporting framework 4.0, DORA module",
+ "columns": [
+  {
+   "table": "B_01.01",
+   "column": "c0010",
+   "reference": "B_01.01.0010",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.01",
+   "column": "c0020",
+   "reference": "B_01.01.0020",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.01",
+   "column": "c0030",
+   "reference": "B_01.01.0030",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.01",
+   "column": "c0040",
+   "reference": "B_01.01.0040",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.01",
+   "column": "c0050",
+   "reference": "B_01.01.0050",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.01",
+   "column": "c0060",
+   "reference": "B_01.01.0060",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.02",
+   "column": "c0010",
+   "reference": "B_01.02.0010",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.02",
+   "column": "c0020",
+   "reference": "B_01.02.0020",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.02",
+   "column": "c0030",
+   "reference": "B_01.02.0030",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.02",
+   "column": "c0040",
+   "reference": "B_01.02.0040",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.02",
+   "column": "c0050",
+   "reference": "B_01.02.0050",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.02",
+   "column": "c0060",
+   "reference": "B_01.02.0060",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.02",
+   "column": "c0070",
+   "reference": "B_01.02.0070",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.02",
+   "column": "c0080",
+   "reference": "B_01.02.0080",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.02",
+   "column": "c0090",
+   "reference": "B_01.02.0090",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.02",
+   "column": "c0100",
+   "reference": "B_01.02.0100",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.02",
+   "column": "c0110",
+   "reference": "B_01.02.0110",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.03",
+   "column": "c0010",
+   "reference": "B_01.03.0010",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.03",
+   "column": "c0020",
+   "reference": "B_01.03.0020",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.03",
+   "column": "c0030",
+   "reference": "B_01.03.0030",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_01.03",
+   "column": "c0040",
+   "reference": "B_01.03.0040",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.01",
+   "column": "c0010",
+   "reference": "B_02.01.0010",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.01",
+   "column": "c0020",
+   "reference": "B_02.01.0020",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.01",
+   "column": "c0030",
+   "reference": "B_02.01.0030",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.01",
+   "column": "c0040",
+   "reference": "B_02.01.0040",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.01",
+   "column": "c0050",
+   "reference": "B_02.01.0050",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.02",
+   "column": "c0010",
+   "reference": "B_02.02.0010",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.02",
+   "column": "c0020",
+   "reference": "B_02.02.0020",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.02",
+   "column": "c0030",
+   "reference": "B_02.02.0030",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.02",
+   "column": "c0040",
+   "reference": "B_02.02.0040",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.02",
+   "column": "c0050",
+   "reference": "B_02.02.0050",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.02",
+   "column": "c0060",
+   "reference": "B_02.02.0060",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.02",
+   "column": "c0070",
+   "reference": "B_02.02.0070",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.02",
+   "column": "c0080",
+   "reference": "B_02.02.0080",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.02",
+   "column": "c0090",
+   "reference": "B_02.02.0090",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.02",
+   "column": "c0100",
+   "reference": "B_02.02.0100",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.02",
+   "column": "c0110",
+   "reference": "B_02.02.0110",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.02",
+   "column": "c0120",
+   "reference": "B_02.02.0120",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.02",
+   "column": "c0130",
+   "reference": "B_02.02.0130",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.02",
+   "column": "c0140",
+   "reference": "B_02.02.0140",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.02",
+   "column": "c0150",
+   "reference": "B_02.02.0150",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.02",
+   "column": "c0160",
+   "reference": "B_02.02.0160",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.02",
+   "column": "c0170",
+   "reference": "B_02.02.0170",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.02",
+   "column": "c0180",
+   "reference": "B_02.02.0180",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.03",
+   "column": "c0010",
+   "reference": "B_02.03.0010",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.03",
+   "column": "c0020",
+   "reference": "B_02.03.0020",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_02.03",
+   "column": "c0030",
+   "reference": "B_02.03.0030",
+   "status": "confirmed",
+   "note": "Check column set by the regulator (boolean), see sprint-1-hypotheses"
+  },
+  {
+   "table": "B_03.01",
+   "column": "c0010",
+   "reference": "B_03.01.0010",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_03.01",
+   "column": "c0020",
+   "reference": "B_03.01.0020",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_03.01",
+   "column": "c0030",
+   "reference": "B_03.01.0030",
+   "status": "confirmed",
+   "note": "Check column set by the regulator (boolean), see sprint-1-hypotheses"
+  },
+  {
+   "table": "B_03.02",
+   "column": "c0010",
+   "reference": "B_03.02.0010",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_03.02",
+   "column": "c0020",
+   "reference": "B_03.02.0020",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_03.02",
+   "column": "c0030",
+   "reference": "B_03.02.0030",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_03.03",
+   "column": "c0010",
+   "reference": "B_03.03.0010",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_03.03",
+   "column": "c0020",
+   "reference": "B_03.03.0020",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_03.03",
+   "column": "c0031",
+   "reference": "B_03.03.0031",
+   "status": "confirmed",
+   "note": "Check column set by the regulator (boolean), see sprint-1-hypotheses"
+  },
+  {
+   "table": "B_04.01",
+   "column": "c0010",
+   "reference": "B_04.01.0010",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_04.01",
+   "column": "c0020",
+   "reference": "B_04.01.0020",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_04.01",
+   "column": "c0030",
+   "reference": "B_04.01.0030",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_04.01",
+   "column": "c0040",
+   "reference": "B_04.01.0040",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.01",
+   "column": "c0010",
+   "reference": "B_05.01.0010",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.01",
+   "column": "c0020",
+   "reference": "B_05.01.0020",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.01",
+   "column": "c0030",
+   "reference": "B_05.01.0030",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.01",
+   "column": "c0040",
+   "reference": "B_05.01.0040",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.01",
+   "column": "c0050",
+   "reference": "B_05.01.0050",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.01",
+   "column": "c0060",
+   "reference": "B_05.01.0060",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.01",
+   "column": "c0070",
+   "reference": "B_05.01.0070",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.01",
+   "column": "c0080",
+   "reference": "B_05.01.0080",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.01",
+   "column": "c0090",
+   "reference": "B_05.01.0090",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.01",
+   "column": "c0100",
+   "reference": "B_05.01.0100",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.01",
+   "column": "c0110",
+   "reference": "B_05.01.0110",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.01",
+   "column": "c0120",
+   "reference": "B_05.01.0120",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.02",
+   "column": "c0010",
+   "reference": "B_05.02.0010",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.02",
+   "column": "c0020",
+   "reference": "B_05.02.0020",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.02",
+   "column": "c0030",
+   "reference": "B_05.02.0030",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.02",
+   "column": "c0040",
+   "reference": "B_05.02.0040",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.02",
+   "column": "c0050",
+   "reference": "B_05.02.0050",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.02",
+   "column": "c0060",
+   "reference": "B_05.02.0060",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_05.02",
+   "column": "c0070",
+   "reference": "B_05.02.0070",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_06.01",
+   "column": "c0010",
+   "reference": "B_06.01.0010",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_06.01",
+   "column": "c0020",
+   "reference": "B_06.01.0020",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_06.01",
+   "column": "c0030",
+   "reference": "B_06.01.0030",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_06.01",
+   "column": "c0040",
+   "reference": "B_06.01.0040",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_06.01",
+   "column": "c0050",
+   "reference": "B_06.01.0050",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_06.01",
+   "column": "c0060",
+   "reference": "B_06.01.0060",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_06.01",
+   "column": "c0070",
+   "reference": "B_06.01.0070",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_06.01",
+   "column": "c0080",
+   "reference": "B_06.01.0080",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_06.01",
+   "column": "c0090",
+   "reference": "B_06.01.0090",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_06.01",
+   "column": "c0100",
+   "reference": "B_06.01.0100",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_07.01",
+   "column": "c0010",
+   "reference": "B_07.01.0010",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_07.01",
+   "column": "c0020",
+   "reference": "B_07.01.0020",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_07.01",
+   "column": "c0030",
+   "reference": "B_07.01.0030",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_07.01",
+   "column": "c0040",
+   "reference": "B_07.01.0040",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_07.01",
+   "column": "c0050",
+   "reference": "B_07.01.0050",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_07.01",
+   "column": "c0060",
+   "reference": "B_07.01.0060",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_07.01",
+   "column": "c0070",
+   "reference": "B_07.01.0070",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_07.01",
+   "column": "c0080",
+   "reference": "B_07.01.0080",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_07.01",
+   "column": "c0090",
+   "reference": "B_07.01.0090",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_07.01",
+   "column": "c0100",
+   "reference": "B_07.01.0100",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_07.01",
+   "column": "c0110",
+   "reference": "B_07.01.0110",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_07.01",
+   "column": "c0120",
+   "reference": "B_07.01.0120",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0010",
+   "reference": "B_99.01.0010",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0020",
+   "reference": "B_99.01.0020",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0030",
+   "reference": "B_99.01.0030",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0040",
+   "reference": "B_99.01.0040",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0050",
+   "reference": "B_99.01.0050",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0060",
+   "reference": "B_99.01.0060",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0070",
+   "reference": "B_99.01.0070",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0080",
+   "reference": "B_99.01.0080",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0090",
+   "reference": "B_99.01.0090",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0100",
+   "reference": "B_99.01.0100",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0110",
+   "reference": "B_99.01.0110",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0120",
+   "reference": "B_99.01.0120",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0130",
+   "reference": "B_99.01.0130",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0140",
+   "reference": "B_99.01.0140",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0150",
+   "reference": "B_99.01.0150",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0160",
+   "reference": "B_99.01.0160",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0170",
+   "reference": "B_99.01.0170",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0180",
+   "reference": "B_99.01.0180",
+   "status": "confirmed",
+   "note": null
+  },
+  {
+   "table": "B_99.01",
+   "column": "c0190",
+   "reference": "B_99.01.0190",
+   "status": "confirmed",
+   "note": null
+  }
+ ]
+}
