@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: EUPL-1.2
-"""Single-process mode used by the portable demo build (branch demo/portable).
+"""Single-process mode used by the portable build (ZIP for Windows and macOS).
 
 In Docker, nginx serves the interface and relays the API. In the portable ZIP there is no
 nginx: the API serves the built interface itself, on the same origin, with the security headers

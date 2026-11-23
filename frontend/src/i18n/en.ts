@@ -27,9 +27,11 @@ export const en = {
     close: 'Close',
   },
   language: { label: 'Language' },
-  demo: {
-    title: 'DEMO VERSION – NOT FOR PRODUCTION USE',
-    body: 'This build is for demonstration only. Do not deposit real registers or any confidential data, and do not rely on its results for a filing.',
+  disclaimer: {
+    title: 'Disclaimer',
+    body: 'DORA QA is free software provided "as is", without warranty. Its findings and advice are indicative: they are based on the reading of the regulatory texts and on the experience of the project\'s experts, but they do not replace legal or regulatory advice and do not constitute an enforceable certificate of compliance. A register without findings may still be rejected by the competent authority. The reporting entity remains solely responsible for the content and submission of its register of information. The developer accepts no liability for the use of the results.',
+    accept: 'I have read and accept this disclaimer',
+    continue: 'Continue',
   },
   backend: {
     status: 'Backend status:',

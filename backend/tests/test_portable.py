@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: EUPL-1.2
-"""Single-process mode of the portable demo build (api/portable.py)."""
+"""Single-process mode of the portable build (api/portable.py)."""
 
 from pathlib import Path
 

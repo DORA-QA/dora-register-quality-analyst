@@ -2,8 +2,8 @@
 """Contract of the « About the engine » endpoint (brief of Sprint 4, §22 and §23).
 
 Everything comes from files already in the repository: the version, the catalogue and its
-fingerprint, and the provenance of the reference files (URL, publication date, SHA-256). No
-commercial text: the legal notice and the licence stay empty until the PO provides them.
+fingerprint, and the provenance of the reference files (URL, publication date, SHA-256). The
+legal notice is the disclaimer of DORA QA (translated by the interface); the licence is EUPL 1.2.
 """
 
 import json
@@ -14,6 +14,7 @@ from pydantic import BaseModel
 
 from contracts.check_report import catalog_fingerprint
 from contracts.data_model import DEFAULT_VERSION
+from contracts.disclaimer import DISCLAIMER, LICENCE
 from contracts.messages import load_catalog
 
 REFERENCE_DIR = Path(__file__).resolve().parent.parent / "reference" / "dora"
@@ -48,9 +49,9 @@ class AboutInfo(BaseModel):
     catalog_codes: int
     catalog_fingerprint: str
     sources: list[AboutSource]
-    # Placeholders (brief §23): filled once the PO has validated the texts.
-    legal_notice: str | None = None
-    licence: str | None = None
+    # Disclaimer in English (the interface shows its own translation) and licence of the code.
+    legal_notice: str | None = DISCLAIMER["en"]
+    licence: str | None = LICENCE
 
 
 @lru_cache

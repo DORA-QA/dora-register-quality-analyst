@@ -45,7 +45,8 @@ def test_about_gives_the_engine_and_its_sources(client) -> None:
     assert about["taxonomy_version"] == "4.0"
     assert about["catalog_codes"] > 100
     assert len(about["catalog_fingerprint"]) == 12
-    assert about["legal_notice"] is None and about["licence"] is None
+    assert about["legal_notice"].startswith("DORA QA is free software")
+    assert about["licence"].startswith("EUPL-1.2")
     ids = [source["id"] for source in about["sources"]]
     assert ids[:2] == ["dora", "its"]
     assert {"eba_codes", "eba_labels", "eba_rules", "eba_deactivations"} <= set(ids)

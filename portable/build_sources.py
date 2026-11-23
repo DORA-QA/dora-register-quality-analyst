@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: EUPL-1.2
-"""Build the "sources" demo ZIP: run ROI Quality Engine from VS Code with a signed Python.
+"""Build the "sources" ZIP: run DORA QA from VS Code with a signed Python.
 
 For workstations that block unsigned programs (the PyInstaller ZIP) but allow Python and
 VS Code. Nothing is frozen: the ZIP holds the backend sources, the built interface, the
@@ -22,7 +22,7 @@ REPO = Path(__file__).resolve().parent.parent
 BACKEND = REPO / "backend"
 FRONTEND = REPO / "frontend"
 OUT = REPO / "dist-portable"
-NAME = "ROI-Quality-Engine-DEMO-sources"
+NAME = "DORA-QA-sources"
 WIN = sys.platform == "win32"
 
 # Backend folders needed at run time (tests and tools stay out).
@@ -88,7 +88,7 @@ def wheels(target: Path) -> None:
         ],
         REPO,
     )
-    # Wheels for this system and this Python: the demo workstation installs offline.
+    # Wheels for this system and this Python: the workstation installs offline.
     run(
         [
             sys.executable,
@@ -107,7 +107,9 @@ def wheels(target: Path) -> None:
 
 def extras(target: Path) -> None:
     shutil.copytree(REPO / "portable" / "vscode", target / ".vscode")
-    shutil.copy(REPO / "portable" / "LISEZ-MOI-SOURCES.txt", target / "LISEZ-MOI-DEMO.txt")
+    shutil.copy(REPO / "portable" / "LISEZ-MOI-SOURCES.txt", target / "LISEZ-MOI.txt")
+    shutil.copy(REPO / "LICENSE", target / "LICENSE.txt")
+    shutil.copy(REPO / "NOTICE", target / "NOTICE.txt")
     samples = target / "exemples"
     samples.mkdir()
     data = REPO / "sample-data"
@@ -137,7 +139,7 @@ def main() -> None:
     wheels(target)
     extras(target)
     path = archive(target)
-    print(f"\nZIP sources de demonstration : {path} ({path.stat().st_size / 1e6:.0f} Mo)")
+    print(f"\nZIP sources : {path} ({path.stat().st_size / 1e6:.0f} Mo)")
 
 
 if __name__ == "__main__":

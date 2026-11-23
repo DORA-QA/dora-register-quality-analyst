@@ -92,7 +92,7 @@ export function AboutDialog() {
               <Typography variant="h3" sx={{ fontSize: '1rem', mt: 2, mb: 1 }}>
                 {labels.legalTitle}
               </Typography>
-              <Typography variant="body2">{info.about.legal_notice ?? labels.notYet}</Typography>
+              <Typography variant="body2">{t.disclaimer.body}</Typography>
               <Typography variant="h3" sx={{ fontSize: '1rem', mt: 2, mb: 1 }}>
                 {labels.licenceTitle}
               </Typography>

@@ -126,10 +126,11 @@ export function mockApi(importResponse: (url: string) => Promise<Response>) {
   });
 }
 
-export function renderApp() {
+/** Renders the interface; the disclaimer is accepted unless a test is about it. */
+export function renderApp({ disclaimerAccepted = true }: { disclaimerAccepted?: boolean } = {}) {
   return render(
     <I18nProvider>
-      <App />
+      <App disclaimerAccepted={disclaimerAccepted} />
     </I18nProvider>,
   );
 }

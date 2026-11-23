@@ -1,0 +1,56 @@
+DORA QA - DORA REGISTER QUALITY ANALYST
+=======================================
+
+Analyse locale de la qualité d'un registre d'information DORA (ZIP xBRL-CSV
+ou enveloppe XML OneGate). Le registre ne quitte jamais ce poste.
+
+AVERTISSEMENT : outil gratuit fourni « en l'état », sans garantie. Les constats
+et conseils sont indicatifs et ne constituent ni un avis juridique ou
+réglementaire, ni une attestation de conformité opposable. L'entité déclarante
+reste seule responsable de son registre. Texte complet affiché au lancement.
+
+DÉMARRER
+--------
+1. Décompresser le ZIP en entier (Windows : clic droit > « Extraire tout… »).
+   Ne pas lancer le programme depuis l'intérieur du ZIP.
+2. Windows : double-cliquer sur DORA-QA.exe
+   Le programme n'est pas signé. Si Windows affiche « Windows a protégé votre
+   ordinateur » : « Informations complémentaires » > « Exécuter quand même ».
+   macOS : double-cliquer sur Lancer-DORA-QA.command. La première fois, macOS
+   le bloque : ouvrir Réglages Système > Confidentialité et sécurité, puis
+   cliquer sur « Ouvrir quand même » en face de DORA QA, et relancer.
+3. Une fenêtre de terminal s'ouvre (ne pas la fermer), puis le navigateur
+   affiche l'outil à l'adresse http://127.0.0.1:8765 (ou l'adresse écrite dans
+   la fenêtre).
+4. Lire l'avertissement, cocher la case et cliquer sur « Continuer ».
+
+UTILISER
+--------
+- « Choisir un fichier » (ou glisser-déposer) : le registre à analyser.
+- Sélecteur EN | FR en haut à droite pour changer de langue.
+- Cliquer sur un constat pour voir l'explication, la correction et le conseil
+  d'expert. Export CSV ou JSON Lines depuis le rapport.
+- Le dossier « exemples » contient des registres entièrement fictifs pour
+  découvrir l'outil.
+
+ARRÊTER
+-------
+Fermer la fenêtre du terminal (ou Ctrl+C dedans). Le registre analysé est
+effacé de la mémoire et les fichiers temporaires sont supprimés.
+
+CONFIDENTIALITÉ
+---------------
+L'outil n'écoute que sur 127.0.0.1 (ce poste). Si le pare-feu demande une
+autorisation réseau, choisir « Annuler » : l'analyse n'en a pas besoin.
+
+LICENCE
+-------
+Logiciel libre sous licence EUPL 1.2 (fichier LICENSE.txt). Sources, aide et
+signalements : https://github.com/stephanealpha/dora-register-quality-analyst
+
+-----------------------------------------------------------------------------
+DORA QA analyses a DORA register of information on this computer only.
+Free software provided "as is", without warranty; findings are indicative.
+Unzip, run DORA-QA.exe (Windows) or Lancer-DORA-QA.command (macOS; allow it
+once in System Settings > Privacy & Security), accept the disclaimer, then
+choose a file. Close the terminal window to stop. Licence: EUPL 1.2.

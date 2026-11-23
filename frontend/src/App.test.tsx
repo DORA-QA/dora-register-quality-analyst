@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: EUPL-1.2
-import { screen, within } from '@testing-library/react';
+import { screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 
@@ -492,35 +492,43 @@ describe('Check report', () => {
 
     expect(screen.getByRole('button', { name: 'Choose a file' })).toBeInTheDocument();
     expect(screen.queryByRole('region', { name: 'Import result' })).not.toBeInTheDocument();
-    expect(screen.queryByText('Your register stays with you')).not.toBeInTheDocument();
+    expect(screen.getByText('Your register stays with you')).toBeVisible();
   });
 });
 
-describe('Demo build', () => {
-  it('always shows the demo warning and hides the reassurance block', () => {
+describe('Disclaimer', () => {
+  it('blocks the interface until the disclaimer is ticked and confirmed', async () => {
     mockApi(async () => json(FAILED_IMPORT));
-    renderApp();
+    renderApp({ disclaimerAccepted: false });
 
-    const banner = screen.getByRole('complementary', {
-      name: 'DEMO VERSION – NOT FOR PRODUCTION USE',
-    });
-    expect(banner).toBeVisible();
-    expect(within(banner).getByText(/Do not deposit real registers/)).toBeVisible();
-    expect(within(banner).queryByRole('button')).not.toBeInTheDocument();
-    expect(screen.queryByText('Your register stays with you')).not.toBeInTheDocument();
+    const dialog = screen.getByRole('dialog', { name: 'Disclaimer' });
+    expect(within(dialog).getByText(/provided "as is", without warranty/)).toBeVisible();
+    const proceed = within(dialog).getByRole('button', { name: 'Continue' });
+    expect(proceed).toBeDisabled();
+
+    await userEvent.keyboard('{Escape}');
+    expect(screen.getByRole('dialog', { name: 'Disclaimer' })).toBeInTheDocument();
+
+    await userEvent.click(within(dialog).getByRole('checkbox'));
+    await userEvent.click(proceed);
+    await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
+    expect(screen.getByText('Your register stays with you')).toBeVisible();
   });
 
-  it('translates the demo warning', async () => {
+  it('is translated and keeps nothing in the browser storage', async () => {
     mockApi(async () => json(FAILED_IMPORT));
-    renderApp();
+    localStorage.clear();
+    sessionStorage.clear();
+    renderApp({ disclaimerAccepted: false });
 
     await userEvent.click(screen.getByRole('button', { name: 'Français' }));
+    const dialog = screen.getByRole('dialog', { name: 'Avertissement' });
+    expect(within(dialog).getByText(/fourni « en l'état », sans garantie/)).toBeVisible();
+    await userEvent.click(within(dialog).getByRole('checkbox'));
+    await userEvent.click(within(dialog).getByRole('button', { name: 'Continuer' }));
 
-    expect(
-      screen.getByRole('complementary', {
-        name: 'VERSION DE DÉMONSTRATION – NE PAS UTILISER EN PRODUCTION',
-      }),
-    ).toBeVisible();
+    const keys = [...Object.keys(localStorage), ...Object.keys(sessionStorage)];
+    expect(keys.filter((key) => /disclaimer|avertissement/i.test(key))).toEqual([]);
   });
 });
 

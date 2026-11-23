@@ -334,11 +334,11 @@ def export_findings(
         profile_of=profile_of_code,
     )
     stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
-    file_name = f"roi-findings-{outcome.import_id}-{stamp}.{extension}"
+    file_name = f"dora-qa-findings-{outcome.import_id}-{stamp}.{extension}"
     stream, media = (
-        (export.csv_stream(lines), "text/csv; charset=utf-8")
+        (export.csv_stream(lines, language), "text/csv; charset=utf-8")
         if extension == "csv"
-        else (export.jsonl_stream(lines), "application/x-ndjson; charset=utf-8")
+        else (export.jsonl_stream(lines, language), "application/x-ndjson; charset=utf-8")
     )
     return StreamingResponse(
         stream,
