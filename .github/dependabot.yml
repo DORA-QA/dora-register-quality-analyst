@@ -32,6 +32,11 @@ updates:
     groups:
       frontend-minor-patch:
         update-types: ["minor", "patch"]
+    ignore:
+      # TypeScript 7 (compiler rewritten in Go) is not supported yet by typescript-eslint
+      # (peer typescript < 6.1 in 8.73.0): npm ci fails. Lift this rule once it is.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: "docker"
     directory: "/docker"
