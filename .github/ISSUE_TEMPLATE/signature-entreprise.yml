@@ -6,6 +6,7 @@ body:
     attributes:
       value: |
         Cette issue est **publique** : n'y indiquez aucune information confidentielle.
+        Demande confidentielle : écrivez à dora-qa@proton.me.
         Vous pouvez aussi signer DORA QA vous-même : voir docs/signature-entreprise.md.
   - type: input
     id: company

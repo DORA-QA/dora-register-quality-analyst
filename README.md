@@ -31,7 +31,7 @@ Téléchargez dans les [Releases](../../releases) le ZIP de votre système et de
 
 Le navigateur s'ouvre sur l'interface. Fermez la fenêtre du terminal pour arrêter l'application.
 
-Votre entreprise souhaite un exécutable signé à son nom ? Voir [Signer DORA QA avec votre propre certificat](docs/signature-entreprise.md) ou ouvrez une [demande de signature](../../issues/new/choose).
+Votre entreprise souhaite un exécutable signé à son nom ? Voir [Signer DORA QA avec votre propre certificat](docs/signature-entreprise.md) ou ouvrez une [demande de signature](../../issues/new/choose). Pour une demande confidentielle : [dora-qa@proton.me](mailto:dora-qa@proton.me).
 
 ## Ce qui est contrôlé
 
@@ -61,6 +61,10 @@ Documentation technique : [architecture](docs/architecture.md), [scores](docs/sc
 
 Les signalements d'erreur et les propositions sont bienvenus : voir [CONTRIBUTING.md](CONTRIBUTING.md). **N'envoyez jamais de registre réel**, même partiellement : utilisez les jeux fictifs de `sample-data/`. Failles de sécurité : voir [SECURITY.md](SECURITY.md).
 
+## Contact
+
+[dora-qa@proton.me](mailto:dora-qa@proton.me) pour les demandes confidentielles (signature entreprise, déploiement). Questions et signalements publics : [issues](../../issues/new/choose). N'envoyez jamais de registre réel, par aucun canal.
+
 ## Licence
 
 Code publié sous **[EUPL 1.2](LICENSE)** (European Union Public Licence). Le texte fait foi dans les 23 langues officielles de l'Union, dont le [français](https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12). Données et textes de tiers : voir [NOTICE](NOTICE).
@@ -76,3 +80,4 @@ Code publié sous **[EUPL 1.2](LICENSE)** (European Union Public Licence). Le te
 - **Install**: download the ZIP from the [Releases](../../releases), check its SHA-256, unzip and run `DORA-QA.exe` (Windows) or `Lancer-DORA-QA.command` (macOS). The binaries are not signed: allow them once in SmartScreen or in *System Settings > Privacy & Security*.
 - **Disclaimer**: DORA QA is free software provided "as is", without warranty. Its findings are indicative and are neither legal or regulatory advice nor an enforceable certificate of compliance. The reporting entity remains solely responsible for its register.
 - **Licence**: [EUPL 1.2](LICENSE). Never attach a real register to an issue.
+- **Contact**: [dora-qa@proton.me](mailto:dora-qa@proton.me) for confidential requests; public questions in the issues.
