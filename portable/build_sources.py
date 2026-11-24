@@ -30,6 +30,7 @@ BACKEND_PARTS = [
     "api",
     "contracts",
     "dataset",
+    "gleif",
     "import_engine",
     "indicators",
     "reference",
@@ -63,7 +64,10 @@ def build_frontend(target: Path) -> None:
 
 
 def copy_backend(target: Path) -> None:
-    ignore = shutil.ignore_patterns("__pycache__", "*.pyc", ".mypy_cache", ".ruff_cache")
+    # The sources variant is the offline version: the GLEIF updater (network code) stays out.
+    ignore = shutil.ignore_patterns(
+        "__pycache__", "*.pyc", ".mypy_cache", ".ruff_cache", "updater.py"
+    )
     for part in BACKEND_PARTS:
         shutil.copytree(BACKEND / part, target / "backend" / part, ignore=ignore)
     shutil.copy(REPO / "portable" / "launcher.py", target / "portable" / "launcher.py")
