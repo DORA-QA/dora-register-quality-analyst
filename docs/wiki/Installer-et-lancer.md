@@ -8,7 +8,7 @@ DORA QA ne s'installe pas : c'est un dossier à décompresser. Aucun droit d'adm
 
 ## 1. Télécharger
 
-1. Ouvrez la page [Releases](https://github.com/stephanealpha/dora-register-quality-analyst/releases) du projet.
+1. Ouvrez la page [Releases](https://github.com/DORA-QA/dora-register-quality-analyst/releases) du projet.
 2. Dans la dernière version, téléchargez le ZIP de votre système et de votre version :
    - Windows : `DORA-QA-hors-ligne-…-windows-amd64.zip` (ou `en-ligne`) ;
    - Mac (puce Apple) : `DORA-QA-hors-ligne-…-macos-arm64.zip` (ou `en-ligne`).

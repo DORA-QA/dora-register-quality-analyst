@@ -30,7 +30,7 @@ L'outil télécharge la copie du GLEIF ; patientez. Au-delà de 15 minutes, il a
 La ligne 1 est la première ligne **de données** : l'en-tête n'est pas comptée.
 
 **Je pense qu'un constat est faux.**
-Ouvrez une [issue « Constat erroné »](https://github.com/stephanealpha/dora-register-quality-analyst/issues/new/choose) avec le code du constat et la source réglementaire, **sans joindre de registre réel**. Pour une demande confidentielle : [dora-qa@proton.me](mailto:dora-qa@proton.me).
+Ouvrez une [issue « Constat erroné »](https://github.com/DORA-QA/dora-register-quality-analyst/issues/new/choose) avec le code du constat et la source réglementaire, **sans joindre de registre réel**. Pour une demande confidentielle : [dora-qa@proton.me](mailto:dora-qa@proton.me).
 
 **Comment obtenir une nouvelle version ?**
-Les nouvelles versions sont publiées dans les [Releases](https://github.com/stephanealpha/dora-register-quality-analyst/releases). Sur un poste professionnel, la mise à jour passe par votre DSI.
+Les nouvelles versions sont publiées dans les [Releases](https://github.com/DORA-QA/dora-register-quality-analyst/releases). Sur un poste professionnel, la mise à jour passe par votre DSI.

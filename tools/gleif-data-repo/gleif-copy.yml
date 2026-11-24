@@ -1,6 +1,6 @@
 # Daily GLEIF copy of DORA QA (online version).
 #
-# To be placed in .github/workflows/ of the PUBLIC data repository stephanealpha/dora-qa-gleif-data
+# To be placed in .github/workflows/ of the PUBLIC data repository DORA-QA/dora-qa-gleif-data
 # (scheduled workflows only run from the default branch of the repository that holds them).
 #
 # Every night: reads the latest GLEIF Golden Copy, rebuilds the Parquet files with the tools of
@@ -33,7 +33,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  CODE_REPO: stephanealpha/dora-register-quality-analyst
+  CODE_REPO: DORA-QA/dora-register-quality-analyst
   CODE_REF: main
   KEEP: "2"
   MIN_LEI_ROWS: "3000000"

@@ -59,7 +59,7 @@ from gleif.layout import (
 from gleif.status import write_status
 
 logger = logging.getLogger("roi.gleif.updater")
-DEFAULT_REPO = "stephanealpha/dora-qa-gleif-data"
+DEFAULT_REPO = "DORA-QA/dora-qa-gleif-data"
 DEFAULT_PREFIX = "gleif-"
 DEFAULT_API = "https://api.github.com"
 # Each network operation: well under the heartbeat timeout of the API (gleif.status, 60 s).

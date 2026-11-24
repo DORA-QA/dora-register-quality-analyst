@@ -60,7 +60,7 @@ LICENCE
 -------
 Logiciel libre sous licence EUPL 1.2 : LICENCE.fr.txt (français),
 LICENSE.txt (anglais). Sources, aide et signalements :
-https://github.com/stephanealpha/dora-register-quality-analyst
+https://github.com/DORA-QA/dora-register-quality-analyst
 Contact (demandes confidentielles) : dora-qa@proton.me
 
 -----------------------------------------------------------------------------

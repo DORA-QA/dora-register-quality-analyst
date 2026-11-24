@@ -30,7 +30,7 @@ The tool is downloading the GLEIF copy; please wait. After 15 minutes, it gives 
 Row 1 is the first **data** row: the header is not counted.
 
 **I think a finding is wrong.**
-Open a ["Wrong finding" issue](https://github.com/stephanealpha/dora-register-quality-analyst/issues/new/choose) with the code of the finding and the regulatory source, **without attaching a real register**. For a confidential request: [dora-qa@proton.me](mailto:dora-qa@proton.me).
+Open a ["Wrong finding" issue](https://github.com/DORA-QA/dora-register-quality-analyst/issues/new/choose) with the code of the finding and the regulatory source, **without attaching a real register**. For a confidential request: [dora-qa@proton.me](mailto:dora-qa@proton.me).
 
 **How do I get a new version?**
-New versions are published in the [Releases](https://github.com/stephanealpha/dora-register-quality-analyst/releases). On a company computer, the update goes through your IT department.
+New versions are published in the [Releases](https://github.com/DORA-QA/dora-register-quality-analyst/releases). On a company computer, the update goes through your IT department.

@@ -8,7 +8,7 @@ DORA QA is not installed: it is a folder to unzip. No administrator rights are n
 
 ## 1. Download
 
-1. Open the project's [Releases](https://github.com/stephanealpha/dora-register-quality-analyst/releases) page.
+1. Open the project's [Releases](https://github.com/DORA-QA/dora-register-quality-analyst/releases) page.
 2. In the latest version, download the ZIP for your system and your version:
    - Windows: `DORA-QA-hors-ligne-…-windows-amd64.zip` (offline) or `en-ligne` (online);
    - Mac (Apple chip): `DORA-QA-hors-ligne-…-macos-arm64.zip` (offline) or `en-ligne` (online).

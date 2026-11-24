@@ -20,7 +20,7 @@ DORA-QA (lanceur)
 ```
 
 1. Au démarrage, le lanceur ferme les imports, puis lance la mise à jour dans un **processus
-   séparé**. Celui-ci lit les releases du dépôt public `stephanealpha/dora-qa-gleif-data`, prend la
+   séparé**. Celui-ci lit les releases du dépôt public `DORA-QA/dora-qa-gleif-data`, prend la
    plus récente et ne télécharge que si elle a changé (environ 100 Mo). Les fichiers sont vérifiés
    (SHA-256) puis installés d'un seul coup : le moteur ne voit jamais une copie à moitié écrite.
 2. Tant que ce processus tourne, un fil dédié réécrit `status.json` toutes les 2 secondes, **même
