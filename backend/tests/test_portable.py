@@ -37,6 +37,18 @@ def test_api_routes_keep_priority_over_files(tmp_path: Path) -> None:
     assert "content-security-policy" not in response.headers
 
 
+def test_page_is_never_taken_from_an_older_cache(tmp_path: Path) -> None:
+    # The same address (127.0.0.1:8765) serves every version of DORA QA: a cached page of an
+    # older version would hide the newer interface.
+    (tmp_path / "assets").mkdir()
+    (tmp_path / "assets" / "index-abc123.js").write_text("x", encoding="utf-8")
+    client = make_client(tmp_path)
+    assert client.get("/").headers["cache-control"] == "no-cache"
+    assert client.get("/index.html").headers["cache-control"] == "no-cache"
+    assert "immutable" in client.get("/assets/index-abc123.js").headers["cache-control"]
+    assert client.get("/health").headers["cache-control"] == "no-store"
+
+
 def test_missing_build_is_refused(tmp_path: Path) -> None:
     with pytest.raises(RuntimeError, match="index.html"):
         setup_portable_frontend(FastAPI(), str(tmp_path))
