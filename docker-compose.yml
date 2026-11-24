@@ -80,7 +80,7 @@ services:
       - default
     environment:
       ROI_GLEIF_DIR: /data/gleif
-      ROI_GLEIF_REPO: ${ROI_GLEIF_REPO:-stephanealpha/dora-qa-gleif-data}
+      ROI_GLEIF_REPO: ${ROI_GLEIF_REPO:-DORA-QA/dora-qa-gleif-data}
       ROI_GLEIF_TOKEN: ${ROI_GLEIF_TOKEN:-}
       # Acceptance tests only: keeps the waiting screen this many seconds (default 0).
       ROI_GLEIF_HOLD_SECONDS: ${ROI_GLEIF_HOLD_SECONDS:-0}

@@ -6,7 +6,7 @@
 
 ## The tool in brief
 
-DORA QA (DORA Register Quality Analyst) checks the quality of a DORA register of information (Implementing Regulation (EU) 2024/2956, EBA taxonomy 4.0) **before it is submitted** to the authority. Free software under the **EUPL 1.2** licence, public source code: https://github.com/stephanealpha/dora-register-quality-analyst
+DORA QA (DORA Register Quality Analyst) checks the quality of a DORA register of information (Implementing Regulation (EU) 2024/2956, EBA taxonomy 4.0) **before it is submitted** to the authority. Free software under the **EUPL 1.2** licence, public source code: https://github.com/DORA-QA/dora-register-quality-analyst
 
 ## Technical characteristics
 
@@ -27,13 +27,13 @@ DORA QA (DORA Register Quality Analyst) checks the quality of a DORA register of
 ## Options for the IT department
 
 - **Check** the SHA-256 fingerprint and, if desired, audit the source code and the SBOM.
-- **Rebuild and sign** the tool with the company certificate: [signing guide](https://github.com/stephanealpha/dora-register-quality-analyst/blob/main/docs/signature-entreprise.md) (in French; `signtool`, `codesign`, MSI package for Intune or SCCM).
+- **Rebuild and sign** the tool with the company certificate: [signing guide](https://github.com/DORA-QA/dora-register-quality-analyst/blob/main/docs/signature-entreprise.md) (in French; `signtool`, `codesign`, MSI package for Intune or SCCM).
 - **Choose the version**: offline (no traffic) or online (GitHub traffic at start-up).
 - **"Sources" variant** for computers that block unsigned executables: runs from VS Code with the official (signed) Python, libraries provided, offline installation.
 - **Docker stack** for an isolated server deployment.
 
 ## Contact
 
-Security: private report through the repository's [Security](https://github.com/stephanealpha/dora-register-quality-analyst/security) tab, or [dora-qa@proton.me](mailto:dora-qa@proton.me) (subject "SECURITY"). Confidential requests: [dora-qa@proton.me](mailto:dora-qa@proton.me).
+Security: private report through the repository's [Security](https://github.com/DORA-QA/dora-register-quality-analyst/security) tab, or [dora-qa@proton.me](mailto:dora-qa@proton.me) (subject "SECURITY"). Confidential requests: [dora-qa@proton.me](mailto:dora-qa@proton.me).
 
 > DORA QA is provided "as is", without warranty; its findings are indicative and do not constitute a certificate of compliance.

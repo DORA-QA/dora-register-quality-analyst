@@ -7,7 +7,7 @@ Les exécutables publiés dans les Releases ne sont **pas signés** (ni Authenti
 Sur un poste de build Windows ou macOS (Python 3.13, uv, Node.js 22) :
 
 ```bash
-git clone https://github.com/stephanealpha/dora-register-quality-analyst
+git clone https://github.com/DORA-QA/dora-register-quality-analyst
 cd dora-register-quality-analyst
 git checkout vX.Y.Z            # la version auditée
 uv sync --frozen --no-dev --project backend
