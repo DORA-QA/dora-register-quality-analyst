@@ -27,7 +27,7 @@ Choose the offline version if your IT department forbids any outgoing connection
 Download from the [Releases](../../releases) the ZIP for your system and the chosen version (`DORA-QA-hors-ligne-…` for offline or `DORA-QA-en-ligne-…` for online), check its SHA-256 fingerprint (file `SHA256SUMS.txt` of the release), unzip it, then run:
 
 - **Windows**: `DORA-QA.exe`. The program is not signed: SmartScreen may display "Windows protected your PC"; click *More info*, then *Run anyway*.
-- **macOS**: `Lancer-DORA-QA.command` (ZIP `macos-arm64` for Macs with an Apple chip, `macos-x86_64` for Intel Macs). The application is not notarised: on first launch, macOS blocks it. Open *System Settings > Privacy & Security*, then click *Open Anyway* next to DORA QA.
+- **macOS**: `Lancer-DORA-QA.command` (ZIP `macos-arm64` for Macs with an Apple chip, `macos-x86_64` for Intel Macs). The application is not notarised: macOS blocks it. Remove the quarantine from the unzipped folder with `xattr -dr com.apple.quarantine <DORA-QA folder>` in the Terminal (details in the [wiki](../../wiki/Install-and-start)).
 - **Linux** (x86_64, glibc 2.35 or later: Ubuntu 22.04, Debian 12, RHEL 9 and later): `./Lancer-DORA-QA.sh` in a terminal.
 
 The browser opens on the interface. Close the terminal window to stop the application.

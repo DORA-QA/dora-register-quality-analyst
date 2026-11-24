@@ -44,7 +44,24 @@ DORA-QA-hors-ligne-1.0.0-windows-amd64\
   - Si Windows affiche « Windows a protégé votre ordinateur » : c'est l'alerte attendue pour un programme non signé. **Sur un poste professionnel, demandez à votre DSI.** Sur un ordinateur personnel : *Informations complémentaires* > *Exécuter quand même*.
 - **Linux** : dans un terminal, depuis le dossier `DORA-QA`, lancez `./Lancer-DORA-QA.sh`.
 - **Mac** : double-cliquez sur `Lancer-DORA-QA.command`.
-  - La première fois, macOS le bloque. **Sur un Mac professionnel, demandez à votre DSI.** Sur un Mac personnel : *Réglages Système* > *Confidentialité et sécurité* > *Ouvrir quand même* en face de DORA QA, puis relancez.
+  - La première fois, macOS le bloque (« Apple n'a pas pu vérifier… ») : DORA QA n'est pas notarisé par Apple. **Sur un Mac professionnel, demandez à votre DSI.** Sur un Mac personnel, voir ci-dessous.
+
+### Si macOS bloque DORA QA (Mac personnel)
+
+macOS marque tout fichier téléchargé comme « en quarantaine » et bloque les programmes non notarisés. Le programme et chacune de ses bibliothèques sont concernés : passer par *Ouvrir quand même* ne débloque souvent que le premier fichier.
+
+**Méthode recommandée** : retirer la quarantaine du dossier, en une commande.
+
+1. Ouvrez l'application **Terminal** (Applications > Utilitaires).
+2. Tapez `xattr -dr com.apple.quarantine ` (avec l'espace final), puis **glissez le dossier `DORA-QA`** dans la fenêtre du Terminal : son chemin s'ajoute.
+3. Appuyez sur *Entrée*. Aucun mot de passe n'est demandé.
+4. Double-cliquez à nouveau sur `Lancer-DORA-QA.command`.
+
+Exemple : `xattr -dr com.apple.quarantine ~/Documents/DORA-QA-hors-ligne-1.0.0-macos-arm64/DORA-QA`
+
+**Autre méthode** : après la tentative bloquée, *Réglages Système* > *Confidentialité et sécurité* > *Ouvrir quand même* en face de DORA QA (mot de passe de la session demandé), puis relancez ; à répéter si macOS bloque un autre fichier.
+
+> Ne retirez la quarantaine que d'un ZIP téléchargé depuis la page Releases officielle, dont l'empreinte correspond à `SHA256SUMS.txt`.
 
 Une fenêtre noire (terminal) s'ouvre : **ne la fermez pas**, c'est le moteur de l'outil. Le navigateur s'ouvre ensuite tout seul sur DORA QA.
 

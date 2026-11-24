@@ -44,7 +44,24 @@ DORA-QA-hors-ligne-1.0.0-windows-amd64\
   - If Windows displays "Windows protected your PC": this is the expected warning for an unsigned program. **On a company computer, ask your IT department.** On a personal computer: *More info* > *Run anyway*.
 - **Linux**: in a terminal, from the `DORA-QA` folder, run `./Lancer-DORA-QA.sh`.
 - **Mac**: double-click `Lancer-DORA-QA.command`.
-  - The first time, macOS blocks it. **On a company Mac, ask your IT department.** On a personal Mac: *System Settings* > *Privacy & Security* > *Open Anyway* next to DORA QA, then start it again.
+  - The first time, macOS blocks it ("Apple could not verify…"): DORA QA is not notarised by Apple. **On a company Mac, ask your IT department.** On a personal Mac, see below.
+
+### If macOS blocks DORA QA (personal Mac)
+
+macOS marks every downloaded file as "quarantined" and blocks programs that are not notarised. The program and each of its libraries are affected: *Open Anyway* often unblocks only the first file.
+
+**Recommended method**: remove the quarantine from the folder, in one command.
+
+1. Open the **Terminal** application (Applications > Utilities).
+2. Type `xattr -dr com.apple.quarantine ` (with the final space), then **drag the `DORA-QA` folder** into the Terminal window: its path is added.
+3. Press *Return*. No password is asked.
+4. Double-click `Lancer-DORA-QA.command` again.
+
+Example: `xattr -dr com.apple.quarantine ~/Documents/DORA-QA-hors-ligne-1.0.0-macos-arm64/DORA-QA`
+
+**Other method**: after the blocked attempt, *System Settings* > *Privacy & Security* > *Open Anyway* next to DORA QA (session password asked), then start it again; repeat if macOS blocks another file.
+
+> Only remove the quarantine from a ZIP downloaded from the official Releases page, whose fingerprint matches `SHA256SUMS.txt`.
 
 A black window (terminal) opens: **do not close it**, it is the engine of the tool. The browser then opens DORA QA by itself.
 

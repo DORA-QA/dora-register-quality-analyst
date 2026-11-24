@@ -27,7 +27,7 @@ Choisissez la version hors ligne si votre DSI interdit toute connexion sortante.
 Téléchargez dans les [Releases](../../releases) le ZIP de votre système et de la version choisie (`DORA-QA-hors-ligne-…` ou `DORA-QA-en-ligne-…`), vérifiez son empreinte SHA-256 (fichier `SHA256SUMS.txt` de la release), décompressez-le, puis lancez :
 
 - **Windows** : `DORA-QA.exe`. Le programme n'est pas signé : SmartScreen peut afficher « Windows a protégé votre ordinateur » ; cliquez sur *Informations complémentaires*, puis *Exécuter quand même*.
-- **macOS** : `Lancer-DORA-QA.command` (ZIP `macos-arm64` pour les Mac à puce Apple, `macos-x86_64` pour les Mac Intel). L'application n'est pas notarisée : au premier lancement, macOS la bloque. Ouvrez *Réglages Système > Confidentialité et sécurité*, puis cliquez sur *Ouvrir quand même* en face de DORA QA.
+- **macOS** : `Lancer-DORA-QA.command` (ZIP `macos-arm64` pour les Mac à puce Apple, `macos-x86_64` pour les Mac Intel). L'application n'est pas notarisée : macOS la bloque. Retirez la quarantaine du dossier décompressé avec `xattr -dr com.apple.quarantine <dossier DORA-QA>` dans le Terminal (détails dans le [wiki](../../wiki/Installer-et-lancer)).
 - **Linux** (x86_64, glibc 2.35 ou plus : Ubuntu 22.04, Debian 12, RHEL 9 et suivantes) : `./Lancer-DORA-QA.sh` dans un terminal.
 
 Le navigateur s'ouvre sur l'interface. Fermez la fenêtre du terminal pour arrêter l'application.
