@@ -36,8 +36,19 @@ def setup_portable_frontend(app: FastAPI, static_dir: str) -> None:
         response = await call_next(request)
         response.headers.setdefault("X-Content-Type-Options", "nosniff")
         response.headers.setdefault("Referrer-Policy", "no-referrer")
-        if not request.url.path.startswith(API_PREFIXES):
+        path = request.url.path
+        if path.startswith(API_PREFIXES):
+            # Answers change during a session (GLEIF status, analyses): never from a cache.
+            response.headers.setdefault("Cache-Control", "no-store")
+        else:
             response.headers.setdefault("Content-Security-Policy", CONTENT_SECURITY_POLICY)
+            # Vite puts a content hash in asset names: they never change. The page itself must
+            # be checked at every start, or the browser may show the interface of an older
+            # version of DORA QA used before on the same address.
+            immutable = path.startswith("/assets/")
+            response.headers.setdefault(
+                "Cache-Control", "public, max-age=31536000, immutable" if immutable else "no-cache"
+            )
         return response
 
     # Mounted last: the API routes keep priority over the files.
