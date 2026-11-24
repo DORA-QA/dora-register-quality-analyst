@@ -65,6 +65,34 @@ export const fr: Dictionary = {
     splashConnecting: 'Connexion…',
     progress: '{received} Mo sur {total} Mo ({percent} %)',
     splashCloses: 'Cet écran se fermera tout seul à la fin de la mise à jour.',
+    failed: {
+      title: 'La mise à jour en ligne de la copie GLEIF a échoué',
+      reasons: {
+        network:
+          "L'outil n'a pas pu joindre GitHub, où est publiée la copie du GLEIF : pas de connexion Internet, ou un pare-feu ou un proxy d'entreprise bloque la connexion.",
+        no_access:
+          "La copie publiée du GLEIF n'est pas accessible (dépôt introuvable ou accès refusé).",
+        no_release: "Aucune copie du GLEIF n'est publiée pour le moment.",
+        github_error:
+          'GitHub a répondu par une erreur ou est momentanément indisponible (il limite peut-être aussi le nombre de requêtes).',
+        download_error: 'Le téléchargement de la copie a été refusé ou interrompu.',
+        checksum:
+          "La copie téléchargée est incomplète ou altérée (empreinte incorrecte) : elle n'a pas été installée.",
+        bad_release:
+          "La copie publiée est incomplète ou dans un format inattendu : elle n'a pas été installée.",
+        too_long:
+          'La mise à jour a duré plus de 15 minutes et a été arrêtée (connexion trop lente).',
+        interrupted: "La mise à jour s'est arrêtée avant la fin, sans donner de raison.",
+        internal: 'Une erreur inattendue est survenue pendant la mise à jour.',
+      },
+      kept: "L'analyse utilise la copie déjà installée, du {date}.",
+      none: "Aucune copie n'est installée : les contrôles GLEIF ne seront pas réalisés. Le reste de l'analyse fonctionne normalement.",
+      network:
+        "Sur un réseau d'entreprise, demandez à votre service informatique d'autoriser api.github.com et les adresses de téléchargement de GitHub, ou utilisez la version hors ligne.",
+      retry:
+        'Relancez DORA QA pour réessayer. Si le problème persiste, signalez-le sur GitHub ou à dora-qa@proton.me en indiquant le code ci-dessous.',
+      code: 'Code : {code}',
+    },
   },
   upload: {
     section: 'Import du registre',

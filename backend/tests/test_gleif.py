@@ -292,8 +292,12 @@ def test_status_follows_the_heartbeat_of_the_updater(tmp_path) -> None:
     write_status(tmp_path, GleifState.UPDATING, received_bytes=10, total_bytes=100)
     status = read_status(tmp_path, started_epoch=started)
     assert status.state is GleifState.UPDATING and status.total_bytes == 100
-    # A silent updater (crashed) no longer blocks the tool.
-    assert read_status(tmp_path, now=time.time() + 120).state is GleifState.UNAVAILABLE
+    # A silent updater (crashed) no longer blocks the tool, and the failure is reported.
+    crashed = read_status(tmp_path, now=time.time() + 120)
+    assert crashed.state is GleifState.UNAVAILABLE and crashed.last_error == "interrupted"
+    # A reason written by the updater is kept as is.
+    write_status(tmp_path, GleifState.UNAVAILABLE, last_error="network")
+    assert read_status(tmp_path).last_error == "network"
     install_copy(tmp_path)
     write_status(tmp_path, GleifState.READY)
     assert read_status(tmp_path).state is GleifState.READY

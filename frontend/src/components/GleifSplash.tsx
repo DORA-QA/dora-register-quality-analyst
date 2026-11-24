@@ -1,8 +1,11 @@
 // SPDX-License-Identifier: EUPL-1.2
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import { useState } from 'react';
 
 import type { GleifStatus } from '../api/gleif';
 import { format, useI18n } from '../i18n/context';
@@ -78,5 +81,47 @@ export function GleifInfo({ status }: { status: GleifStatus }) {
     <Typography variant="body2" color="text.secondary">
       {t.gleif.status} {text}
     </Typography>
+  );
+}
+
+/**
+ * Shown after the waiting screen when the online update failed: what went wrong, what the
+ * analysis will do without a fresh copy, and what to try next. The user may close it.
+ */
+export function GleifFailure({ status }: { status: GleifStatus }) {
+  const { t } = useI18n();
+  const [closed, setClosed] = useState(false);
+  const code = status.last_error;
+  if (closed || !code || (status.state !== 'READY' && status.state !== 'UNAVAILABLE')) return null;
+
+  const reasons: Record<string, string> = t.gleif.failed.reasons;
+  const reason = reasons[code] ?? t.gleif.failed.reasons.internal;
+  const kept = status.state === 'READY' && status.content_date;
+  return (
+    <Alert
+      severity={kept ? 'warning' : 'error'}
+      variant="outlined"
+      onClose={() => setClosed(true)}
+      sx={{ mb: 3 }}
+    >
+      <AlertTitle>{t.gleif.failed.title}</AlertTitle>
+      <Typography variant="body2" sx={{ mb: 1 }}>
+        {reason}
+      </Typography>
+      <Typography variant="body2" sx={{ mb: 1, fontWeight: 600 }}>
+        {kept
+          ? format(t.gleif.failed.kept, { date: (status.content_date ?? '').slice(0, 10) })
+          : t.gleif.failed.none}
+      </Typography>
+      {code === 'network' && (
+        <Typography variant="body2" sx={{ mb: 1 }}>
+          {t.gleif.failed.network}
+        </Typography>
+      )}
+      <Typography variant="body2">{t.gleif.failed.retry}</Typography>
+      <Typography variant="caption" color="text.secondary" component="p" sx={{ mt: 1 }}>
+        {format(t.gleif.failed.code, { code })}
+      </Typography>
+    </Alert>
   );
 }

@@ -35,7 +35,8 @@ class GleifStatus:
     # While updating: bytes received and expected (0 when unknown).
     received_bytes: int = 0
     total_bytes: int = 0
-    # Short machine-readable reason of the last failed update ("no_token", "network", ...).
+    # Short machine-readable reason of the last failed update ("network", "no_access", ...);
+    # "interrupted" when the updater stopped without saying why (crash, killed process).
     last_error: str | None = None
 
 
@@ -87,4 +88,6 @@ def read_status(
                 release=release,
                 content_date=content_date,
             )
+        # The updater died while working (no heartbeat): the update failed, say so.
+        error = error or "interrupted"
     return GleifStatus(fallback, release=release, content_date=content_date, last_error=error)
