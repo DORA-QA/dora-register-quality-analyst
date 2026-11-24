@@ -11,7 +11,11 @@ DORA QA is not installed: it is a folder to unzip. No administrator rights are n
 1. Open the project's [Releases](https://github.com/DORA-QA/dora-register-quality-analyst/releases) page.
 2. In the latest version, download the ZIP for your system and your version:
    - Windows: `DORA-QA-hors-ligne-…-windows-amd64.zip` (offline) or `en-ligne` (online);
-   - Mac (Apple chip): `DORA-QA-hors-ligne-…-macos-arm64.zip` (offline) or `en-ligne` (online).
+   - Mac with an Apple chip (M1 and later): `DORA-QA-hors-ligne-…-macos-arm64.zip` (offline) or `en-ligne` (online);
+   - Intel Mac (older models): `DORA-QA-hors-ligne-…-macos-x86_64.zip` (offline) or `en-ligne` (online);
+   - Linux (x86_64, Ubuntu 22.04, Debian 12, RHEL 9 or later): `DORA-QA-hors-ligne-…-linux-x86_64.zip` (offline) or `en-ligne` (online).
+
+   *Apple chip or Intel?* Apple menu > *About This Mac*: the "Chip" line shows Apple M…, the "Processor" line shows Intel.
 3. *(Recommended, or done by the IT department)* compare the fingerprint of the file with the one in the `SHA256SUMS.txt` file of the same page.
 
 ## 2. Unzip
@@ -20,6 +24,7 @@ There is **only one ZIP** to unzip.
 
 - **Windows**: right-click the ZIP > *Extract All…* > *Extract*. Never start the program from inside the ZIP: Windows opens it like a folder, but the program does not work there.
 - **Mac**: double-click the ZIP.
+- **Linux**: `unzip DORA-QA-…-linux-x86_64.zip` in a terminal (or the archive manager).
 
 Choose a simple folder, for example `Documents`. You get a folder named after the ZIP that holds the **`DORA-QA`** folder: the program is in the latter.
 
@@ -37,8 +42,26 @@ DORA-QA-hors-ligne-1.0.0-windows-amd64\
 
 - **Windows**: double-click `DORA-QA.exe`.
   - If Windows displays "Windows protected your PC": this is the expected warning for an unsigned program. **On a company computer, ask your IT department.** On a personal computer: *More info* > *Run anyway*.
+- **Linux**: in a terminal, from the `DORA-QA` folder, run `./Lancer-DORA-QA.sh`.
 - **Mac**: double-click `Lancer-DORA-QA.command`.
-  - The first time, macOS blocks it. **On a company Mac, ask your IT department.** On a personal Mac: *System Settings* > *Privacy & Security* > *Open Anyway* next to DORA QA, then start it again.
+  - The first time, macOS blocks it ("Apple could not verify…"): DORA QA is not notarised by Apple. **On a company Mac, ask your IT department.** On a personal Mac, see below.
+
+### If macOS blocks DORA QA (personal Mac)
+
+macOS marks every downloaded file as "quarantined" and blocks programs that are not notarised. The program and each of its libraries are affected: *Open Anyway* often unblocks only the first file.
+
+**Recommended method**: remove the quarantine from the folder, in one command.
+
+1. Open the **Terminal** application (Applications > Utilities).
+2. Type `xattr -dr com.apple.quarantine ` (with the final space), then **drag the `DORA-QA` folder** into the Terminal window: its path is added.
+3. Press *Return*. No password is asked.
+4. Double-click `Lancer-DORA-QA.command` again.
+
+Example: `xattr -dr com.apple.quarantine ~/Documents/DORA-QA-hors-ligne-1.0.0-macos-arm64/DORA-QA`
+
+**Other method**: after the blocked attempt, *System Settings* > *Privacy & Security* > *Open Anyway* next to DORA QA (session password asked), then start it again; repeat if macOS blocks another file.
+
+> Only remove the quarantine from a ZIP downloaded from the official Releases page, whose fingerprint matches `SHA256SUMS.txt`.
 
 A black window (terminal) opens: **do not close it**, it is the engine of the tool. The browser then opens DORA QA by itself.
 

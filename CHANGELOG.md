@@ -16,7 +16,7 @@ Première version publique de **DORA Register Quality Analyst (DORA QA)**, gratu
 - Calcule les scores de conformité réglementaire, de qualité et de confiance ; exporte les constats en CSV et JSON Lines.
 - Interface en français et en anglais.
 
-**Deux versions, Windows et macOS (Apple Silicon)**
+**Deux versions, pour Windows, macOS (puce Apple et Intel) et Linux (x86_64)**
 - **Hors ligne** : aucune connexion, jamais. Les contrôles qui interrogent le GLEIF sont absents, et l'écran comme les exports l'indiquent.
 - **En ligne** : au démarrage seulement, téléchargement de la copie publique du GLEIF pour vérifier les LEI et les mères ultimes ; aucun registre n'est accepté pendant ce téléchargement.
 
@@ -41,7 +41,7 @@ First public release of **DORA Register Quality Analyst (DORA QA)**, free and op
 - Computes regulatory, quality and confidence scores; exports findings as CSV and JSON Lines.
 - User interface in French and English.
 
-**Two editions, Windows and macOS (Apple Silicon)**
+**Two editions, for Windows, macOS (Apple chip and Intel) and Linux (x86_64)**
 - **Offline**: no connection, ever. Checks that query the GLEIF are left out, as the screen and exports state.
 - **Online**: at start-up only, downloads the public GLEIF copy to check LEIs and ultimate parents; no register is accepted during the download.
 
