@@ -16,10 +16,22 @@ DORA QA ne s'installe pas : c'est un dossier à décompresser. Aucun droit d'adm
 
 ## 2. Décompresser
 
-- **Windows** : clic droit sur le ZIP > *Extraire tout…* Ne lancez jamais le programme depuis l'intérieur du ZIP.
+Il n'y a **qu'un seul ZIP** à décompresser.
+
+- **Windows** : clic droit sur le ZIP > *Extraire tout…* > *Extraire*. Ne lancez jamais le programme depuis l'intérieur du ZIP : Windows l'ouvre comme un dossier, mais le programme n'y fonctionne pas.
 - **Mac** : double-cliquez sur le ZIP.
 
-Choisissez un dossier simple, par exemple `Documents\DORA-QA`.
+Choisissez un dossier simple, par exemple `Documents`. Vous obtenez un dossier au nom du ZIP qui contient le dossier **`DORA-QA`** : c'est dans ce dernier que se trouve le programme.
+
+```
+DORA-QA-hors-ligne-1.0.0-windows-amd64\
+└── DORA-QA\
+    ├── DORA-QA.exe          ← à lancer (Windows)
+    ├── LICENSE.txt, NOTICE.txt
+    └── …
+```
+
+> ℹ️ **Versions de test** (recette, avant publication) : le ZIP se télécharge depuis la page d'une exécution du workflow *Release*, rubrique *Artifacts*. Il s'agit du même ZIP, à décompresser une seule fois. Les versions de test produites avant la version 1.0.0 étaient emballées dans un second ZIP : il fallait alors décompresser deux fois.
 
 ## 3. Lancer
 

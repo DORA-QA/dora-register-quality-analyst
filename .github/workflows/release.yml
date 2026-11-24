@@ -4,6 +4,7 @@ name: Release
 # plus the "sources" variant (offline) for workstations that block unsigned programs.
 # - pull request touching the build: Windows only, to check that it still builds and starts;
 # - manual run: every ZIP, downloadable from the run page (Artifacts) for 14 days;
+#   each ZIP is uploaded as is (archive: false): one download, one ZIP to extract;
 # - tag vX.Y.Z: every ZIP, SHA-256 sums and SBOM published as a GitHub release.
 on:
   push:
@@ -69,10 +70,14 @@ jobs:
             http://127.0.0.1:8765/api/import | python -c "import json,sys; print(json.load(sys.stdin)['status'])")
           test "$status" = "FAILED"
           curl -sf http://127.0.0.1:8765/ | grep -q "<title>DORA QA</title>"
+      - name: Name of the ZIP (uploaded as is, without a second ZIP around it)
+        id: zip
+        shell: bash
+        run: echo "path=$(ls dist-portable/DORA-QA-*.zip | head -1)" >> "$GITHUB_OUTPUT"
       - uses: actions/upload-artifact@v7
         with:
-          name: dora-qa-${{ matrix.edition }}-${{ matrix.os }}
-          path: dist-portable/*.zip
+          path: ${{ steps.zip.outputs.path }}
+          archive: false
           retention-days: 14
 
   sources:
@@ -109,15 +114,23 @@ jobs:
           $r = curl.exe -s -H "X-ROI-Client: ci" -F "file=@exemples/package-with-defects.sample.zip" http://127.0.0.1:8765/api/import | ConvertFrom-Json
           if ($r.status -ne "FAILED") { throw "unexpected status $($r.status)" }
           Stop-Process $p.Id
+      - name: Name of the ZIP (uploaded as is, without a second ZIP around it)
+        id: zip
+        shell: bash
+        run: echo "path=$(ls dist-portable/DORA-QA-sources-*.zip | head -1)" >> "$GITHUB_OUTPUT"
       - uses: actions/upload-artifact@v7
         with:
-          name: dora-qa-sources-windows
-          path: dist-portable/DORA-QA-sources-*.zip
+          path: ${{ steps.zip.outputs.path }}
+          archive: false
           retention-days: 14
 
   publish:
-    name: GitHub release
-    if: startsWith(github.ref, 'refs/tags/v')
+    # Runs on every build (pull requests included) to check the files a release would carry;
+    # the GitHub release itself is only created for a tag vX.Y.Z.
+    name: Release files
+    if: >-
+      ${{ !cancelled() && needs.build.result == 'success' &&
+      (needs.sources.result == 'success' || (needs.sources.result == 'skipped' && !startsWith(github.ref, 'refs/tags/v'))) }}
     needs: [build, sources]
     runs-on: ubuntu-latest
     permissions:
@@ -125,6 +138,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Tag matches the application version, release notes from CHANGELOG.md
+        if: startsWith(github.ref, 'refs/tags/v')
         run: |
           set -euo pipefail
           tag="${GITHUB_REF_NAME#v}"
@@ -140,17 +154,31 @@ jobs:
         with:
           path: release
           merge-multiple: true
+      - name: Each file is a ZIP that opens directly on the DORA-QA folder (no ZIP inside a ZIP)
+        working-directory: release
+        run: |
+          set -euo pipefail
+          ls -l
+          count=0
+          for f in *; do
+            case "$f" in DORA-QA-*.zip) ;; *) echo "::error::Unexpected file $f"; exit 1 ;; esac
+            top=$(unzip -Z1 "$f" | cut -d/ -f1 | sort -u)
+            case "$top" in DORA-QA|DORA-QA-sources) ;; *) echo "::error::$f does not open on the DORA-QA folder: $top"; exit 1 ;; esac
+            count=$((count + 1))
+          done
+          test "$count" -gt 0
       - name: SBOM (SPDX) of the sources and their locked dependencies
         uses: anchore/sbom-action@v0
         with:
           path: .
           format: spdx-json
-          output-file: release/dora-qa-${{ github.ref_name }}.spdx.json
+          output-file: release/dora-qa-${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || 'check' }}.spdx.json
           upload-artifact: false
       - name: SHA-256 sums
         working-directory: release
         run: sha256sum * > SHA256SUMS.txt && cat SHA256SUMS.txt
       - uses: softprops/action-gh-release@v3
+        if: startsWith(github.ref, 'refs/tags/v')
         with:
           draft: true
           name: DORA QA ${{ github.ref_name }}

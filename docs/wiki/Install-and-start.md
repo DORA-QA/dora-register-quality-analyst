@@ -16,10 +16,22 @@ DORA QA is not installed: it is a folder to unzip. No administrator rights are n
 
 ## 2. Unzip
 
-- **Windows**: right-click the ZIP > *Extract All…* Never start the program from inside the ZIP.
+There is **only one ZIP** to unzip.
+
+- **Windows**: right-click the ZIP > *Extract All…* > *Extract*. Never start the program from inside the ZIP: Windows opens it like a folder, but the program does not work there.
 - **Mac**: double-click the ZIP.
 
-Choose a simple folder, for example `Documents\DORA-QA`.
+Choose a simple folder, for example `Documents`. You get a folder named after the ZIP that holds the **`DORA-QA`** folder: the program is in the latter.
+
+```
+DORA-QA-hors-ligne-1.0.0-windows-amd64\
+└── DORA-QA\
+    ├── DORA-QA.exe          ← start this one (Windows)
+    ├── LICENSE.txt, NOTICE.txt
+    └── …
+```
+
+> ℹ️ **Test builds** (acceptance, before publication): the ZIP is downloaded from the page of a run of the *Release* workflow, *Artifacts* section. It is the same ZIP, to unzip only once. Test builds produced before version 1.0.0 were wrapped in a second ZIP: they had to be unzipped twice.
 
 ## 3. Start
 
