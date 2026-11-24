@@ -215,10 +215,16 @@ def load_catalog() -> dict[str, JsonDict]:
 
 @lru_cache
 def load_texts(language: str = DEFAULT_LANGUAGE) -> JsonDict:
-    """Texts of one language (read once per process)."""
-    return cast(
-        JsonDict, json.loads((CATALOG_DIR / f"{language}.json").read_text(encoding="utf-8"))
-    )
+    """Texts of one language (read once per process).
+
+    The file is picked from the files actually present, never built from the requested code:
+    an unknown code (``../x``, ``fr/../..``) cannot reach another file.
+    """
+    files = {path.stem: path for path in CATALOG_DIR.glob("*.json") if path.name != CATALOG_FILE}
+    path = files.get(language)
+    if path is None:
+        raise ValueError(f"Unsupported language: {language!r}")
+    return cast(JsonDict, json.loads(path.read_text(encoding="utf-8")))
 
 
 @lru_cache
