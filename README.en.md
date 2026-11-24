@@ -55,7 +55,7 @@ uv run python ../portable/launcher.py
 
 Building the ZIPs: `uv run --project backend --with pyinstaller python portable/build.py` (offline version) or `… build.py --online` (online version). Without a ZIP, choose the version with `DORA_QA_EDITION=online`. A Docker stack (`docker compose up --build`) remains available for an isolated server deployment.
 
-Technical documentation (in French): [architecture](docs/architecture.md), [scores](docs/scores.md), [GLEIF](docs/gleif.md), [closed lists](docs/listes-fermees.md), [national identifiers](docs/referentiel-identifiants-nationaux.md).
+User guide for business teams: [wiki](../../wiki). Technical documentation (in French): [architecture](docs/architecture.md), [scores](docs/scores.md), [GLEIF](docs/gleif.md), [closed lists](docs/listes-fermees.md), [national identifiers](docs/referentiel-identifiants-nationaux.md).
 
 ## Contributing
 
