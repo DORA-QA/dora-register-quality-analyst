@@ -113,6 +113,7 @@ def extras(target: Path) -> None:
     shutil.copytree(REPO / "portable" / "vscode", target / ".vscode")
     shutil.copy(REPO / "portable" / "LISEZ-MOI-SOURCES.txt", target / "LISEZ-MOI.txt")
     shutil.copy(REPO / "LICENSE", target / "LICENSE.txt")
+    shutil.copy(REPO / "LICENCE.fr.txt", target / "LICENCE.fr.txt")
     shutil.copy(REPO / "NOTICE", target / "NOTICE.txt")
     samples = target / "exemples"
     samples.mkdir()

@@ -67,5 +67,5 @@ Les signalements d'erreur et les propositions sont bienvenus : voir [CONTRIBUTIN
 
 ## Licence
 
-Code publié sous **[EUPL 1.2](LICENSE)** (European Union Public Licence). Toutes les versions linguistiques officielles de la licence ont la même valeur : la version anglaise est dans [LICENSE](LICENSE), la version française sur [le site officiel de la Commission européenne](https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12). Données et textes de tiers : voir [NOTICE](NOTICE).
+Code publié sous **[EUPL 1.2](LICENSE)** (European Union Public Licence). Toutes les versions linguistiques officielles de la licence ont la même valeur : la version anglaise est dans [LICENSE](LICENSE), la version française dans [LICENCE.fr.txt](LICENCE.fr.txt). Données et textes de tiers : voir [NOTICE](NOTICE).
 

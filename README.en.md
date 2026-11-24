@@ -67,4 +67,4 @@ Bug reports and proposals are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md#eng
 
 ## Licence
 
-Code published under the **[EUPL 1.2](LICENSE)** (European Union Public Licence). All official language versions of the licence have the same value: the English version is in [LICENSE](LICENSE), the French version on [the official website of the European Commission](https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12). Third-party data and texts: see [NOTICE](NOTICE).
+Code published under the **[EUPL 1.2](LICENSE)** (European Union Public Licence). All official language versions of the licence have the same value: the English version is in [LICENSE](LICENSE), the French version in [LICENCE.fr.txt](LICENCE.fr.txt). Third-party data and texts: see [NOTICE](NOTICE).
