@@ -1,6 +1,7 @@
 name: Release
 
-# Portable ZIPs of DORA QA, offline and online versions, for Windows and macOS (Apple Silicon),
+# Portable ZIPs of DORA QA, offline and online versions, for Windows, macOS (Apple Silicon and
+# Intel) and Linux (x86_64),
 # plus the "sources" variant (offline) for workstations that block unsigned programs.
 # - pull request touching the build: Windows only, to check that it still builds and starts;
 # - manual run: every ZIP, downloadable from the run page (Artifacts) for 14 days;
@@ -28,7 +29,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: ${{ github.event_name == 'pull_request' && fromJSON('["windows-latest"]') || fromJSON('["windows-latest", "macos-latest"]') }}
+        # macos-latest: Apple Silicon (arm64); macos-15-intel: Intel Macs (x86_64, the last Intel
+        # runner of GitHub); ubuntu-22.04: Linux x86_64, built on an older glibc (2.35) so that it
+        # also runs on more recent distributions.
+        os: ${{ github.event_name == 'pull_request' && fromJSON('["windows-latest"]') || fromJSON('["windows-latest", "macos-latest", "macos-15-intel", "ubuntu-22.04"]') }}
         edition: [offline, online]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
@@ -45,6 +49,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          py=python; command -v python > /dev/null || py=python3
           mkdir -p "$RUNNER_TEMP/zip"
           unzip -q dist-portable/DORA-QA-*.zip -d "$RUNNER_TEMP/zip"
           exe="$RUNNER_TEMP/zip/DORA-QA/DORA-QA"
@@ -54,7 +59,7 @@ jobs:
             curl -sf http://127.0.0.1:8765/health > /dev/null && break || sleep 1
           done
           curl -sf http://127.0.0.1:8765/health
-          gleif=$(curl -s http://127.0.0.1:8765/api/gleif/status | python -c "import json,sys; print(json.load(sys.stdin)['state'])")
+          gleif=$(curl -s http://127.0.0.1:8765/api/gleif/status | $py -c "import json,sys; print(json.load(sys.stdin)['state'])")
           if [ "${{ matrix.edition }}" = offline ]; then
             test "$gleif" = DISABLED
           else
@@ -62,12 +67,12 @@ jobs:
             for i in $(seq 1 300); do
               [ "$gleif" != UPDATING ] && break
               sleep 2
-              gleif=$(curl -s http://127.0.0.1:8765/api/gleif/status | python -c "import json,sys; print(json.load(sys.stdin)['state'])")
+              gleif=$(curl -s http://127.0.0.1:8765/api/gleif/status | $py -c "import json,sys; print(json.load(sys.stdin)['state'])")
             done
             test "$gleif" != DISABLED && test "$gleif" != UPDATING
           fi
           status=$(curl -s -H "X-ROI-Client: ci" -F "file=@sample-data/package-with-defects.sample.zip" \
-            http://127.0.0.1:8765/api/import | python -c "import json,sys; print(json.load(sys.stdin)['status'])")
+            http://127.0.0.1:8765/api/import | $py -c "import json,sys; print(json.load(sys.stdin)['status'])")
           test "$status" = "FAILED"
           curl -sf http://127.0.0.1:8765/ | grep -q "<title>DORA QA</title>"
       - name: Name of the ZIP (uploaded as is, without a second ZIP around it)

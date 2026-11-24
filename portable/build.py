@@ -126,7 +126,9 @@ def package(app: Path, edition: str) -> Path:
     for sample in wanted:
         shutil.copy(sample, samples / sample.name)
     if sys.platform != "win32":
-        starter = app / "Lancer-DORA-QA.command"
+        # .command opens a Terminal on a double-click in the Finder; .sh for Linux.
+        suffix = "command" if sys.platform == "darwin" else "sh"
+        starter = app / f"Lancer-DORA-QA.{suffix}"
         starter.write_text(f'#!/bin/sh\ncd "$(dirname "$0")"\n./{NAME}\n', encoding="utf-8")
         starter.chmod(0o755)
 
