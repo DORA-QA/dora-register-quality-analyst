@@ -59,7 +59,7 @@ Documentation technique : [architecture](docs/architecture.md), [scores](docs/sc
 
 ## Contribuer
 
-Les signalements d'erreur et les propositions sont bienvenus : voir [CONTRIBUTING.md](CONTRIBUTING.md#français). **N'envoyez jamais de registre réel**, même partiellement : utilisez les jeux fictifs de `sample-data/`. Failles de sécurité : voir [SECURITY.md](SECURITY.md#français).
+Les signalements d'erreur et les propositions sont bienvenus : voir [CONTRIBUTING.md](CONTRIBUTING.md#français). **N'envoyez jamais de registre réel**, même partiellement : utilisez les jeux fictifs de `sample-data/`. Failles de sécurité : voir [SECURITY.md](SECURITY.md#français). Code de conduite : [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md#français).
 
 ## Contact
 

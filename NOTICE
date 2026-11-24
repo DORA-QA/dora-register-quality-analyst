@@ -25,7 +25,10 @@ This software includes or derives data from the following third-party sources.
    the Creative Commons CC0 1.0 licence. The date of the copy used is shown with every
    GLEIF finding.
 
-4. Swagger UI (backend/api/static/swagger-ui/), Apache License 2.0, see the LICENSE and
+4. Contributor Covenant 2.1 (CODE_OF_CONDUCT.md), English and French versions,
+   https://www.contributor-covenant.org, licensed under CC BY 4.0.
+
+5. Swagger UI (backend/api/static/swagger-ui/), Apache License 2.0, see the LICENSE and
    NOTICE files in that folder.
 
 The binary releases also bundle Python and JavaScript libraries under permissive licences

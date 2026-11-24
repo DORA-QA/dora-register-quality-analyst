@@ -59,7 +59,7 @@ Technical documentation (in French): [architecture](docs/architecture.md), [scor
 
 ## Contributing
 
-Bug reports and proposals are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md#english). **Never send a real register**, even partially: use the fictitious data sets of `sample-data/`. Security vulnerabilities: see [SECURITY.md](SECURITY.md#english).
+Bug reports and proposals are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md#english). **Never send a real register**, even partially: use the fictitious data sets of `sample-data/`. Security vulnerabilities: see [SECURITY.md](SECURITY.md#english). Code of conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md#english).
 
 ## Contact
 
