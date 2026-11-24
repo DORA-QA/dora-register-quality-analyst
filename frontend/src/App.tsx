@@ -10,7 +10,7 @@ import type { ImportFailure } from './api/imports';
 import { AboutDialog } from './components/AboutDialog';
 import { BackendStatus } from './components/BackendStatus';
 import { DisclaimerDialog } from './components/DisclaimerDialog';
-import { GleifInfo, GleifSplash } from './components/GleifSplash';
+import { GleifFailure, GleifInfo, GleifSplash } from './components/GleifSplash';
 import { ImportResult } from './components/ImportResult';
 import { LanguageSelector } from './components/LanguageSelector';
 import { Reassurance } from './components/Reassurance';
@@ -69,6 +69,8 @@ export function App({ disclaimerAccepted = false }: { disclaimerAccepted?: boole
           </Box>
           <LanguageSelector />
         </Box>
+
+        {gleif.state !== 'checking' && gleif.state !== 'unknown' && <GleifFailure status={gleif} />}
 
         {current.state !== 'done' && (
           <UploadPanel

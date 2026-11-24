@@ -57,6 +57,33 @@ export const en = {
     splashConnecting: 'Connecting…',
     progress: '{received} MB of {total} MB ({percent} %)',
     splashCloses: 'This screen closes by itself when the update is finished.',
+    failed: {
+      title: 'The online update of the GLEIF copy failed',
+      reasons: {
+        network:
+          'The tool could not reach GitHub, where the GLEIF copy is published: no Internet connection, or a firewall or company proxy blocks the connection.',
+        no_access:
+          'The published GLEIF copy could not be reached (repository not found or access refused).',
+        no_release: 'No GLEIF copy is published at the moment.',
+        github_error:
+          'GitHub answered with an error or is temporarily unavailable (it may also be limiting the number of requests).',
+        download_error: 'The download of the copy was refused or interrupted.',
+        checksum:
+          'The downloaded copy is incomplete or damaged (wrong fingerprint): it was not installed.',
+        bad_release:
+          'The published copy is incomplete or in an unexpected format: it was not installed.',
+        too_long: 'The update took more than 15 minutes and was stopped (connection too slow).',
+        interrupted: 'The update stopped before the end, without giving a reason.',
+        internal: 'An unexpected error occurred during the update.',
+      },
+      kept: 'The analysis uses the copy already installed, dated {date}.',
+      none: 'No copy is installed: the GLEIF checks will not be performed. The rest of the analysis works normally.',
+      network:
+        'If you are on a company network, ask your IT department to allow api.github.com and the GitHub download addresses, or use the offline version.',
+      retry:
+        'Restart DORA QA to try again. If the problem persists, report it on GitHub or to dora-qa@proton.me, quoting the code below.',
+      code: 'Code: {code}',
+    },
   },
   upload: {
     section: 'Register import',
