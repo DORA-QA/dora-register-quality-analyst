@@ -3,3 +3,6 @@ contact_links:
   - name: Faille de sécurité / Security vulnerability
     url: https://github.com/stephanealpha/dora-register-quality-analyst/security/advisories/new
     about: Signalement privé, jamais dans une issue publique.
+  - name: Demande confidentielle / Confidential request
+    url: mailto:dora-qa@proton.me
+    about: Signature entreprise, déploiement ou toute demande à ne pas rendre publique.

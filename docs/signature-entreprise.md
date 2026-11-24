@@ -42,4 +42,4 @@ xcrun notarytool submit DORA-QA.zip --keychain-profile "notary" --wait
 
 ## Besoin d'aide ?
 
-Ouvrez une issue avec le modèle **« Demande de signature entreprise »**. N'y indiquez aucune information confidentielle.
+Ouvrez une issue avec le modèle **« Demande de signature entreprise »** (publique : n'y indiquez aucune information confidentielle), ou écrivez à [dora-qa@proton.me](mailto:dora-qa@proton.me) pour une demande confidentielle.

@@ -6,6 +6,8 @@ Ne signalez **pas** une faille dans une issue publique. Utilisez le bouton **« 
 
 Merci d'indiquer la version de DORA QA, le système (Windows, macOS, Docker), les étapes pour reproduire et, si possible, un fichier d'exemple **fictif**. N'envoyez jamais de registre réel.
 
+Si vous ne pouvez pas utiliser GitHub, écrivez à [dora-qa@proton.me](mailto:dora-qa@proton.me) avec « SÉCURITÉ » dans l'objet.
+
 Nous accusons réception sous 7 jours et publions un correctif ainsi qu'un avis de sécurité dès que possible.
 
 ## Principes de sécurité du produit
@@ -17,4 +19,4 @@ Nous accusons réception sous 7 jours et publions un correctif ainsi qu'un avis 
 
 ---
 
-**Reporting a vulnerability**: please use the private *Report a vulnerability* button of the [Security](../../security/advisories/new) tab, never a public issue, and never attach a real register.
+**Reporting a vulnerability**: please use the private *Report a vulnerability* button of the [Security](../../security/advisories/new) tab, never a public issue, or e-mail [dora-qa@proton.me](mailto:dora-qa@proton.me) with "SECURITY" in the subject. Never attach a real register.
