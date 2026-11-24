@@ -10,7 +10,7 @@ from functools import lru_cache
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 APP_NAME = "DORA QA"
-APP_VERSION = "1.0.0"
+APP_VERSION = "1.0.1"
 
 
 class Settings(BaseSettings):

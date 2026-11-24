@@ -166,3 +166,16 @@ def test_corrigendum_of_2025_is_applied_to_the_labels() -> None:
     assert str(render_fragment(field_label("B_05.01.0090"), "fr")).startswith(
         "« Monnaie du montant déclaré dans la colonne B_05.01.0100 »"
     )
+
+
+def test_language_code_cannot_reach_another_file() -> None:
+    # CodeQL py/path-injection: the file is chosen among the files present, never built from
+    # the requested code.
+    import pytest
+
+    from contracts.messages import load_texts
+
+    for code in ("../catalog", "../../pyproject", "fr/../en", "/etc/passwd", "catalog"):
+        with pytest.raises(ValueError, match="Unsupported language"):
+            load_texts(code)
+    assert load_texts("fr")["messages"]

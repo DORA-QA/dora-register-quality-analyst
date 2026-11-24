@@ -38,16 +38,23 @@ export function ExportDialog({
   const [withoutValues, setWithoutValues] = useState(false);
 
   const download = () => {
+    // The address is ours (API_URL + /api/...), the user's filters only go into the encoded
+    // query string; still, only an http(s) address of this page's server is ever followed.
+    const url = new URL(
+      exportUrl(importId, {
+        format: fileFormat,
+        language,
+        findings,
+        table,
+        row,
+        column,
+        values: !withoutValues,
+      }),
+      window.location.href,
+    );
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
     const link = document.createElement('a');
-    link.href = exportUrl(importId, {
-      format: fileFormat,
-      language,
-      findings,
-      table,
-      row,
-      column,
-      values: !withoutValues,
-    });
+    link.href = url.href;
     link.rel = 'noopener';
     document.body.appendChild(link);
     link.click();
