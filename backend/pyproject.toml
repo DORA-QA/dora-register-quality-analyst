@@ -1,6 +1,6 @@
 [project]
 name = "dora-qa-backend"
-version = "0.9.0"
+version = "1.0.0"
 description = "Quality assurance engine for DORA Registers of Information - backend API"
 requires-python = ">=3.13,<3.14"
 dependencies = [
