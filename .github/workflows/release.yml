@@ -124,6 +124,18 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v7
+      - name: Tag matches the application version, release notes from CHANGELOG.md
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF_NAME#v}"
+          app=$(sed -n 's/^APP_VERSION = "\(.*\)"/\1/p' backend/api/config.py)
+          if [ "$tag" != "$app" ]; then
+            echo "::error::Tag v$tag does not match APP_VERSION $app (backend/api/config.py)"; exit 1
+          fi
+          sed -n "/<!-- release:$tag -->/,/<!-- \/release:$tag -->/p" CHANGELOG.md | sed '1d;$d' > "$RUNNER_TEMP/notes.md"
+          if [ ! -s "$RUNNER_TEMP/notes.md" ]; then
+            echo "::error::No section <!-- release:$tag --> in CHANGELOG.md"; exit 1
+          fi
       - uses: actions/download-artifact@v8
         with:
           path: release
@@ -141,5 +153,7 @@ jobs:
       - uses: softprops/action-gh-release@v3
         with:
           draft: true
+          name: DORA QA ${{ github.ref_name }}
+          body_path: ${{ runner.temp }}/notes.md
           generate_release_notes: true
           files: release/*
