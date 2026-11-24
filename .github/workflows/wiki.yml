@@ -1,0 +1,40 @@
+name: Wiki
+
+# Publishes docs/wiki/ to the GitHub wiki of the repository. The wiki pages are written and
+# reviewed in pull requests like the rest of the documentation; this workflow only copies them.
+# Pages edited directly in the wiki are overwritten at the next publication.
+on:
+  push:
+    branches: [main]
+    paths: ["docs/wiki/**", ".github/workflows/wiki.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wiki
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Copy docs/wiki to the wiki
+        env:
+          TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git clone --depth 1 "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.wiki.git" wiki
+          find wiki -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -R docs/wiki/. wiki/
+          cd wiki
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Wiki already up to date"
+            exit 0
+          fi
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -m "Publication de docs/wiki (${GITHUB_SHA::7})"
+          git push origin HEAD
