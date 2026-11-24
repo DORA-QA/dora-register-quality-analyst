@@ -29,6 +29,7 @@ jobs:
           git clone --depth 1 "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.wiki.git" wiki
           find wiki -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
           cp -R docs/wiki/. wiki/
+          rm -f wiki/README.md  # notes for contributors, not a wiki page
           cd wiki
           git add -A
           if git diff --cached --quiet; then
