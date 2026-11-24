@@ -116,6 +116,7 @@ def freeze(dist: Path, edition: str) -> Path:
 def package(app: Path, edition: str) -> Path:
     shutil.copy(REPO / "portable" / "LISEZ-MOI.txt", app / "LISEZ-MOI.txt")
     shutil.copy(REPO / "LICENSE", app / "LICENSE.txt")
+    shutil.copy(REPO / "LICENCE.fr.txt", app / "LICENCE.fr.txt")
     shutil.copy(REPO / "NOTICE", app / "NOTICE.txt")
     samples = app / "exemples"
     samples.mkdir(exist_ok=True)
