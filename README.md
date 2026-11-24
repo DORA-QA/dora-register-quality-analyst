@@ -1,7 +1,7 @@
 # DORA Register Quality Analyst (DORA QA)
 
 **Analyse locale de la qualité d'un registre d'information DORA, avant sa remise à l'autorité compétente.**
-*Local quality analysis of a DORA register of information, before it is submitted — [English below](#english).*
+**Français** · [English](README.en.md)
 
 DORA QA lit un registre d'information (règlement d'exécution (UE) 2024/2956, taxonomie EBA 4.0) au format **ZIP xBRL-CSV** ou dans son **enveloppe XML OneGate** (ACPR), puis produit un rapport de constats classés par gravité, avec pour chacun une explication en clair, sa référence (règle EBA, article de l'ITS, note de l'ACPR) et un conseil pour le corriger.
 
@@ -59,7 +59,7 @@ Documentation technique : [architecture](docs/architecture.md), [scores](docs/sc
 
 ## Contribuer
 
-Les signalements d'erreur et les propositions sont bienvenus : voir [CONTRIBUTING.md](CONTRIBUTING.md). **N'envoyez jamais de registre réel**, même partiellement : utilisez les jeux fictifs de `sample-data/`. Failles de sécurité : voir [SECURITY.md](SECURITY.md).
+Les signalements d'erreur et les propositions sont bienvenus : voir [CONTRIBUTING.md](CONTRIBUTING.md#français). **N'envoyez jamais de registre réel**, même partiellement : utilisez les jeux fictifs de `sample-data/`. Failles de sécurité : voir [SECURITY.md](SECURITY.md#français).
 
 ## Contact
 
@@ -67,17 +67,5 @@ Les signalements d'erreur et les propositions sont bienvenus : voir [CONTRIBUTIN
 
 ## Licence
 
-Code publié sous **[EUPL 1.2](LICENSE)** (European Union Public Licence). Le texte fait foi dans les 23 langues officielles de l'Union, dont le [français](https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12). Données et textes de tiers : voir [NOTICE](NOTICE).
+Code publié sous **[EUPL 1.2](LICENSE)** (European Union Public Licence). Toutes les versions linguistiques officielles de la licence ont la même valeur : la version anglaise est dans [LICENSE](LICENSE), la version française sur [le site officiel de la Commission européenne](https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12). Données et textes de tiers : voir [NOTICE](NOTICE).
 
----
-
-## English
-
-**DORA QA analyses, on your own computer, the quality of a DORA register of information** (Implementing Regulation (EU) 2024/2956, EBA taxonomy 4.0), as an xBRL-CSV ZIP package or in its OneGate XML envelope. Each finding comes with a plain-language explanation, its reference and expert advice.
-
-- **Private by design**: the register never leaves the computer; nothing is kept after the analysis.
-- **Two versions**: *offline* (no connection ever, no GLEIF checks) and *online* (downloads a public copy of the GLEIF data at start-up only, before any register is accepted).
-- **Install**: download the ZIP from the [Releases](../../releases), check its SHA-256, unzip and run `DORA-QA.exe` (Windows) or `Lancer-DORA-QA.command` (macOS). The binaries are not signed: allow them once in SmartScreen or in *System Settings > Privacy & Security*.
-- **Disclaimer**: DORA QA is free software provided "as is", without warranty. Its findings are indicative and are neither legal or regulatory advice nor an enforceable certificate of compliance. The reporting entity remains solely responsible for its register.
-- **Licence**: [EUPL 1.2](LICENSE). Never attach a real register to an issue.
-- **Contact**: [dora-qa@proton.me](mailto:dora-qa@proton.me) for confidential requests; public questions in the issues.
