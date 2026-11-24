@@ -3,6 +3,28 @@
 Ce fichier suit le principe de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) et la numérotation [SemVer](https://semver.org/lang/fr/).
 La section de la version taguée sert de texte à la release GitHub.
 
+<!-- release:1.0.1 -->
+## [1.0.1] — correctifs de sécurité · security fixes
+
+### Français
+
+Correctifs issus de l'analyse automatique du code (CodeQL). Aucune des deux failles n'était exploitable dans DORA QA, mais la mise à jour est recommandée.
+
+- Le fichier de traduction est choisi parmi les fichiers livrés, jamais construit à partir du code de langue reçu : un code inattendu ne peut plus désigner un autre fichier.
+- Le lien d'export des constats n'est suivi que s'il s'agit d'une adresse http(s) de l'application.
+
+Aucun changement dans les contrôles ni dans les résultats d'analyse.
+
+### English
+
+Fixes from the automatic code analysis (CodeQL). Neither weakness was exploitable in DORA QA, but updating is recommended.
+
+- The translation file is picked among the shipped files, never built from the language code received: an unexpected code can no longer point to another file.
+- The export link of the findings is only followed if it is an http(s) address of the application.
+
+No change in the checks or in the analysis results.
+<!-- /release:1.0.1 -->
+
 <!-- release:1.0.0 -->
 ## [1.0.0] — première version publique · first public release
 
