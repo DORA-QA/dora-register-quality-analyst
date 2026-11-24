@@ -154,6 +154,8 @@ jobs:
         with:
           path: release
           merge-multiple: true
+          # Keep each ZIP as uploaded: it is the file the release carries.
+          skip-decompress: true
       - name: Each file is a ZIP that opens directly on the DORA-QA folder (no ZIP inside a ZIP)
         working-directory: release
         run: |
