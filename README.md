@@ -1,7 +1,10 @@
 # DORA Register Quality Analyst (DORA QA)
 
 **Analyse locale de la qualité d'un registre d'information DORA, avant sa remise à l'autorité compétente.**
-**Français** · [English](README.en.md)
+**Français** · [English](README.en.md) · Site : [dora-qa.github.io](https://dora-qa.github.io)
+
+<!-- Capture du rapport : déposer docs/img/rapport.png puis décommenter la ligne suivante -->
+<!-- ![Rapport DORA QA sur le fichier d'exemple](docs/img/rapport.png) -->
 
 DORA QA lit un registre d'information (règlement d'exécution (UE) 2024/2956, taxonomie EBA 4.0) au format **ZIP xBRL-CSV** ou dans son **enveloppe XML OneGate** (ACPR), puis produit un rapport de constats classés par gravité, avec pour chacun une explication en clair, sa référence (règle EBA, article de l'ITS, note de l'ACPR) et un conseil pour le corriger.
 
@@ -31,6 +34,10 @@ Téléchargez dans les [Releases](../../releases) le ZIP de votre système et de
 - **Linux** (x86_64, glibc 2.35 ou plus : Ubuntu 22.04, Debian 12, RHEL 9 et suivantes) : `./Lancer-DORA-QA.sh` dans un terminal.
 
 Le navigateur s'ouvre sur l'interface. Fermez la fenêtre du terminal pour arrêter l'application.
+
+### Essayer en 2 minutes, sans votre registre
+
+Déposez dans l'interface le fichier fictif [`package-with-defects.sample.zip`](sample-data/package-with-defects.sample.zip) : il contient des erreurs volontaires et montre un rapport complet (scores, constats classés par gravité, références et conseils). Le dossier [`sample-data/`](sample-data) contient aussi une enveloppe OneGate valide.
 
 Votre entreprise souhaite un exécutable signé à son nom ? Voir [Signer DORA QA avec votre propre certificat](docs/signature-entreprise.md) ou ouvrez une [demande de signature](../../issues/new/choose). Pour une demande confidentielle : [dora-qa@proton.me](mailto:dora-qa@proton.me).
 
